@@ -10,9 +10,9 @@ maintainers:
   - "HardFOC"
 license: "GPL-3.0"
 
-url: https://github.com/N3b3x/hf-internal-interface-wrap
-repository: https://github.com/N3b3x/hf-internal-interface-wrap
-issues: https://github.com/N3b3x/hf-internal-interface-wrap/issues
+url: https://github.com/hardfoc/hf-internal-interface-wrap
+repository: https://github.com/hardfoc/hf-internal-interface-wrap
+issues: https://github.com/hardfoc/hf-internal-interface-wrap/issues
 
 targets:
   - esp32
