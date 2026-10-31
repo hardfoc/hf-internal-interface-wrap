@@ -1,20 +1,20 @@
 <map id="EspTemperature" name="EspTemperature">
-<area shape="rect" id="Node000001" title="ESP32 internal temperature sensor implementation." alt="" coords="499,257,653,288"/>
-<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="63,38,228,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,31,258,14,331,4,369,3,406,8,443,18,476,35,503,58,524,86,541,117,554,149,570,211,576,256,571,257,565,212,549,151,536,119,520,89,499,62,473,40,441,23,405,13,368,9,331,9,259,19,199,36"/>
-<area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="205,71,310,100,357,106,396,104,433,107,453,114,476,126,511,155,538,191,558,227,571,255,566,258,553,229,534,194,507,159,473,130,451,119,432,113,395,110,357,111,309,106,203,76"/>
-<area shape="rect" id="Node000003" href="$classPlatformMutexImpl.html" title=" " alt="" coords="5,127,285,178"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,168,401,184,476,203,522,228,558,255,555,259,519,232,474,208,400,190,299,173"/>
-<area shape="rect" id="Node000004" href="$structesp__temp__state__t.html" title="ESP32 specific temperature sensor state." alt="" coords="62,202,229,233"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,221,354,231,475,247,513,254,512,260,474,252,354,237,242,226"/>
-<area shape="rect" id="Node000005" href="$structesp__temp__config__t.html" title="ESP32 specific temperature sensor configuration." alt="" coords="58,257,233,288"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="246,270,498,270,498,275,246,275"/>
-<area shape="rect" id="Node000006" href="$structhf__temp__config__t.html" title="Temperature sensor configuration structure." alt="" coords="65,312,226,342"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="240,320,352,311,474,295,520,285,521,290,475,300,353,316,240,325"/>
-<area shape="rect" id="Node000007" href="$structhf__temp__statistics__t.html" title="Temperature sensor statistics." alt="" coords="54,366,237,397"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="250,380,360,369,418,358,474,340,520,315,557,286,560,290,523,319,476,345,419,363,361,375,250,385"/>
-<area shape="rect" id="Node000008" href="$structhf__temp__diagnostics__t.html" title="Temperature sensor diagnostics." alt="" coords="44,421,247,452"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="260,444,313,443,368,437,422,424,473,402,506,377,532,345,552,313,566,287,570,289,557,316,537,348,510,381,476,407,424,429,369,442,313,449,260,450"/>
-<area shape="rect" id="Node000009" href="$structesp__temp__range__info__t.html" title="Temperature range information structure." alt="" coords="39,476,251,506"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="235,505,292,510,355,508,417,495,446,484,473,469,496,450,514,428,543,377,561,326,570,288,575,289,566,328,548,379,519,431,499,454,476,473,448,489,418,500,355,513,292,515,235,511"/>
+<area shape="rect" id="Node000001" title="ESP32 internal temperature sensor implementation." alt="" coords="498,264,652,296"/>
+<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="63,40,227,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,32,260,14,332,4,370,3,407,8,442,18,475,35,502,59,524,87,541,119,554,153,569,216,575,265,570,263,564,217,549,154,536,121,520,90,499,62,472,40,440,23,406,13,369,9,333,9,262,20,202,37"/>
+<area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="207,75,309,103,356,108,395,107,432,110,453,116,475,128,510,159,538,196,558,233,570,265,565,263,553,235,533,199,506,163,472,133,451,121,431,115,395,112,356,114,308,108,208,80"/>
+<area shape="rect" id="Node000003" href="$classPlatformMutexImpl.html" title=" " alt="" coords="5,131,285,184"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="300,172,402,188,475,207,521,233,559,264,553,264,518,237,473,212,400,193,301,178"/>
+<area shape="rect" id="Node000004" href="$structesp__temp__state__t.html" title="ESP32 specific temperature sensor state." alt="" coords="62,208,228,240"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="243,227,355,237,474,253,514,263,508,264,473,259,354,243,244,233"/>
+<area shape="rect" id="Node000005" href="$structesp__temp__config__t.html" title="ESP32 specific temperature sensor configuration." alt="" coords="58,264,232,296"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="247,277,499,278,495,282,248,283"/>
+<area shape="rect" id="Node000006" href="$structhf__temp__config__t.html" title="Temperature sensor configuration structure." alt="" coords="65,320,225,352"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="240,329,352,320,473,304,520,296,515,297,474,309,353,325,242,334"/>
+<area shape="rect" id="Node000007" href="$structhf__temp__statistics__t.html" title="Temperature sensor statistics." alt="" coords="54,376,236,408"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="251,390,360,380,418,368,473,351,519,324,555,298,559,295,522,328,475,355,419,373,361,385,252,396"/>
+<area shape="rect" id="Node000008" href="$structhf__temp__diagnostics__t.html" title="Temperature sensor diagnostics." alt="" coords="44,432,246,464"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="262,456,314,454,368,448,422,434,472,412,505,387,531,354,551,322,565,298,569,295,556,325,536,358,509,390,475,417,424,439,369,453,314,459,262,461"/>
+<area shape="rect" id="Node000009" href="$structesp__temp__range__info__t.html" title="Temperature range information structure." alt="" coords="39,488,251,520"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="244,520,300,523,360,520,419,507,446,496,472,481,495,463,514,440,542,387,560,335,569,298,573,294,565,337,547,389,518,443,499,466,475,486,449,501,420,512,360,525,300,528,244,525"/>
 </map>

@@ -1,14 +1,14 @@
 <map id="inc/base/BaseLogger.h" name="inc/base/BaseLogger.h">
-<area shape="rect" id="Node000001" title="Unified logging base class for all logging implementations." alt="" coords="303,5,508,36"/>
-<area shape="rect" id="Node000002" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,163,283,213"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,44,314,63,272,86,217,126,171,165,168,161,214,122,269,82,312,58,354,39"/>
-<area shape="rect" id="Node000003" href="$EspLogger_8h.html" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="283,84,528,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,50,408,84,403,84,403,50"/>
-<area shape="rect" id="Node000005" href="$StmLogger_8h.html" title="STM32 Logger — UART/SWO/ITM&#45;based logging with full BaseLogger interface." alt="" coords="579,84,827,115"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="474,37,648,81,647,87,473,42"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="351,122,218,165,216,160,349,116"/>
-<area shape="rect" id="Node000004" href="$EspLogger_8cpp.html" title="Implementation of ESP32 logger for the HardFOC system." alt="" coords="307,173,573,203"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="419,126,437,171,432,173,414,128"/>
-<area shape="rect" id="Node000006" href="$StmLogger_8cpp.html" title="STM32 Logger implementation — UART/SWO/printf output." alt="" coords="597,173,865,203"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="714,127,728,171,723,173,709,129"/>
+<area shape="rect" id="Node000001" title="Unified logging base class for all logging implementations." alt="" coords="301,5,506,37"/>
+<area shape="rect" id="Node000002" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,165,282,217"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="348,44,311,65,270,87,216,127,171,166,168,162,213,123,267,83,308,60,353,42"/>
+<area shape="rect" id="Node000003" href="$EspLogger_8h.html" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="281,85,526,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,50,406,86,401,83,402,55"/>
+<area shape="rect" id="Node000005" href="$StmLogger_8h.html" title="STM32 Logger — UART/SWO/ITM&#45;based logging with full BaseLogger interface." alt="" coords="576,85,823,117"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="476,39,644,84,639,85,476,44"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="347,121,220,167,219,161,342,123"/>
+<area shape="rect" id="Node000004" href="$EspLogger_8cpp.html" title="Implementation of ESP32 logger for the HardFOC system." alt="" coords="306,175,570,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="416,129,435,176,430,174,413,133"/>
+<area shape="rect" id="Node000006" href="$StmLogger_8cpp.html" title="STM32 Logger implementation — UART/SWO/printf output." alt="" coords="594,175,861,207"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="710,129,725,176,721,174,707,134"/>
 </map>

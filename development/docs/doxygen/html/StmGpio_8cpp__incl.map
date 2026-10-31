@@ -1,22 +1,22 @@
 <map id="src/mcu/stm32/StmGpio.cpp" name="src/mcu/stm32/StmGpio.cpp">
-<area shape="rect" id="Node000001" title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation." alt="" coords="43,5,295,36"/>
-<area shape="rect" id="Node000002" href="$StmGpio_8h.html" title="STM32 GPIO wrapper — full HAL integration with EXTI interrupt support." alt="" coords="115,84,224,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,36,172,70,167,70,167,36"/>
-<area shape="rect" id="Node000003" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="31,163,148,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="156,117,116,155,112,151,152,113"/>
-<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="241,163,359,193"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="195,113,265,153,262,158,193,117"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,241,323,272"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="119,191,202,233,200,238,116,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="251,320,325,351"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="64,196,41,211,20,231,9,251,9,261,14,270,37,293,60,307,84,313,109,314,167,312,200,313,237,317,236,323,200,318,167,317,109,320,83,318,58,311,34,297,10,274,4,262,3,250,15,227,37,207,61,191"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="24,241,136,272"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="90,194,86,228,81,227,85,193"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="252,271,274,307,270,310,248,274"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="163,320,227,351"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="235,274,213,310,208,307,230,271"/>
-<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="291,195,263,232,259,229,287,192"/>
-<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="314,192,334,228,340,250,337,273,327,293,314,311,310,308,323,291,332,271,334,251,329,230,309,195"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="397,241,477,272"/>
-<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="327,191,401,232,398,237,324,196"/>
+<area shape="rect" id="Node000001" title="STM32 GPIO wrapper — HAL&#45;backed BaseGpio implementation." alt="" coords="96,5,347,37"/>
+<area shape="rect" id="Node000002" href="$StmGpio_8h.html" title="STM32 GPIO wrapper — full HAL integration with EXTI interrupt support." alt="" coords="167,85,275,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,35,224,70,219,69,220,40"/>
+<area shape="rect" id="Node000003" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="92,165,209,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="206,119,176,155,172,151,209,115"/>
+<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="243,165,360,196"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="237,114,278,154,272,154,236,120"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,244,324,276"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="169,194,216,234,211,235,168,199"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,324,325,356"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="92,199,57,213,26,231,15,241,9,252,9,262,15,274,38,297,61,310,85,317,110,318,167,316,200,316,239,323,234,324,200,322,167,321,110,324,84,322,59,315,35,301,11,278,4,264,4,250,11,238,22,227,55,209,95,195"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="26,244,137,276"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="135,199,107,235,103,231,139,195"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="253,274,274,311,269,310,250,279"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="164,324,228,356"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="236,275,215,313,211,309,231,278"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="292,195,265,234,261,230,288,198"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="314,194,336,232,341,254,338,277,329,297,315,315,312,310,324,294,333,275,336,254,331,233,312,199"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="399,244,478,276"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="328,194,402,236,396,237,327,199"/>
 </map>

@@ -1,15 +1,15 @@
 <map id="inc/utils/DigitalOutputGuard.h" name="inc/utils/DigitalOutputGuard.h">
-<area shape="rect" id="Node000001" title="Header file for the DigitalOutputGuard class." alt="" coords="16,5,275,36"/>
-<area shape="rect" id="Node000002" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="125,84,286,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,35,188,72,184,75,155,38"/>
-<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,163,168,193"/>
-<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="139,38,116,85,96,150,91,148,111,83,134,35"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="184,117,122,157,119,153,182,113"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="155,241,229,272"/>
-<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="207,115,197,228,192,227,201,115"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="243,163,355,193"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="225,113,272,152,269,156,221,117"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="108,191,163,231,160,235,105,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="55,241,119,272"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="89,194,89,228,84,228,84,194"/>
+<area shape="rect" id="Node000001" title="Header file for the DigitalOutputGuard class." alt="" coords="16,5,274,37"/>
+<area shape="rect" id="Node000002" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="124,85,284,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,35,186,72,181,73,156,40"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,165,168,196"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="137,35,114,86,95,150,90,148,109,84,135,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="179,119,124,158,120,154,183,115"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="155,244,228,276"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="205,116,197,230,192,228,200,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="243,165,354,196"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="223,114,271,155,266,155,222,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="108,194,162,234,156,236,106,199"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="55,244,118,276"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="88,195,89,230,84,228,85,199"/>
 </map>

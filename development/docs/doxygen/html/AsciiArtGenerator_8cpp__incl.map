@@ -1,17 +1,17 @@
 <map id="src/utils/AsciiArtGenerator.cpp" name="src/utils/AsciiArtGenerator.cpp">
-<area shape="rect" id="Node000001" title="Implementation of the simple ASCII art generator." alt="" coords="233,5,497,36"/>
-<area shape="rect" id="Node000002" href="$AsciiArtGenerator_8h.html" title="Simple ASCII art generator." alt="" coords="76,84,292,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,39,231,81,229,76,331,34"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="317,84,414,115"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="368,36,368,70,363,70,363,36"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="439,84,513,115"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="388,34,445,74,442,78,385,38"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,163,64,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="157,117,75,159,73,154,155,112"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="89,163,178,193"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="177,116,153,153,148,150,172,113"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="203,163,269,193"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="196,113,221,150,216,153,192,116"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="294,163,365,193"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="212,112,292,154,289,159,210,117"/>
+<area shape="rect" id="Node000001" title="Implementation of the simple ASCII art generator." alt="" coords="230,5,494,37"/>
+<area shape="rect" id="Node000002" href="$AsciiArtGenerator_8h.html" title="Simple ASCII art generator." alt="" coords="74,85,290,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="324,39,232,81,230,76,329,36"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="314,85,410,117"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="364,35,364,71,360,68,360,39"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="434,85,508,117"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="384,35,440,76,435,76,382,40"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,165,63,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,120,77,160,75,155,152,115"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="87,165,176,196"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="175,116,151,154,148,150,170,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="200,165,265,196"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="193,115,217,152,212,151,191,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="290,165,360,196"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="211,115,286,157,281,157,209,120"/>
 </map>

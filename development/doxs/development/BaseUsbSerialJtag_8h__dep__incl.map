@@ -1,10 +1,10 @@
 <map id="inc/base/BaseUsbSerialJtag.h" name="inc/base/BaseUsbSerialJtag.h">
-<area shape="rect" id="Node000001" title="Abstract base class for USB Serial/JTAG controller &quot;console&#45;style&quot; serial transports in the HardFOC s..." alt="" coords="89,5,351,36"/>
-<area shape="rect" id="Node000002" href="$UsbSerialJtagComprehensiveTest_8cpp.html" title="Comprehensive test suite for the EspUsbSerialJtag wrapper (noexcept)." alt="" coords="5,183,272,253"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,47,179,65,166,85,150,135,143,183,137,182,145,134,162,83,175,62,191,44"/>
-<area shape="rect" id="Node000003" href="$EspUsbSerialJtag_8h.html" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="176,84,429,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,44,281,82,277,86,241,48"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="256,144,193,185,190,180,253,140"/>
-<area shape="rect" id="Node000004" href="$EspUsbSerialJtag_8cpp.html" title="ESP32&#45;family USB Serial/JTAG console wrapper implementation." alt="" coords="297,193,551,243"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="342,142,398,190,394,194,339,146"/>
+<area shape="rect" id="Node000001" title="Abstract base class for USB Serial/JTAG controller &quot;console&#45;style&quot; serial transports in the HardFOC s..." alt="" coords="89,5,350,37"/>
+<area shape="rect" id="Node000002" href="$UsbSerialJtagComprehensiveTest_8cpp.html" title="Comprehensive test suite for the EspUsbSerialJtag wrapper (noexcept)." alt="" coords="5,186,271,259"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,46,166,86,149,137,142,186,137,184,144,136,161,84,189,50"/>
+<area shape="rect" id="Node000003" href="$EspUsbSerialJtag_8h.html" title="ESP32&#45;S3 / &#45;C3 / &#45;C6 USB Serial/JTAG console wrapper." alt="" coords="176,85,428,138"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,46,281,84,275,85,243,51"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="254,145,194,188,191,183,249,147"/>
+<area shape="rect" id="Node000004" href="$EspUsbSerialJtag_8cpp.html" title="ESP32&#45;family USB Serial/JTAG console wrapper implementation." alt="" coords="295,196,549,249"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="342,145,397,196,391,195,340,150"/>
 </map>

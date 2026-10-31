@@ -1,7 +1,7 @@
 <map id="StmTemperature" name="StmTemperature">
-<area shape="rect" id="Node000001" title="STM32 Temperature sensor implementation." alt="" coords="116,124,273,155"/>
-<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,15,171,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,54,182,122,179,126,110,58"/>
-<area shape="rect" id="Node000003" href="$structhf__stm32__temp__sensor__config__t.html" title="STM32 Temperature sensor configuration." alt="" coords="195,5,407,56"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,68,211,125,207,122,265,64"/>
+<area shape="rect" id="Node000001" title="STM32 Temperature sensor implementation." alt="" coords="115,127,271,159"/>
+<area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,16,170,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,57,181,126,176,127,111,61"/>
+<area shape="rect" id="Node000003" href="$structhf__stm32__temp__sensor__config__t.html" title="STM32 Temperature sensor configuration." alt="" coords="194,5,405,58"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,68,209,129,206,125,262,69"/>
 </map>

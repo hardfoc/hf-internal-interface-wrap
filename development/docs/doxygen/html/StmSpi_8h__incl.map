@@ -1,33 +1,33 @@
 <map id="inc/mcu/stm32/StmSpi.h" name="inc/mcu/stm32/StmSpi.h">
-<area shape="rect" id="Node000001" title="STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle." alt="" coords="556,5,775,36"/>
-<area shape="rect" id="Node000002" href="$BaseSpi_8h.html" title="Abstract base class for SPI device implementations in the HardFOC system." alt="" coords="167,84,271,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="583,39,285,89,284,84,582,33"/>
-<area shape="rect" id="Node000007" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="343,84,462,115"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="617,39,465,83,464,78,616,34"/>
-<area shape="rect" id="Node000009" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="485,84,640,115"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="648,38,595,78,591,73,644,34"/>
-<area shape="rect" id="Node000011" href="$SoftChipSelectGuard_8h.html" title="RAII soft chip&#45;select (assert on construct, deassert on destroy)." alt="" coords="665,84,871,115"/>
-<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="686,34,739,73,736,78,683,38"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="895,84,966,115"/>
-<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="717,34,883,81,881,86,715,39"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="990,84,1079,115"/>
-<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="743,33,977,81,976,86,742,39"/>
-<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="192,163,355,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,113,257,150,253,153,227,117"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="393,241,468,272"/>
-<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="206,117,192,134,181,153,176,174,182,192,194,202,213,212,265,228,380,247,379,253,264,233,211,217,191,207,178,195,171,174,176,151,188,131,202,113"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="5,163,117,193"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="191,117,104,159,102,154,188,112"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="304,191,390,233,388,238,301,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="241,241,305,272"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="276,194,276,228,271,228,271,194"/>
-<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="380,117,310,158,308,153,377,113"/>
-<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="428,113,453,133,473,162,477,180,473,199,456,232,451,229,468,197,471,180,468,164,449,137,425,117"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="379,163,459,193"/>
-<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="408,114,416,149,410,150,403,116"/>
-<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="555,117,494,195,458,233,454,230,490,192,551,113"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="585,163,661,193"/>
-<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="576,113,605,150,601,154,572,117"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="737,163,799,193"/>
-<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="771,115,771,149,765,149,765,115"/>
+<area shape="rect" id="Node000001" title="STM32 SPI Bus+Device wrapper — wraps STM32 HAL SPI via CubeMX handle." alt="" coords="554,5,773,37"/>
+<area shape="rect" id="Node000002" href="$BaseSpi_8h.html" title="Abstract base class for SPI device implementations in the HardFOC system." alt="" coords="168,85,271,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="575,40,287,90,286,85,578,36"/>
+<area shape="rect" id="Node000007" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="344,85,461,117"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="610,38,469,83,467,78,615,37"/>
+<area shape="rect" id="Node000009" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="485,85,640,117"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="647,36,595,78,593,73,642,39"/>
+<area shape="rect" id="Node000011" href="$SoftChipSelectGuard_8h.html" title="RAII soft chip&#45;select (assert on construct, deassert on destroy)." alt="" coords="663,85,870,117"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="684,35,737,76,732,75,683,40"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="894,85,964,117"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="717,35,882,84,876,85,717,40"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="989,85,1077,117"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="745,35,976,84,971,85,745,40"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="192,165,354,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="231,114,257,152,252,152,229,120"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="394,244,467,276"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="206,115,192,136,181,156,176,176,182,195,194,205,213,215,264,231,381,253,376,254,263,236,211,220,191,210,177,198,170,177,176,154,188,133,202,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,165,117,196"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="187,119,107,160,104,155,190,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="304,194,389,237,384,237,303,199"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="241,244,305,276"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="275,195,275,230,271,228,271,199"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="380,116,312,159,310,154,375,118"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="428,115,453,136,473,164,477,182,473,201,455,234,452,230,468,199,471,182,468,166,449,139,427,120"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="379,165,458,196"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="407,115,415,151,410,149,404,119"/>
+<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="554,116,492,198,457,236,455,231,488,195,549,118"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="583,165,659,196"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="575,115,603,153,598,152,573,119"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="735,165,798,196"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="768,115,768,151,764,148,765,119"/>
 </map>

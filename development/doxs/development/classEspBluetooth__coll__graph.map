@@ -1,9 +1,9 @@
 <map id="EspBluetooth" name="EspBluetooth">
-<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation class." alt="" coords="477,60,607,91"/>
-<area shape="rect" id="Node000002" href="$classBaseBluetooth.html" title="Abstract base class for Bluetooth functionality." alt="" coords="76,5,215,36"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,22,336,31,454,47,494,57,493,62,453,53,336,36,228,27"/>
-<area shape="rect" id="Node000003" href="$structhf__bluetooth__ble__config__t.html" title="Bluetooth Low Energy configuration structure." alt="" coords="31,60,259,91"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="273,73,477,73,477,78,273,78"/>
-<area shape="rect" id="Node000004" href="$classPlatformMutexImpl.html" title=" " alt="" coords="5,121,285,171"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="299,143,376,134,453,118,486,105,516,88,519,93,489,110,454,123,377,140,300,148"/>
+<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation class." alt="" coords="476,61,604,93"/>
+<area shape="rect" id="Node000002" href="$classBaseBluetooth.html" title="Abstract base class for Bluetooth functionality." alt="" coords="76,5,214,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,22,336,31,452,48,494,61,489,61,451,53,336,36,230,27"/>
+<area shape="rect" id="Node000003" href="$structhf__bluetooth__ble__config__t.html" title="Bluetooth Low Energy configuration structure." alt="" coords="31,61,259,93"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="274,75,478,76,473,78,274,80"/>
+<area shape="rect" id="Node000004" href="$classPlatformMutexImpl.html" title=" " alt="" coords="5,124,285,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="300,147,376,139,451,122,484,108,512,94,518,93,487,113,452,127,377,144,300,152"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="BasePeriodicTimer" name="BasePeriodicTimer">
-<area shape="rect" id="Node000001" title="Abstract base class for periodic timer operations." alt="" coords="95,5,270,36"/>
-<area shape="rect" id="Node000002" href="$classEspPeriodicTimer.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="5,84,171,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,47,107,86,104,82,152,43"/>
-<area shape="rect" id="Node000003" href="$classStmPeriodicTimer.html" title="STM32 Periodic Timer implementation." alt="" coords="195,84,362,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,43,262,82,259,86,210,47"/>
+<area shape="rect" id="Node000001" title="Abstract base class for periodic timer operations." alt="" coords="95,5,269,37"/>
+<area shape="rect" id="Node000002" href="$classEspPeriodicTimer.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="5,85,170,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,46,107,87,104,82,150,47"/>
+<area shape="rect" id="Node000003" href="$classStmPeriodicTimer.html" title="STM32 Periodic Timer implementation." alt="" coords="194,85,360,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="213,44,261,85,256,85,211,49"/>
 </map>

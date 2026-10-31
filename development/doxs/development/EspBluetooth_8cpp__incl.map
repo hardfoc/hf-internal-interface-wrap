@@ -1,45 +1,45 @@
 <map id="src/mcu/esp32/EspBluetooth.cpp" name="src/mcu/esp32/EspBluetooth.cpp">
-<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation using NimBLE for BLE support." alt="" coords="475,5,762,36"/>
-<area shape="rect" id="Node000002" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)" alt="" coords="401,84,545,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="593,38,513,80,511,75,590,34"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="5,241,72,272"/>
-<area shape="poly" id="edge24_Node000001_Node000009" title=" " alt="" coords="537,39,455,57,357,83,253,119,155,165,105,199,64,234,61,230,102,194,152,160,251,114,355,78,453,52,536,33"/>
-<area shape="rect" id="Node000017" title=" " alt="" coords="570,84,667,115"/>
-<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="621,36,621,70,616,70,616,36"/>
-<area shape="rect" id="Node000018" title=" " alt="" coords="691,84,765,115"/>
-<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="641,34,698,74,695,78,638,38"/>
-<area shape="rect" id="Node000019" title=" " alt="" coords="789,84,864,115"/>
-<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="658,34,777,77,775,82,656,39"/>
-<area shape="rect" id="Node000003" href="$BaseBluetooth_8h.html" title="Unified Bluetooth base class for all Bluetooth implementations." alt="" coords="193,163,348,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="437,117,322,160,320,155,435,112"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="604,241,767,272"/>
-<area shape="poly" id="edge12_Node000002_Node000004" title=" " alt="" coords="546,112,679,139,732,151,758,161,765,181,758,201,742,219,723,235,719,231,738,216,753,198,760,181,754,165,731,156,678,144,545,117"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="96,241,195,272"/>
-<area shape="poly" id="edge18_Node000002_Node000008" title=" " alt="" coords="402,111,276,131,220,146,183,165,171,178,162,194,152,228,146,226,157,192,167,175,180,161,218,141,275,126,401,105"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="505,241,575,272"/>
-<area shape="poly" id="edge20_Node000002_Node000011" title=" " alt="" coords="454,117,435,133,419,152,410,172,410,182,414,192,426,203,445,214,493,236,491,241,442,219,422,207,410,195,405,183,405,171,414,149,431,129,450,113"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="423,163,523,193"/>
-<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="476,115,476,149,471,149,471,115"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="547,163,661,193"/>
-<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="499,113,569,153,566,158,497,117"/>
-<area shape="rect" id="Node000014" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="819,163,973,193"/>
-<area shape="poly" id="edge15_Node000002_Node000014" title=" " alt="" coords="546,111,806,158,805,163,545,116"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="685,163,744,193"/>
-<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="521,112,673,160,671,165,519,117"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="348,191,596,236,595,241,347,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="601,320,676,351"/>
-<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="317,191,378,212,443,239,495,270,591,313,589,317,492,274,440,244,376,217,316,196"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="355,241,429,272"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="295,191,359,232,356,236,292,196"/>
-<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="248,196,182,236,179,232,246,191"/>
-<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="228,196,86,243,84,238,227,191"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="219,241,331,272"/>
-<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="274,193,276,227,271,228,269,194"/>
-<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="321,191,492,239,491,244,320,196"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="679,274,657,310,652,307,674,271"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="700,320,764,351"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="696,271,718,307,714,310,692,274"/>
-<area shape="poly" id="edge17_Node000014_Node000005" title=" " alt="" coords="882,196,838,233,780,274,734,298,690,318,688,313,732,294,777,270,835,229,879,192"/>
-<area shape="rect" id="Node000015" title=" " alt="" coords="858,241,934,272"/>
-<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="899,194,899,228,893,228,893,194"/>
+<area shape="rect" id="Node000001" title="ESP32 Bluetooth implementation using NimBLE for BLE support." alt="" coords="471,5,757,37"/>
+<area shape="rect" id="Node000002" href="$EspBluetooth_8h.html" title="ESP32 Bluetooth implementation using NimBLE for BLE&#45;only support (ESP32)" alt="" coords="398,85,542,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="584,39,513,80,510,75,588,36"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,244,71,276"/>
+<area shape="poly" id="edge24_Node000001_Node000009" title=" " alt="" coords="526,39,447,59,351,86,250,121,154,167,105,200,66,235,62,231,102,196,151,162,248,116,349,81,446,54,531,37"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="566,85,662,117"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="615,35,616,71,612,68,613,40"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="686,85,758,117"/>
+<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="635,35,691,76,686,76,634,40"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="782,85,856,117"/>
+<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="654,35,770,80,765,80,654,40"/>
+<area shape="rect" id="Node000003" href="$BaseBluetooth_8h.html" title="Unified Bluetooth base class for all Bluetooth implementations." alt="" coords="192,165,345,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,118,323,161,321,156,433,116"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="600,244,762,276"/>
+<area shape="poly" id="edge12_Node000002_Node000004" title=" " alt="" coords="542,113,674,141,727,153,752,163,759,183,753,203,738,221,719,238,716,233,734,217,748,200,754,183,748,167,725,158,673,146,542,119"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="94,244,192,276"/>
+<area shape="poly" id="edge18_Node000002_Node000008" title=" " alt="" coords="396,111,274,133,219,148,182,167,170,180,161,196,150,231,145,228,156,194,166,177,179,163,217,143,273,128,400,109"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="500,244,570,276"/>
+<area shape="poly" id="edge20_Node000002_Node000011" title=" " alt="" coords="451,116,431,135,415,154,407,175,407,185,411,195,422,205,440,217,488,241,483,241,437,221,418,210,406,198,402,186,401,174,411,152,428,131,446,119"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="420,165,520,196"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="472,115,472,151,468,148,468,119"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="543,165,656,196"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="495,114,564,157,559,157,495,120"/>
+<area shape="rect" id="Node000014" href="$PlatformMutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="813,165,967,196"/>
+<area shape="poly" id="edge15_Node000002_Node000014" title=" " alt="" coords="542,113,800,161,795,163,542,118"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="680,165,737,196"/>
+<area shape="poly" id="edge19_Node000002_Node000016" title=" " alt="" coords="519,115,667,163,662,164,519,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="346,194,588,240,583,242,346,199"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="597,324,671,356"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="318,194,377,215,439,242,465,258,490,274,585,319,580,319,487,278,462,262,437,247,375,220,317,200"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="352,244,425,276"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="292,194,355,235,350,236,291,199"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="242,198,182,238,179,234,247,195"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="223,199,86,245,84,241,224,194"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="217,244,328,276"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="271,194,274,230,269,228,268,199"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="321,194,488,244,483,245,320,200"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="674,275,652,313,649,308,669,278"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="694,324,758,356"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="691,274,712,312,707,309,688,279"/>
+<area shape="poly" id="edge17_Node000014_Node000005" title=" " alt="" coords="877,196,832,237,775,278,730,302,686,322,684,317,728,298,773,274,829,233,872,198"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="852,244,928,276"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="892,195,892,231,888,227,888,199"/>
 </map>

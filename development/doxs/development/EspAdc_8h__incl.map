@@ -1,5 +1,5 @@
 <map id="inc/mcu/esp32/EspAdc.h" name="inc/mcu/esp32/EspAdc.h">
-<area shape="rect" id="Node000001" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="5,5,227,36"/>
-<area shape="rect" id="Node000002" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="55,84,177,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,36,119,70,113,70,113,36"/>
+<area shape="rect" id="Node000001" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="5,5,226,37"/>
+<area shape="rect" id="Node000002" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="55,85,176,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,35,118,71,113,69,114,39"/>
 </map>

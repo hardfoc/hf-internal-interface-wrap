@@ -1,29 +1,29 @@
 <map id="src/mcu/stm32/StmUart.cpp" name="src/mcu/stm32/StmUart.cpp">
-<area shape="rect" id="Node000001" title="STM32 UART implementation — blocking TX/RX with optional ring buffer." alt="" coords="465,5,711,36"/>
-<area shape="rect" id="Node000002" href="$StmUart_8h.html" title="STM32 UART wrapper — wraps UART_HandleTypeDef for BaseUart interface." alt="" coords="369,84,473,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="558,39,465,81,463,76,556,34"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="533,241,608,272"/>
-<area shape="poly" id="edge15_Node000001_Node000007" title=" " alt="" coords="588,37,580,84,575,162,573,227,568,227,569,162,575,84,582,36"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="589,84,659,115"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="597,35,614,70,609,73,592,37"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="683,84,765,115"/>
-<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="615,34,688,75,685,79,612,39"/>
-<area shape="rect" id="Node000003" href="$BaseUart_8h.html" title="Abstract base class for UART driver implementations in the HardFOC system." alt="" coords="365,163,477,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="424,115,424,149,419,149,419,115"/>
-<area shape="rect" id="Node000009" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="123,163,242,193"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="378,117,241,161,239,156,376,112"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,241,323,272"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="389,196,288,239,286,234,387,191"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="157,320,232,351"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="441,192,458,209,473,229,480,252,479,263,473,274,449,297,425,311,400,318,374,320,316,317,283,318,246,323,245,317,282,313,316,312,374,314,399,313,423,307,446,293,469,270,473,261,475,252,468,232,453,212,437,195"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="450,191,532,233,530,238,448,196"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="347,241,459,272"/>
-<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="420,194,412,229,407,227,415,193"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="235,274,213,310,208,307,230,271"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="256,320,320,351"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="252,271,274,307,270,310,248,274"/>
-<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="196,192,224,229,220,232,192,195"/>
-<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="173,195,153,230,148,251,151,271,160,291,173,308,168,311,155,293,145,273,143,250,148,228,169,192"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="5,241,85,272"/>
-<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="158,196,85,237,82,232,156,191"/>
+<area shape="rect" id="Node000001" title="STM32 UART implementation — blocking TX/RX with optional ring buffer." alt="" coords="464,5,711,37"/>
+<area shape="rect" id="Node000002" href="$StmUart_8h.html" title="STM32 UART wrapper — wraps UART_HandleTypeDef for BaseUart interface." alt="" coords="369,85,473,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="553,39,469,80,466,76,557,36"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="533,244,608,276"/>
+<area shape="poly" id="edge15_Node000001_Node000007" title=" " alt="" coords="586,35,580,85,574,163,573,230,568,227,569,163,574,85,583,39"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="590,85,658,117"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="596,35,613,72,608,70,594,40"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="682,85,762,117"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="614,35,686,77,680,77,613,40"/>
+<area shape="rect" id="Node000003" href="$BaseUart_8h.html" title="Abstract base class for UART driver implementations in the HardFOC system." alt="" coords="365,165,477,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="422,115,423,151,419,148,420,119"/>
+<area shape="rect" id="Node000009" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="124,165,241,196"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="372,119,245,162,243,157,377,116"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,244,322,276"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="388,196,291,240,289,236,383,198"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="158,324,231,356"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="440,194,458,212,473,233,480,256,478,267,472,278,449,301,424,315,399,322,373,324,315,321,283,322,246,326,246,321,282,316,316,316,373,318,399,317,422,311,445,297,468,274,473,265,474,256,468,236,454,216,438,200"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="451,194,530,237,525,237,450,199"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="347,244,458,276"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="419,195,412,231,407,228,416,199"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="234,275,213,313,209,309,230,278"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="255,324,318,356"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="251,274,272,311,267,310,248,279"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="194,194,223,232,218,232,193,199"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="172,194,153,233,148,254,150,275,159,294,171,313,166,312,154,296,145,277,143,254,148,231,169,198"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,244,85,276"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="154,199,86,239,83,234,157,194"/>
 </map>

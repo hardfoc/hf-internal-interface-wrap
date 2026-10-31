@@ -1,9 +1,9 @@
 <map id="StmPwm" name="StmPwm">
-<area shape="rect" id="Node000001" title="STM32 PWM implementation." alt="" coords="154,184,250,215"/>
-<area shape="rect" id="Node000002" href="$classBasePwm.html" title="Abstract base class for PWM implementations." alt="" coords="150,104,254,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,148,205,184,199,184,199,148"/>
-<area shape="rect" id="Node000003" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="5,5,185,36"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,44,188,102,184,106,120,48"/>
-<area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="209,5,411,36"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="288,48,252,82,222,106,219,102,248,78,284,44"/>
+<area shape="rect" id="Node000001" title="STM32 PWM implementation." alt="" coords="154,187,249,219"/>
+<area shape="rect" id="Node000002" href="$classBasePwm.html" title="Abstract base class for PWM implementations." alt="" coords="150,106,253,138"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,152,204,188,199,185,200,155"/>
+<area shape="rect" id="Node000003" href="$structhf__pwm__statistics__t.html" title="PWM statistics information." alt="" coords="5,5,185,37"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,45,188,105,183,106,121,50"/>
+<area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="208,5,408,37"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,47,249,84,222,108,218,103,245,80,280,50"/>
 </map>

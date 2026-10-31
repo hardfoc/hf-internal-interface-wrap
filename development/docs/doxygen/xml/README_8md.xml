@@ -22,8 +22,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">[![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)</highlight></codeline>
 <codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)</highlight></codeline>
-<codeline><highlight class="normal">[![CI](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)</highlight></codeline>
-<codeline><highlight class="normal">[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://n3b3x.github.io/hf-internal-interface-wrap/)</highlight></codeline>
+<codeline><highlight class="normal">[![CI](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)</highlight></codeline>
+<codeline><highlight class="normal">[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://hardfoc.github.io/hf-internal-interface-wrap/)</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>🎯<sp/>Universal<sp/>Hardware<sp/>Interface<sp/>for<sp/>Multi-MCU<sp/>Development</highlight></codeline>
 <codeline></codeline>
@@ -49,7 +49,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>🎯<sp/>**Overview**</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
 <codeline><highlight class="normal">&gt;<sp/>Interactive<sp/>guides,<sp/>examples,<sp/>and<sp/>step-by-step<sp/>tutorials</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">This<sp/>**Internal<sp/>Interface<sp/>Wrap<sp/>(IID)**<sp/>provides<sp/>a<sp/>unified<sp/>interface<sp/>for<sp/>common<sp/>MCU<sp/>peripherals,</highlight></codeline>
@@ -160,7 +160,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>🔌<sp/>**Peripheral<sp/>Interfaces**</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
 <codeline><highlight class="normal">&gt;<sp/>Interactive<sp/>guides,<sp/>examples,<sp/>and<sp/>step-by-step<sp/>tutorials</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">###<sp/>**Core<sp/>Peripherals**</highlight></codeline>

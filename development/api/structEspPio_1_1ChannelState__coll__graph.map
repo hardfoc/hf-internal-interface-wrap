@@ -1,9 +1,9 @@
 <map id="EspPio::ChannelState" name="EspPio::ChannelState">
-<area shape="rect" id="Node000001" title=" " alt="" coords="256,124,455,155"/>
-<area shape="rect" id="Node000002" href="$structhf__pio__channel__config__t.html" title="PIO channel configuration structure." alt="" coords="5,5,223,36"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,40,327,121,325,126,155,45"/>
-<area shape="rect" id="Node000003" href="$structhf__pio__channel__status__t.html" title="PIO channel status information." alt="" coords="247,5,464,36"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="358,50,358,124,353,124,353,50"/>
-<area shape="rect" id="Node000004" href="$structhf__pio__symbol__t.html" title="PIO symbol structure for precise timing." alt="" coords="489,5,643,36"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="530,45,383,126,380,121,527,40"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="255,127,452,159"/>
+<area shape="rect" id="Node000002" href="$structhf__pio__channel__config__t.html" title="PIO channel configuration structure." alt="" coords="5,5,222,37"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,42,325,125,321,128,156,47"/>
+<area shape="rect" id="Node000003" href="$structhf__pio__channel__status__t.html" title="PIO channel status information." alt="" coords="245,5,462,37"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="355,51,356,128,351,125,352,54"/>
+<area shape="rect" id="Node000004" href="$structhf__pio__symbol__t.html" title="PIO symbol structure for precise timing." alt="" coords="486,5,640,37"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="526,45,381,129,379,124,520,46"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="inc/mcu/host/HostNvs.h" name="inc/mcu/host/HostNvs.h">
-<area shape="rect" id="Node000001" title="In&#45;memory BaseNvs for host / unit&#45;test builds (hf&#45;internal&#45;interface&#45;wrap)." alt="" coords="15,5,227,36"/>
-<area shape="rect" id="Node000002" href="$HostNvs_8cpp.html" title="In&#45;memory NVS for host / unit&#45;test builds." alt="" coords="5,84,237,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,50,124,84,119,84,119,50"/>
+<area shape="rect" id="Node000001" title="In&#45;memory BaseNvs for host / unit&#45;test builds (hf&#45;internal&#45;interface&#45;wrap)." alt="" coords="15,5,227,37"/>
+<area shape="rect" id="Node000002" href="$HostNvs_8cpp.html" title="In&#45;memory NVS for host / unit&#45;test builds." alt="" coords="5,85,237,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,51,123,86,119,84,119,54"/>
 </map>

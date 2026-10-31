@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseLogger.html" title="Base logger abstract class." alt="" coords="5,5,124,36"/>
-<area shape="rect" id="Node000001" href="$classStmLogger.html" title="STM32 Logger — production&#45;quality logging over UART/SWO/printf." alt="" coords="172,5,283,36"/>
-<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="138,18,172,18,172,23,138,23"/>
+<area shape="rect" id="Node000000" href="$classBaseLogger.html" title="Base logger abstract class." alt="" coords="5,5,124,37"/>
+<area shape="rect" id="Node000001" href="$classStmLogger.html" title="STM32 Logger — production&#45;quality logging over UART/SWO/printf." alt="" coords="172,5,282,37"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="139,19,174,21,169,21,139,24"/>
 </map>

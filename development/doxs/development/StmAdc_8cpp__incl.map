@@ -1,22 +1,22 @@
 <map id="src/mcu/stm32/StmAdc.cpp" name="src/mcu/stm32/StmAdc.cpp">
-<area shape="rect" id="Node000001" title="STM32 ADC wrapper implementation — full STM32 HAL integration." alt="" coords="99,5,343,36"/>
-<area shape="rect" id="Node000002" href="$StmAdc_8h.html" title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle." alt="" coords="171,84,272,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,36,224,70,219,70,219,36"/>
-<area shape="rect" id="Node000003" href="$BaseAdc_8h.html" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="97,163,207,193"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="210,117,176,154,172,151,206,113"/>
-<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="242,163,361,193"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="238,113,278,151,275,155,234,117"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,241,324,272"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="171,192,217,230,214,235,167,196"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="252,320,327,351"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="98,196,60,209,27,227,16,237,9,247,9,258,15,270,38,293,61,307,85,313,110,314,168,312,202,313,238,317,238,323,201,318,168,317,110,320,84,318,59,311,35,297,11,274,4,259,4,246,11,233,24,222,58,204,96,191"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="25,241,137,272"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="141,195,106,233,102,229,137,192"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="254,271,276,307,271,310,249,274"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="164,320,228,351"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="236,274,214,310,210,307,232,271"/>
-<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="292,195,264,232,260,229,288,192"/>
-<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="315,192,335,228,341,250,338,273,329,293,315,311,311,308,324,291,333,271,336,251,331,230,311,195"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="399,241,479,272"/>
-<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="328,191,402,232,399,237,326,196"/>
+<area shape="rect" id="Node000001" title="STM32 ADC wrapper implementation — full STM32 HAL integration." alt="" coords="98,5,342,37"/>
+<area shape="rect" id="Node000002" href="$StmAdc_8h.html" title="STM32 ADC wrapper — wraps STM32 HAL ADC via CubeMX&#45;generated handle." alt="" coords="170,85,270,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,35,223,70,217,69,219,40"/>
+<area shape="rect" id="Node000003" href="$BaseAdc_8h.html" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="98,165,206,196"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="205,119,177,155,173,151,209,115"/>
+<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="243,165,360,196"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="236,114,277,154,272,154,235,120"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,244,324,276"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="170,194,216,234,211,235,169,199"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,324,325,356"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="95,198,60,212,27,230,16,240,9,251,9,262,15,274,38,297,61,310,85,317,110,318,167,316,200,316,239,323,234,324,200,322,167,321,110,324,84,322,59,315,35,301,11,278,4,263,4,250,11,237,24,226,57,207,99,194"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="26,244,137,276"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="137,199,107,235,103,231,140,195"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="253,274,274,311,269,310,250,279"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="164,324,228,356"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="236,275,215,313,211,309,231,278"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="292,195,265,234,261,230,288,198"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="314,194,336,232,341,254,339,277,329,297,315,315,312,310,324,294,333,275,336,254,331,233,312,199"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="399,244,478,276"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="328,194,402,236,396,237,327,199"/>
 </map>

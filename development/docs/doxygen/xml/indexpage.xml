@@ -9,14 +9,14 @@
 <para><anchor id="index_1md_README"/> <bold>Multi-MCU Peripherals Interface</bold></para>
 <para><ulink url="https://en.cppreference.com/w/cpp/17"><image type="html" name="https://img.shields.io/badge/C%2B%2B-17-blue.svg" alt="C++" inline="yes"></image>
 </ulink> <ulink url="https://www.gnu.org/licenses/gpl-3.0"><image type="html" name="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License" inline="yes"></image>
-</ulink> <ulink url="https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml"><image type="html" name="https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI" inline="yes"></image>
-</ulink> <ulink url="https://n3b3x.github.io/hf-internal-interface-wrap/"><image type="html" name="https://img.shields.io/badge/docs-GitHub%20Pages-blue" alt="Docs" inline="yes"></image>
+</ulink> <ulink url="https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml"><image type="html" name="https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI" inline="yes"></image>
+</ulink> <ulink url="https://hardfoc.github.io/hf-internal-interface-wrap/"><image type="html" name="https://img.shields.io/badge/docs-GitHub%20Pages-blue" alt="Docs" inline="yes"></image>
 </ulink></para>
 <sect1 id="index_1autotoc_md25">
 <title>🎯 Universal Hardware Interface for Multi-MCU Development</title><para><emphasis>A professional hardware abstraction layer enabling seamless MCU portability through unified peripheral APIs - designed for the HardFOC board ecosystem</emphasis></para>
 </sect1>
 <sect1 id="index_1autotoc_md26">
-<title>🎯 <bold>Overview</bold></title><para><blockquote><para><zwj/><bold>📖 <ulink url="https://n3b3x.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</ulink></bold> - Interactive guides, examples, and step-by-step tutorials </para>
+<title>🎯 <bold>Overview</bold></title><para><blockquote><para><zwj/><bold>📖 <ulink url="https://hardfoc.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</ulink></bold> - Interactive guides, examples, and step-by-step tutorials </para>
 </blockquote>This <bold>Internal Interface Wrap (IID)</bold> provides a unified interface for common MCU peripherals, enabling seamless portability between different microcontroller platforms. Originally designed for the <bold>HardFOC board</bold> which needs to support multiple MCU types, this abstraction layer allows developers to write hardware-agnostic code while maintaining optimal performance.</para>
 <sect2 id="index_1autotoc_md27">
 <title>🏆 <bold>Core Benefits</bold></title><para><itemizedlist>
@@ -40,7 +40,7 @@
 </sect2>
 </sect1>
 <sect1 id="index_1autotoc_md29">
-<title>🔌 <bold>Peripheral Interfaces</bold></title><para><blockquote><para><zwj/><bold>📖 <ulink url="https://n3b3x.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</ulink></bold> - Interactive guides, examples, and step-by-step tutorials </para>
+<title>🔌 <bold>Peripheral Interfaces</bold></title><para><blockquote><para><zwj/><bold>📖 <ulink url="https://hardfoc.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</ulink></bold> - Interactive guides, examples, and step-by-step tutorials </para>
 </blockquote></para>
 <sect2 id="index_1autotoc_md30">
 <title><bold>Core Peripherals</bold></title><para>| <bold>Interface</bold> | <bold>Purpose</bold> | <bold>Key Features</bold> |</para>
