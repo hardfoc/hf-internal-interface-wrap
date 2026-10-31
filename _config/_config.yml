@@ -173,7 +173,7 @@ seo:
   description: >
     Multi-MCU hardware abstraction layer for HardFOC systems with unified API across
     multiple MCU platforms, supporting ESP32 family and planned STM32 support
-  url: "https://n3b3x.github.io/hf-internal-interface-wrap"
+  url: "https://hardfoc.github.io/hf-internal-interface-wrap"
   twitter:
     card: "summary_large_image"
     site: "@n3b3x"

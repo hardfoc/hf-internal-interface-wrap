@@ -13,8 +13,8 @@ has_children: true
 
 [![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![CI](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://n3b3x.github.io/hf-internal-interface-wrap/)
+[![CI](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://hardfoc.github.io/hf-internal-interface-wrap/)
 
 ## 🎯 Universal Hardware Interface for Multi-MCU Development
 
@@ -40,7 +40,7 @@ peripheral APIs - designed for the HardFOC board ecosystem*
 
 ## 🎯 **Overview**
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - 
+> **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)** - 
 > Interactive guides, examples, and step-by-step tutorials
 
 This **Internal Interface Wrap (IID)** provides a unified interface for common MCU peripherals,
@@ -151,7 +151,7 @@ public:
 
 ## 🔌 **Peripheral Interfaces**
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - 
+> **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)** - 
 > Interactive guides, examples, and step-by-step tutorials
 
 ### **Core Peripherals**
