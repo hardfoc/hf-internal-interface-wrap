@@ -12,15 +12,15 @@ This branch contains the versioned documentation for this repository.
 
 ## Access
 
-- **Latest**: [https://N3b3x.github.io/hf-internal-interface-wrap/](https://N3b3x.github.io/hf-internal-interface-wrap/)
-- **All Versions**: [https://N3b3x.github.io/hf-internal-interface-wrap/version_selector.html](https://N3b3x.github.io/hf-internal-interface-wrap/version_selector.html)
+- **Latest**: [https://hardfoc.github.io/hf-internal-interface-wrap/](https://hardfoc.github.io/hf-internal-interface-wrap/)
+- **All Versions**: [https://hardfoc.github.io/hf-internal-interface-wrap/version_selector.html](https://hardfoc.github.io/hf-internal-interface-wrap/version_selector.html)
 
 ## Current Version
 
 - **Version**: development
 - **Type**: development
-- **Deployed**: 2026-10-05T07:21:29Z
-- **Commit**: 0dd6d7ec53fb27286290d34e10b94318e8a2896d
+- **Deployed**: 2026-10-31T08:21:56Z
+- **Commit**: c6e92eee3dd2b283f1fbc534e3ed6c75b840e879
 
 ---
 
