@@ -1,24 +1,24 @@
 <map id="src/mcu/stm32/StmPeriodicTimer.cpp" name="src/mcu/stm32/StmPeriodicTimer.cpp">
-<area shape="rect" id="Node000001" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="175,5,419,56"/>
-<area shape="rect" id="Node000002" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="130,104,311,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,58,244,95,240,92,273,55"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="335,104,410,135"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="320,55,353,92,349,95,316,58"/>
-<area shape="rect" id="Node000003" href="$BasePeriodicTimer_8h.html" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="37,183,226,213"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="206,137,160,175,157,171,202,133"/>
-<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="276,183,395,213"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="244,133,304,173,301,177,241,137"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,261,323,292"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="154,211,211,251,208,255,151,216"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="251,340,326,371"/>
-<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="88,216,54,230,25,248,15,258,9,269,9,279,15,290,38,313,61,327,84,333,110,334,168,332,201,333,238,337,237,343,201,338,168,337,110,340,84,338,59,331,34,317,11,294,4,280,4,267,10,255,21,244,52,225,86,211"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="25,261,137,292"/>
-<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="124,215,100,251,95,248,120,212"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="253,291,275,327,271,330,249,294"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="163,340,227,371"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="236,294,214,330,209,327,231,291"/>
-<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="320,216,272,255,268,250,316,212"/>
-<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="341,213,344,250,338,293,328,313,315,331,311,328,323,311,333,291,339,250,335,214"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="398,261,478,292"/>
-<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="356,211,409,251,406,255,353,216"/>
+<area shape="rect" id="Node000001" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="174,5,417,58"/>
+<area shape="rect" id="Node000002" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="129,106,310,138"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="272,60,244,96,240,92,275,56"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="334,106,409,138"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="318,56,351,94,346,94,317,61"/>
+<area shape="rect" id="Node000003" href="$BasePeriodicTimer_8h.html" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="37,186,226,217"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="201,140,162,177,158,173,204,136"/>
+<area shape="rect" id="Node000008" href="$StmTypes_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="275,186,393,217"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="242,135,302,176,297,177,241,141"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="161,265,323,297"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="153,215,211,255,205,257,152,220"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="251,345,324,377"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="84,220,53,235,24,253,14,263,9,274,9,284,15,295,38,318,60,331,84,338,109,339,167,337,200,337,238,344,233,345,199,343,167,342,109,345,83,343,58,336,34,322,11,299,4,285,4,272,10,260,21,249,50,230,87,216"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="25,265,136,297"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="123,216,101,254,97,251,120,220"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="252,295,274,332,268,331,250,300"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="164,345,227,377"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="235,296,214,334,211,330,231,299"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="319,216,273,257,270,253,314,219"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="339,216,344,255,343,276,338,298,328,318,315,336,312,331,324,315,333,296,337,276,338,255,336,220"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="398,265,478,297"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="355,215,408,256,403,256,354,220"/>
 </map>

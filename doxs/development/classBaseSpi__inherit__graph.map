@@ -1,7 +1,7 @@
 <map id="BaseSpi" name="BaseSpi">
-<area shape="rect" id="Node000001" title="Abstract base class for SPI device implementations." alt="" coords="108,5,197,36"/>
-<area shape="rect" id="Node000002" href="$classEspSpiDevice.html" title="Represents a single SPI device on a bus (CS/config/handle)." alt="" coords="5,84,140,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,48,89,86,86,82,126,44"/>
-<area shape="rect" id="Node000003" href="$classStmSpiDevice.html" title="Soft&#45;CS SPI slave on a shared StmSpiBus." alt="" coords="165,84,301,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,44,220,82,216,86,176,48"/>
+<area shape="rect" id="Node000001" title="Abstract base class for SPI device implementations." alt="" coords="106,5,195,37"/>
+<area shape="rect" id="Node000002" href="$classEspSpiDevice.html" title="Represents a single SPI device on a bus (CS/config/handle)." alt="" coords="5,85,139,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,47,89,87,85,83,122,49"/>
+<area shape="rect" id="Node000003" href="$classStmSpiDevice.html" title="Soft&#45;CS SPI slave on a shared StmSpiBus." alt="" coords="163,85,298,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,45,218,85,213,85,176,50"/>
 </map>

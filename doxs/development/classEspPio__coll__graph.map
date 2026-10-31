@@ -1,13 +1,13 @@
 <map id="EspPio" name="EspPio">
-<area shape="rect" id="Node000001" title="ESP32 RMT&#45;based Programmable IO Channel implementation with advanced ESP&#45;IDF v5.5+ features." alt="" coords="788,98,867,129"/>
-<area shape="rect" id="Node000002" href="$classBasePio.html" title="Abstract base class for Programmable IO Channel implementations." alt="" coords="441,67,530,98"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="544,85,788,107,787,113,544,91"/>
-<area shape="rect" id="Node000003" href="$structhf__pio__statistics__t.html" title="PIO operation statistics." alt="" coords="16,21,181,51"/>
-<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="195,25,216,24,332,21,422,25,511,35,626,52,696,64,765,83,796,95,794,100,763,88,695,69,625,57,511,40,421,30,331,27,216,29,195,30"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,45,441,75,440,80,194,50"/>
-<area shape="rect" id="Node000004" href="$structhf__pio__diagnostics__t.html" title="PIO diagnostic information." alt="" coords="5,95,192,126"/>
-<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="206,118,345,127,485,130,625,127,788,115,788,120,625,132,485,136,345,132,206,123"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="206,102,321,95,440,84,441,90,322,100,206,108"/>
-<area shape="rect" id="Node000005" href="$classPlatformMutexImpl.html" title=" " alt="" coords="345,191,625,241"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="639,214,703,202,763,179,793,155,815,127,819,130,797,158,765,184,704,207,640,219"/>
+<area shape="rect" id="Node000001" title="ESP32 RMT&#45;based Programmable IO Channel implementation with advanced ESP&#45;IDF v5.5+ features." alt="" coords="785,101,863,133"/>
+<area shape="rect" id="Node000002" href="$classBasePio.html" title="Abstract base class for Programmable IO Channel implementations." alt="" coords="439,71,528,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="543,89,787,113,782,114,543,94"/>
+<area shape="rect" id="Node000003" href="$structhf__pio__statistics__t.html" title="PIO operation statistics." alt="" coords="16,24,180,56"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="195,28,215,26,330,23,420,27,509,38,623,56,694,66,762,85,795,101,789,100,760,90,692,72,623,61,509,44,419,33,330,29,215,32,197,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="196,49,441,79,437,83,196,54"/>
+<area shape="rect" id="Node000004" href="$structhf__pio__diagnostics__t.html" title="PIO diagnostic information." alt="" coords="5,100,191,132"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="206,123,344,133,483,137,623,133,787,121,782,122,623,138,483,142,344,138,206,129"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="206,107,319,99,441,90,436,92,320,105,207,112"/>
+<area shape="rect" id="Node000005" href="$classPlatformMutexImpl.html" title=" " alt="" coords="344,196,623,249"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="638,220,701,208,760,185,790,160,811,135,816,132,794,164,762,190,702,213,639,225"/>
 </map>

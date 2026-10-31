@@ -1,30 +1,30 @@
 <map id="inc/mcu/esp32/utils/EspTypes_WiFi.h" name="inc/mcu/esp32/utils/EspTypes_WiFi.h">
-<area shape="rect" id="Node000001" title="ESP32 WiFi type definitions for hardware abstraction." alt="" coords="739,5,915,56"/>
-<area shape="rect" id="Node000002" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="207,104,374,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="739,49,388,105,387,100,738,44"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="399,104,519,135"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="739,55,533,103,532,98,738,50"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="543,104,665,135"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="765,59,654,101,652,96,763,54"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="689,104,799,135"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="805,58,769,96,765,92,801,55"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="824,104,995,135"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="852,55,888,92,884,96,848,58"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="1019,104,1122,135"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="896,54,1019,97,1017,102,894,59"/>
-<area shape="rect" id="Node000013" title=" " alt="" coords="1147,104,1301,135"/>
-<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="915,48,1146,98,1145,104,914,54"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="1326,104,1458,135"/>
-<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="915,42,1313,101,1312,107,914,47"/>
-<area shape="rect" id="Node000003" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,183,195,213"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="256,137,149,180,147,175,254,132"/>
-<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="269,183,432,213"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,133,333,170,329,174,300,137"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="208,261,283,292"/>
-<area shape="poly" id="edge7_Node000002_Node000005" title=" " alt="" coords="283,136,271,158,260,183,252,217,249,248,244,247,247,216,255,182,266,156,279,133"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="457,183,533,213"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="329,132,445,175,443,180,328,137"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="332,216,278,255,274,251,329,211"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="319,261,383,292"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="353,214,353,248,348,248,348,214"/>
+<area shape="rect" id="Node000001" title="ESP32 WiFi type definitions for hardware abstraction." alt="" coords="733,5,908,58"/>
+<area shape="rect" id="Node000002" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="207,106,373,138"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="731,49,389,107,388,102,735,46"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="397,106,516,138"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="730,55,532,105,531,100,735,53"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="541,106,661,138"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="759,58,654,102,652,97,754,59"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="685,106,794,138"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="800,57,765,97,762,92,795,60"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="819,106,988,138"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="846,56,882,95,876,94,844,61"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1013,106,1114,138"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="892,56,1010,100,1005,100,891,61"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1138,106,1293,138"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="909,50,1135,102,1130,102,909,55"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1316,106,1448,138"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="909,43,1304,105,1298,106,909,48"/>
+<area shape="rect" id="Node000003" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,186,194,217"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="251,140,152,182,150,177,255,136"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="269,186,431,217"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="303,135,332,174,327,173,301,141"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="208,265,282,297"/>
+<area shape="poly" id="edge7_Node000002_Node000005" title=" " alt="" coords="282,136,270,161,259,186,252,219,248,252,244,248,247,218,254,185,265,159,278,140"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="455,186,530,217"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="330,136,443,180,438,181,329,141"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="332,217,279,258,277,253,327,219"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="318,265,382,297"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="352,216,352,252,348,248,348,220"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="BaseI2c" name="BaseI2c">
-<area shape="rect" id="Node000001" title="Abstract base class for I2C device implementations." alt="" coords="107,5,193,36"/>
-<area shape="rect" id="Node000002" href="$classEspI2cDevice.html" title="Represents a single I2C device on a bus." alt="" coords="5,84,137,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,48,88,86,84,82,124,44"/>
-<area shape="rect" id="Node000003" href="$classStmI2cDevice.html" title="STM32 I2C device — inherits BaseI2c, delegates I/O to parent bus HAL handle." alt="" coords="161,84,296,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,44,216,82,212,86,173,48"/>
+<area shape="rect" id="Node000001" title="Abstract base class for I2C device implementations." alt="" coords="105,5,192,37"/>
+<area shape="rect" id="Node000002" href="$classEspI2cDevice.html" title="Represents a single I2C device on a bus." alt="" coords="5,85,137,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,47,88,87,84,83,120,49"/>
+<area shape="rect" id="Node000003" href="$classStmI2cDevice.html" title="STM32 I2C device — inherits BaseI2c, delegates I/O to parent bus HAL handle." alt="" coords="160,85,294,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,45,215,85,209,85,173,50"/>
 </map>

@@ -1,14 +1,14 @@
 <map id="inc/base/BasePeriodicTimer.h" name="inc/base/BasePeriodicTimer.h">
-<area shape="rect" id="Node000001" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="211,5,473,36"/>
-<area shape="rect" id="Node000002" href="$TimerComprehensiveTest_8cpp.html" title="ESP32&#45;C6 Periodic Timer Comprehensive Test Suite v2.0." alt="" coords="5,183,273,233"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="284,43,246,61,212,86,191,109,174,135,150,184,146,181,169,132,187,106,208,82,243,57,281,39"/>
-<area shape="rect" id="Node000003" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="222,84,462,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="345,50,345,84,339,84,339,50"/>
-<area shape="rect" id="Node000005" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="547,84,790,135"/>
-<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="409,37,578,81,576,86,408,42"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="280,143,191,185,189,180,277,138"/>
-<area shape="rect" id="Node000004" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="297,183,539,233"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="372,144,401,180,396,184,368,147"/>
-<area shape="rect" id="Node000006" href="$StmPeriodicTimer_8cpp.html" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="563,183,807,233"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="678,148,683,182,678,183,672,149"/>
+<area shape="rect" id="Node000001" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="256,5,516,37"/>
+<area shape="rect" id="Node000002" href="$TimerComprehensiveTest_8cpp.html" title="ESP32&#45;C6 Periodic Timer Comprehensive Test Suite v2.0." alt="" coords="5,186,273,238"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="327,45,292,64,255,87,201,138,159,187,156,183,197,134,252,83,290,59,332,42"/>
+<area shape="rect" id="Node000003" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="266,85,505,138"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="387,50,388,86,383,83,384,55"/>
+<area shape="rect" id="Node000005" href="$StmPeriodicTimer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="544,85,787,138"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="448,39,586,84,581,85,448,45"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="310,143,204,188,202,183,305,144"/>
+<area shape="rect" id="Node000004" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="296,186,536,238"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="400,150,411,186,406,184,397,155"/>
+<area shape="rect" id="Node000006" href="$StmPeriodicTimer_8cpp.html" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="560,186,803,238"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="674,151,680,187,675,184,671,155"/>
 </map>
