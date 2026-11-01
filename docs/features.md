@@ -45,10 +45,10 @@ professional embedded development. This page showcases the key capabilities orga
 
 Ready to explore these features? Check out our:
 
-- [📚 API Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/api/) - Complete reference for all interfaces
-- [🚀 Quick Start Guide](https://hardfoc.github.io/hf-internal-interface-wrap/quick-start/) - Get up and running in minutes
-- [💡 Examples](https://hardfoc.github.io/hf-internal-interface-wrap/examples/) - Real-world usage patterns
-- [🔧 Building Guide](https://hardfoc.github.io/hf-internal-interface-wrap/building/) - Compile and deploy your projects
+- [📚 API Documentation](api/README.md) - Complete reference for all interfaces
+- [🚀 Quick Start Guide](../README.md#-quick-start) - Get up and running in minutes
+- [💡 Examples](../examples/esp32/README.md) - Real-world usage patterns
+- [🔧 Building Guide](../README.md#-building) - Compile and deploy your projects
 
 {% include alert.html type="info" title="Need Help?" 
 content="Our comprehensive documentation includes step-by-step tutorials, API references, and 

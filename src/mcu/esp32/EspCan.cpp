@@ -587,18 +587,18 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(
     is_enabled_.store(false);
   }
 
-  // Configure advanced timing for improved signal quality
-  twai_timing_config_t esp_timing_config = {
-      .clk_src = TWAI_CLK_SRC_DEFAULT,
-      .quanta_resolution_hz = 0,
-      .brp = static_cast<uint8_t>(timing_config.brp),
-      .prop_seg = static_cast<uint8_t>(timing_config.prop_seg),
-      .tseg_1 = static_cast<uint8_t>(timing_config.tseg_1),
-      .tseg_2 = static_cast<uint8_t>(timing_config.tseg_2),
-      .sjw = static_cast<uint8_t>(timing_config.sjw),
-      .ssp_offset = static_cast<uint8_t>(timing_config.ssp_offset),
-      .triple_sampling = false,
-  };
+  // Configure advanced timing for improved signal quality.
+  // twai_node_reconfig_timing() takes twai_timing_advanced_config_t. In early v5.5.x it is an
+  // alias of twai_timing_config_t (clk_src, quanta_resolution_hz, triple_sampling, ...); later
+  // v5.5.x releases made it a standalone struct with only the segment fields. Zero-initialise and
+  // set the common fields so both layouts build (zeroed extras select the default clock source).
+  twai_timing_advanced_config_t esp_timing_config = {};
+  esp_timing_config.brp = static_cast<uint32_t>(timing_config.brp);
+  esp_timing_config.prop_seg = static_cast<uint8_t>(timing_config.prop_seg);
+  esp_timing_config.tseg_1 = static_cast<uint8_t>(timing_config.tseg_1);
+  esp_timing_config.tseg_2 = static_cast<uint8_t>(timing_config.tseg_2);
+  esp_timing_config.sjw = static_cast<uint8_t>(timing_config.sjw);
+  esp_timing_config.ssp_offset = static_cast<uint8_t>(timing_config.ssp_offset);
 
   esp_err_t esp_err = twai_node_reconfig_timing(twai_node_handle_, &esp_timing_config, nullptr);
 
