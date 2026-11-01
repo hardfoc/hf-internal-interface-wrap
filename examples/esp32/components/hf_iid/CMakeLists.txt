@@ -33,6 +33,7 @@ set(HF_ESP32_SRCS
     "${SRC_ROOT}/src/mcu/esp32/EspPio.cpp"         
     "${SRC_ROOT}/src/mcu/esp32/EspTemperature.cpp" 
     "${SRC_ROOT}/src/mcu/esp32/EspWifi.cpp"        
+    "${SRC_ROOT}/src/mcu/esp32/EspUsbSerialJtag.cpp" # USB Serial/JTAG (targets with native USB)
 )
 
 # List utility source files
@@ -89,6 +90,7 @@ idf_component_register(
         esp_driver_rmt
         esp_driver_gptimer
         esp_driver_tsens
+        esp_driver_usb_serial_jtag
         
         # Network components
         esp_wifi
