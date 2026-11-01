@@ -15,11 +15,6 @@ include_mail = false
 include_verbatim = false
 skip_missing = false
 
-# Jekyll site-relative links (/api/, /quick-start/) — no base URL in CI
-exclude_path = [
-  '.*docs/features\\.md$',
-]
-
 accept = ["200", "429", "403"]
 
 exclude = [
