@@ -22,5 +22,5 @@ Figure module: [`docs/diagrams/figures/interface-layers.py`](../../docs/diagrams
 
 Drawn from:
 
-- `Base classes` in [`inc/base/*.h`](../../inc/base/*.h)
-- `implementations` in [`inc/mcu/*/*.h`](../../inc/mcu/*/*.h)
+- `Base classes` in [`inc/base`](../../inc/base)
+- `implementations` in [`inc/mcu`](../../inc/mcu)

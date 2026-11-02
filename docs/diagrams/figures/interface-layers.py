@@ -29,7 +29,7 @@ def data():
         "esp32": _impls("esp32"),
         "stm32": _impls("stm32"),
         "host": _impls("host"),
-        "sources": ["inc/base/*.h:Base classes", "inc/mcu/*/*.h:implementations"],
+        "sources": ["inc/base:Base classes", "inc/mcu:implementations"],
     }
 
 
