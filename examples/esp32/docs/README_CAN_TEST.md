@@ -97,6 +97,13 @@ static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;
 ### 4. Performance Tests
 - **Batch Transmission**: Multiple message handling
 - **High Throughput**: Maximum performance testing
+- **Loopback Stress (RX ring)**: `loopback_stress_rx_ring` sends 20000 frames at 1 Mbit/s in
+  self-test + internal loopback (no transceiver needed) with `TrySendMessage()`, falling back
+  to a short blocking send on `CAN_ERR_QUEUE_FULL`. A second task drains the RX ring with
+  `ReceiveMessage()` and checks a sequence number and checksum in every frame. The test fails
+  on any lost, reordered or corrupt frame, on any RX ring overrun, or below 5000 frames/s.
+  The log line `rate ... frames/s` and the `bus:` line (state, TEC, REC, overruns) are the
+  numbers to record from a hardware run.
 
 ### 5. Transceiver Tests
 - **Loopback Comparison**: Internal vs external loopback

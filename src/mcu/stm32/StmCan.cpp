@@ -207,7 +207,18 @@ hf_can_err_t StmCan::SendMessage(const hf_can_message_t& msg,
                                   hf_u32_t timeout_ms) noexcept {
     if (!initialized_) return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
 
+    // Length / flag check before any byte of msg.data is read
+    switch (msg.Validate()) {
+    case hf_can_frame_error_t::NONE:
+        break;
+    case hf_can_frame_error_t::ID_RANGE:
+        return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_ID;
+    default:
+        return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
+    }
+
     if (variant_ == StmCanVariant::BXCAN) {
+        if (msg.is_canfd) return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
         return SendBxCan(msg, timeout_ms);
     } else {
         return SendFdCan(msg, timeout_ms);
@@ -272,12 +283,12 @@ hf_can_err_t StmCan::ReceiveBxCan(hf_can_message_t& msg, hf_u32_t timeout_ms) no
         return hf_can_err_t::CAN_ERR_RX_FAILED;
     }
 
-    std::memset(&msg, 0, sizeof(msg));
+    msg = hf_can_message_t{};
     msg.is_extended = (hdr.IDE != 0);
     msg.id = msg.is_extended ? hdr.ExtId : hdr.StdId;
     msg.is_rtr = (hdr.RTR != 0);
-    msg.dlc = static_cast<hf_u8_t>(hdr.DLC);
-    std::memcpy(msg.data, data, (hdr.DLC <= 8) ? hdr.DLC : 8);
+    (void)msg.SetDlcCode(static_cast<hf_u8_t>(hdr.DLC & 0x0FU));  // classic: 9..15 -> 8 bytes
+    std::memcpy(msg.data, data, msg.dlc);
     msg.timestamp_us = static_cast<hf_u64_t>(hdr.Timestamp);
 
     statistics_.rx_message_count++;
@@ -294,8 +305,9 @@ hf_can_err_t StmCan::SendFdCan(const hf_can_message_t& msg, hf_u32_t timeout_ms)
     hdr.IdType = msg.is_extended ? 1 : 0;
     hdr.TxFrameType = msg.is_rtr ? 1 : 0;
 
-    // FDCAN DLC encoding: 0–8 direct, 12/16/20/24/32/48/64 for FD
-    hdr.DataLength = msg.dlc;  // Simplified — user must set correct DLC code
+    // msg.dlc is a byte count; FDCAN wants the 4-bit DLC code (0..15). HAL
+    // versions that encode FDCAN_DLC_BYTES_x as (code << 16) need that shift here.
+    hdr.DataLength = msg.GetDlcCode();
     hdr.ErrorStateIndicator = 0;
     hdr.BitRateSwitch = (msg.is_canfd && msg.is_brs) ? 1 : 0;
     hdr.FDFormat = msg.is_canfd ? 1 : 0;
@@ -329,18 +341,17 @@ hf_can_err_t StmCan::ReceiveFdCan(hf_can_message_t& msg, hf_u32_t timeout_ms) no
         return hf_can_err_t::CAN_ERR_RX_FAILED;
     }
 
-    std::memset(&msg, 0, sizeof(msg));
+    msg = hf_can_message_t{};
     msg.id = hdr.Identifier;
     msg.is_extended = (hdr.IdType != 0);
     msg.is_rtr = (hdr.RxFrameType != 0);
-    msg.dlc = static_cast<hf_u8_t>(hdr.DataLength);
     msg.is_canfd = (hdr.FDFormat != 0);
+    (void)msg.SetDlcCode(static_cast<hf_u8_t>(hdr.DataLength & 0x0FU));  // code -> bytes
     msg.is_brs = (hdr.BitRateSwitch != 0);
     msg.is_esi = (hdr.ErrorStateIndicator != 0);
     msg.timestamp_us = static_cast<hf_u64_t>(hdr.RxTimestamp);
 
-    size_t copy_len = (msg.dlc <= 64) ? msg.dlc : 64;
-    std::memcpy(msg.data, data, (copy_len <= 8) ? copy_len : 8);
+    std::memcpy(msg.data, data, msg.dlc);  // dlc <= 64 after SetDlcCode()
 
     statistics_.rx_message_count++;
     return hf_can_err_t::CAN_SUCCESS;
