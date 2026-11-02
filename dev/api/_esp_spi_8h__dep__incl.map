@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspSpi.h" name="inc/mcu/esp32/EspSpi.h">
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="15,5,231,36"/>
+<area shape="rect" id="Node000002" href="$_esp_spi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features." alt="" coords="5,84,241,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,50,126,84,121,84,121,50"/>
+</map>

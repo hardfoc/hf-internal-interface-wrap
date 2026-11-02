@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspI2c.h" name="inc/mcu/esp32/EspI2c.h">
+<area shape="rect" id="Node000001" title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture." alt="" coords="15,5,230,36"/>
+<area shape="rect" id="Node000002" href="$_esp_i2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="5,84,240,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,50,125,84,120,84,120,50"/>
+</map>

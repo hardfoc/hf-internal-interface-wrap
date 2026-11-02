@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspPeriodicTimer.h" name="inc/mcu/esp32/EspPeriodicTimer.h">
+<area shape="rect" id="Node000001" title="MCU&#45;integrated periodic timer implementation." alt="" coords="6,5,246,56"/>
+<area shape="rect" id="Node000002" href="$_esp_periodic_timer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="5,104,247,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,70,129,103,123,103,123,70"/>
+</map>
