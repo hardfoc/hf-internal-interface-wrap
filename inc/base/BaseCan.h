@@ -156,138 +156,441 @@ struct hf_can_config_t {
         silent_mode(false), tx_queue_size(10), rx_queue_size(10) {}
 };
 
+//--------------------------------------
+//  CAN / CAN FD frame model (BaseCan v2)
+//--------------------------------------
+
+/** @brief Largest classic CAN payload in bytes. */
+inline constexpr hf_u8_t HF_CAN_CLASSIC_MAX_LEN = 8U;
+/** @brief Largest CAN FD payload in bytes. */
+inline constexpr hf_u8_t HF_CAN_FD_MAX_LEN = 64U;
+/** @brief Largest 11-bit (base format) identifier. */
+inline constexpr hf_u32_t HF_CAN_MAX_STD_ID = 0x7FFU;
+/** @brief Largest 29-bit (extended format) identifier. */
+inline constexpr hf_u32_t HF_CAN_MAX_EXT_ID = 0x1FFFFFFFU;
+/** @brief Returned by HfCanLenToDlc() when a length cannot be carried. */
+inline constexpr hf_u8_t HF_CAN_DLC_INVALID = 0xFFU;
+
 /**
- * @brief Platform-agnostic CAN message structure.
- * @details Comprehensive CAN message format with standard flags and metadata.
- *          Supports both standard (11-bit) and extended (29-bit) identifiers,
- *          with complete transmission control and diagnostic information.
+ * @brief Packed frame flags (see hf_can_message_t::GetFlags()).
+ * @details The bit values are the same as `vortex::contracts::frame_flag`, so a
+ *          flags byte can be copied between the two frame types unchanged.
+ */
+namespace hf_can_flag {
+inline constexpr hf_u8_t EXT = 0x01U; ///< 29-bit identifier
+inline constexpr hf_u8_t RTR = 0x02U; ///< remote request (classic only)
+inline constexpr hf_u8_t FDF = 0x04U; ///< FD frame format
+inline constexpr hf_u8_t BRS = 0x08U; ///< bit-rate switch (FD only)
+inline constexpr hf_u8_t ESI = 0x10U; ///< error state indicator (FD only)
+inline constexpr hf_u8_t ALL = EXT | RTR | FDF | BRS | ESI;
+} // namespace hf_can_flag
+
+/**
+ * @brief DLC code to payload length in bytes (ISO 11898-1).
+ * @param dlc DLC code 0..15
+ * @param fd  true for an FD frame
+ * @return Length in bytes. Classic codes 9..15 mean 8 bytes. Codes above 15 give 0.
+ */
+constexpr hf_u8_t HfCanDlcToLen(hf_u8_t dlc, bool fd) noexcept {
+  constexpr hf_u8_t kFdTable[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 32, 48, 64};
+  if (dlc > 15U) {
+    return 0U;
+  }
+  if (!fd) {
+    return dlc > 8U ? 8U : dlc;
+  }
+  return kFdTable[dlc];
+}
+
+/**
+ * @brief Payload length in bytes to the smallest DLC code that carries it.
+ * @return HF_CAN_DLC_INVALID when @p len is above 8 (classic) or 64 (FD).
+ */
+constexpr hf_u8_t HfCanLenToDlc(hf_u8_t len, bool fd) noexcept {
+  if (len <= 8U) {
+    return len;
+  }
+  if (!fd || len > HF_CAN_FD_MAX_LEN) {
+    return HF_CAN_DLC_INVALID;
+  }
+  for (hf_u8_t dlc = 9U; dlc < 16U; ++dlc) {
+    if (HfCanDlcToLen(dlc, true) >= len) {
+      return dlc;
+    }
+  }
+  return HF_CAN_DLC_INVALID;
+}
+
+/**
+ * @brief Is @p len a payload length a frame of this kind can have exactly?
+ * @details Classic: 0..8. FD: 0..8, 12, 16, 20, 24, 32, 48, 64.
+ */
+constexpr bool HfCanIsValidLength(hf_u8_t len, bool fd) noexcept {
+  if (!fd) {
+    return len <= HF_CAN_CLASSIC_MAX_LEN;
+  }
+  const hf_u8_t dlc = HfCanLenToDlc(len, true);
+  return dlc != HF_CAN_DLC_INVALID && HfCanDlcToLen(dlc, true) == len;
+}
+
+/**
+ * @brief Why a frame is not well formed.
+ * @details Same cases as `vortex::contracts::FrameError` except `UnknownFlag`,
+ *          which cannot occur because hf_can_message_t keeps its flags as bools.
+ */
+enum class hf_can_frame_error_t : hf_u8_t {
+  NONE = 0,
+  ID_RANGE,            ///< identifier does not fit 11 / 29 bits
+  CLASSIC_TOO_LONG,    ///< classic frame with length > 8
+  FD_TOO_LONG,         ///< FD frame with length > 64
+  FD_LENGTH_NOT_EXACT, ///< FD length that has no DLC code (for example 9)
+  RTR_ON_FD,           ///< FD frames have no remote form
+  FD_BITS_ON_CLASSIC,  ///< BRS / ESI without FD format
+  RTR_WITH_DATA,       ///< remote frame with a requested length above 8
+};
+
+/**
+ * @brief Platform-agnostic CAN / CAN FD message (BaseCan v2).
+ *
+ * @details The payload buffer is FD-sized (64 bytes) and the length is a byte
+ *          count, never a DLC code:
+ *          - `dlc` holds the **payload length in bytes**: 0..8 for classic
+ *            frames, 0..8, 12, 16, 20, 24, 32, 48 or 64 for FD frames. The
+ *            name is kept for source compatibility (for classic frames the
+ *            byte count and the DLC code are the same number). Use
+ *            GetLength() / SetLength() in new code, and GetDlcCode() /
+ *            SetDlcCode() when a controller needs the 4-bit wire code.
+ *          - SetLength() / SetDLC() reject lengths the frame kind cannot carry
+ *            (above 8 on a classic frame, or an FD length without a DLC code),
+ *            so `data` can never be over-read or over-written through them.
+ *          - Flags: `is_extended`, `is_rtr`, `is_canfd`, `is_brs`, `is_esi`,
+ *            also available packed as hf_can_flag bits via GetFlags() /
+ *            SetFlags().
+ *          - `timestamp_us` is the RX timestamp captured by the driver (ISR
+ *            side). It is ignored on transmit.
+ *
+ *          Code that writes `dlc` directly must keep it valid for the frame
+ *          kind; drivers check it with Validate() before touching `data`.
+ *
+ *          ToFrame() / FromFrame() convert to and from any frame struct with
+ *          the members `id`, `len`, `flags`, `data[64]` and `ts_us` (the
+ *          layout of `vortex::contracts::CanFrame`). A frame round trip
+ *          (frame -> message -> frame) is lossless.
  */
 struct hf_can_message_t {
   // === Core CAN Message Fields ===
-  hf_u32_t id;     ///< Message ID (11 or 29-bit)
-  hf_u8_t dlc;     ///< Data length code (0-8 for classic CAN)
-  hf_u8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
+  hf_u32_t id;                     ///< Message ID (11 or 29-bit)
+  hf_u8_t dlc;                     ///< Payload length in BYTES (0..8 classic, 0..64 FD)
+  hf_u8_t data[HF_CAN_FD_MAX_LEN]; ///< Payload (64 bytes, FD-sized)
 
   // === Standard CAN Flags ===
   bool is_extended;  ///< Extended ID flag (29-bit vs 11-bit)
   bool is_rtr;       ///< Remote transmission request flag
   bool is_ss;        ///< Single shot flag (no retransmission)
   bool is_self;      ///< Self reception request flag
-  bool dlc_non_comp; ///< DLC is non-compliant (> 8 for classic CAN)
+  bool dlc_non_comp; ///< Received classic DLC code was 9..15 (length is 8)
 
   // === Metadata and Diagnostics ===
-  hf_u64_t timestamp_us;    ///< Precise timestamp in microseconds
+  hf_u64_t timestamp_us;    ///< RX timestamp in microseconds (driver clock)
   hf_u32_t sequence_number; ///< Message sequence number
   hf_u8_t controller_id;    ///< Originating controller ID
   hf_u8_t retry_count;      ///< Number of transmission retries
   hf_u8_t error_count;      ///< Associated error count
 
-  // === CAN-FD Extended Fields (for future compatibility) ===
-  bool is_canfd;     ///< CAN-FD frame flag
-  bool is_brs;       ///< Bit Rate Switching flag (CAN-FD)
-  bool is_esi;       ///< Error State Indicator flag (CAN-FD)
-  hf_u8_t canfd_dlc; ///< CAN-FD DLC (can be > 8)
+  // === CAN FD Fields ===
+  bool is_canfd; ///< FD frame format (FDF)
+  bool is_brs;   ///< Bit Rate Switching (FD only)
+  bool is_esi;   ///< Error State Indicator (FD only)
 
   hf_can_message_t() noexcept
       : id(0), dlc(8), data{}, is_extended(false), is_rtr(false), is_ss(false), is_self(false),
         dlc_non_comp(false), timestamp_us(0), sequence_number(0), controller_id(0), retry_count(0),
-        error_count(0), is_canfd(false), is_brs(false), is_esi(false), canfd_dlc(0) {}
+        error_count(0), is_canfd(false), is_brs(false), is_esi(false) {}
 
-  /**
-   * @brief Get maximum data length for current frame type
-   * @return Maximum allowed data length (8 for classic CAN, up to 64 for CAN-FD)
-   */
+  // --- Length -------------------------------------------------------------
+
+  /** @brief Largest payload for the current frame kind (8 classic, 64 FD). */
   constexpr hf_u8_t GetMaxDataLength() const noexcept {
-    return is_canfd ? 64 : 8;
+    return is_canfd ? HF_CAN_FD_MAX_LEN : HF_CAN_CLASSIC_MAX_LEN;
+  }
+
+  /** @brief Payload length in bytes. */
+  constexpr hf_u8_t GetLength() const noexcept {
+    return dlc;
   }
 
   /**
-   * @brief Validate DLC for current frame type
-   * @param dlc Data length code to validate
-   * @return true if valid for the frame type, false otherwise
+   * @brief Is @p len a valid payload length for the current frame kind?
+   * @param len Length in bytes (not a DLC code)
    */
-  bool IsValidDLC(hf_u8_t dlc) const noexcept {
-    return is_canfd ? (dlc <= 64) : (dlc <= 8);
+  constexpr bool IsValidLength(hf_u8_t len) const noexcept {
+    return HfCanIsValidLength(len, is_canfd);
   }
 
   /**
-   * @brief Get effective DLC for the current frame type
-   * @return DLC value to use (canfd_dlc for CAN-FD, dlc for classic)
+   * @brief Set the payload length in bytes.
+   * @return false (and nothing changed) when @p len is above 8 on a classic
+   *         frame, above 64, or an FD length without a DLC code.
    */
-  hf_u8_t GetEffectiveDLC() const noexcept {
-    return is_canfd ? canfd_dlc : dlc;
-  }
-
-  /**
-   * @brief Set data length code for current frame type
-   * @param dlc Data length code to set
-   * @return true if valid and set, false otherwise
-   */
-  bool SetDLC(hf_u8_t dlc) noexcept {
-    if (!IsValidDLC(dlc)) {
+  bool SetLength(hf_u8_t len) noexcept {
+    if (!IsValidLength(len)) {
       return false;
     }
-    if (is_canfd) {
-      canfd_dlc = dlc;
-    } else {
-      this->dlc = dlc;
+    dlc = len;
+    dlc_non_comp = false;
+    return true;
+  }
+
+  /** @brief Same as IsValidLength(); kept for source compatibility. */
+  constexpr bool IsValidDLC(hf_u8_t len) const noexcept {
+    return IsValidLength(len);
+  }
+
+  /** @brief Same as GetLength(); kept for source compatibility. */
+  constexpr hf_u8_t GetEffectiveDLC() const noexcept {
+    return dlc;
+  }
+
+  /** @brief Same as SetLength(); kept for source compatibility. */
+  bool SetDLC(hf_u8_t len) noexcept {
+    return SetLength(len);
+  }
+
+  /** @brief 4-bit DLC code for the current length (HF_CAN_DLC_INVALID if invalid). */
+  constexpr hf_u8_t GetDlcCode() const noexcept {
+    return IsValidLength(dlc) ? HfCanLenToDlc(dlc, is_canfd) : HF_CAN_DLC_INVALID;
+  }
+
+  /**
+   * @brief Set the length from a 4-bit DLC code (as read from a controller).
+   * @details Classic codes 9..15 give 8 bytes and set `dlc_non_comp`.
+   * @return false when @p code is above 15.
+   */
+  bool SetDlcCode(hf_u8_t code) noexcept {
+    if (code > 15U) {
+      return false;
     }
+    dlc = HfCanDlcToLen(code, is_canfd);
+    dlc_non_comp = !is_canfd && code > 8U;
     return true;
   }
 
   /**
-   * @brief Set standard frame format (11-bit ID)
+   * @brief Copy @p len bytes into the payload and set the length.
+   * @return false (nothing changed) when @p len is invalid for the frame kind,
+   *         or @p src is null with a non-zero length.
    */
+  bool SetData(const hf_u8_t* src, hf_u8_t len) noexcept {
+    if (!IsValidLength(len) || (src == nullptr && len != 0U)) {
+      return false;
+    }
+    for (hf_u8_t i = 0; i < len; ++i) {
+      data[i] = src[i];
+    }
+    dlc = len;
+    dlc_non_comp = false;
+    return true;
+  }
+
+  // --- Frame kind and flags ---------------------------------------------------
+
+  /** @brief Set standard frame format (11-bit ID). */
   void SetStandardFrame() noexcept {
     is_extended = false;
   }
 
-  /**
-   * @brief Set extended frame format (29-bit ID)
-   */
+  /** @brief Set extended frame format (29-bit ID). */
   void SetExtendedFrame() noexcept {
     is_extended = true;
   }
 
-  /**
-   * @brief Set data frame (not remote)
-   */
+  /** @brief Set data frame (not remote). */
   void SetDataFrame() noexcept {
     is_rtr = false;
   }
 
-  /**
-   * @brief Set remote frame
-   */
+  /** @brief Set remote frame. */
   void SetRemoteFrame() noexcept {
     is_rtr = true;
   }
 
-  /**
-   * @brief Set single shot transmission
-   */
+  /** @brief Set single shot transmission. */
   void SetSingleShot() noexcept {
     is_ss = true;
   }
 
-  /**
-   * @brief Set self reception request
-   */
+  /** @brief Set self reception request. */
   void SetSelfReception() noexcept {
     is_self = true;
   }
 
   /**
-   * @brief Validate message ID for current frame format
-   * @return true if valid, false otherwise
+   * @brief Make this an FD frame.
+   * @param brs Bit-rate switch for the data phase
    */
-  bool IsValidId() const noexcept {
-    if (is_extended) {
-      return id <= 0x1FFFFFFF; // 29-bit max
-    } else {
-      return id <= 0x7FF; // 11-bit max
-    }
+  void SetFdFrame(bool brs = false) noexcept {
+    is_canfd = true;
+    is_rtr = false;
+    is_brs = brs;
   }
+
+  /**
+   * @brief Make this a classic frame (clears BRS / ESI).
+   * @return false (nothing changed) when the current length is above 8.
+   */
+  bool SetClassicFrame() noexcept {
+    if (dlc > HF_CAN_CLASSIC_MAX_LEN) {
+      return false;
+    }
+    is_canfd = false;
+    is_brs = false;
+    is_esi = false;
+    return true;
+  }
+
+  /** @brief Flags packed as hf_can_flag bits. */
+  constexpr hf_u8_t GetFlags() const noexcept {
+    return static_cast<hf_u8_t>(
+        (is_extended ? hf_can_flag::EXT : 0U) | (is_rtr ? hf_can_flag::RTR : 0U) |
+        (is_canfd ? hf_can_flag::FDF : 0U) | (is_brs ? hf_can_flag::BRS : 0U) |
+        (is_esi ? hf_can_flag::ESI : 0U));
+  }
+
+  /**
+   * @brief Set the flags from hf_can_flag bits.
+   * @return false (nothing changed) when @p flags has a bit outside hf_can_flag::ALL.
+   */
+  bool SetFlags(hf_u8_t flags) noexcept {
+    if ((flags & static_cast<hf_u8_t>(~hf_can_flag::ALL)) != 0U) {
+      return false;
+    }
+    is_extended = (flags & hf_can_flag::EXT) != 0U;
+    is_rtr = (flags & hf_can_flag::RTR) != 0U;
+    is_canfd = (flags & hf_can_flag::FDF) != 0U;
+    is_brs = (flags & hf_can_flag::BRS) != 0U;
+    is_esi = (flags & hf_can_flag::ESI) != 0U;
+    return true;
+  }
+
+  // --- Validation -------------------------------------------------------------
+
+  /** @brief Validate message ID for current frame format. */
+  constexpr bool IsValidId() const noexcept {
+    return id <= (is_extended ? HF_CAN_MAX_EXT_ID : HF_CAN_MAX_STD_ID);
+  }
+
+  /**
+   * @brief Structural check drivers apply before transmit and after receive.
+   * @details Same rules, in the same order, as `vortex::contracts::CheckFrame`.
+   */
+  constexpr hf_can_frame_error_t Validate() const noexcept {
+    if (!IsValidId()) {
+      return hf_can_frame_error_t::ID_RANGE;
+    }
+    if (is_canfd) {
+      if (is_rtr) {
+        return hf_can_frame_error_t::RTR_ON_FD;
+      }
+      if (dlc > HF_CAN_FD_MAX_LEN) {
+        return hf_can_frame_error_t::FD_TOO_LONG;
+      }
+      if (!HfCanIsValidLength(dlc, true)) {
+        return hf_can_frame_error_t::FD_LENGTH_NOT_EXACT;
+      }
+      return hf_can_frame_error_t::NONE;
+    }
+    if (is_brs || is_esi) {
+      return hf_can_frame_error_t::FD_BITS_ON_CLASSIC;
+    }
+    if (dlc > HF_CAN_CLASSIC_MAX_LEN) {
+      return is_rtr ? hf_can_frame_error_t::RTR_WITH_DATA : hf_can_frame_error_t::CLASSIC_TOO_LONG;
+    }
+    return hf_can_frame_error_t::NONE;
+  }
+
+  /** @brief Validate() == NONE. */
+  constexpr bool IsValid() const noexcept {
+    return Validate() == hf_can_frame_error_t::NONE;
+  }
+
+  // --- Conversion to / from a transport frame ---------------------------------
+
+  /**
+   * @brief Copy into a frame with members `id`, `len`, `flags`, `data[64]`, `ts_us`.
+   * @details `ts_us` receives the low 32 bits of `timestamp_us`. The whole
+   *          64-byte buffer is copied. `is_ss`, `is_self`, `sequence_number`
+   *          and the other metadata have no place in the frame and are dropped.
+   */
+  template <typename Frame>
+  void ToFrame(Frame& out) const noexcept {
+    static_assert(sizeof(out.data) == HF_CAN_FD_MAX_LEN, "frame data must be 64 bytes");
+    out.id = id;
+    out.len = dlc;
+    out.flags = GetFlags();
+    for (hf_u8_t i = 0; i < HF_CAN_FD_MAX_LEN; ++i) {
+      out.data[i] = data[i];
+    }
+    out.ts_us = static_cast<decltype(out.ts_us)>(timestamp_us);
+  }
+
+  /**
+   * @brief Build a message from a frame with members `id`, `len`, `flags`, `data[64]`, `ts_us`.
+   * @details Copies the fields as they are; call Validate() to check the result.
+   *          Flag bits outside hf_can_flag::ALL are ignored.
+   */
+  template <typename Frame>
+  static hf_can_message_t FromFrame(const Frame& in) noexcept {
+    static_assert(sizeof(in.data) == HF_CAN_FD_MAX_LEN, "frame data must be 64 bytes");
+    hf_can_message_t m;
+    m.id = in.id;
+    m.dlc = in.len;
+    (void)m.SetFlags(static_cast<hf_u8_t>(in.flags & hf_can_flag::ALL));
+    for (hf_u8_t i = 0; i < HF_CAN_FD_MAX_LEN; ++i) {
+      m.data[i] = in.data[i];
+    }
+    m.timestamp_us = static_cast<hf_u64_t>(in.ts_us);
+    return m;
+  }
+};
+
+/**
+ * @brief Controller error state (ISO 11898-1 fault confinement).
+ * @details Same order as `vortex::contracts::BusState`.
+ */
+enum class hf_can_bus_state_t : hf_u8_t {
+  STOPPED = 0,   ///< not started / in reset
+  ERROR_ACTIVE,  ///< TEC and REC < 96
+  ERROR_WARNING, ///< TEC or REC >= 96
+  ERROR_PASSIVE, ///< TEC or REC >= 128
+  BUS_OFF,       ///< TEC > 255
+};
+
+/** @brief Error state implied by the counters (warning at 96, passive at 128, bus-off above 255).
+ */
+constexpr hf_can_bus_state_t HfCanStateFromCounters(hf_u16_t tec, hf_u16_t rec) noexcept {
+  if (tec > 255U) {
+    return hf_can_bus_state_t::BUS_OFF;
+  }
+  if (tec >= 128U || rec >= 128U) {
+    return hf_can_bus_state_t::ERROR_PASSIVE;
+  }
+  if (tec >= 96U || rec >= 96U) {
+    return hf_can_bus_state_t::ERROR_WARNING;
+  }
+  return hf_can_bus_state_t::ERROR_ACTIVE;
+}
+
+/**
+ * @brief Error counters and queue statistics of one controller (BaseCan::GetBusStatus()).
+ * @details Same fields as `vortex::contracts::PortStatus`.
+ */
+struct hf_can_bus_status_t {
+  hf_can_bus_state_t state{hf_can_bus_state_t::STOPPED}; ///< controller error state
+  hf_u16_t tec{0};                                       ///< transmit error counter
+  hf_u16_t rec{0};                                       ///< receive error counter
+  hf_u32_t rx_overruns{0};   ///< frames lost because the RX queue was full
+  hf_u32_t tx_queue_full{0}; ///< sends refused because the TX queue was full
+  hf_u32_t bus_off_count{0}; ///< bus-off events since Initialize()
 };
 
 /**
@@ -344,8 +647,8 @@ struct hf_can_reception_info_t {
   bool arbitration_lost;      ///< Arbitration was lost during transmission
   float bit_timing_tolerance; ///< Measured bit timing tolerance
 };
-using hf_can_fd_receive_callback_t =
-    void (*)(const hf_can_message_t& message, const hf_can_reception_info_t& info);
+using hf_can_fd_receive_callback_t = void (*)(const hf_can_message_t& message,
+                                              const hf_can_reception_info_t& info);
 
 /**
  * @brief CAN bus statistics structure for performance monitoring.
@@ -549,6 +852,39 @@ public:
    */
   virtual hf_can_err_t ClearAcceptanceFilter() noexcept {
     return SetAcceptanceFilter(0, 0, false);
+  }
+
+  /**
+   * @brief Queue a message for transmission without blocking.
+   * @details Same as SendMessage(message, 0): the message is queued or the call
+   *          fails at once. Drivers return CAN_ERR_QUEUE_FULL when there is no
+   *          room and CAN_ERR_BUS_OFF when the controller is bus-off.
+   * @return hf_can_err_t error code
+   */
+  hf_can_err_t TrySendMessage(const hf_can_message_t& message) noexcept {
+    return SendMessage(message, 0);
+  }
+
+  /**
+   * @brief Read the controller error state, TEC/REC and queue counters.
+   * @param status Filled on success
+   * @return CAN_SUCCESS, or CAN_ERR_UNSUPPORTED_OPERATION (default implementation)
+   */
+  virtual hf_can_err_t GetBusStatus(hf_can_bus_status_t& status) noexcept {
+    (void)status;
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+
+  /**
+   * @brief Request recovery from bus-off.
+   * @details Starts the ISO 11898-1 recovery sequence (128 x 11 recessive bits)
+   *          and returns without waiting for it to finish; GetBusStatus() shows
+   *          ERROR_ACTIVE once the controller is back. Returns CAN_SUCCESS when
+   *          the controller is not bus-off (nothing to do).
+   * @return CAN_SUCCESS, or CAN_ERR_UNSUPPORTED_OPERATION (default implementation)
+   */
+  virtual hf_can_err_t RequestBusRecovery() noexcept {
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
   }
 
   /**
