@@ -214,6 +214,6 @@ The test suite is designed to be integrated into continuous integration pipeline
 
 ## Related Documentation
 
-- [EspWifi API Reference](../../../docs/esp_api/EspWifi.md)
-- [BaseWifi API Reference](../../../docs/api/BaseWifi.md)
+- [EspWifi API Reference](../../../inc/mcu/esp32/EspWifi.h)
+- [BaseWifi API Reference](../../../inc/base/BaseWifi.h)
 - [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html)

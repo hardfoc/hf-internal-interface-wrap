@@ -331,7 +331,7 @@ The test suite provides comprehensive debug output:
 
 ## For Complete Documentation
 
-**📖 See [EspSpi.md](../../../docs/esp_api/EspSpi.md) for:**
+**📖 See [EspSpi.md](../../../inc/mcu/esp32/EspSpi.h) for:**
 
 - Complete API reference and implementation details
 - Detailed test descriptions and validation procedures
@@ -346,16 +346,16 @@ The test suite provides comprehensive debug output:
 
 ### **Documentation Structure**
 
-- **[🏠 Main Documentation](../../../docs/README.md)** - Complete system overview
-- **[📋 API Interfaces](../../../docs/api/README.md)** - Base classes and interfaces
-- **[🔧 ESP32 Implementations](../../../docs/esp_api/README.md)** - Hardware-specific implementations
+- **[🏠 Main Documentation](../../../docs/index.md)** - Complete system overview
+- **[📋 API Interfaces](../../../docs/api-guide.md)** - Base classes and interfaces
+- **[🔧 ESP32 Implementations](../../../docs/esp32.md)** - Hardware-specific implementations
 - **[🧪 Test Suites](README.md)** - Testing and validation overview
 
 ### **Related Documentation**
 
-- **[EspSpi Implementation](../../../docs/esp_api/EspSpi.md)** - ESP32-C6 SPI implementation
-- **[BaseSpi API Reference](../../../docs/api/BaseSpi.md)** - Abstract SPI interface
-- **[Hardware Types](../../../docs/api/HardwareTypes.md)** - Type definitions
+- **[EspSpi Implementation](../../../inc/mcu/esp32/EspSpi.h)** - ESP32-C6 SPI implementation
+- **[BaseSpi API Reference](../../../inc/base/BaseSpi.h)** - Abstract SPI interface
+- **[Hardware Types](../../../inc/base/HardwareTypes.h)** - Type definitions
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF documentation
 
 ### **Navigation Links**

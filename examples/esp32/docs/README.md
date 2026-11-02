@@ -165,15 +165,15 @@ Most tests require minimal hardware:
 ## **Related Documentation**
 
 ### **API Documentation**
-- [📋 Base Interfaces](../../../docs/api/README.md) - Abstract base classes
-- [🔧 ESP32 Implementations](../../../docs/esp_api/README.md) - Hardware-specific implementations
-- [🛠️ Utility Classes](../../../docs/utils/README.md) - Helper classes and utilities
+- [📋 Base Interfaces](../../../docs/api-guide.md) - Abstract base classes
+- [🔧 ESP32 Implementations](../../../docs/esp32.md) - Hardware-specific implementations
+- [🛠️ Utility Classes](../../../docs/utilities.md) - Helper classes and utilities
 
 ### **Specific Interface Documentation**
-- [BaseCan API](../../../docs/api/BaseCan.md) - CAN bus interface
-- [EspCan Implementation](../../../docs/esp_api/EspCan.md) - ESP32-C6 CAN implementation
-- [BaseGpio API](../../../docs/api/BaseGpio.md) - GPIO interface
-- [BaseAdc API](../../../docs/api/BaseAdc.md) - ADC interface
+- [BaseCan API](../../../inc/base/BaseCan.h) - CAN bus interface
+- [EspCan Implementation](../../../inc/mcu/esp32/EspCan.h) - ESP32-C6 CAN implementation
+- [BaseGpio API](../../../inc/base/BaseGpio.h) - GPIO interface
+- [BaseAdc API](../../../inc/base/BaseAdc.h) - ADC interface
 
 ### **Project Documentation**
 - [Main Project README](../../../README.md) - Project overview

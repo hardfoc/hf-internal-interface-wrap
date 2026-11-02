@@ -283,7 +283,7 @@ The test suite validates:
 
 ## Related Documentation
 
-- **[EspAdc API Reference](../../../docs/esp_api/EspAdc.md)** - Complete API documentation
-- **[BaseAdc API Reference](../../../docs/api/BaseAdc.md)** - Base class interface
-- **[ESP32 API Overview](../../../docs/esp_api/README.md)** - ESP32 implementation overview
-- **[HardwareTypes Reference](../../../docs/api/HardwareTypes.md)** - Type definitions
+- **[EspAdc API Reference](../../../inc/mcu/esp32/EspAdc.h)** - Complete API documentation
+- **[BaseAdc API Reference](../../../inc/base/BaseAdc.h)** - Base class interface
+- **[ESP32 API Overview](../../../docs/esp32.md)** - ESP32 implementation overview
+- **[HardwareTypes Reference](../../../inc/base/HardwareTypes.h)** - Type definitions
