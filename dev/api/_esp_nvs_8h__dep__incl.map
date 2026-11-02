@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspNvs.h" name="inc/mcu/esp32/EspNvs.h">
+<area shape="rect" id="Node000001" title="World&#45;class ESP32 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="15,5,237,36"/>
+<area shape="rect" id="Node000002" href="$_esp_nvs_8cpp.html" title="World&#45;class ESP32 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="5,84,247,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,50,129,84,123,84,123,50"/>
+</map>

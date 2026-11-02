@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspCan.h" name="inc/mcu/esp32/EspCan.h">
+<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="15,5,238,36"/>
+<area shape="rect" id="Node000002" href="$_esp_can_8cpp.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="5,84,248,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,50,129,84,124,84,124,50"/>
+</map>
