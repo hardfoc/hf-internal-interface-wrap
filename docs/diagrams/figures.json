@@ -1,0 +1,14 @@
+{
+  "interface-layers": {
+    "title": "Write against the interface, pick the MCU at build time",
+    "alt": "Layer diagram: drivers, handlers and board HALs call the abstract Base interfaces such as BaseGpio, BaseI2c, BaseSpi and BaseCan; below them the ESP32 classes implement the interfaces with ESP-IDF, the STM32 classes with STM32Cube HAL handles, and host classes serve tests.",
+    "description": "From top to bottom. Drivers, handlers and board HALs hold references to the abstract Base* classes (listed from inc/base/). Each platform folder under inc/mcu/ implements them with that platform's SDK: ESP32 classes over ESP-IDF, STM32 classes over STM32Cube HAL handles, and host classes for tests. The application picks one platform at build time; nothing above the interface line changes.",
+    "profile": "overview",
+    "width": 1200,
+    "source": "docs/diagrams/figures/interface-layers.py",
+    "sources": [
+      "inc/base/*.h:Base classes",
+      "inc/mcu/*/*.h:implementations"
+    ]
+  }
+}
