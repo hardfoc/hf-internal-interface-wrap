@@ -54,3 +54,18 @@ elseif(HF_HOST_SANITIZE STREQUAL "thread")
 elseif(NOT HF_HOST_SANITIZE STREQUAL "")
   message(FATAL_ERROR "HF_HOST_SANITIZE must be empty, address or thread")
 endif()
+
+# The C++ shown on the documentation site (docs/, README.md): compiled with the
+# same warnings so a page cannot show code that no longer builds.
+add_library(hf_iiw_doc_snippets OBJECT
+  "${HF_IIW_ROOT}/tests/docs/quickstart.cpp"
+  "${HF_IIW_ROOT}/tests/docs/can.cpp"
+  "${HF_IIW_ROOT}/tests/docs/api_tasks.cpp"
+  "${HF_IIW_ROOT}/tests/docs/port_gpio.cpp")
+# SYSTEM: the warnings apply to the snippets; the headers are checked by the
+# MCU builds and clang-tidy (some, such as BasePwm.h, are not -Wconversion clean).
+target_include_directories(hf_iiw_doc_snippets SYSTEM PRIVATE
+  "${HF_IIW_ROOT}/inc"
+  "${HF_IIW_ROOT}/inc/base"
+  "${HF_IIW_ROOT}/inc/utils")
+target_compile_options(hf_iiw_doc_snippets PRIVATE ${HF_HOST_WARNINGS})
