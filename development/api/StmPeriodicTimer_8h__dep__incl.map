@@ -1,5 +1,0 @@
-<map id="inc/mcu/stm32/StmPeriodicTimer.h" name="inc/mcu/stm32/StmPeriodicTimer.h">
-<area shape="rect" id="Node000001" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="6,5,248,58"/>
-<area shape="rect" id="Node000002" href="$StmPeriodicTimer_8cpp.html" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="5,106,249,159"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,71,129,107,125,104,125,75"/>
-</map>

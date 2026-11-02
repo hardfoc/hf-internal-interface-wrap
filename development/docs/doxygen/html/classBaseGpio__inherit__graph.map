@@ -1,7 +1,0 @@
-<map id="BaseGpio" name="BaseGpio">
-<area shape="rect" id="Node000001" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="58,5,159,37"/>
-<area shape="rect" id="Node000002" href="$classEspGpio.html" title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32/ESP&#45;IDF v5.5+ features." alt="" coords="5,85,97,117"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,48,64,86,60,83,86,50"/>
-<area shape="rect" id="Node000003" href="$classStmGpio.html" title="STM32 GPIO implementation with full HAL integration." alt="" coords="120,85,214,117"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,47,158,85,153,85,128,52"/>
-</map>

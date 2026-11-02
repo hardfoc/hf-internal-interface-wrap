@@ -1,5 +1,0 @@
-<map id="BaseBluetooth" name="BaseBluetooth">
-<area shape="rect" id="Node000001" title="Abstract base class for Bluetooth functionality." alt="" coords="5,5,144,37"/>
-<area shape="rect" id="Node000002" href="$classEspBluetooth.html" title="ESP32 Bluetooth implementation class." alt="" coords="10,85,139,117"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,51,77,86,72,84,73,54"/>
-</map>
