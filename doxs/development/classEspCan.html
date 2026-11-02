@@ -94,6 +94,7 @@ $(function(){initNavTree('classEspCan.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
@@ -118,6 +119,11 @@ Collaboration diagram for EspCan:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classEspCan__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEspCan_1_1TxSlot.html">TxSlot</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad254073ec0b39870dcc3f8d29806ed3b" id="r_ad254073ec0b39870dcc3f8d29806ed3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad254073ec0b39870dcc3f8d29806ed3b">EspCan</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__esp__can__config__t.html">hf_esp_can_config_t</a> &amp;config) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
@@ -133,30 +139,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a96ec0a7e2636ba9e99d651f21c4e9153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the TWAI node and free resources.  <br /></td></tr>
 <tr class="separator:a96ec0a7e2636ba9e99d651f21c4e9153"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b9bfd81e512b835c89111b6cf0ced79" id="r_a3b9bfd81e512b835c89111b6cf0ced79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b9bfd81e512b835c89111b6cf0ced79">SendMessage</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> timeout_ms=1000) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
-<tr class="memdesc:a3b9bfd81e512b835c89111b6cf0ced79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a CAN message.  <br /></td></tr>
+<tr class="memdesc:a3b9bfd81e512b835c89111b6cf0ced79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a CAN message for transmission.  <br /></td></tr>
 <tr class="separator:a3b9bfd81e512b835c89111b6cf0ced79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad33472b071ef5f1ab76efbdb58f3c855" id="r_ad33472b071ef5f1ab76efbdb58f3c855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad33472b071ef5f1ab76efbdb58f3c855">ReceiveMessage</a> (<a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message, <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> timeout_ms=0) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
-<tr class="memdesc:ad33472b071ef5f1ab76efbdb58f3c855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a CAN message (legacy polling interface).  <br /></td></tr>
+<tr class="memdesc:ad33472b071ef5f1ab76efbdb58f3c855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take the oldest frame from the RX ring.  <br /></td></tr>
 <tr class="separator:ad33472b071ef5f1ab76efbdb58f3c855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15ded2afcc3564560fa704e661546500" id="r_a15ded2afcc3564560fa704e661546500"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ded2afcc3564560fa704e661546500">SetReceiveCallback</a> (<a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
-<tr class="memdesc:a15ded2afcc3564560fa704e661546500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set callback for received messages (legacy support removed - use RegisterReceiveCallback).  <br /></td></tr>
+<tr class="memdesc:a15ded2afcc3564560fa704e661546500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> receive callback.  <br /></td></tr>
 <tr class="separator:a15ded2afcc3564560fa704e661546500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c7eea2a0ccea5125cafb3b26af6c5ff" id="r_a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7eea2a0ccea5125cafb3b26af6c5ff">ClearReceiveCallback</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
-<tr class="memdesc:a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the receive callback (legacy support removed - use UnregisterCallback).  <br /></td></tr>
+<tr class="memdesc:a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> receive callback.  <br /></td></tr>
 <tr class="separator:a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacf7899068a281cb12144f913660aa49" id="r_aacf7899068a281cb12144f913660aa49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf7899068a281cb12144f913660aa49">SetReceiveCallbackEx</a> (<a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:aacf7899068a281cb12144f913660aa49" id="r_aacf7899068a281cb12144f913660aa49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf7899068a281cb12144f913660aa49">SetReceiveCallbackEx</a> (<a class="el" href="EspCan_8h.html#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:aacf7899068a281cb12144f913660aa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0cad1fa0e4c312eebcc5d1b938876df" id="r_af0cad1fa0e4c312eebcc5d1b938876df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0cad1fa0e4c312eebcc5d1b938876df">ClearReceiveCallbackEx</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:af0cad1fa0e4c312eebcc5d1b938876df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae49c30b2a556b92b8a8dbb12d1eec148" id="r_ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae49c30b2a556b92b8a8dbb12d1eec148">SetErrorCallback</a> (<a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:ae49c30b2a556b92b8a8dbb12d1eec148" id="r_ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae49c30b2a556b92b8a8dbb12d1eec148">SetErrorCallback</a> (<a class="el" href="EspCan_8h.html#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a077cc96263ea79483559055841d873d6" id="r_a077cc96263ea79483559055841d873d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a077cc96263ea79483559055841d873d6">ClearErrorCallback</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a077cc96263ea79483559055841d873d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" id="r_a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8">SetStateChangeCallback</a> (<a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" id="r_a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8">SetStateChangeCallback</a> (<a class="el" href="EspCan_8h.html#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86db68ed58d7c1791683151cb9a49260" id="r_a86db68ed58d7c1791683151cb9a49260"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86db68ed58d7c1791683151cb9a49260">ClearStateChangeCallback</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a86db68ed58d7c1791683151cb9a49260"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a774bf708978527bf71ecee26c5075c48" id="r_a774bf708978527bf71ecee26c5075c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774bf708978527bf71ecee26c5075c48">SetTxCompleteCallback</a> (<a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:a774bf708978527bf71ecee26c5075c48" id="r_a774bf708978527bf71ecee26c5075c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774bf708978527bf71ecee26c5075c48">SetTxCompleteCallback</a> (<a class="el" href="EspCan_8h.html#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">cb</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *<a class="el" href="classSoftChipSelectGuard.html">user_data</a>=<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a774bf708978527bf71ecee26c5075c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a335b99de3bbf289de667f843ba83d31d" id="r_a335b99de3bbf289de667f843ba83d31d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a335b99de3bbf289de667f843ba83d31d">ClearTxCompleteCallback</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="separator:a335b99de3bbf289de667f843ba83d31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,8 +194,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2dceac78571417483299cfc7360e4cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure hardware acceptance filter with advanced options.  <br /></td></tr>
 <tr class="separator:a2dceac78571417483299cfc7360e4cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e051944e810526770cc8533ec28e7cf" id="r_a5e051944e810526770cc8533ec28e7cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e051944e810526770cc8533ec28e7cf">InitiateBusRecovery</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:a5e051944e810526770cc8533ec28e7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate bus recovery from bus-off state.  <br /></td></tr>
+<tr class="memdesc:a5e051944e810526770cc8533ec28e7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiate bus recovery from bus-off state (same as <a class="el" href="#a646f3fdbfc08acfbd5f99cb8f49a1d2d" title="Start bus-off recovery; returns without waiting (see BaseCan).">RequestBusRecovery()</a>).  <br /></td></tr>
 <tr class="separator:a5e051944e810526770cc8533ec28e7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ba546b5555f23377490425cc619069f" id="r_a4ba546b5555f23377490425cc619069f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ba546b5555f23377490425cc619069f">GetBusStatus</a> (<a class="el" href="structhf__can__bus__status__t.html">hf_can_bus_status_t</a> &amp;status) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:a4ba546b5555f23377490425cc619069f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error state, TEC/REC, RX overruns, TX-queue-full and bus-off counters.  <br /></td></tr>
+<tr class="separator:a4ba546b5555f23377490425cc619069f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646f3fdbfc08acfbd5f99cb8f49a1d2d" id="r_a646f3fdbfc08acfbd5f99cb8f49a1d2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a646f3fdbfc08acfbd5f99cb8f49a1d2d">RequestBusRecovery</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a> <a class="el" href="classSoftChipSelectGuard.html">override</a></td></tr>
+<tr class="memdesc:a646f3fdbfc08acfbd5f99cb8f49a1d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start bus-off recovery; returns without waiting (see <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a>).  <br /></td></tr>
+<tr class="separator:a646f3fdbfc08acfbd5f99cb8f49a1d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae5b5879e2700aad137e516be9edf1b7" id="r_aae5b5879e2700aad137e516be9edf1b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae5b5879e2700aad137e516be9edf1b7">GetNodeInfo</a> (<a class="el" href="classSoftChipSelectGuard.html">twai_node_record_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">node_info</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aae5b5879e2700aad137e516be9edf1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get detailed node information including error states.  <br /></td></tr>
 <tr class="separator:aae5b5879e2700aad137e516be9edf1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,7 +229,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan" id="r_a1c8f9099b9cd860c3e8196768f51651b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a1c8f9099b9cd860c3e8196768f51651b">IsInitialized</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the class is initialized.  <br /></td></tr>
 <tr class="separator:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:a238e73afbaf6c65a09671b4577fa5bca inherit pub_methods_classBaseCan" id="r_a238e73afbaf6c65a09671b4577fa5bca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a238e73afbaf6c65a09671b4577fa5bca">TrySendMessage</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a238e73afbaf6c65a09671b4577fa5bca inherit pub_methods_classBaseCan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a message for transmission without blocking.  <br /></td></tr>
+<tr class="separator:a238e73afbaf6c65a09671b4577fa5bca inherit pub_methods_classBaseCan"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ae7668300fc28b21ec4ddc927a538e363">hf_can_fd_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CAN-FD receive callback with enhanced information.  <br /></td></tr>
 <tr class="separator:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5af808724133b48742ebdcd448e93515 inherit pub_methods_classBaseCan" id="r_a5af808724133b48742ebdcd448e93515"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a5af808724133b48742ebdcd448e93515">SupportsCanFD</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
@@ -241,27 +256,27 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ae27d8b7560c7ce88f8a927dd2df94836" id="r_ae27d8b7560c7ce88f8a927dd2df94836"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae27d8b7560c7ce88f8a927dd2df94836">ConvertToTwaiFrame</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">hf_message</a>, <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">twai_frame</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:ae27d8b7560c7ce88f8a927dd2df94836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HF CAN message to ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a> TWAI frame.  <br /></td></tr>
-<tr class="separator:ae27d8b7560c7ce88f8a927dd2df94836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b91c8ad9fd014b9eba4417e7abbbb1d" id="r_a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b91c8ad9fd014b9eba4417e7abbbb1d">ConvertFromTwaiFrame</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">twai_frame</a>, <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">hf_message</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a> TWAI frame to HF CAN message.  <br /></td></tr>
-<tr class="separator:a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3577fad0067aabf4ae9f2e8e338ef46" id="r_ad3577fad0067aabf4ae9f2e8e338ef46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3577fad0067aabf4ae9f2e8e338ef46">ConvertEspError</a> (<a class="el" href="classSoftChipSelectGuard.html">esp_err_t</a> <a class="el" href="classSoftChipSelectGuard.html">esp_err</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:ad3577fad0067aabf4ae9f2e8e338ef46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF error to HF error code.  <br /></td></tr>
 <tr class="separator:ad3577fad0067aabf4ae9f2e8e338ef46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac77cb4d9af633288fd60fad3fee474b" id="r_aac77cb4d9af633288fd60fad3fee474b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac77cb4d9af633288fd60fad3fee474b">UpdateStatistics</a> (<a class="el" href="EspTypes__CAN_8h.html#a894b6951598567b73bc3ef3ae747070e">hf_can_operation_type_t</a> <a class="el" href="classSoftChipSelectGuard.html">operation_type</a>, <a class="el" href="classSoftChipSelectGuard.html">bool</a> success) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aac77cb4d9af633288fd60fad3fee474b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update statistics after an operation.  <br /></td></tr>
 <tr class="separator:aac77cb4d9af633288fd60fad3fee474b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c0fe05680907d926d0bacdc6cebd811" id="r_a5c0fe05680907d926d0bacdc6cebd811"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c0fe05680907d926d0bacdc6cebd811">ProcessReceivedMessage</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">frame</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:a5c0fe05680907d926d0bacdc6cebd811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process received message through callback system.  <br /></td></tr>
-<tr class="separator:a5c0fe05680907d926d0bacdc6cebd811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5a7d054a224f491860d8b9b5a2f3b7f" id="r_ad5a7d054a224f491860d8b9b5a2f3b7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5a7d054a224f491860d8b9b5a2f3b7f">DeliverReceivedFromIsr</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:ad5a7d054a224f491860d8b9b5a2f3b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deliver a received frame to the callbacks and/or the RX ring (ISR context).  <br /></td></tr>
+<tr class="separator:ad5a7d054a224f491860d8b9b5a2f3b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774a9f92cba5fbdda20846c7b4c55104" id="r_a774a9f92cba5fbdda20846c7b4c55104"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774a9f92cba5fbdda20846c7b4c55104">AllocateQueues</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a774a9f92cba5fbdda20846c7b4c55104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate the RX ring, TX slot pool and semaphores.  <br /></td></tr>
+<tr class="separator:a774a9f92cba5fbdda20846c7b4c55104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9320ace48b798ffd044c2542a15bac20" id="r_a9320ace48b798ffd044c2542a15bac20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9320ace48b798ffd044c2542a15bac20">ReleaseQueues</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a9320ace48b798ffd044c2542a15bac20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free what <a class="el" href="#a774a9f92cba5fbdda20846c7b4c55104" title="Allocate the RX ring, TX slot pool and semaphores.">AllocateQueues()</a> allocated.  <br /></td></tr>
+<tr class="separator:a9320ace48b798ffd044c2542a15bac20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa89c1039a3e47c7e89a6c80ac36b9428" id="r_aa89c1039a3e47c7e89a6c80ac36b9428"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa89c1039a3e47c7e89a6c80ac36b9428">RefreshBusState</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:aa89c1039a3e47c7e89a6c80ac36b9428"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the controller error state into bus_state_ (task context).  <br /></td></tr>
+<tr class="separator:aa89c1039a3e47c7e89a6c80ac36b9428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fff536c8eae7799252dc4341bad7ba3" id="r_a8fff536c8eae7799252dc4341bad7ba3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fff536c8eae7799252dc4341bad7ba3">UpdateErrorStatistics</a> (<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> error_type) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a8fff536c8eae7799252dc4341bad7ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update error statistics from error event.  <br /></td></tr>
 <tr class="separator:a8fff536c8eae7799252dc4341bad7ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea03a2e1e72fe5e104c150e71f988083" id="r_aea03a2e1e72fe5e104c150e71f988083"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea03a2e1e72fe5e104c150e71f988083">DispatchReceiveCallbacks</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">frame</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
-<tr class="memdesc:aea03a2e1e72fe5e104c150e71f988083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatch message to all registered receive callbacks.  <br /></td></tr>
-<tr class="separator:aea03a2e1e72fe5e104c150e71f988083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67fa247f0a5f007b0cb20e405ed1ed0c" id="r_a67fa247f0a5f007b0cb20e405ed1ed0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67fa247f0a5f007b0cb20e405ed1ed0c">DispatchErrorCallbacks</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__esp__can__error__info__t.html">hf_esp_can_error_info_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">error_info</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a67fa247f0a5f007b0cb20e405ed1ed0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatch error event to all registered error callbacks.  <br /></td></tr>
 <tr class="separator:a67fa247f0a5f007b0cb20e405ed1ed0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -283,6 +298,15 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:aa6f1d7c5c5ad82b55ae5c83076ed0013" id="r_aa6f1d7c5c5ad82b55ae5c83076ed0013"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6f1d7c5c5ad82b55ae5c83076ed0013">InternalStateChangeCallback</a> (<a class="el" href="classSoftChipSelectGuard.html">twai_node_handle_t</a> handle, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_state_change_event_data_t</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *user_ctx) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:aa6f1d7c5c5ad82b55ae5c83076ed0013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal state change callback for bus recovery monitoring.  <br /></td></tr>
 <tr class="separator:aa6f1d7c5c5ad82b55ae5c83076ed0013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c273add6a6eeadca86279b3c3ac73c" id="r_a74c273add6a6eeadca86279b3c3ac73c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74c273add6a6eeadca86279b3c3ac73c">InternalTxDoneCallback</a> (<a class="el" href="classSoftChipSelectGuard.html">twai_node_handle_t</a> handle, <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_tx_done_event_data_t</a> *<a class="el" href="classSoftChipSelectGuard.html">event_data</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a> *user_ctx) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a74c273add6a6eeadca86279b3c3ac73c"><td class="mdescLeft">&#160;</td><td class="mdescRight">TX-done event (ISR): returns the frame's TX slot to the pool.  <br /></td></tr>
+<tr class="separator:a74c273add6a6eeadca86279b3c3ac73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae27d8b7560c7ce88f8a927dd2df94836" id="r_ae27d8b7560c7ce88f8a927dd2df94836"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae27d8b7560c7ce88f8a927dd2df94836">ConvertToTwaiFrame</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">hf_message</a>, <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">twai_frame</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:ae27d8b7560c7ce88f8a927dd2df94836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert HF CAN message to ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a> TWAI frame.  <br /></td></tr>
+<tr class="separator:ae27d8b7560c7ce88f8a927dd2df94836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b91c8ad9fd014b9eba4417e7abbbb1d" id="r_a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b91c8ad9fd014b9eba4417e7abbbb1d">ConvertFromTwaiFrame</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">twai_frame</a>, <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;<a class="el" href="classSoftChipSelectGuard.html">hf_message</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a> TWAI frame to HF CAN message.  <br /></td></tr>
+<tr class="separator:a1b91c8ad9fd014b9eba4417e7abbbb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -307,19 +331,21 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a836c7bd0fe611a5d232929a3c21b3995" id="r_a836c7bd0fe611a5d232929a3c21b3995"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">twai_node_handle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a836c7bd0fe611a5d232929a3c21b3995">twai_node_handle_</a></td></tr>
 <tr class="memdesc:a836c7bd0fe611a5d232929a3c21b3995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Native TWAI node handle.  <br /></td></tr>
 <tr class="separator:a836c7bd0fe611a5d232929a3c21b3995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a033c6357046c20596ec8c70d4315da07" id="r_a033c6357046c20596ec8c70d4315da07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a033c6357046c20596ec8c70d4315da07">receive_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
-<tr class="separator:a033c6357046c20596ec8c70d4315da07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b72b11c02ef567f4e37915ad452dbf2" id="r_a2b72b11c02ef567f4e37915ad452dbf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b72b11c02ef567f4e37915ad452dbf2">receive_ud_</a> = <a class="el" href="classSoftChipSelectGuard.html">nullptr</a></td></tr>
-<tr class="separator:a2b72b11c02ef567f4e37915ad452dbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad310be0cce73339268d83a1c3744a970" id="r_ad310be0cce73339268d83a1c3744a970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad310be0cce73339268d83a1c3744a970">error_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="memitem:a87dd91b2416e022bdc4624dbb941ce70" id="r_a87dd91b2416e022bdc4624dbb941ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="EspCan_8h.html#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87dd91b2416e022bdc4624dbb941ce70">receive_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="separator:a87dd91b2416e022bdc4624dbb941ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ff12809aafd7e042efee750681401d" id="r_a86ff12809aafd7e042efee750681401d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">void</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86ff12809aafd7e042efee750681401d">receive_ud_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="separator:a86ff12809aafd7e042efee750681401d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb02211aed7fce5ba6958df78b3f1cfb" id="r_abb02211aed7fce5ba6958df78b3f1cfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb02211aed7fce5ba6958df78b3f1cfb">base_receive_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="separator:abb02211aed7fce5ba6958df78b3f1cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad310be0cce73339268d83a1c3744a970" id="r_ad310be0cce73339268d83a1c3744a970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad310be0cce73339268d83a1c3744a970">error_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
 <tr class="separator:ad310be0cce73339268d83a1c3744a970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df3001f2b8ab4366f0fa38ca3ec47a8" id="r_a4df3001f2b8ab4366f0fa38ca3ec47a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4df3001f2b8ab4366f0fa38ca3ec47a8">error_ud_</a> = <a class="el" href="classSoftChipSelectGuard.html">nullptr</a></td></tr>
 <tr class="separator:a4df3001f2b8ab4366f0fa38ca3ec47a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0283765650c36540b4a61fee2360d196" id="r_a0283765650c36540b4a61fee2360d196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0283765650c36540b4a61fee2360d196">state_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="memitem:a0283765650c36540b4a61fee2360d196" id="r_a0283765650c36540b4a61fee2360d196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0283765650c36540b4a61fee2360d196">state_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
 <tr class="separator:a0283765650c36540b4a61fee2360d196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d0e83f62935d29002249184cdcb5d02" id="r_a5d0e83f62935d29002249184cdcb5d02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d0e83f62935d29002249184cdcb5d02">state_ud_</a> = <a class="el" href="classSoftChipSelectGuard.html">nullptr</a></td></tr>
 <tr class="separator:a5d0e83f62935d29002249184cdcb5d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b8504de99b6a2c5ef2b9a9311ff17fd" id="r_a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8504de99b6a2c5ef2b9a9311ff17fd">tx_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="memitem:a9b8504de99b6a2c5ef2b9a9311ff17fd" id="r_a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8504de99b6a2c5ef2b9a9311ff17fd">tx_cb_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
 <tr class="separator:a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab431b6af90e985b67e4cc2d8c5fbd0b4" id="r_ab431b6af90e985b67e4cc2d8c5fbd0b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">void</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab431b6af90e985b67e4cc2d8c5fbd0b4">tx_ud_</a> = <a class="el" href="classSoftChipSelectGuard.html">nullptr</a></td></tr>
 <tr class="separator:ab431b6af90e985b67e4cc2d8c5fbd0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -338,6 +364,33 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:acb5ae2ddfce72a30d1bd14b721f1faab" id="r_acb5ae2ddfce72a30d1bd14b721f1faab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb5ae2ddfce72a30d1bd14b721f1faab">filter_configured_</a></td></tr>
 <tr class="memdesc:acb5ae2ddfce72a30d1bd14b721f1faab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter configuration state.  <br /></td></tr>
 <tr class="separator:acb5ae2ddfce72a30d1bd14b721f1faab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177ccca83efc6d4791d2e1f2cb1af4e2" id="r_a177ccca83efc6d4791d2e1f2cb1af4e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHfSpscRing.html">HfSpscRing</a>&lt; <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a177ccca83efc6d4791d2e1f2cb1af4e2">rx_ring_</a></td></tr>
+<tr class="memdesc:a177ccca83efc6d4791d2e1f2cb1af4e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">RX frames (producer: RX ISR)  <br /></td></tr>
+<tr class="separator:a177ccca83efc6d4791d2e1f2cb1af4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fca31ae40e9154949aeaad1199146ea" id="r_a7fca31ae40e9154949aeaad1199146ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">SemaphoreHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fca31ae40e9154949aeaad1199146ea">rx_sem_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="memdesc:a7fca31ae40e9154949aeaad1199146ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given by the RX ISR after a push.  <br /></td></tr>
+<tr class="separator:a7fca31ae40e9154949aeaad1199146ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c5cf8bda694ec6e25ba350f7f0a34f" id="r_a22c5cf8bda694ec6e25ba350f7f0a34f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22c5cf8bda694ec6e25ba350f7f0a34f">rx_mutex_</a></td></tr>
+<tr class="memdesc:a22c5cf8bda694ec6e25ba350f7f0a34f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialises <a class="el" href="#ad33472b071ef5f1ab76efbdb58f3c855" title="Take the oldest frame from the RX ring.">ReceiveMessage()</a> callers.  <br /></td></tr>
+<tr class="separator:a22c5cf8bda694ec6e25ba350f7f0a34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8844b0b2742a85f439477b995565b3" id="r_a9a8844b0b2742a85f439477b995565b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt; <a class="el" href="structEspCan_1_1TxSlot.html">TxSlot</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a8844b0b2742a85f439477b995565b3">tx_slots_</a></td></tr>
+<tr class="memdesc:a9a8844b0b2742a85f439477b995565b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">slot pool (tx_queue_depth + 1)  <br /></td></tr>
+<tr class="separator:a9a8844b0b2742a85f439477b995565b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b00bc65dec9c6fc5b83f283edcc6c5b" id="r_a0b00bc65dec9c6fc5b83f283edcc6c5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b00bc65dec9c6fc5b83f283edcc6c5b">tx_slot_count_</a> {0}</td></tr>
+<tr class="memdesc:a0b00bc65dec9c6fc5b83f283edcc6c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of slots  <br /></td></tr>
+<tr class="separator:a0b00bc65dec9c6fc5b83f283edcc6c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d668a1e3cce18fe7ce9d22dcb6e8c05" id="r_a0d668a1e3cce18fe7ce9d22dcb6e8c05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">SemaphoreHandle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d668a1e3cce18fe7ce9d22dcb6e8c05">tx_slot_sem_</a> {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td></tr>
+<tr class="memdesc:a0d668a1e3cce18fe7ce9d22dcb6e8c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">counts free slots  <br /></td></tr>
+<tr class="separator:a0d668a1e3cce18fe7ce9d22dcb6e8c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad53c63db9a3cc3d570a8f23c74c09535" id="r_ad53c63db9a3cc3d570a8f23c74c09535"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad53c63db9a3cc3d570a8f23c74c09535">tx_queue_full_</a> {0}</td></tr>
+<tr class="memdesc:ad53c63db9a3cc3d570a8f23c74c09535"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends refused for lack of a slot  <br /></td></tr>
+<tr class="separator:ad53c63db9a3cc3d570a8f23c74c09535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205bd0c014e0b9383f39919d3829c114" id="r_a205bd0c014e0b9383f39919d3829c114"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205bd0c014e0b9383f39919d3829c114">bus_off_count_</a> {0}</td></tr>
+<tr class="memdesc:a205bd0c014e0b9383f39919d3829c114"><td class="mdescLeft">&#160;</td><td class="mdescRight">bus-off events  <br /></td></tr>
+<tr class="separator:a205bd0c014e0b9383f39919d3829c114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a181372b489fa3421e4618758f5378b53" id="r_a181372b489fa3421e4618758f5378b53"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt; <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a181372b489fa3421e4618758f5378b53">bus_state_</a> {0}</td></tr>
+<tr class="memdesc:a181372b489fa3421e4618758f5378b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">last hf_can_bus_state_t from the ISR  <br /></td></tr>
+<tr class="separator:a181372b489fa3421e4618758f5378b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -436,6 +489,33 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a774a9f92cba5fbdda20846c7b4c55104" name="a774a9f92cba5fbdda20846c7b4c55104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a774a9f92cba5fbdda20846c7b4c55104">&#9670;&#160;</a></span>AllocateQueues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::AllocateQueues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allocate the RX ring, TX slot pool and semaphores. </p>
+
+</div>
+</div>
 <a id="a8afcf00583c55f120bce0bdcd440cd29" name="a8afcf00583c55f120bce0bdcd440cd29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8afcf00583c55f120bce0bdcd440cd29">&#9670;&#160;</a></span>ClearAcceptanceFilter()</h2>
 
@@ -514,7 +594,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </table>
 </div><div class="memdoc">
 
-<p>Clear the receive callback (legacy support removed - use UnregisterCallback). </p>
+<p>Clear the <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> receive callback. </p>
 
 <p>Reimplemented from <a class="el" href="classBaseCan.html#a372729e0eeb758ba624aecfd07ef918c">BaseCan</a>.</p>
 
@@ -719,7 +799,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -758,7 +838,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -806,6 +886,40 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 
 </div>
 </div>
+<a id="ad5a7d054a224f491860d8b9b5a2f3b7f" name="ad5a7d054a224f491860d8b9b5a2f3b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5a7d054a224f491860d8b9b5a2f3b7f">&#9670;&#160;</a></span>DeliverReceivedFromIsr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspCan::DeliverReceivedFromIsr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deliver a received frame to the callbacks and/or the RX ring (ISR context). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Received frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a task waiting in <a class="el" href="#ad33472b071ef5f1ab76efbdb58f3c855" title="Take the oldest frame from the RX ring.">ReceiveMessage()</a> was woken </dd></dl>
+
+</div>
+</div>
 <a id="a67fa247f0a5f007b0cb20e405ed1ed0c" name="a67fa247f0a5f007b0cb20e405ed1ed0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67fa247f0a5f007b0cb20e405ed1ed0c">&#9670;&#160;</a></span>DispatchErrorCallbacks()</h2>
 
@@ -833,39 +947,6 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">error_info</td><td>Error information </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aea03a2e1e72fe5e104c150e71f988083" name="aea03a2e1e72fe5e104c150e71f988083"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea03a2e1e72fe5e104c150e71f988083">&#9670;&#160;</a></span>DispatchReceiveCallbacks()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspCan::DispatchReceiveCallbacks </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Dispatch message to all registered receive callbacks. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>Received TWAI frame </td></tr>
   </table>
   </dd>
 </dl>
@@ -935,6 +1016,42 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a4ba546b5555f23377490425cc619069f" name="a4ba546b5555f23377490425cc619069f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ba546b5555f23377490425cc619069f">&#9670;&#160;</a></span>GetBusStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::GetBusStatus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhf__can__bus__status__t.html">hf_can_bus_status_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Error state, TEC/REC, RX overruns, TX-queue-full and bus-off counters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>Filled on success </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS or CAN_ERR_NOT_INITIALIZED </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseCan.html#ad9c904ed6737b37968733db2a5222b70">BaseCan</a>.</p>
 
 </div>
 </div>
@@ -1134,7 +1251,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </table>
 </div><div class="memdoc">
 
-<p>Initiate bus recovery from bus-off state. </p>
+<p>Initiate bus recovery from bus-off state (same as <a class="el" href="#a646f3fdbfc08acfbd5f99cb8f49a1d2d" title="Start bus-off recovery; returns without waiting (see BaseCan).">RequestBusRecovery()</a>). </p>
 <dl class="section return"><dt>Returns</dt><dd>hf_can_err_t error code </dd></dl>
 
 </div>
@@ -1274,8 +1391,8 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 
 </div>
 </div>
-<a id="a5c0fe05680907d926d0bacdc6cebd811" name="a5c0fe05680907d926d0bacdc6cebd811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c0fe05680907d926d0bacdc6cebd811">&#9670;&#160;</a></span>ProcessReceivedMessage()</h2>
+<a id="a74c273add6a6eeadca86279b3c3ac73c" name="a74c273add6a6eeadca86279b3c3ac73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74c273add6a6eeadca86279b3c3ac73c">&#9670;&#160;</a></span>InternalTxDoneCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1284,26 +1401,29 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspCan::ProcessReceivedMessage </td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">bool</a> EspCan::InternalTxDoneCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_frame_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>frame</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">twai_node_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>handle</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">twai_tx_done_event_data_t</a> *</td>          <td class="paramname"><span class="paramname"><em>event_data</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">void</a> *</td>          <td class="paramname"><span class="paramname"><em>user_ctx</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Process received message through callback system. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame</td><td>Received TWAI frame </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>TX-done event (ISR): returns the frame's TX slot to the pool. </p>
 
 </div>
 </div>
@@ -1334,18 +1454,102 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </table>
 </div><div class="memdoc">
 
-<p>Receive a CAN message (legacy polling interface). </p>
+<p>Take the oldest frame from the RX ring. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>Reference to store received message </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>Timeout in milliseconds (0 = non-blocking) </td></tr>
+    <tr><td class="paramname">message</td><td>Filled with the frame (timestamp_us is the RX ISR time) </td></tr>
+    <tr><td class="paramname">timeout_ms</td><td>0 = return at once; UINT32_MAX waits forever </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>hf_can_err_t error code </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Callback-based reception is preferred for ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS, CAN_ERR_QUEUE_EMPTY (timeout 0, nothing queued) or CAN_ERR_MESSAGE_TIMEOUT. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Frames reach the ring when no receive callback is registered, or always with <a class="el" href="EspCan_8h.html#a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250" title="Every frame goes into the RX ring; a registered callback is also called.">hf_esp_can_rx_mode_t::QUEUE_ALWAYS</a>. Several tasks may call this; they are serialised. </dd></dl>
 
 <p>Implements <a class="el" href="classBaseCan.html#a300b5b097246fd7b9575050eb7eb239c">BaseCan</a>.</p>
+
+</div>
+</div>
+<a id="aa89c1039a3e47c7e89a6c80ac36b9428" name="aa89c1039a3e47c7e89a6c80ac36b9428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa89c1039a3e47c7e89a6c80ac36b9428">&#9670;&#160;</a></span>RefreshBusState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspCan::RefreshBusState </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read the controller error state into bus_state_ (task context). </p>
+
+</div>
+</div>
+<a id="a9320ace48b798ffd044c2542a15bac20" name="a9320ace48b798ffd044c2542a15bac20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9320ace48b798ffd044c2542a15bac20">&#9670;&#160;</a></span>ReleaseQueues()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a> EspCan::ReleaseQueues </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Free what <a class="el" href="#a774a9f92cba5fbdda20846c7b4c55104" title="Allocate the RX ring, TX slot pool and semaphores.">AllocateQueues()</a> allocated. </p>
+
+</div>
+</div>
+<a id="a646f3fdbfc08acfbd5f99cb8f49a1d2d" name="a646f3fdbfc08acfbd5f99cb8f49a1d2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646f3fdbfc08acfbd5f99cb8f49a1d2d">&#9670;&#160;</a></span>RequestBusRecovery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::RequestBusRecovery </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Start bus-off recovery; returns without waiting (see <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a>). </p>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS (also when not bus-off) or a converted driver error </dd></dl>
+
+<p>Reimplemented from <a class="el" href="classBaseCan.html#ac941cb1ca3c963883067d41fdfb9fb06">BaseCan</a>.</p>
 
 </div>
 </div>
@@ -1436,15 +1640,16 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </table>
 </div><div class="memdoc">
 
-<p>Send a CAN message. </p>
+<p>Queue a CAN message for transmission. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>CAN message to send </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>Timeout in milliseconds (0 = non-blocking) </td></tr>
+    <tr><td class="paramname">message</td><td>CAN message to send (classic only on TWAI: is_canfd must be false) </td></tr>
+    <tr><td class="paramname">timeout_ms</td><td>How long to wait for TX queue space. 0 = queue or fail at once (CAN_ERR_QUEUE_FULL). UINT32_MAX waits forever. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>hf_can_err_t error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS once the frame is queued (it is copied; the caller's message may be reused at once), CAN_ERR_QUEUE_FULL, CAN_ERR_BUS_OFF, CAN_ERR_MESSAGE_INVALID_DLC / _INVALID_ID / CAN_ERR_UNSUPPORTED_OPERATION (FD frame) or a converted driver error. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Never sleeps after a successful send. Not callable from an ISR. </dd></dl>
 
 <p>Implements <a class="el" href="classBaseCan.html#ac3ec4c6e8a5d45cbcbb4266d58f0faf8">BaseCan</a>.</p>
 
@@ -1556,7 +1761,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetErrorCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1596,14 +1801,14 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </table>
 </div><div class="memdoc">
 
-<p>Set callback for received messages (legacy support removed - use RegisterReceiveCallback). </p>
+<p>Set the <a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> receive callback. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">callback</td><td>Callback function to handle received messages </td></tr>
+    <tr><td class="paramname">callback</td><td>Called for every received frame, in ISR context (copy and return) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>hf_can_err_t error code </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS, or CAN_ERR_INVALID_PARAMETER for nullptr </dd></dl>
 
 <p>Implements <a class="el" href="classBaseCan.html#a9cef56fa208f09304bbd7129914a51a8">BaseCan</a>.</p>
 
@@ -1621,7 +1826,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetReceiveCallbackEx </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1650,7 +1855,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetStateChangeCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1679,7 +1884,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetTxCompleteCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1789,6 +1994,76 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 </div><div class="memdoc">
 
 <p>Advanced timing configuration. </p>
+
+</div>
+</div>
+<a id="abb02211aed7fce5ba6958df78b3f1cfb" name="abb02211aed7fce5ba6958df78b3f1cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb02211aed7fce5ba6958df78b3f1cfb">&#9670;&#160;</a></span>base_receive_cb_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a>&gt; EspCan::base_receive_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a205bd0c014e0b9383f39919d3829c114" name="a205bd0c014e0b9383f39919d3829c114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205bd0c014e0b9383f39919d3829c114">&#9670;&#160;</a></span>bus_off_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&gt; EspCan::bus_off_count_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bus-off events </p>
+
+</div>
+</div>
+<a id="a181372b489fa3421e4618758f5378b53" name="a181372b489fa3421e4618758f5378b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181372b489fa3421e4618758f5378b53">&#9670;&#160;</a></span>bus_state_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">uint8_t</a>&gt; EspCan::bus_state_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>last hf_can_bus_state_t from the ISR </p>
 
 </div>
 </div>
@@ -1922,7 +2197,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a> EspCan::error_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a> EspCan::error_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
         </tr>
       </table>
   </td>
@@ -2028,8 +2303,8 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 
 </div>
 </div>
-<a id="a033c6357046c20596ec8c70d4315da07" name="a033c6357046c20596ec8c70d4315da07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a033c6357046c20596ec8c70d4315da07">&#9670;&#160;</a></span>receive_cb_</h2>
+<a id="a87dd91b2416e022bdc4624dbb941ce70" name="a87dd91b2416e022bdc4624dbb941ce70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87dd91b2416e022bdc4624dbb941ce70">&#9670;&#160;</a></span>receive_cb_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2038,7 +2313,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a> EspCan::receive_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="EspCan_8h.html#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a>&gt; EspCan::receive_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
         </tr>
       </table>
   </td>
@@ -2050,8 +2325,8 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 
 </div>
 </div>
-<a id="a2b72b11c02ef567f4e37915ad452dbf2" name="a2b72b11c02ef567f4e37915ad452dbf2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b72b11c02ef567f4e37915ad452dbf2">&#9670;&#160;</a></span>receive_ud_</h2>
+<a id="a86ff12809aafd7e042efee750681401d" name="a86ff12809aafd7e042efee750681401d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86ff12809aafd7e042efee750681401d">&#9670;&#160;</a></span>receive_ud_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2060,7 +2335,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">void</a>* EspCan::receive_ud_ = <a class="el" href="classSoftChipSelectGuard.html">nullptr</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">void</a>*&gt; EspCan::receive_ud_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
         </tr>
       </table>
   </td>
@@ -2069,6 +2344,78 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22c5cf8bda694ec6e25ba350f7f0a34f" name="a22c5cf8bda694ec6e25ba350f7f0a34f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c5cf8bda694ec6e25ba350f7f0a34f">&#9670;&#160;</a></span>rx_mutex_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="PlatformMutex_8h.html#a3448b54e0a94193058b38d135c1254ef">PlatformMutex</a> EspCan::rx_mutex_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serialises <a class="el" href="#ad33472b071ef5f1ab76efbdb58f3c855" title="Take the oldest frame from the RX ring.">ReceiveMessage()</a> callers. </p>
+
+</div>
+</div>
+<a id="a177ccca83efc6d4791d2e1f2cb1af4e2" name="a177ccca83efc6d4791d2e1f2cb1af4e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a177ccca83efc6d4791d2e1f2cb1af4e2">&#9670;&#160;</a></span>rx_ring_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classHfSpscRing.html">HfSpscRing</a>&lt;<a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&gt; EspCan::rx_ring_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>RX frames (producer: RX ISR) </p>
+
+</div>
+</div>
+<a id="a7fca31ae40e9154949aeaad1199146ea" name="a7fca31ae40e9154949aeaad1199146ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fca31ae40e9154949aeaad1199146ea">&#9670;&#160;</a></span>rx_sem_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">SemaphoreHandle_t</a> EspCan::rx_sem_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given by the RX ISR after a push. </p>
 
 </div>
 </div>
@@ -2082,7 +2429,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a> EspCan::state_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a> EspCan::state_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
         </tr>
       </table>
   </td>
@@ -2198,7 +2545,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a> EspCan::tx_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a> EspCan::tx_cb_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
         </tr>
       </table>
   </td>
@@ -2207,6 +2554,102 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad53c63db9a3cc3d570a8f23c74c09535" name="ad53c63db9a3cc3d570a8f23c74c09535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad53c63db9a3cc3d570a8f23c74c09535">&#9670;&#160;</a></span>tx_queue_full_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::atomic</a>&lt;<a class="el" href="classSoftChipSelectGuard.html">uint32_t</a>&gt; EspCan::tx_queue_full_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sends refused for lack of a slot </p>
+
+</div>
+</div>
+<a id="a0b00bc65dec9c6fc5b83f283edcc6c5b" name="a0b00bc65dec9c6fc5b83f283edcc6c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b00bc65dec9c6fc5b83f283edcc6c5b">&#9670;&#160;</a></span>tx_slot_count_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">uint32_t</a> EspCan::tx_slot_count_ {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>number of slots </p>
+
+</div>
+</div>
+<a id="a0d668a1e3cce18fe7ce9d22dcb6e8c05" name="a0d668a1e3cce18fe7ce9d22dcb6e8c05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d668a1e3cce18fe7ce9d22dcb6e8c05">&#9670;&#160;</a></span>tx_slot_sem_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">SemaphoreHandle_t</a> EspCan::tx_slot_sem_ {<a class="el" href="classSoftChipSelectGuard.html">nullptr</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>counts free slots </p>
+
+</div>
+</div>
+<a id="a9a8844b0b2742a85f439477b995565b3" name="a9a8844b0b2742a85f439477b995565b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8844b0b2742a85f439477b995565b3">&#9670;&#160;</a></span>tx_slots_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::unique_ptr</a>&lt;<a class="el" href="structEspCan_1_1TxSlot.html">TxSlot</a>[]&gt; EspCan::tx_slots_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>slot pool (tx_queue_depth + 1) </p>
 
 </div>
 </div>

@@ -95,7 +95,8 @@ $(function(){initNavTree('EspCan_8h.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">EspCan.h File Reference<div class="ingroups"><a class="el" href="group__can.html">CAN Module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -105,7 +106,10 @@ $(function(){initNavTree('EspCan_8h.html',''); initResizable(); });
 <div class="textblock"><code>#include &quot;<a class="el" href="McuSelect_8h_source.html">McuSelect.h</a>&quot;</code><br />
 <code>#include &quot;esp_twai.h&quot;</code><br />
 <code>#include &quot;esp_twai_onchip.h&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/semphr.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="BaseCan_8h_source.html">BaseCan.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="HfSpscRing_8h_source.html">HfSpscRing.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">PlatformMutex.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="EspTypes__CAN_8h_source.html">utils/EspTypes_CAN.h</a>&quot;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
@@ -146,18 +150,28 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEspCan.html">EspCan</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 CAN (TWAI) implementation using ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a>+ node-based API.  <a href="classEspCan.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEspCan_1_1TxSlot.html">EspCan::TxSlot</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a837c184d4539ef6fd1a61acdb66f7149" id="r_a837c184d4539ef6fd1a61acdb66f7149"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a></td></tr>
-<tr class="memdesc:a837c184d4539ef6fd1a61acdb66f7149"><td class="mdescLeft">&#160;</td><td class="mdescRight">User callback function types with user data support.  <br /></td></tr>
-<tr class="separator:a837c184d4539ef6fd1a61acdb66f7149"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a076a16ddd28094881c20009e0617cdaa" id="r_a076a16ddd28094881c20009e0617cdaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a></td></tr>
-<tr class="separator:a076a16ddd28094881c20009e0617cdaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a825b77c282f2132954ab50789a51a98b" id="r_a825b77c282f2132954ab50789a51a98b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a></td></tr>
-<tr class="separator:a825b77c282f2132954ab50789a51a98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb3672dcbe405ded46e6f974338ed765" id="r_aeb3672dcbe405ded46e6f974338ed765"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a></td></tr>
-<tr class="separator:aeb3672dcbe405ded46e6f974338ed765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195ce504277e201f3d30d604a471509a" id="r_a195ce504277e201f3d30d604a471509a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a> = <a class="el" href="classSoftChipSelectGuard.html">void</a> (*)(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <a class="el" href="classSoftChipSelectGuard.html">void</a>* <a class="el" href="classSoftChipSelectGuard.html">user_data</a>)</td></tr>
+<tr class="memdesc:a195ce504277e201f3d30d604a471509a"><td class="mdescLeft">&#160;</td><td class="mdescRight">User callback function types with user data support.  <br /></td></tr>
+<tr class="separator:a195ce504277e201f3d30d604a471509a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29828d29f6ff23ee2df36672155149ce" id="r_a29828d29f6ff23ee2df36672155149ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a></td></tr>
+<tr class="separator:a29828d29f6ff23ee2df36672155149ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78cf02012b3791ed9988150617dae647" id="r_a78cf02012b3791ed9988150617dae647"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a></td></tr>
+<tr class="separator:a78cf02012b3791ed9988150617dae647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d56ff422e00524b69e1de98dbf2b821" id="r_a2d56ff422e00524b69e1de98dbf2b821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a> = <a class="el" href="classSoftChipSelectGuard.html">void</a> (*)(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__esp__can__tx__info__t.html">hf_esp_can_tx_info_t</a>&amp; <a class="el" href="classSoftChipSelectGuard.html">tx_info</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a>* <a class="el" href="classSoftChipSelectGuard.html">user_data</a>)</td></tr>
+<tr class="separator:a2d56ff422e00524b69e1de98dbf2b821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a72955efc4c9a41873b241e885c89c775" id="r_a72955efc4c9a41873b241e885c89c775"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72955efc4c9a41873b241e885c89c775">hf_esp_can_rx_mode_t</a> : uint8_t { <a class="el" href="#a72955efc4c9a41873b241e885c89c775ae1f2d5134ed2543d38a0de9751cf75d9">AUTO</a> = 0
+, <a class="el" href="#a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250">QUEUE_ALWAYS</a> = 1
+ }</td></tr>
+<tr class="memdesc:a72955efc4c9a41873b241e885c89c775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API.">EspCan</a> delivers received frames.  <a href="#a72955efc4c9a41873b241e885c89c775">More...</a><br /></td></tr>
+<tr class="separator:a72955efc4c9a41873b241e885c89c775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ESP32 CAN (TWAI) implementation for the HardFOC system - ESP-IDF <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">v5.5</a> Compatible. </p>
@@ -182,75 +196,101 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
 <dd>
 Higher-level applications should instantiate multiple <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API.">EspCan</a> objects for multi-controller boards </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a076a16ddd28094881c20009e0617cdaa" name="a076a16ddd28094881c20009e0617cdaa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a076a16ddd28094881c20009e0617cdaa">&#9670;&#160;</a></span>hf_esp_can_error_callback_t</h2>
+<a id="a29828d29f6ff23ee2df36672155149ce" name="a29828d29f6ff23ee2df36672155149ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29828d29f6ff23ee2df36672155149ce">&#9670;&#160;</a></span>hf_esp_can_error_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a29828d29f6ff23ee2df36672155149ce">hf_esp_can_error_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__esp__can__error__info__t.html">hf_esp_can_error_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">error_info</a>, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
+<b>Initial value:</b><div class="fragment"><div class="line"> <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__esp__can__error__info__t.html">hf_esp_can_error_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">error_info</a>,</div>
+<div class="line">                                             <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
 <div class="ttc" id="aclassSoftChipSelectGuard_html"><div class="ttname"><a href="classSoftChipSelectGuard.html">SoftChipSelectGuard</a></div><div class="ttdoc">RAII soft-CS: runs assert_fn on construction and deassert_fn on destruction (including early return /...</div><div class="ttdef"><b>Definition</b> SoftChipSelectGuard.h:32</div></div>
-<div class="ttc" id="astructhf__esp__can__error__info__t_html"><div class="ttname"><a href="structhf__esp__can__error__info__t.html">hf_esp_can_error_info_t</a></div><div class="ttdoc">Comprehensive error information structure for error callbacks.</div><div class="ttdef"><b>Definition</b> EspCan.h:142</div></div>
+<div class="ttc" id="astructhf__esp__can__error__info__t_html"><div class="ttname"><a href="structhf__esp__can__error__info__t.html">hf_esp_can_error_info_t</a></div><div class="ttdoc">Comprehensive error information structure for error callbacks.</div><div class="ttdef"><b>Definition</b> EspCan.h:160</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a837c184d4539ef6fd1a61acdb66f7149" name="a837c184d4539ef6fd1a61acdb66f7149"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a837c184d4539ef6fd1a61acdb66f7149">&#9670;&#160;</a></span>hf_esp_can_receive_callback_t</h2>
+<a id="a195ce504277e201f3d30d604a471509a" name="a195ce504277e201f3d30d604a471509a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195ce504277e201f3d30d604a471509a">&#9670;&#160;</a></span>hf_esp_can_receive_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a195ce504277e201f3d30d604a471509a">hf_esp_can_receive_callback_t</a> = <a class="el" href="classSoftChipSelectGuard.html">void</a> (*)(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <a class="el" href="classSoftChipSelectGuard.html">void</a>* <a class="el" href="classSoftChipSelectGuard.html">user_data</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
-<div class="ttc" id="astructhf__can__message__t_html"><div class="ttname"><a href="structhf__can__message__t.html">hf_can_message_t</a></div><div class="ttdoc">Platform-agnostic CAN message structure.</div><div class="ttdef"><b>Definition</b> BaseCan.h:165</div></div>
-</div><!-- fragment -->
+
 <p>User callback function types with user data support. </p>
 
 </div>
 </div>
-<a id="a825b77c282f2132954ab50789a51a98b" name="a825b77c282f2132954ab50789a51a98b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a825b77c282f2132954ab50789a51a98b">&#9670;&#160;</a></span>hf_esp_can_state_callback_t</h2>
+<a id="a78cf02012b3791ed9988150617dae647" name="a78cf02012b3791ed9988150617dae647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78cf02012b3791ed9988150617dae647">&#9670;&#160;</a></span>hf_esp_can_state_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a78cf02012b3791ed9988150617dae647">hf_esp_can_state_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__esp__can__state__info__t.html">hf_esp_can_state_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">state_info</a>, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
-<div class="ttc" id="astructhf__esp__can__state__info__t_html"><div class="ttname"><a href="structhf__esp__can__state__info__t.html">hf_esp_can_state_info_t</a></div><div class="ttdoc">Bus state information for state change callbacks.</div><div class="ttdef"><b>Definition</b> EspCan.h:155</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line"> <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__esp__can__state__info__t.html">hf_esp_can_state_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">state_info</a>,</div>
+<div class="line">                                             <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
+<div class="ttc" id="astructhf__esp__can__state__info__t_html"><div class="ttname"><a href="structhf__esp__can__state__info__t.html">hf_esp_can_state_info_t</a></div><div class="ttdoc">Bus state information for state change callbacks.</div><div class="ttdef"><b>Definition</b> EspCan.h:173</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aeb3672dcbe405ded46e6f974338ed765" name="aeb3672dcbe405ded46e6f974338ed765"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb3672dcbe405ded46e6f974338ed765">&#9670;&#160;</a></span>hf_esp_can_tx_callback_t</h2>
+<a id="a2d56ff422e00524b69e1de98dbf2b821" name="a2d56ff422e00524b69e1de98dbf2b821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d56ff422e00524b69e1de98dbf2b821">&#9670;&#160;</a></span>hf_esp_can_tx_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#a2d56ff422e00524b69e1de98dbf2b821">hf_esp_can_tx_callback_t</a> = <a class="el" href="classSoftChipSelectGuard.html">void</a> (*)(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__esp__can__tx__info__t.html">hf_esp_can_tx_info_t</a>&amp; <a class="el" href="classSoftChipSelectGuard.html">tx_info</a>, <a class="el" href="classSoftChipSelectGuard.html">void</a>* <a class="el" href="classSoftChipSelectGuard.html">user_data</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__esp__can__tx__info__t.html">hf_esp_can_tx_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">tx_info</a>, <span class="keywordtype">void</span>* <a class="code hl_class" href="classSoftChipSelectGuard.html">user_data</a>)</div>
-<div class="ttc" id="astructhf__esp__can__tx__info__t_html"><div class="ttname"><a href="structhf__esp__can__tx__info__t.html">hf_esp_can_tx_info_t</a></div><div class="ttdoc">Transmission completion information.</div><div class="ttdef"><b>Definition</b> EspCan.h:164</div></div>
-</div><!-- fragment -->
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a72955efc4c9a41873b241e885c89c775" name="a72955efc4c9a41873b241e885c89c775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72955efc4c9a41873b241e885c89c775">&#9670;&#160;</a></span>hf_esp_can_rx_mode_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#a72955efc4c9a41873b241e885c89c775">hf_esp_can_rx_mode_t</a> : <a class="el" href="classSoftChipSelectGuard.html">uint8_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Where <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API.">EspCan</a> delivers received frames. </p>
+<p>Received frames are taken from the controller in the TWAI RX interrupt. Receive callbacks run in that ISR context. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a72955efc4c9a41873b241e885c89c775ae1f2d5134ed2543d38a0de9751cf75d9" name="a72955efc4c9a41873b241e885c89c775ae1f2d5134ed2543d38a0de9751cf75d9"></a>AUTO&#160;</td><td class="fielddoc"><p>A registered receive callback gets each frame; with no callback the frame goes into the RX ring for ReceiveMessage(). Default. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250" name="a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250"></a>QUEUE_ALWAYS&#160;</td><td class="fielddoc"><p>Every frame goes into the RX ring; a registered callback is also called. </p>
+</td></tr>
+</table>
+
 </div>
 </div>
 </div><!-- contents -->

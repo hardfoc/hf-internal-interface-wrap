@@ -60,10 +60,11 @@ var searchData=
   ['channel_5f2_57',['CHANNEL_2',['../StmTypes_8h.html#a22c12abf8ba8c94a0c608d43e033f87aa226bc305b0b2edd3c8a6167bbca91db4',1,'StmTypes.h']]],
   ['channel_5f3_58',['CHANNEL_3',['../StmTypes_8h.html#a22c12abf8ba8c94a0c608d43e033f87aa44de960a31b2e939b49ff2cdfb22d6f9',1,'StmTypes.h']]],
   ['channel_5f4_59',['CHANNEL_4',['../StmTypes_8h.html#a22c12abf8ba8c94a0c608d43e033f87aa77d5dde199df8348ed861ec0e9509cad',1,'StmTypes.h']]],
-  ['coeff_5f16_60',['COEFF_16',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa3062102956ab022dd39fa5e45a455018',1,'EspTypes_ADC.h']]],
-  ['coeff_5f2_61',['COEFF_2',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa1e2f6cc26ab8972d8a9399d2483b6450',1,'EspTypes_ADC.h']]],
-  ['coeff_5f4_62',['COEFF_4',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa3594b97872fded0cc8d863e03294e3ce',1,'EspTypes_ADC.h']]],
-  ['coeff_5f64_63',['COEFF_64',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa8f356c2017aa7fbe3e895c68db089a21',1,'EspTypes_ADC.h']]],
-  ['coeff_5f8_64',['COEFF_8',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aafbaca39bdb7f1449da8f947a78f8d547',1,'EspTypes_ADC.h']]],
-  ['continuous_65',['CONTINUOUS',['../EspTypes__ADC_8h.html#a3c300a1a8aadf67bdad120935898f044ab1fa9dd3af034b3ef4291579aa673c07',1,'EspTypes_ADC.h']]]
+  ['classic_5ftoo_5flong_60',['CLASSIC_TOO_LONG',['../BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6',1,'BaseCan.h']]],
+  ['coeff_5f16_61',['COEFF_16',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa3062102956ab022dd39fa5e45a455018',1,'EspTypes_ADC.h']]],
+  ['coeff_5f2_62',['COEFF_2',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa1e2f6cc26ab8972d8a9399d2483b6450',1,'EspTypes_ADC.h']]],
+  ['coeff_5f4_63',['COEFF_4',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa3594b97872fded0cc8d863e03294e3ce',1,'EspTypes_ADC.h']]],
+  ['coeff_5f64_64',['COEFF_64',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aa8f356c2017aa7fbe3e895c68db089a21',1,'EspTypes_ADC.h']]],
+  ['coeff_5f8_65',['COEFF_8',['../EspTypes__ADC_8h.html#a019a3762dcc02c63586b48f24b77436aafbaca39bdb7f1449da8f947a78f8d547',1,'EspTypes_ADC.h']]],
+  ['continuous_66',['CONTINUOUS',['../EspTypes__ADC_8h.html#a3c300a1a8aadf67bdad120935898f044ab1fa9dd3af034b3ef4291579aa673c07',1,'EspTypes_ADC.h']]]
 ];

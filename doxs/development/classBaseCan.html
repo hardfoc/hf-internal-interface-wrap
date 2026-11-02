@@ -169,7 +169,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a523000694cee960aa8eee19bbd74c408" id="r_a523000694cee960aa8eee19bbd74c408"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a523000694cee960aa8eee19bbd74c408">ClearAcceptanceFilter</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a523000694cee960aa8eee19bbd74c408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all acceptance filters (accept all messages).  <br /></td></tr>
 <tr class="separator:a523000694cee960aa8eee19bbd74c408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44753662096232f45e49ad752e8f68e4" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memitem:a238e73afbaf6c65a09671b4577fa5bca" id="r_a238e73afbaf6c65a09671b4577fa5bca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a238e73afbaf6c65a09671b4577fa5bca">TrySendMessage</a> (<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a238e73afbaf6c65a09671b4577fa5bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a message for transmission without blocking.  <br /></td></tr>
+<tr class="separator:a238e73afbaf6c65a09671b4577fa5bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9c904ed6737b37968733db2a5222b70" id="r_ad9c904ed6737b37968733db2a5222b70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9c904ed6737b37968733db2a5222b70">GetBusStatus</a> (<a class="el" href="structhf__can__bus__status__t.html">hf_can_bus_status_t</a> &amp;status) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:ad9c904ed6737b37968733db2a5222b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the controller error state, TEC/REC and queue counters.  <br /></td></tr>
+<tr class="separator:ad9c904ed6737b37968733db2a5222b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac941cb1ca3c963883067d41fdfb9fb06" id="r_ac941cb1ca3c963883067d41fdfb9fb06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac941cb1ca3c963883067d41fdfb9fb06">RequestBusRecovery</a> () <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:ac941cb1ca3c963883067d41fdfb9fb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Request recovery from bus-off.  <br /></td></tr>
+<tr class="separator:ac941cb1ca3c963883067d41fdfb9fb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44753662096232f45e49ad752e8f68e4" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ae7668300fc28b21ec4ddc927a538e363">hf_can_fd_receive_callback_t</a> <a class="el" href="classSoftChipSelectGuard.html">callback</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a44753662096232f45e49ad752e8f68e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CAN-FD receive callback with enhanced information.  <br /></td></tr>
 <tr class="separator:a44753662096232f45e49ad752e8f68e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5af808724133b48742ebdcd448e93515" id="r_a5af808724133b48742ebdcd448e93515"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5af808724133b48742ebdcd448e93515">SupportsCanFD</a> () <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
@@ -558,6 +567,42 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ad9c904ed6737b37968733db2a5222b70" name="ad9c904ed6737b37968733db2a5222b70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9c904ed6737b37968733db2a5222b70">&#9670;&#160;</a></span>GetBusStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::GetBusStatus </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structhf__can__bus__status__t.html">hf_can_bus_status_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read the controller error state, TEC/REC and queue counters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>Filled on success </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS, or CAN_ERR_UNSUPPORTED_OPERATION (default implementation) </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classEspCan.html#a4ba546b5555f23377490425cc619069f">EspCan</a>.</p>
+
+</div>
+</div>
 <a id="a0c05b53922dafb9c544f1e1fa6977397" name="a0c05b53922dafb9c544f1e1fa6977397"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c05b53922dafb9c544f1e1fa6977397">&#9670;&#160;</a></span>GetDiagnostics()</h2>
 
@@ -860,6 +905,36 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of messages actually received </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Default implementation receives messages one by one </dd></dl>
+
+</div>
+</div>
+<a id="ac941cb1ca3c963883067d41fdfb9fb06" name="ac941cb1ca3c963883067d41fdfb9fb06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac941cb1ca3c963883067d41fdfb9fb06">&#9670;&#160;</a></span>RequestBusRecovery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::RequestBusRecovery </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Request recovery from bus-off. </p>
+<p>Starts the ISO 11898-1 recovery sequence (128 x 11 recessive bits) and returns without waiting for it to finish; <a class="el" href="#ad9c904ed6737b37968733db2a5222b70" title="Read the controller error state, TEC/REC and queue counters.">GetBusStatus()</a> shows ERROR_ACTIVE once the controller is back. Returns CAN_SUCCESS when the controller is not bus-off (nothing to do). </p><dl class="section return"><dt>Returns</dt><dd>CAN_SUCCESS, or CAN_ERR_UNSUPPORTED_OPERATION (default implementation) </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classEspCan.html#a646f3fdbfc08acfbd5f99cb8f49a1d2d">EspCan</a>.</p>
 
 </div>
 </div>
@@ -1183,7 +1258,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">virtual</a> <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::SetReceiveCallbackFD </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="BaseCan_8h.html#ae7668300fc28b21ec4ddc927a538e363">hf_can_fd_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1274,6 +1349,34 @@ Protected Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>Default implementation returns false </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classStmCan.html#a6c7d84e038dd0aa4bea3db1dc601c60e">StmCan</a>.</p>
+
+</div>
+</div>
+<a id="a238e73afbaf6c65a09671b4577fa5bca" name="a238e73afbaf6c65a09671b4577fa5bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a238e73afbaf6c65a09671b4577fa5bca">&#9670;&#160;</a></span>TrySendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::TrySendMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queue a message for transmission without blocking. </p>
+<p>Same as SendMessage(message, 0): the message is queued or the call fails at once. Drivers return CAN_ERR_QUEUE_FULL when there is no room and CAN_ERR_BUS_OFF when the controller is bus-off. </p><dl class="section return"><dt>Returns</dt><dd>hf_can_err_t error code </dd></dl>
 
 </div>
 </div>

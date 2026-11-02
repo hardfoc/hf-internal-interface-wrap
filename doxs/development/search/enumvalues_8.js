@@ -34,5 +34,6 @@ var searchData=
   ['i2c_5ferr_5fvoltage_5fout_5fof_5frange_31',['I2C_ERR_VOLTAGE_OUT_OF_RANGE',['../BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9a090ddc4d5a51c29e66d775948423608e',1,'BaseI2c.h']]],
   ['i2c_5ferr_5fwrite_5ffailure_32',['I2C_ERR_WRITE_FAILURE',['../BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9a7a30ec3abe4fe32d7a8fe827ebe55dcd',1,'BaseI2c.h']]],
   ['i2c_5fsuccess_33',['I2C_SUCCESS',['../BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553',1,'BaseI2c.h']]],
-  ['inverted_34',['Inverted',['../BasePio_8h.html#a42b5cf84176abe576608c1b4a51d7c3dacf4c2a4bf7c328c4e51f902350475343',1,'BasePio.h']]]
+  ['id_5frange_34',['ID_RANGE',['../BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5',1,'BaseCan.h']]],
+  ['inverted_35',['Inverted',['../BasePio_8h.html#a42b5cf84176abe576608c1b4a51d7c3dacf4c2a4bf7c328c4e51f902350475343',1,'BasePio.h']]]
 ];

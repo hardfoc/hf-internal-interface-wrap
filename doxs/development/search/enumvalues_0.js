@@ -70,5 +70,6 @@ var searchData=
   ['atten_5fdb_5f0_67',['ATTEN_DB_0',['../EspTypes__ADC_8h.html#a98bc196c1369437761fa2459f53ff847ad0523777fc37d68e6c12548973cee90e',1,'EspTypes_ADC.h']]],
   ['atten_5fdb_5f12_68',['ATTEN_DB_12',['../EspTypes__ADC_8h.html#a98bc196c1369437761fa2459f53ff847a2f3a36ebefed1b370fc9cd8b8f9b087c',1,'EspTypes_ADC.h']]],
   ['atten_5fdb_5f2_5f5_69',['ATTEN_DB_2_5',['../EspTypes__ADC_8h.html#a98bc196c1369437761fa2459f53ff847abf225f2df45d1a086dbee5cb2caf58a8',1,'EspTypes_ADC.h']]],
-  ['atten_5fdb_5f6_70',['ATTEN_DB_6',['../EspTypes__ADC_8h.html#a98bc196c1369437761fa2459f53ff847ace8b59c9926d38ad185ab7f8165abf6b',1,'EspTypes_ADC.h']]]
+  ['atten_5fdb_5f6_70',['ATTEN_DB_6',['../EspTypes__ADC_8h.html#a98bc196c1369437761fa2459f53ff847ace8b59c9926d38ad185ab7f8165abf6b',1,'EspTypes_ADC.h']]],
+  ['auto_71',['AUTO',['../EspCan_8h.html#a72955efc4c9a41873b241e885c89c775ae1f2d5134ed2543d38a0de9751cf75d9',1,'EspCan.h']]]
 ];
