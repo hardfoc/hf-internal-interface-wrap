@@ -1,13 +1,4 @@
----
-layout: default
-title: "🧪 Test Documentation"
-description: "Comprehensive test documentation and validation for ESP32 implementations"
-nav_order: 1
-parent: "🚀 ESP32 Examples"
-permalink: /examples/esp32/docs/
----
-
-# 🧪 ESP32 Test Documentation
+# ESP32 Test Documentation
 
 ![ESP32 Tests](https://img.shields.io/badge/ESP32-Test%20Documentation-blue?style=for-the-badge&logo=espressif)
 ![Test Coverage](https://img.shields.io/badge/Coverage-Comprehensive-green?style=for-the-badge&logo=testing-library)
@@ -19,24 +10,24 @@ permalink: /examples/esp32/docs/
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🔧 **Test Categories**](#-test-categories)
-- [📋 **Test Documentation**](#-test-documentation)
-- [🚀 **Quick Start**](#-quick-start)
-- [🔗 **Related Documentation**](#-related-documentation)
+- [🎯 **Overview**](#overview)
+- [🔧 **Test Categories**](#test-categories)
+- [📋 **Test Documentation**](#test-documentation)
+- [🚀 **Quick Start**](#quick-start)
+- [🔗 **Related Documentation**](#related-documentation)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 This directory contains comprehensive test documentation for all HardFOC ESP32 interface wrapper
 implementations.
 Each test suite validates hardware functionality, error handling,
 and performance characteristics of the respective peripheral interfaces.
 
-### 🏆 **Key Features**
+### **Key Features**
 
 - **🔧 Hardware Validation** - Real hardware testing with proper connections
 - **📊 Performance Testing** - Throughput, latency, and reliability metrics
@@ -46,7 +37,7 @@ and performance characteristics of the respective peripheral interfaces.
 
 ---
 
-## 🔧 **Test Categories**
+## **Test Categories**
 
 ### **Core Peripherals**
 - **[GPIO Testing](README_GPIO_TEST.md)** - Digital I/O, interrupts, pull resistors
@@ -74,7 +65,7 @@ and performance characteristics of the respective peripheral interfaces.
 
 ---
 
-## 📋 **Test Documentation**
+## **Test Documentation**
 
 | **Test Suite** | **Hardware** | **Key Features** | **Status** |
 
@@ -124,7 +115,7 @@ and performance characteristics of the respective peripheral interfaces.
 
 ---
 
-## 🚀 **Quick Start**
+## **Quick Start**
 
 ### **Running Tests**
 
@@ -171,18 +162,18 @@ Most tests require minimal hardware:
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 ### **API Documentation**
-- [📋 Base Interfaces](../../../docs/api/README.md) - Abstract base classes
-- [🔧 ESP32 Implementations](../../../docs/esp_api/README.md) - Hardware-specific implementations
-- [🛠️ Utility Classes](../../../docs/utils/README.md) - Helper classes and utilities
+- [📋 Base Interfaces](../../../docs/api-guide.md) - Abstract base classes
+- [🔧 ESP32 Implementations](../../../docs/esp32.md) - Hardware-specific implementations
+- [🛠️ Utility Classes](../../../docs/utilities.md) - Helper classes and utilities
 
 ### **Specific Interface Documentation**
-- [BaseCan API](../../../docs/api/BaseCan.md) - CAN bus interface
-- [EspCan Implementation](../../../docs/esp_api/EspCan.md) - ESP32-C6 CAN implementation
-- [BaseGpio API](../../../docs/api/BaseGpio.md) - GPIO interface
-- [BaseAdc API](../../../docs/api/BaseAdc.md) - ADC interface
+- [BaseCan API](../../../inc/base/BaseCan.h) - CAN bus interface
+- [EspCan Implementation](../../../inc/mcu/esp32/EspCan.h) - ESP32-C6 CAN implementation
+- [BaseGpio API](../../../inc/base/BaseGpio.h) - GPIO interface
+- [BaseAdc API](../../../inc/base/BaseAdc.h) - ADC interface
 
 ### **Project Documentation**
 - [Main Project README](../../../README.md) - Project overview

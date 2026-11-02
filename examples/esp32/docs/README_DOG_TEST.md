@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 DOG Test"
-description: "DOG Test Suite - Display on Glass testing and graphics validation"
-nav_order: 14
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/dog_test/
----
-
 # DigitalOutputGuard (DOG) Comprehensive Test Suite
 
 ## Overview
@@ -267,8 +258,8 @@ monitor with increased verbosity.
 
 ## Related Documentation
 
-- [DigitalOutputGuard API Documentation](../../../docs/utils/DigitalOutputGuard.md)
-- [BaseGpio API Documentation](../../../docs/api/BaseGpio.md)
-- [EspGpio API Documentation](../../../docs/esp_api/EspGpio.md)
+- [DigitalOutputGuard API Documentation](../../../inc/utils/DigitalOutputGuard.h)
+- [BaseGpio API Documentation](../../../inc/base/BaseGpio.h)
+- [EspGpio API Documentation](../../../inc/mcu/esp32/EspGpio.h)
 - [Test Framework Documentation](../main/TestFramework.h)
-- [Hardware Types Documentation](../../../docs/api/HardwareTypes.md)
+- [Hardware Types Documentation](../../../inc/base/HardwareTypes.h)

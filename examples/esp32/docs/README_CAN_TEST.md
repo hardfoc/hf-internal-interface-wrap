@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 CAN Test"
-description: "CAN Test Suite - Controller area network and SN65 transceiver testing"
-nav_order: 8
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/can_test/
----
-
 # CAN Comprehensive Test Documentation
 
 ## Overview
@@ -201,8 +192,8 @@ The test suite uses comprehensive error reporting:
 
 ## Related Documentation
 
-- [EspCan API Reference](../../../docs/esp_api/EspCan.md)
-- [BaseCan API Reference](../../../docs/api/BaseCan.md)
+- [EspCan API Reference](../../../inc/mcu/esp32/EspCan.h)
+- [BaseCan API Reference](../../../inc/base/BaseCan.h)
 - [ESP-IDF TWAI Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/twai.html)
 - [SN65HVD230 Datasheet](https://www.ti.com/lit/ds/symlink/sn65hvd230.pdf)
 

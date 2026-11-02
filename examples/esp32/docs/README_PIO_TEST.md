@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 PIO Test"
-description: "PIO Test Suite - Programmable I/O and custom protocol testing"
-nav_order: 4
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/pio_test/
----
-
 # ESP32-C6 PIO Comprehensive Test Suite Documentation
 
 ## Overview

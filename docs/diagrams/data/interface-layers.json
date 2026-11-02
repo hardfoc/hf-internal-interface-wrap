@@ -1,0 +1,56 @@
+{
+  "bases": [
+    "BaseAdc",
+    "BaseBluetooth",
+    "BaseCan",
+    "BaseGpio",
+    "BaseI2c",
+    "BaseLogger",
+    "BaseNvs",
+    "BasePeriodicTimer",
+    "BasePio",
+    "BasePwm",
+    "BaseSpi",
+    "BaseTemperature",
+    "BaseUart",
+    "BaseUsbSerialJtag",
+    "BaseWifi"
+  ],
+  "esp32": [
+    "EspAdc",
+    "EspBluetooth",
+    "EspCan",
+    "EspGpio",
+    "EspI2cDevice",
+    "EspLogger",
+    "EspNvs",
+    "EspPeriodicTimer",
+    "EspPio",
+    "EspPwm",
+    "EspSpiDevice",
+    "EspTemperature",
+    "EspUart",
+    "EspUsbSerialJtag",
+    "EspWifi"
+  ],
+  "stm32": [
+    "StmAdc",
+    "StmCan",
+    "StmGpio",
+    "StmI2cDevice",
+    "StmLogger",
+    "StmNvs",
+    "StmPeriodicTimer",
+    "StmPwm",
+    "StmSpiDevice",
+    "StmTemperature",
+    "StmUart"
+  ],
+  "host": [
+    "HostNvs"
+  ],
+  "sources": [
+    "inc/base/*.h:Base classes",
+    "inc/mcu/*/*.h:implementations"
+  ]
+}

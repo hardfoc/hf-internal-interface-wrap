@@ -1,0 +1,21 @@
+---
+# Site navigation (mkdocs-awesome-nav): the core-library page set (DOCS-STYLE-GUIDE.md in hf-general-ci-tools).
+nav:
+  - Home: index.md
+  - Get started:
+      - Quickstart: quickstart.md
+      - Integration: integration.md
+  - Concepts:
+      - Architecture: architecture.md
+  - Guides:
+      - API guide: api-guide.md
+      - CAN: can.md
+      - ESP32: esp32.md
+      - STM32: stm32.md
+      - Porting: porting.md
+      - Utilities: utilities.md
+      - Examples: examples.md
+  - Reference:
+      - API reference: api-reference.md
+      - Testing and CI: testing.md
+      - Figures: diagrams/index.md

@@ -135,3 +135,4 @@ Thumbs.db
 **/*.bak*
 *.bak
 _codeql_detected_source_root
+site/

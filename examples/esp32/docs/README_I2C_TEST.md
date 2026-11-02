@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 I2C Test"
-description: "I2C Test Suite - Inter-integrated circuit and device scanning testing"
-nav_order: 7
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/i2c_test/
----
-
 # ESP32 I2C Comprehensive Test Suite
 
 ## Overview

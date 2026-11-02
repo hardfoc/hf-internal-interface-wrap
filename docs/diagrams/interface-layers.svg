@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="763" viewBox="0 0 1200 763" role="img" aria-labelledby="interface-layers-title interface-layers-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="interface-layers-title">Write against the interface, pick the MCU at build time</title>
+<desc id="interface-layers-desc">Layer diagram: drivers, handlers and board HALs call the abstract Base interfaces such as BaseGpio, BaseI2c, BaseSpi and BaseCan; below them the ESP32 classes implement the interfaces with ESP-IDF, the STM32 classes with STM32Cube HAL handles, and host classes serve tests.</desc>
+<defs><marker id="fk-arrow-rail" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8893A2"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="762" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#3730A3">ARCHITECTURE</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#17202C">Write against the interface, pick the MCU at build time</text>
+<text x="32" y="115.4" font-size="18" fill="#566070">15 abstract interfaces in inc/base/; one implementation folder per platform in inc/mcu/.</text>
+<rect x="32" y="131.4" width="1136" height="1" fill="#E2E7EE"/>
+<rect x="32" y="278.4" width="1136" height="123" rx="16" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1.2"/>
+<rect x="32" y="441.4" width="365.3" height="259" rx="16" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1.2"/>
+<rect x="417.3" y="441.4" width="365.3" height="259" rx="16" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1.2"/>
+<rect x="802.7" y="441.4" width="365.3" height="259" rx="16" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1.2"/>
+<path d="M600 242.4 L600 274.4" fill="none" stroke="#8893A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M214.7 405.4 L214.7 437.4" fill="none" stroke="#8893A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M600 405.4 L600 437.4" fill="none" stroke="#8893A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M985.3 405.4 L985.3 437.4" fill="none" stroke="#8893A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<rect x="32" y="149.4" width="1136" height="89" rx="12" fill="#FFFFFF" stroke="#C9D1DB" stroke-width="1"/>
+<rect x="32" y="157.4" width="4" height="73" rx="2" fill="#64748B"/>
+<text x="56" y="184.4" font-size="20" font-weight="700" fill="#17202C">Drivers, handlers, board HALs</text>
+<text x="56" y="215" font-size="17" fill="#2B3442">hf-core handlers, hf-hal-* boards, your application: hold BaseGpio&amp;, BaseI2c&amp;, BaseCan&amp; ...</text>
+<rect x="48" y="323.4" width="90" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="56" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseAdc</text>
+<rect x="146" y="323.4" width="136.9" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="154" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseBluetooth</text>
+<rect x="290.9" y="323.4" width="89.6" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="298.9" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseCan</text>
+<rect x="388.6" y="323.4" width="95.1" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="396.6" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseGpio</text>
+<rect x="491.6" y="323.4" width="82.1" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="499.6" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseI2c</text>
+<rect x="581.7" y="323.4" width="115.1" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="589.7" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseLogger</text>
+<rect x="704.8" y="323.4" width="89.3" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="712.8" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BaseNvs</text>
+<rect x="802.1" y="323.4" width="173.3" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="810.1" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BasePeriodicTimer</text>
+<rect x="983.4" y="323.4" width="82.7" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="991.4" y="341.5" font-size="16" font-weight="700" fill="#3730A3">BasePio</text>
+<rect x="48" y="357.4" width="97.6" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="56" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BasePwm</text>
+<rect x="153.6" y="357.4" width="83.1" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="161.6" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BaseSpi</text>
+<rect x="244.6" y="357.4" width="164.9" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="252.6" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BaseTemperature</text>
+<rect x="417.5" y="357.4" width="92" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="425.5" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BaseUart</text>
+<rect x="517.6" y="357.4" width="173.1" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="525.6" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BaseUsbSerialJtag</text>
+<rect x="698.7" y="357.4" width="90.2" height="26" rx="13" fill="#EEF0FF" stroke="#C7CBF8" stroke-width="1"/>
+<text x="706.7" y="375.5" font-size="16" font-weight="700" fill="#3730A3">BaseWifi</text>
+<text x="48" y="307.4" font-size="17" font-weight="700" fill="#3730A3">INTERFACES</text>
+<text x="173.7" y="307.4" font-size="16" fill="#3730A3">inc/base/, no platform code</text>
+<rect x="46" y="486.4" width="79.8" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="504.5" font-size="16" font-weight="700" fill="#115E59">EspAdc</text>
+<rect x="133.8" y="486.4" width="126.8" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="141.8" y="504.5" font-size="16" font-weight="700" fill="#115E59">EspBluetooth</text>
+<rect x="268.6" y="486.4" width="79.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="276.6" y="504.5" font-size="16" font-weight="700" fill="#115E59">EspCan</text>
+<rect x="46" y="520.4" width="84.9" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="538.5" font-size="16" font-weight="700" fill="#115E59">EspGpio</text>
+<rect x="138.9" y="520.4" width="129.1" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="146.9" y="538.5" font-size="16" font-weight="700" fill="#115E59">EspI2cDevice</text>
+<rect x="276" y="520.4" width="104.9" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="284" y="538.5" font-size="16" font-weight="700" fill="#115E59">EspLogger</text>
+<rect x="46" y="554.4" width="79.1" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="572.5" font-size="16" font-weight="700" fill="#115E59">EspNvs</text>
+<rect x="133.1" y="554.4" width="163.2" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="141.1" y="572.5" font-size="16" font-weight="700" fill="#115E59">EspPeriodicTimer</text>
+<rect x="304.2" y="554.4" width="72.5" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="312.2" y="572.5" font-size="16" font-weight="700" fill="#115E59">EspPio</text>
+<rect x="46" y="588.4" width="87.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="606.5" font-size="16" font-weight="700" fill="#115E59">EspPwm</text>
+<rect x="141.4" y="588.4" width="130.1" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="149.4" y="606.5" font-size="16" font-weight="700" fill="#115E59">EspSpiDevice</text>
+<rect x="46" y="622.4" width="154.7" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="640.5" font-size="16" font-weight="700" fill="#115E59">EspTemperature</text>
+<rect x="208.7" y="622.4" width="81.9" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="216.7" y="640.5" font-size="16" font-weight="700" fill="#115E59">EspUart</text>
+<rect x="46" y="656.4" width="162.9" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="54" y="674.5" font-size="16" font-weight="700" fill="#115E59">EspUsbSerialJtag</text>
+<rect x="216.9" y="656.4" width="80" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="224.9" y="674.5" font-size="16" font-weight="700" fill="#115E59">EspWifi</text>
+<text x="48" y="470.4" font-size="17" font-weight="700" fill="#115E59">ESP32</text>
+<text x="117.4" y="470.4" font-size="16" fill="#115E59">ESP-IDF v5.5</text>
+<rect x="431.3" y="486.4" width="82.1" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="439.3" y="504.5" font-size="16" font-weight="700" fill="#115E59">StmAdc</text>
+<rect x="521.5" y="486.4" width="81.7" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="529.5" y="504.5" font-size="16" font-weight="700" fill="#115E59">StmCan</text>
+<rect x="611.2" y="486.4" width="87.2" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="619.2" y="504.5" font-size="16" font-weight="700" fill="#115E59">StmGpio</text>
+<rect x="431.3" y="520.4" width="131.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="439.3" y="538.5" font-size="16" font-weight="700" fill="#115E59">StmI2cDevice</text>
+<rect x="570.8" y="520.4" width="107.2" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="578.8" y="538.5" font-size="16" font-weight="700" fill="#115E59">StmLogger</text>
+<rect x="686" y="520.4" width="81.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="694" y="538.5" font-size="16" font-weight="700" fill="#115E59">StmNvs</text>
+<rect x="431.3" y="554.4" width="165.5" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="439.3" y="572.5" font-size="16" font-weight="700" fill="#115E59">StmPeriodicTimer</text>
+<rect x="604.8" y="554.4" width="89.7" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="612.8" y="572.5" font-size="16" font-weight="700" fill="#115E59">StmPwm</text>
+<rect x="431.3" y="588.4" width="132.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="439.3" y="606.5" font-size="16" font-weight="700" fill="#115E59">StmSpiDevice</text>
+<rect x="571.7" y="588.4" width="157" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="579.7" y="606.5" font-size="16" font-weight="700" fill="#115E59">StmTemperature</text>
+<rect x="431.3" y="622.4" width="84.2" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="439.3" y="640.5" font-size="16" font-weight="700" fill="#115E59">StmUart</text>
+<text x="433.3" y="470.4" font-size="17" font-weight="700" fill="#115E59">STM32</text>
+<text x="508.9" y="470.4" font-size="16" fill="#115E59">CubeMX HAL handles</text>
+<rect x="816.7" y="486.4" width="87.4" height="26" rx="13" fill="#E6F6F4" stroke="#A6DCD5" stroke-width="1"/>
+<text x="824.7" y="504.5" font-size="16" font-weight="700" fill="#115E59">HostNvs</text>
+<text x="818.7" y="470.4" font-size="17" font-weight="700" fill="#115E59">HOST</text>
+<text x="881.8" y="470.4" font-size="16" fill="#115E59">tests</text>
+<rect x="32" y="712.8" width="14" height="14" rx="4" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<text x="54" y="727.4" font-size="16" fill="#566070">your code</text>
+<rect x="159" y="712.8" width="14" height="14" rx="4" fill="#EEF0FF" stroke="#4F46E5" stroke-width="1.4"/>
+<text x="181" y="727.4" font-size="16" fill="#566070">interfaces</text>
+<rect x="285.3" y="712.8" width="14" height="14" rx="4" fill="#E6F6F4" stroke="#0F8B80" stroke-width="1.4"/>
+<text x="307.3" y="727.4" font-size="16" fill="#566070">platform implementations</text>
+</svg>
