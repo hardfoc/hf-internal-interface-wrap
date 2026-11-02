@@ -1243,6 +1243,195 @@ bool test_can_high_throughput() noexcept {
 }
 
 //=============================================================================
+// RX RING / NON-BLOCKING TX STRESS (self-test loopback, >= 5000 frames/s)
+//=============================================================================
+
+namespace {
+
+/** Shared state between the stress producer (test task) and its consumer task. */
+struct LoopbackStressState {
+  EspCan* can = nullptr;
+  std::atomic<bool> producer_done{false};
+  std::atomic<bool> consumer_done{false};
+  std::atomic<uint32_t> received{0};
+  std::atomic<uint32_t> lost{0};         ///< sequence gaps (frames never received)
+  std::atomic<uint32_t> out_of_order{0}; ///< sequence went backwards
+  std::atomic<uint32_t> corrupt{0};      ///< payload check failed
+  uint32_t expected_seq = 0;             ///< consumer-owned
+};
+
+void loopback_stress_consumer(void* arg) {
+  auto* st = static_cast<LoopbackStressState*>(arg);
+  hf_can_message_t m;
+  for (;;) {
+    const hf_can_err_t r = st->can->ReceiveMessage(m, 20);
+    if (r == hf_can_err_t::CAN_SUCCESS) {
+      const uint32_t seq = static_cast<uint32_t>(m.data[0]) |
+                           (static_cast<uint32_t>(m.data[1]) << 8) |
+                           (static_cast<uint32_t>(m.data[2]) << 16) |
+                           (static_cast<uint32_t>(m.data[3]) << 24);
+      const uint32_t check = ~seq;
+      if (m.dlc != 8 || m.data[4] != static_cast<uint8_t>(check) ||
+          m.data[5] != static_cast<uint8_t>(check >> 8) ||
+          m.data[6] != static_cast<uint8_t>(check >> 16) ||
+          m.data[7] != static_cast<uint8_t>(check >> 24)) {
+        st->corrupt.fetch_add(1);
+      }
+      if (seq > st->expected_seq) {
+        st->lost.fetch_add(seq - st->expected_seq);
+      } else if (seq < st->expected_seq) {
+        st->out_of_order.fetch_add(1);
+      }
+      if (seq >= st->expected_seq) {
+        st->expected_seq = seq + 1U;
+      }
+      st->received.fetch_add(1);
+    } else if (st->producer_done.load()) {
+      break; // nothing for 20 ms after the producer finished
+    }
+  }
+  st->consumer_done.store(true);
+  vTaskDelete(nullptr);
+}
+
+} // namespace
+
+/**
+ * @brief Self-test loopback at 1 Mbit/s: send as fast as the bus allows through
+ *        the non-blocking TX path, receive through the RX ring (no callback),
+ *        and count lost, reordered and corrupt frames.
+ * @details Pass criteria: every frame sent and received in order, no RX ring
+ *          overrun, and an effective rate of at least 5000 frames/s.
+ *          Hardware: internal loopback on TEST_TX_PIN; no transceiver needed.
+ */
+bool test_can_loopback_stress_rx_ring() noexcept {
+  ESP_LOGI(TAG, "Loopback stress: RX ring + non-blocking TX at 1 Mbit/s...");
+
+  constexpr uint32_t kFrames = 20000;
+  constexpr uint32_t kMinRate = 5000; // frames per second
+
+  hf_esp_can_config_t cfg{};
+  cfg.tx_pin = TEST_TX_PIN;
+  cfg.rx_pin = TEST_TX_PIN; // internal loopback
+  cfg.baud_rate = 1000000;
+  cfg.sample_point_permill = 800;
+  cfg.enable_self_test = true; // no ACK required
+  cfg.enable_loopback = true;  // receive our own frames
+  cfg.tx_queue_depth = 32;
+  cfg.rx_queue_depth = 256;
+  cfg.rx_mode = hf_esp_can_rx_mode_t::AUTO; // no callback registered -> RX ring
+
+  EspCan can(cfg);
+  if (can.Initialize() != hf_can_err_t::CAN_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to initialize CAN for loopback stress");
+    return false;
+  }
+
+  // Empty-queue behaviour of the polling API
+  hf_can_message_t probe;
+  if (can.ReceiveMessage(probe, 0) != hf_can_err_t::CAN_ERR_QUEUE_EMPTY) {
+    ESP_LOGE(TAG, "ReceiveMessage(timeout 0) on an empty ring must return QUEUE_EMPTY");
+    return false;
+  }
+
+  static LoopbackStressState st; // static: outlives the consumer task in every path
+  st.can = &can;
+  st.producer_done.store(false);
+  st.consumer_done.store(false);
+  st.received.store(0);
+  st.lost.store(0);
+  st.out_of_order.store(0);
+  st.corrupt.store(0);
+  st.expected_seq = 0;
+
+  // Consumer above the producer so the ring drains while the producer refills TX
+  if (xTaskCreate(loopback_stress_consumer, "can_rx_stress", 4096, &st, 3, nullptr) != pdPASS) {
+    ESP_LOGE(TAG, "Failed to create consumer task");
+    return false;
+  }
+
+  uint32_t sent = 0;
+  uint32_t queue_full_returns = 0;
+  uint32_t send_errors = 0;
+  const uint64_t t0 = esp_timer_get_time();
+
+  for (uint32_t seq = 0; seq < kFrames; ++seq) {
+    hf_can_message_t msg;
+    msg.id = TEST_CAN_ID_STANDARD;
+    const uint32_t check = ~seq;
+    const uint8_t payload[8] = {
+        static_cast<uint8_t>(seq),         static_cast<uint8_t>(seq >> 8),
+        static_cast<uint8_t>(seq >> 16),   static_cast<uint8_t>(seq >> 24),
+        static_cast<uint8_t>(check),       static_cast<uint8_t>(check >> 8),
+        static_cast<uint8_t>(check >> 16), static_cast<uint8_t>(check >> 24)};
+    (void)msg.SetData(payload, sizeof(payload));
+
+    // Non-blocking first; on QUEUE_FULL block (up to 10 ms) for a TX slot
+    hf_can_err_t r = can.TrySendMessage(msg);
+    if (r == hf_can_err_t::CAN_ERR_QUEUE_FULL) {
+      ++queue_full_returns;
+      r = can.SendMessage(msg, 10);
+    }
+    if (r == hf_can_err_t::CAN_SUCCESS) {
+      ++sent;
+    } else {
+      ++send_errors;
+    }
+  }
+
+  // Let the last frames arrive, then stop the consumer
+  vTaskDelay(pdMS_TO_TICKS(100));
+  st.producer_done.store(true);
+  for (int i = 0; i < 100 && !st.consumer_done.load(); ++i) {
+    vTaskDelay(pdMS_TO_TICKS(10));
+  }
+  const uint64_t t1 = esp_timer_get_time();
+
+  hf_can_bus_status_t bus{};
+  (void)can.GetBusStatus(bus);
+
+  const uint32_t received = st.received.load();
+  // Rate over the producer + drain window (the 100 ms settle time is included,
+  // so the real bus rate is a little higher than reported)
+  const uint64_t elapsed_us = (t1 > t0) ? (t1 - t0) : 1U;
+  const uint32_t rate = static_cast<uint32_t>((static_cast<uint64_t>(received) * 1000000U) /
+                                              elapsed_us);
+  const uint32_t missing = (sent > received) ? (sent - received) : 0U;
+
+  ESP_LOGI(TAG, "Loopback stress results:");
+  ESP_LOGI(TAG, "  sent %u / %u (send errors %u, QUEUE_FULL returns %u)", (unsigned)sent,
+           (unsigned)kFrames, (unsigned)send_errors, (unsigned)queue_full_returns);
+  ESP_LOGI(TAG, "  received %u, missing %u, seq gaps %u, out of order %u, corrupt %u",
+           (unsigned)received, (unsigned)missing, (unsigned)st.lost.load(),
+           (unsigned)st.out_of_order.load(), (unsigned)st.corrupt.load());
+  ESP_LOGI(TAG, "  rate %u frames/s over %u ms (target >= %u)", (unsigned)rate,
+           (unsigned)(elapsed_us / 1000U), (unsigned)kMinRate);
+  ESP_LOGI(TAG, "  bus: state %u TEC %u REC %u rx_overruns %u tx_queue_full %u bus_off %u",
+           (unsigned)bus.state, (unsigned)bus.tec, (unsigned)bus.rec,
+           (unsigned)bus.rx_overruns, (unsigned)bus.tx_queue_full, (unsigned)bus.bus_off_count);
+
+  const bool consumer_stopped = st.consumer_done.load();
+  (void)can.Deinitialize();
+
+  if (!consumer_stopped) {
+    ESP_LOGE(TAG, "Consumer task did not stop");
+    return false;
+  }
+  if (sent != kFrames || missing != 0 || st.lost.load() != 0 || st.out_of_order.load() != 0 ||
+      st.corrupt.load() != 0 || bus.rx_overruns != 0) {
+    ESP_LOGE(TAG, "Frames lost, reordered or corrupted in loopback stress");
+    return false;
+  }
+  if (rate < kMinRate) {
+    ESP_LOGE(TAG, "Rate %u frames/s below %u", (unsigned)rate, (unsigned)kMinRate);
+    return false;
+  }
+
+  ESP_LOGI(TAG, "[SUCCESS] Loopback stress passed");
+  return true;
+}
+
+//=============================================================================
 // SN65 TRANSCEIVER SPECIFIC TESTS
 //=============================================================================
 
@@ -1599,6 +1788,8 @@ extern "C" void app_main(void) {
       flip_test_progress_indicator(); // Toggle GPIO14 after batch transmission test
       RUN_TEST_IN_TASK("high_throughput", test_can_high_throughput, 12288, 1);
       flip_test_progress_indicator(); // Toggle GPIO14 after high throughput test
+      RUN_TEST_IN_TASK("loopback_stress_rx_ring", test_can_loopback_stress_rx_ring, 8192, 1);
+      flip_test_progress_indicator(); // Toggle GPIO14 after loopback stress test
   );
 
   RUN_TEST_SECTION_IF_ENABLED_WITH_PATTERN(

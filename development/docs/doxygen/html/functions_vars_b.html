@@ -101,6 +101,7 @@ $(function(){initNavTree('functions_vars_b.html',''); initResizable(); });
 <li>base_clock_hz&#160;:&#160;<a class="el" href="structhf__pwm__unit__config__t.html#af2993dd547218552aad3ef5cfa324415">hf_pwm_unit_config_t</a></li>
 <li>base_clock_hz_&#160;:&#160;<a class="el" href="classEspPwm.html#adb2698a4d9441132c4f9ba23a4dc4678">EspPwm</a></li>
 <li>base_config_&#160;:&#160;<a class="el" href="classEspTemperature.html#a2587c0df6c5c4169bbec7d4fa5611917">EspTemperature</a></li>
+<li>base_receive_cb_&#160;:&#160;<a class="el" href="classEspCan.html#abb02211aed7fce5ba6958df78b3f1cfb">EspCan</a></li>
 <li>baud_rate&#160;:&#160;<a class="el" href="structhf__esp__can__config__t.html#a095fd04a22638ba466d08a0592a27eb7">hf_esp_can_config_t</a>, <a class="el" href="structhf__uart__config__t.html#a1f63adb11ea6e211eeeb2898a8e89a58">hf_uart_config_t</a></li>
 <li>baudrate&#160;:&#160;<a class="el" href="structhf__can__config__t.html#ae60a9a3946365261658f25b2cf88be30">hf_can_config_t</a></li>
 <li>beacon_interval&#160;:&#160;<a class="el" href="structhf__wifi__ap__config__t.html#a2af81bc34be9da0bb13b09aad9f5397c">hf_wifi_ap_config_t</a></li>
@@ -120,7 +121,7 @@ $(function(){initNavTree('functions_vars_b.html',''); initResizable(); });
 <li>brs_tx_count&#160;:&#160;<a class="el" href="structhf__can__status__t.html#ab64fe524b6ddb4a1f06f201a473a9e81">hf_can_status_t</a></li>
 <li>bssid&#160;:&#160;<a class="el" href="structhf__wifi__network__info__t.html#a0481ba5eed30bb73d24553520001bb23">hf_wifi_network_info_t</a>, <a class="el" href="structhf__wifi__station__config__t.html#ac3fc454eb6e2d3c3892527984e6bfd23">hf_wifi_station_config_t</a></li>
 <li>bssid_set&#160;:&#160;<a class="el" href="structhf__wifi__station__config__t.html#ab17e16f345d3be419ac4635abcac681d">hf_wifi_station_config_t</a></li>
-<li>buffer&#160;:&#160;<a class="el" href="structhf__adc__continuous__data__t.html#a905c3dc1e80356dec2a118b7d6788ecc">hf_adc_continuous_data_t</a>, <a class="el" href="structhf__i2c__transaction__buffer__t.html#aed0cb464084e5cd90bd1c586e3e5332a">hf_i2c_transaction_buffer_t</a></li>
+<li>buffer&#160;:&#160;<a class="el" href="structEspCan_1_1TxSlot.html#a3c5d7d677753e1e99cc89766a256afa9">EspCan::TxSlot</a>, <a class="el" href="structhf__adc__continuous__data__t.html#a905c3dc1e80356dec2a118b7d6788ecc">hf_adc_continuous_data_t</a>, <a class="el" href="structhf__i2c__transaction__buffer__t.html#aed0cb464084e5cd90bd1c586e3e5332a">hf_i2c_transaction_buffer_t</a></li>
 <li>buffer_overflows&#160;:&#160;<a class="el" href="structhf__logger__statistics__t.html#a3287f0ec71c6bc082dd4baccc3617ef8">hf_logger_statistics_t</a></li>
 <li>buffer_size&#160;:&#160;<a class="el" href="structhf__logger__config__t.html#ad1a6d394808a12f5773a0575c23c3f0a">hf_logger_config_t</a>, <a class="el" href="structhf__pio__channel__config__t.html#a5667278996618d463a247f2eddc0643e">hf_pio_channel_config_t</a></li>
 <li>bufferOverflows&#160;:&#160;<a class="el" href="structhf__pio__statistics__t.html#a2a8556e0cd4b70e878543514cab10479">hf_pio_statistics_t</a></li>
@@ -134,8 +135,11 @@ $(function(){initNavTree('functions_vars_b.html',''); initResizable(); });
 <li>bus_locked&#160;:&#160;<a class="el" href="structhf__i2c__diagnostics__t.html#a4d00297031b5331599dbca2631332262">hf_i2c_diagnostics_t</a></li>
 <li>bus_mutex_&#160;:&#160;<a class="el" href="classStmI2cBus.html#aca042d3b84ca5494e0a5fe6edd96cc5c">StmI2cBus</a>, <a class="el" href="classStmSpiBus.html#a044f12506bf38f5d1537ecae167a866c">StmSpiBus</a></li>
 <li>bus_off&#160;:&#160;<a class="el" href="structhf__can__status__t.html#aa4658cc3642f8be7392d596b285bf2d6">hf_can_status_t</a></li>
+<li>bus_off_count&#160;:&#160;<a class="el" href="structhf__can__bus__status__t.html#af4117cef467b4990bf8e75b1d78b7e9f">hf_can_bus_status_t</a></li>
+<li>bus_off_count_&#160;:&#160;<a class="el" href="classEspCan.html#a205bd0c014e0b9383f39919d3829c114">EspCan</a></li>
 <li>bus_off_events&#160;:&#160;<a class="el" href="structhf__can__statistics__t.html#adabf2819712bc6d5cfaf74e893c8d449">hf_can_statistics_t</a></li>
 <li>bus_off_state&#160;:&#160;<a class="el" href="structhf__esp__can__error__info__t.html#a0ff10456e35f6bea840201b935230fa7">hf_esp_can_error_info_t</a></li>
+<li>bus_state_&#160;:&#160;<a class="el" href="classEspCan.html#a181372b489fa3421e4618758f5378b53">EspCan</a></li>
 <li>bus_utilization_percent&#160;:&#160;<a class="el" href="structhf__i2c__diagnostics__t.html#a6bba331d9e2a7a62afe6001b8a6370c2">hf_i2c_diagnostics_t</a></li>
 <li>busy&#160;:&#160;<a class="el" href="structEspPio_1_1ChannelState.html#ae227a6367a4e594d3241549c896bad17">EspPio::ChannelState</a></li>
 <li>bytes_encoder&#160;:&#160;<a class="el" href="structEspPio_1_1ChannelState.html#a606c6915332b5358f83649cb79b9b969">EspPio::ChannelState</a></li>

@@ -1,0 +1,9 @@
+<map id="inc/utils/HfSpscRing.h" name="inc/utils/HfSpscRing.h">
+<area shape="rect" id="Node000001" title="Lock&#45;free single&#45;producer / single&#45;consumer ring for ISR&#45;to&#45;task hand&#45;off." alt="" coords="170,5,366,37"/>
+<area shape="rect" id="Node000002" href="$EspCan_8h.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="157,85,379,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,50,270,86,266,84,266,55"/>
+<area shape="rect" id="Node000003" href="$CanComprehensiveTest_8cpp.html" title="Comprehensive CAN testing suite for ESP32&#45;C6 with ESP&#45;IDF v5.5 TWAI API and SN65 transceiver." alt="" coords="5,165,259,217"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,124,173,166,170,162,230,126"/>
+<area shape="rect" id="Node000004" href="$EspCan_8cpp.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="283,175,525,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="305,123,383,175,378,175,303,128"/>
+</map>

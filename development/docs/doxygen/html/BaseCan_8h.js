@@ -2,6 +2,7 @@ var BaseCan_8h =
 [
     [ "hf_can_config_t", "structhf__can__config__t.html", "structhf__can__config__t" ],
     [ "hf_can_message_t", "structhf__can__message__t.html", "structhf__can__message__t" ],
+    [ "hf_can_bus_status_t", "structhf__can__bus__status__t.html", "structhf__can__bus__status__t" ],
     [ "hf_can_status_t", "structhf__can__status__t.html", "structhf__can__status__t" ],
     [ "hf_can_reception_info_t", "structhf__can__reception__info__t.html", "structhf__can__reception__info__t" ],
     [ "hf_can_statistics_t", "structhf__can__statistics__t.html", "structhf__can__statistics__t" ],
@@ -9,8 +10,15 @@ var BaseCan_8h =
     [ "HF_CAN_ERR_LIST", "group__can.html#gab1d5cdd9fb2d30563cc88f9ca31988ef", null ],
     [ "X", "BaseCan_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
     [ "X", "BaseCan_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "hf_can_fd_receive_callback_t", "BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051", null ],
+    [ "hf_can_fd_receive_callback_t", "BaseCan_8h.html#ae7668300fc28b21ec4ddc927a538e363", null ],
     [ "hf_can_receive_callback_t", "BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f", null ],
+    [ "hf_can_bus_state_t", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546bad", [
+      [ "STOPPED", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a", null ],
+      [ "ERROR_ACTIVE", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546bada18887461e090a2790f4f706666c2eb22", null ],
+      [ "ERROR_WARNING", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546badaff9ad494c8aa84542a91f14ff985f123", null ],
+      [ "ERROR_PASSIVE", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546badaa6340aad792a46f1a4e6ef8d4c802b44", null ],
+      [ "BUS_OFF", "BaseCan_8h.html#a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0", null ]
+    ] ],
     [ "hf_can_err_t", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb", [
       [ "X", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fba4edf38c36b44ec6289313be3dbff3bd1", null ],
       [ "CAN_SUCCESS", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a", null ],
@@ -69,5 +77,30 @@ var BaseCan_8h =
       [ "CAN_ERR_TIMEOUT_ALT", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fba5cdbb5419c40397c56ccb9d73280e195", null ],
       [ "CAN_ERR_UNKNOWN", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fbab4eeeb07445d3a8b82156680fb9b1839", null ]
     ] ],
-    [ "HfCanErrToString", "BaseCan_8h.html#a1d3c90f8b197e4b5e443d83173e29814", null ]
+    [ "hf_can_frame_error_t", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3", [
+      [ "NONE", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693", null ],
+      [ "ID_RANGE", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5", null ],
+      [ "CLASSIC_TOO_LONG", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6", null ],
+      [ "FD_TOO_LONG", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ab3a73b3d2560da286371d41a1375ce28", null ],
+      [ "FD_LENGTH_NOT_EXACT", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ac60c9fa4b384f03cd9a07d9acabd390f", null ],
+      [ "RTR_ON_FD", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ad6d931494cb96fef2ea6088a960983f2", null ],
+      [ "FD_BITS_ON_CLASSIC", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3af83e22978b814002b00c09dd3baaa807", null ],
+      [ "RTR_WITH_DATA", "BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ade62be2487aa376466e339279f032309", null ]
+    ] ],
+    [ "HfCanDlcToLen", "BaseCan_8h.html#a38ebce750254ee889c51bdab20de3928", null ],
+    [ "HfCanErrToString", "BaseCan_8h.html#a1d3c90f8b197e4b5e443d83173e29814", null ],
+    [ "HfCanIsValidLength", "BaseCan_8h.html#afe76754862fbc249647f81da1c24d6bd", null ],
+    [ "HfCanLenToDlc", "BaseCan_8h.html#a9dd35ee4cc8e677c9035599558eb9c4e", null ],
+    [ "HfCanStateFromCounters", "BaseCan_8h.html#a12668d3b9c7342a87ed2179e2964d69c", null ],
+    [ "ALL", "BaseCan_8h.html#a6602e02b285e196b1acafb3efc6c4725", null ],
+    [ "BRS", "BaseCan_8h.html#a08e6648eaefeb336cecfc59795dc71ac", null ],
+    [ "ESI", "BaseCan_8h.html#a484374824aa1680df53a8a6045311e44", null ],
+    [ "EXT", "BaseCan_8h.html#a86985b915f0db8adae441c581cdeb92b", null ],
+    [ "FDF", "BaseCan_8h.html#ac03abe3af81076aa8254c7afd7696ce4", null ],
+    [ "HF_CAN_CLASSIC_MAX_LEN", "BaseCan_8h.html#af8e5357f8e844352d83676e5937fac07", null ],
+    [ "HF_CAN_DLC_INVALID", "BaseCan_8h.html#a57918b2411e671e74e388a14eb388153", null ],
+    [ "HF_CAN_FD_MAX_LEN", "BaseCan_8h.html#a1c3dce55d7caecbc0792bf7afb9f48b2", null ],
+    [ "HF_CAN_MAX_EXT_ID", "BaseCan_8h.html#a0ed2104aab442fda3a9e98b1d80c33fc", null ],
+    [ "HF_CAN_MAX_STD_ID", "BaseCan_8h.html#a77ee7a5105967b1e89acc93b888b5701", null ],
+    [ "RTR", "BaseCan_8h.html#ae93c5789760f6891649a03d629a3f21e", null ]
 ];

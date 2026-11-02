@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['none_0',['NONE',['../EspTypes__WiFi_8h.html#ae4b2d282307a86524bb905f3e8f713cbab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;EspTypes_WiFi.h'],['../StmTypes_8h.html#ab00c8615d5ef41d84c588318a74d9495ab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;StmTypes.h']]],
+  ['none_0',['NONE',['../BaseCan_8h.html#a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;BaseCan.h'],['../EspTypes__WiFi_8h.html#ae4b2d282307a86524bb905f3e8f713cbab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;EspTypes_WiFi.h'],['../StmTypes_8h.html#ab00c8615d5ef41d84c588318a74d9495ab50339a10e1de285ac99d4c3990b8693',1,'NONE:&#160;StmTypes.h']]],
   ['normal_1',['Normal',['../BasePio_8h.html#a42b5cf84176abe576608c1b4a51d7c3da960b44c579bc2f6818d2daaf9e4c16f0',1,'BasePio.h']]],
   ['null_5fmode_2',['NULL_MODE',['../EspTypes__WiFi_8h.html#a1e1af940134520a18b4bc8337697955cabaa02165ef1a7ddbf1745606ee5faf1a',1,'EspTypes_WiFi.h']]],
   ['nvs_5ferr_5falready_5finitialized_3',['NVS_ERR_ALREADY_INITIALIZED',['../BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4a0b4726f0b4fbae76a3801f8afc2fd2d6',1,'BaseNvs.h']]],

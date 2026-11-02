@@ -1,5 +1,11 @@
 var namespaces_dup =
 [
+    [ "anonymous_namespace{CanComprehensiveTest.cpp}", "namespaceanonymous__namespace_02CanComprehensiveTest_8cpp_03.html", "namespaceanonymous__namespace_02CanComprehensiveTest_8cpp_03" ],
+    [ "anonymous_namespace{EspCan.cpp}", "namespaceanonymous__namespace_02EspCan_8cpp_03.html", [
+      [ "MapTwaiState", "namespaceanonymous__namespace_02EspCan_8cpp_03.html#a9ced6ff9fcf01473d1e3477832094543", null ],
+      [ "MsToTicksCeil", "namespaceanonymous__namespace_02EspCan_8cpp_03.html#adaf20bddea8feaf184d696e1179d5d81", null ],
+      [ "ToTwaiTimeout", "namespaceanonymous__namespace_02EspCan_8cpp_03.html#a30d3846698cf64b3128366b77883ef2a", null ]
+    ] ],
     [ "anonymous_namespace{EspUsbSerialJtag.cpp}", "namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html", [
       [ "MsToTicks", "namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03.html#ae9f75b1971ab0c326d59cdcc0d786b29", null ]
     ] ],
@@ -68,6 +74,14 @@ var namespaces_dup =
       [ "drain_rx", "namespaceanonymous__namespace_02UsbSerialJtagComprehensiveTest_8cpp_03.html#a1ed70e441e6ad6036e44805a149ca710", null ]
     ] ],
     [ "hf", "namespacehf.html", "namespacehf" ],
+    [ "hf_can_flag", "namespacehf__can__flag.html", [
+      [ "ALL", "namespacehf__can__flag.html#a6602e02b285e196b1acafb3efc6c4725", null ],
+      [ "BRS", "namespacehf__can__flag.html#a08e6648eaefeb336cecfc59795dc71ac", null ],
+      [ "ESI", "namespacehf__can__flag.html#a484374824aa1680df53a8a6045311e44", null ],
+      [ "EXT", "namespacehf__can__flag.html#a86985b915f0db8adae441c581cdeb92b", null ],
+      [ "FDF", "namespacehf__can__flag.html#ac03abe3af81076aa8254c7afd7696ce4", null ],
+      [ "RTR", "namespacehf__can__flag.html#ae93c5789760f6891649a03d629a3f21e", null ]
+    ] ],
     [ "hf_time", "namespacehf__time.html", "namespacehf__time" ],
     [ "TestPins", "namespaceTestPins.html", [
       [ "ANALOG_PIN", "namespaceTestPins.html#acd766bf1c5e4fc8112f25080761602a3", null ],

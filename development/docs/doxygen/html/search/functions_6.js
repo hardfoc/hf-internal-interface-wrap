@@ -19,5 +19,6 @@ var searchData=
   ['flushtxdr_16',['FlushTxdr',['../namespaceanonymous__namespace_02StmI2c_8cpp_03.html#ad9050bfcc89c5472b04e9d50125d5348',1,'anonymous_namespace{StmI2c.cpp}']]],
   ['forcetimerassignment_17',['ForceTimerAssignment',['../classEspPwm.html#a38358269d437372bb72805e76fc151ed',1,'EspPwm']]],
   ['formatandoutput_18',['FormatAndOutput',['../classStmLogger.html#a6f50475b905482fe6b74c83605baff18',1,'StmLogger']]],
-  ['fromstring_19',['FromString',['../structhf__bluetooth__address__t.html#a7c179cb878a03ff95c9b82f7354a8ea9',1,'hf_bluetooth_address_t']]]
+  ['fromframe_19',['FromFrame',['../structhf__can__message__t.html#a04e66d5dd2530197bc8977aaaa2e0585',1,'hf_can_message_t']]],
+  ['fromstring_20',['FromString',['../structhf__bluetooth__address__t.html#a7c179cb878a03ff95c9b82f7354a8ea9',1,'hf_bluetooth_address_t']]]
 ];

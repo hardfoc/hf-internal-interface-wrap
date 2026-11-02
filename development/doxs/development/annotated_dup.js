@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "anonymous_namespace{CanComprehensiveTest.cpp}", "namespaceanonymous__namespace_02CanComprehensiveTest_8cpp_03.html", [
+      [ "LoopbackStressState", "structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState.html", "structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState" ]
+    ] ],
     [ "anonymous_namespace{StmCan.cpp}", "namespaceanonymous__namespace_02StmCan_8cpp_03.html", [
       [ "BxCanFilterConfig", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanFilterConfig" ],
       [ "BxCanRxHeader", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader.html", "structanonymous__namespace_02StmCan_8cpp_03_1_1BxCanRxHeader" ],
@@ -62,6 +65,7 @@ var annotated_dup =
     [ "hf_bluetooth_device_info_t", "structhf__bluetooth__device__info__t.html", "structhf__bluetooth__device__info__t" ],
     [ "hf_bluetooth_gatt_characteristic_t", "structhf__bluetooth__gatt__characteristic__t.html", "structhf__bluetooth__gatt__characteristic__t" ],
     [ "hf_bluetooth_gatt_service_t", "structhf__bluetooth__gatt__service__t.html", "structhf__bluetooth__gatt__service__t" ],
+    [ "hf_can_bus_status_t", "structhf__can__bus__status__t.html", "structhf__can__bus__status__t" ],
     [ "hf_can_config_t", "structhf__can__config__t.html", "structhf__can__config__t" ],
     [ "hf_can_diagnostics_t", "structhf__can__diagnostics__t.html", "structhf__can__diagnostics__t" ],
     [ "hf_can_filter_config_t", "structhf__can__filter__config__t.html", "structhf__can__filter__config__t" ],
@@ -155,6 +159,7 @@ var annotated_dup =
     [ "HfEspWifiCalibration", "structHfEspWifiCalibration.html", "structHfEspWifiCalibration" ],
     [ "HfEspWifiPerformanceConfig", "structHfEspWifiPerformanceConfig.html", "structHfEspWifiPerformanceConfig" ],
     [ "HfEspWifiStats", "structHfEspWifiStats.html", "structHfEspWifiStats" ],
+    [ "HfSpscRing", "classHfSpscRing.html", "classHfSpscRing" ],
     [ "HostNvs", "classHostNvs.html", "classHostNvs" ],
     [ "InterruptStatus", "structInterruptStatus.html", "structInterruptStatus" ],
     [ "NullMutexBackend", "structNullMutexBackend.html", "structNullMutexBackend" ],

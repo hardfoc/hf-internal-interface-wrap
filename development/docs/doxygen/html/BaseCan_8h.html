@@ -95,10 +95,12 @@ $(function(){initNavTree('BaseCan_8h.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">BaseCan.h File Reference<div class="ingroups"><a class="el" href="group__can.html">CAN Module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -128,7 +130,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Platform-agnostic CAN bus configuration.  <a href="structhf__can__config__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhf__can__message__t.html">hf_can_message_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Platform-agnostic CAN message structure.  <a href="structhf__can__message__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Platform-agnostic CAN / CAN FD message (<a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> v2).  <a href="structhf__can__message__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhf__can__bus__status__t.html">hf_can_bus_status_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error counters and queue statistics of one controller (<a class="el" href="classBaseCan.html#ad9c904ed6737b37968733db2a5222b70" title="Read the controller error state, TEC/REC and queue counters.">BaseCan::GetBusStatus()</a>).  <a href="structhf__can__bus__status__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhf__can__status__t.html">hf_can_status_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN bus status information structure.  <a href="structhf__can__status__t.html#details">More...</a><br /></td></tr>
@@ -146,6 +151,12 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class defining the unified CAN bus API.  <a href="classBaseCan.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacehf__can__flag" id="r_namespacehf__can__flag"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html">hf_can_flag</a></td></tr>
+<tr class="memdesc:namespacehf__can__flag"><td class="mdescLeft">&#160;</td><td class="mdescRight">Packed frame flags (see <a class="el" href="structhf__can__message__t.html#a215be31c50eb30397dd0cd9602354e14" title="Flags packed as hf_can_flag bits.">hf_can_message_t::GetFlags()</a>). <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gab1d5cdd9fb2d30563cc88f9ca31988ef" id="r_gab1d5cdd9fb2d30563cc88f9ca31988ef"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="classSoftChipSelectGuard.html">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__can.html#gab1d5cdd9fb2d30563cc88f9ca31988ef">HF_CAN_ERR_LIST</a>(<a class="el" href="BaseAdc_8h.html#a94b225babb1626cee0621f8312eb32d1">X</a>)</td></tr>
@@ -161,8 +172,8 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a3581a1b02d6350ac14ca81b7c60cdc6f" id="r_a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> = <a class="el" href="classSoftChipSelectGuard.html">void</a> (*)(<a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message)</td></tr>
 <tr class="memdesc:a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN message receive callback function type.  <br /></td></tr>
 <tr class="separator:a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac243f46599a2b6bfb5fc822017e3e051" id="r_ac243f46599a2b6bfb5fc822017e3e051"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td></tr>
-<tr class="separator:ac243f46599a2b6bfb5fc822017e3e051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7668300fc28b21ec4ddc927a538e363" id="r_ae7668300fc28b21ec4ddc927a538e363"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7668300fc28b21ec4ddc927a538e363">hf_can_fd_receive_callback_t</a></td></tr>
+<tr class="separator:ae7668300fc28b21ec4ddc927a538e363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -239,12 +250,84 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:aa9d5ead384ce9ec0dd791bcdc73589fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a4c2f557ddf51da38e24ca5023ae6c3" id="r_a7a4c2f557ddf51da38e24ca5023ae6c3"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3">hf_can_frame_error_t</a> : hf_u8_t { <br />
+&#160;&#160;<a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693">NONE</a> = 0
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5">ID_RANGE</a>
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6">CLASSIC_TOO_LONG</a>
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3ab3a73b3d2560da286371d41a1375ce28">FD_TOO_LONG</a>
+, <br />
+&#160;&#160;<a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3ac60c9fa4b384f03cd9a07d9acabd390f">FD_LENGTH_NOT_EXACT</a>
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3ad6d931494cb96fef2ea6088a960983f2">RTR_ON_FD</a>
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3af83e22978b814002b00c09dd3baaa807">FD_BITS_ON_CLASSIC</a>
+, <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3ade62be2487aa376466e339279f032309">RTR_WITH_DATA</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a7a4c2f557ddf51da38e24ca5023ae6c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Why a frame is not well formed.  <a href="#a7a4c2f557ddf51da38e24ca5023ae6c3">More...</a><br /></td></tr>
+<tr class="separator:a7a4c2f557ddf51da38e24ca5023ae6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d723e6ab745b8613525cfce3546bad" id="r_a76d723e6ab745b8613525cfce3546bad"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76d723e6ab745b8613525cfce3546bad">hf_can_bus_state_t</a> : hf_u8_t { <br />
+&#160;&#160;<a class="el" href="#a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a">STOPPED</a> = 0
+, <a class="el" href="#a76d723e6ab745b8613525cfce3546bada18887461e090a2790f4f706666c2eb22">ERROR_ACTIVE</a>
+, <a class="el" href="#a76d723e6ab745b8613525cfce3546badaff9ad494c8aa84542a91f14ff985f123">ERROR_WARNING</a>
+, <a class="el" href="#a76d723e6ab745b8613525cfce3546badaa6340aad792a46f1a4e6ef8d4c802b44">ERROR_PASSIVE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0">BUS_OFF</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a76d723e6ab745b8613525cfce3546bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controller error state (ISO 11898-1 fault confinement).  <a href="#a76d723e6ab745b8613525cfce3546bad">More...</a><br /></td></tr>
+<tr class="separator:a76d723e6ab745b8613525cfce3546bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1d3c90f8b197e4b5e443d83173e29814" id="r_a1d3c90f8b197e4b5e443d83173e29814"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">std::string_view</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d3c90f8b197e4b5e443d83173e29814">HfCanErrToString</a> (<a class="el" href="#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> <a class="el" href="classSoftChipSelectGuard.html">err</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
 <tr class="memdesc:a1d3c90f8b197e4b5e443d83173e29814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert hf_can_err_t to human-readable string.  <br /></td></tr>
 <tr class="separator:a1d3c90f8b197e4b5e443d83173e29814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38ebce750254ee889c51bdab20de3928" id="r_a38ebce750254ee889c51bdab20de3928"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38ebce750254ee889c51bdab20de3928">HfCanDlcToLen</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> dlc, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">fd</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a38ebce750254ee889c51bdab20de3928"><td class="mdescLeft">&#160;</td><td class="mdescRight">DLC code to payload length in bytes (ISO 11898-1).  <br /></td></tr>
+<tr class="separator:a38ebce750254ee889c51bdab20de3928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd35ee4cc8e677c9035599558eb9c4e" id="r_a9dd35ee4cc8e677c9035599558eb9c4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dd35ee4cc8e677c9035599558eb9c4e">HfCanLenToDlc</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">len</a>, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">fd</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a9dd35ee4cc8e677c9035599558eb9c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Payload length in bytes to the smallest DLC code that carries it.  <br /></td></tr>
+<tr class="separator:a9dd35ee4cc8e677c9035599558eb9c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe76754862fbc249647f81da1c24d6bd" id="r_afe76754862fbc249647f81da1c24d6bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe76754862fbc249647f81da1c24d6bd">HfCanIsValidLength</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> <a class="el" href="classSoftChipSelectGuard.html">len</a>, <a class="el" href="classSoftChipSelectGuard.html">bool</a> <a class="el" href="classSoftChipSelectGuard.html">fd</a>) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:afe76754862fbc249647f81da1c24d6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is <code>len</code> a payload length a frame of this kind can have exactly?  <br /></td></tr>
+<tr class="separator:afe76754862fbc249647f81da1c24d6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12668d3b9c7342a87ed2179e2964d69c" id="r_a12668d3b9c7342a87ed2179e2964d69c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="#a76d723e6ab745b8613525cfce3546bad">hf_can_bus_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12668d3b9c7342a87ed2179e2964d69c">HfCanStateFromCounters</a> (<a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> tec, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> rec) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a12668d3b9c7342a87ed2179e2964d69c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error state implied by the counters (warning at 96, passive at 128, bus-off above 255).  <br /></td></tr>
+<tr class="separator:a12668d3b9c7342a87ed2179e2964d69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af8e5357f8e844352d83676e5937fac07" id="r_af8e5357f8e844352d83676e5937fac07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8e5357f8e844352d83676e5937fac07">HF_CAN_CLASSIC_MAX_LEN</a> = 8<a class="el" href="classSoftChipSelectGuard.html">U</a></td></tr>
+<tr class="memdesc:af8e5357f8e844352d83676e5937fac07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest classic CAN payload in bytes.  <br /></td></tr>
+<tr class="separator:af8e5357f8e844352d83676e5937fac07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3dce55d7caecbc0792bf7afb9f48b2" id="r_a1c3dce55d7caecbc0792bf7afb9f48b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c3dce55d7caecbc0792bf7afb9f48b2">HF_CAN_FD_MAX_LEN</a> = 64<a class="el" href="classSoftChipSelectGuard.html">U</a></td></tr>
+<tr class="memdesc:a1c3dce55d7caecbc0792bf7afb9f48b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest CAN FD payload in bytes.  <br /></td></tr>
+<tr class="separator:a1c3dce55d7caecbc0792bf7afb9f48b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ee7a5105967b1e89acc93b888b5701" id="r_a77ee7a5105967b1e89acc93b888b5701"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77ee7a5105967b1e89acc93b888b5701">HF_CAN_MAX_STD_ID</a> = 0x7FFU</td></tr>
+<tr class="memdesc:a77ee7a5105967b1e89acc93b888b5701"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest 11-bit (base format) identifier.  <br /></td></tr>
+<tr class="separator:a77ee7a5105967b1e89acc93b888b5701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ed2104aab442fda3a9e98b1d80c33fc" id="r_a0ed2104aab442fda3a9e98b1d80c33fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ed2104aab442fda3a9e98b1d80c33fc">HF_CAN_MAX_EXT_ID</a> = 0x1FFFFFFFU</td></tr>
+<tr class="memdesc:a0ed2104aab442fda3a9e98b1d80c33fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest 29-bit (extended format) identifier.  <br /></td></tr>
+<tr class="separator:a0ed2104aab442fda3a9e98b1d80c33fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57918b2411e671e74e388a14eb388153" id="r_a57918b2411e671e74e388a14eb388153"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57918b2411e671e74e388a14eb388153">HF_CAN_DLC_INVALID</a> = 0xFFU</td></tr>
+<tr class="memdesc:a57918b2411e671e74e388a14eb388153"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returned by <a class="el" href="#a9dd35ee4cc8e677c9035599558eb9c4e" title="Payload length in bytes to the smallest DLC code that carries it.">HfCanLenToDlc()</a> when a length cannot be carried.  <br /></td></tr>
+<tr class="separator:a57918b2411e671e74e388a14eb388153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86985b915f0db8adae441c581cdeb92b" id="r_a86985b915f0db8adae441c581cdeb92b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#a86985b915f0db8adae441c581cdeb92b">hf_can_flag::EXT</a> = 0x01U</td></tr>
+<tr class="memdesc:a86985b915f0db8adae441c581cdeb92b"><td class="mdescLeft">&#160;</td><td class="mdescRight">29-bit identifier  <br /></td></tr>
+<tr class="separator:a86985b915f0db8adae441c581cdeb92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae93c5789760f6891649a03d629a3f21e" id="r_ae93c5789760f6891649a03d629a3f21e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#ae93c5789760f6891649a03d629a3f21e">hf_can_flag::RTR</a> = 0x02U</td></tr>
+<tr class="memdesc:ae93c5789760f6891649a03d629a3f21e"><td class="mdescLeft">&#160;</td><td class="mdescRight">remote request (classic only)  <br /></td></tr>
+<tr class="separator:ae93c5789760f6891649a03d629a3f21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac03abe3af81076aa8254c7afd7696ce4" id="r_ac03abe3af81076aa8254c7afd7696ce4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#ac03abe3af81076aa8254c7afd7696ce4">hf_can_flag::FDF</a> = 0x04U</td></tr>
+<tr class="memdesc:ac03abe3af81076aa8254c7afd7696ce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">FD frame format.  <br /></td></tr>
+<tr class="separator:ac03abe3af81076aa8254c7afd7696ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08e6648eaefeb336cecfc59795dc71ac" id="r_a08e6648eaefeb336cecfc59795dc71ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#a08e6648eaefeb336cecfc59795dc71ac">hf_can_flag::BRS</a> = 0x08U</td></tr>
+<tr class="memdesc:a08e6648eaefeb336cecfc59795dc71ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">bit-rate switch (FD only)  <br /></td></tr>
+<tr class="separator:a08e6648eaefeb336cecfc59795dc71ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484374824aa1680df53a8a6045311e44" id="r_a484374824aa1680df53a8a6045311e44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#a484374824aa1680df53a8a6045311e44">hf_can_flag::ESI</a> = 0x10U</td></tr>
+<tr class="memdesc:a484374824aa1680df53a8a6045311e44"><td class="mdescLeft">&#160;</td><td class="mdescRight">error state indicator (FD only)  <br /></td></tr>
+<tr class="separator:a484374824aa1680df53a8a6045311e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6602e02b285e196b1acafb3efc6c4725" id="r_a6602e02b285e196b1acafb3efc6c4725"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehf__can__flag.html#a6602e02b285e196b1acafb3efc6c4725">hf_can_flag::ALL</a> = <a class="el" href="namespacehf__can__flag.html#a86985b915f0db8adae441c581cdeb92b">EXT</a> | <a class="el" href="namespacehf__can__flag.html#ae93c5789760f6891649a03d629a3f21e">RTR</a> | <a class="el" href="namespacehf__can__flag.html#ac03abe3af81076aa8254c7afd7696ce4">FDF</a> | <a class="el" href="namespacehf__can__flag.html#a08e6648eaefeb336cecfc59795dc71ac">BRS</a> | <a class="el" href="namespacehf__can__flag.html#a484374824aa1680df53a8a6045311e44">ESI</a></td></tr>
+<tr class="separator:a6602e02b285e196b1acafb3efc6c4725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for CAN bus implementations in the HardFOC system. </p>
@@ -253,7 +336,7 @@ Functions</h2></td></tr>
 <li>All CAN error codes are defined in this file using the hf_can_err_t enumeration</li>
 <li>Lower-level types (<a class="el" href="classSoftChipSelectGuard.html#acbe56b56922f2d3988c3ecf86208aa4a">McuTypes_CAN.h</a>) maintain minimal error constants for compatibility</li>
 <li>All virtual methods return hf_can_err_t for comprehensive error reporting</li>
-<li>No legacy compatibility code - use <a class="el" href="structhf__can__message__t.html" title="Platform-agnostic CAN message structure.">hf_can_message_t</a> structure for all operations</li>
+<li>No legacy compatibility code - use <a class="el" href="structhf__can__message__t.html" title="Platform-agnostic CAN / CAN FD message (BaseCan v2).">hf_can_message_t</a> structure for all operations</li>
 </ul>
 <dl class="section author"><dt>Author</dt><dd>Nebiyu Tadesse </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
@@ -320,21 +403,21 @@ All legacy camelCase types and bool-returning methods have been removed. </dd></
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ac243f46599a2b6bfb5fc822017e3e051" name="ac243f46599a2b6bfb5fc822017e3e051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac243f46599a2b6bfb5fc822017e3e051">&#9670;&#160;</a></span>hf_can_fd_receive_callback_t</h2>
+<a id="ae7668300fc28b21ec4ddc927a538e363" name="ae7668300fc28b21ec4ddc927a538e363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7668300fc28b21ec4ddc927a538e363">&#9670;&#160;</a></span>hf_can_fd_receive_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">using</a> <a class="el" href="#ae7668300fc28b21ec4ddc927a538e363">hf_can_fd_receive_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">info</a>)</div>
-<div class="ttc" id="astructhf__can__message__t_html"><div class="ttname"><a href="structhf__can__message__t.html">hf_can_message_t</a></div><div class="ttdoc">Platform-agnostic CAN message structure.</div><div class="ttdef"><b>Definition</b> BaseCan.h:165</div></div>
-<div class="ttc" id="astructhf__can__reception__info__t_html"><div class="ttname"><a href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a></div><div class="ttdoc">CAN-FD specific receive callback with enhanced information.</div><div class="ttdef"><b>Definition</b> BaseCan.h:340</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line"> <a class="code hl_class" href="classSoftChipSelectGuard.html">void</a> (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message,</div>
+<div class="line">                                              <span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a>&amp; <a class="code hl_class" href="classSoftChipSelectGuard.html">info</a>)</div>
+<div class="ttc" id="astructhf__can__message__t_html"><div class="ttname"><a href="structhf__can__message__t.html">hf_can_message_t</a></div><div class="ttdoc">Platform-agnostic CAN / CAN FD message (BaseCan v2).</div><div class="ttdef"><b>Definition</b> BaseCan.h:280</div></div>
+<div class="ttc" id="astructhf__can__reception__info__t_html"><div class="ttname"><a href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a></div><div class="ttdoc">CAN-FD specific receive callback with enhanced information.</div><div class="ttdef"><b>Definition</b> BaseCan.h:643</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,11 +434,48 @@ All legacy camelCase types and bool-returning methods have been removed. </dd></
 </div><div class="memdoc">
 
 <p>CAN message receive callback function type. </p>
-<dl class="section note"><dt>Note</dt><dd>Updated to use new <a class="el" href="structhf__can__message__t.html" title="Platform-agnostic CAN message structure.">hf_can_message_t</a> structure </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Updated to use new <a class="el" href="structhf__can__message__t.html" title="Platform-agnostic CAN / CAN FD message (BaseCan v2).">hf_can_message_t</a> structure </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a76d723e6ab745b8613525cfce3546bad" name="a76d723e6ab745b8613525cfce3546bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d723e6ab745b8613525cfce3546bad">&#9670;&#160;</a></span>hf_can_bus_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#a76d723e6ab745b8613525cfce3546bad">hf_can_bus_state_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Controller error state (ISO 11898-1 fault confinement). </p>
+<p>Same order as <code>vortex::contracts::BusState</code>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a" name="a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a"></a>STOPPED&#160;</td><td class="fielddoc"><p>not started / in reset </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a76d723e6ab745b8613525cfce3546bada18887461e090a2790f4f706666c2eb22" name="a76d723e6ab745b8613525cfce3546bada18887461e090a2790f4f706666c2eb22"></a>ERROR_ACTIVE&#160;</td><td class="fielddoc"><p>TEC and REC &lt; 96. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a76d723e6ab745b8613525cfce3546badaff9ad494c8aa84542a91f14ff985f123" name="a76d723e6ab745b8613525cfce3546badaff9ad494c8aa84542a91f14ff985f123"></a>ERROR_WARNING&#160;</td><td class="fielddoc"><p>TEC or REC &gt;= 96. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a76d723e6ab745b8613525cfce3546badaa6340aad792a46f1a4e6ef8d4c802b44" name="a76d723e6ab745b8613525cfce3546badaa6340aad792a46f1a4e6ef8d4c802b44"></a>ERROR_PASSIVE&#160;</td><td class="fielddoc"><p>TEC or REC &gt;= 128. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0" name="a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0"></a>BUS_OFF&#160;</td><td class="fielddoc"><p>TEC &gt; 255. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="aa9d5ead384ce9ec0dd791bcdc73589fb" name="aa9d5ead384ce9ec0dd791bcdc73589fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9d5ead384ce9ec0dd791bcdc73589fb">&#9670;&#160;</a></span>hf_can_err_t</h2>
 
@@ -436,7 +556,88 @@ All legacy camelCase types and bool-returning methods have been removed. </dd></
 
 </div>
 </div>
+<a id="a7a4c2f557ddf51da38e24ca5023ae6c3" name="a7a4c2f557ddf51da38e24ca5023ae6c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a4c2f557ddf51da38e24ca5023ae6c3">&#9670;&#160;</a></span>hf_can_frame_error_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">enum</a> <a class="el" href="classSoftChipSelectGuard.html">class</a> <a class="el" href="#a7a4c2f557ddf51da38e24ca5023ae6c3">hf_can_frame_error_t</a> : <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Why a frame is not well formed. </p>
+<p>Same cases as <code>vortex::contracts::FrameError</code> except <code>UnknownFlag</code>, which cannot occur because <a class="el" href="structhf__can__message__t.html" title="Platform-agnostic CAN / CAN FD message (BaseCan v2).">hf_can_message_t</a> keeps its flags as bools. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693" name="a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5" name="a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5"></a>ID_RANGE&#160;</td><td class="fielddoc"><p>identifier does not fit 11 / 29 bits </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6" name="a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6"></a>CLASSIC_TOO_LONG&#160;</td><td class="fielddoc"><p>classic frame with length &gt; 8 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3ab3a73b3d2560da286371d41a1375ce28" name="a7a4c2f557ddf51da38e24ca5023ae6c3ab3a73b3d2560da286371d41a1375ce28"></a>FD_TOO_LONG&#160;</td><td class="fielddoc"><p>FD frame with length &gt; 64. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3ac60c9fa4b384f03cd9a07d9acabd390f" name="a7a4c2f557ddf51da38e24ca5023ae6c3ac60c9fa4b384f03cd9a07d9acabd390f"></a>FD_LENGTH_NOT_EXACT&#160;</td><td class="fielddoc"><p>FD length that has no DLC code (for example 9) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3ad6d931494cb96fef2ea6088a960983f2" name="a7a4c2f557ddf51da38e24ca5023ae6c3ad6d931494cb96fef2ea6088a960983f2"></a>RTR_ON_FD&#160;</td><td class="fielddoc"><p>FD frames have no remote form. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3af83e22978b814002b00c09dd3baaa807" name="a7a4c2f557ddf51da38e24ca5023ae6c3af83e22978b814002b00c09dd3baaa807"></a>FD_BITS_ON_CLASSIC&#160;</td><td class="fielddoc"><p>BRS / ESI without FD format. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7a4c2f557ddf51da38e24ca5023ae6c3ade62be2487aa376466e339279f032309" name="a7a4c2f557ddf51da38e24ca5023ae6c3ade62be2487aa376466e339279f032309"></a>RTR_WITH_DATA&#160;</td><td class="fielddoc"><p>remote frame with a requested length above 8 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a38ebce750254ee889c51bdab20de3928" name="a38ebce750254ee889c51bdab20de3928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38ebce750254ee889c51bdab20de3928">&#9670;&#160;</a></span>HfCanDlcToLen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> HfCanDlcToLen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>dlc</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>fd</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>DLC code to payload length in bytes (ISO 11898-1). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dlc</td><td>DLC code 0..15 </td></tr>
+    <tr><td class="paramname">fd</td><td>true for an FD frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Length in bytes. Classic codes 9..15 mean 8 bytes. Codes above 15 give 0. </dd></dl>
+
+</div>
+</div>
 <a id="a1d3c90f8b197e4b5e443d83173e29814" name="a1d3c90f8b197e4b5e443d83173e29814"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d3c90f8b197e4b5e443d83173e29814">&#9670;&#160;</a></span>HfCanErrToString()</h2>
 
@@ -468,6 +669,222 @@ All legacy camelCase types and bool-returning methods have been removed. </dd></
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String view of the error description </dd></dl>
+
+</div>
+</div>
+<a id="afe76754862fbc249647f81da1c24d6bd" name="afe76754862fbc249647f81da1c24d6bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe76754862fbc249647f81da1c24d6bd">&#9670;&#160;</a></span>HfCanIsValidLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="classSoftChipSelectGuard.html">bool</a> HfCanIsValidLength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>len</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>fd</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is <code>len</code> a payload length a frame of this kind can have exactly? </p>
+<p>Classic: 0..8. FD: 0..8, 12, 16, 20, 24, 32, 48, 64. </p>
+
+</div>
+</div>
+<a id="a9dd35ee4cc8e677c9035599558eb9c4e" name="a9dd35ee4cc8e677c9035599558eb9c4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dd35ee4cc8e677c9035599558eb9c4e">&#9670;&#160;</a></span>HfCanLenToDlc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> HfCanLenToDlc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></td>          <td class="paramname"><span class="paramname"><em>len</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSoftChipSelectGuard.html">bool</a></td>          <td class="paramname"><span class="paramname"><em>fd</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Payload length in bytes to the smallest DLC code that carries it. </p>
+<dl class="section return"><dt>Returns</dt><dd>HF_CAN_DLC_INVALID when <code>len</code> is above 8 (classic) or 64 (FD). </dd></dl>
+
+</div>
+</div>
+<a id="a12668d3b9c7342a87ed2179e2964d69c" name="a12668d3b9c7342a87ed2179e2964d69c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12668d3b9c7342a87ed2179e2964d69c">&#9670;&#160;</a></span>HfCanStateFromCounters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="#a76d723e6ab745b8613525cfce3546bad">hf_can_bus_state_t</a> HfCanStateFromCounters </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a></td>          <td class="paramname"><span class="paramname"><em>tec</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a></td>          <td class="paramname"><span class="paramname"><em>rec</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Error state implied by the counters (warning at 96, passive at 128, bus-off above 255). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="af8e5357f8e844352d83676e5937fac07" name="af8e5357f8e844352d83676e5937fac07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8e5357f8e844352d83676e5937fac07">&#9670;&#160;</a></span>HF_CAN_CLASSIC_MAX_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> HF_CAN_CLASSIC_MAX_LEN = 8<a class="el" href="classSoftChipSelectGuard.html">U</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Largest classic CAN payload in bytes. </p>
+
+</div>
+</div>
+<a id="a57918b2411e671e74e388a14eb388153" name="a57918b2411e671e74e388a14eb388153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57918b2411e671e74e388a14eb388153">&#9670;&#160;</a></span>HF_CAN_DLC_INVALID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> HF_CAN_DLC_INVALID = 0xFFU</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returned by <a class="el" href="#a9dd35ee4cc8e677c9035599558eb9c4e" title="Payload length in bytes to the smallest DLC code that carries it.">HfCanLenToDlc()</a> when a length cannot be carried. </p>
+
+</div>
+</div>
+<a id="a1c3dce55d7caecbc0792bf7afb9f48b2" name="a1c3dce55d7caecbc0792bf7afb9f48b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3dce55d7caecbc0792bf7afb9f48b2">&#9670;&#160;</a></span>HF_CAN_FD_MAX_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> HF_CAN_FD_MAX_LEN = 64<a class="el" href="classSoftChipSelectGuard.html">U</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Largest CAN FD payload in bytes. </p>
+
+</div>
+</div>
+<a id="a0ed2104aab442fda3a9e98b1d80c33fc" name="a0ed2104aab442fda3a9e98b1d80c33fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed2104aab442fda3a9e98b1d80c33fc">&#9670;&#160;</a></span>HF_CAN_MAX_EXT_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> HF_CAN_MAX_EXT_ID = 0x1FFFFFFFU</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Largest 29-bit (extended format) identifier. </p>
+
+</div>
+</div>
+<a id="a77ee7a5105967b1e89acc93b888b5701" name="a77ee7a5105967b1e89acc93b888b5701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77ee7a5105967b1e89acc93b888b5701">&#9670;&#160;</a></span>HF_CAN_MAX_STD_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSoftChipSelectGuard.html">constexpr</a> <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> HF_CAN_MAX_STD_ID = 0x7FFU</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Largest 11-bit (base format) identifier. </p>
 
 </div>
 </div>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02EspCan_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{EspCan.cpp}</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02EspCan_8cpp_03_1adaf20bddea8feaf184d696e1179d5d81" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">TickType_t</ref></type>
+        <definition>TickType_t anonymous_namespace{EspCan.cpp}::MsToTicksCeil</definition>
+        <argsstring>(hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>MsToTicksCeil</name>
+        <qualifiedname>anonymous_namespace{EspCan.cpp}::MsToTicksCeil</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Milliseconds to ticks, rounded up so a non-zero timeout never becomes 0 ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspCan.cpp" line="56" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02EspCan_8cpp_03_1a30d3846698cf64b3128366b77883ef2a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classSoftChipSelectGuard" kindref="compound">int</ref></type>
+        <definition>int anonymous_namespace{EspCan.cpp}::ToTwaiTimeout</definition>
+        <argsstring>(hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>ToTwaiTimeout</name>
+        <qualifiedname>anonymous_namespace{EspCan.cpp}::ToTwaiTimeout</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classBaseCan" kindref="compound">BaseCan</ref> timeout to the TWAI driver&apos;s int timeout (-1 = forever). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspCan.cpp" line="65" column="5" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="65" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceanonymous__namespace_02EspCan_8cpp_03_1a9ced6ff9fcf01473d1e3477832094543" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bad" kindref="member">hf_can_bus_state_t</ref></type>
+        <definition>hf_can_bus_state_t anonymous_namespace{EspCan.cpp}::MapTwaiState</definition>
+        <argsstring>(twai_error_state_t state) noexcept</argsstring>
+        <name>MapTwaiState</name>
+        <qualifiedname>anonymous_namespace{EspCan.cpp}::MapTwaiState</qualifiedname>
+        <param>
+          <type><ref refid="classSoftChipSelectGuard" kindref="compound">twai_error_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>TWAI driver error state to hf_can_bus_state_t. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspCan.cpp" line="73" column="20" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="73" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/esp32/EspCan.cpp" line="53" column="1"/>
+  </compounddef>
+</doxygen>

@@ -631,6 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <li><a href="#-error-codes">📋 <strong>Error Codes</strong></a></li>
   <li><a href="#-core-api">🔧 <strong>Core API</strong></a></li>
   <li><a href="#-data-structures">📊 <strong>Data Structures</strong></a></li>
+  <li><a href="#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status">🆕 <strong>BaseCan v2</strong></a></li>
   <li><a href="#-usage-examples">📊 <strong>Usage Examples</strong></a></li>
   <li><a href="#-best-practices">🧪 <strong>Best Practices</strong></a></li>
 </ul><hr />
@@ -657,7 +658,8 @@ handling, and works across different CAN controller implementations.</p>
     
 
 <ul>
-  <li>🚌 <strong>CAN 2.0A/2.0B Support</strong> - Classic CAN protocols (CAN-FD support varies by hardware)</li>
+  <li>🚌 <strong>CAN 2.0A/2.0B Support</strong> - Classic CAN; the message type is FD-sized (64-byte payload),
+FD transmission depends on the controller</li>
   <li>📨 <strong>Message Filtering</strong> - Hardware-based acceptance filtering</li>
   <li>🔄 <strong>Error Recovery</strong> - Automatic bus recovery and error handling</li>
   <li>📊 <strong>Statistics &amp; Diagnostics</strong> - Comprehensive monitoring and reporting</li>
@@ -2053,6 +2055,9 @@ handling, and works across different CAN controller implementations.</p>
 </h3>
     
 
+<p><code class="language-plaintext highlighter-rouge">hf_can_message_t</code> is FD-sized (BaseCan v2). <code class="language-plaintext highlighter-rouge">dlc</code> holds the payload length <strong>in bytes</strong>,
+not a DLC code; see <a href="#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status">BaseCan v2</a>.</p>
+
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -2092,44 +2097,80 @@ handling, and works across different CAN controller implementations.</p>
 37
 38
 39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
 </pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_message_t</span> <span class="p">{</span>
     <span class="c1">// === Core CAN Message Fields ===</span>
-    <span class="kt">uint32_t</span> <span class="n">id</span><span class="p">;</span>     <span class="c1">///&lt; Message ID (11 or 29-bit)</span>
-    <span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">;</span>     <span class="c1">///&lt; Data length code (0-8 for classic CAN)</span>
-    <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">///&lt; Message data (max 8 bytes for classic CAN)</span>
+    <span class="kt">uint32_t</span> <span class="n">id</span><span class="p">;</span>       <span class="c1">///&lt; Message ID (11 or 29-bit)</span>
+    <span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">;</span>       <span class="c1">///&lt; Payload length in BYTES: 0..8 classic, 0..64 FD</span>
+    <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>  <span class="c1">///&lt; Payload (FD-sized)</span>
 
     <span class="c1">// === Standard CAN Flags ===</span>
     <span class="kt">bool</span> <span class="n">is_extended</span><span class="p">;</span>  <span class="c1">///&lt; Extended ID flag (29-bit vs 11-bit)</span>
     <span class="kt">bool</span> <span class="n">is_rtr</span><span class="p">;</span>       <span class="c1">///&lt; Remote transmission request flag</span>
     <span class="kt">bool</span> <span class="n">is_ss</span><span class="p">;</span>        <span class="c1">///&lt; Single shot flag (no retransmission)</span>
     <span class="kt">bool</span> <span class="n">is_self</span><span class="p">;</span>      <span class="c1">///&lt; Self reception request flag</span>
-    <span class="kt">bool</span> <span class="n">dlc_non_comp</span><span class="p">;</span> <span class="c1">///&lt; DLC is non-compliant (&gt; 8 for classic CAN)</span>
+    <span class="kt">bool</span> <span class="n">dlc_non_comp</span><span class="p">;</span> <span class="c1">///&lt; Received classic DLC code was 9..15 (length is 8)</span>
 
     <span class="c1">// === Metadata and Diagnostics ===</span>
-    <span class="kt">uint64_t</span> <span class="n">timestamp_us</span><span class="p">;</span>    <span class="c1">///&lt; Precise timestamp in microseconds</span>
+    <span class="kt">uint64_t</span> <span class="n">timestamp_us</span><span class="p">;</span>    <span class="c1">///&lt; RX timestamp in microseconds (driver clock)</span>
     <span class="kt">uint32_t</span> <span class="n">sequence_number</span><span class="p">;</span> <span class="c1">///&lt; Message sequence number</span>
     <span class="kt">uint8_t</span> <span class="n">controller_id</span><span class="p">;</span>    <span class="c1">///&lt; Originating controller ID</span>
     <span class="kt">uint8_t</span> <span class="n">retry_count</span><span class="p">;</span>      <span class="c1">///&lt; Number of transmission retries</span>
     <span class="kt">uint8_t</span> <span class="n">error_count</span><span class="p">;</span>      <span class="c1">///&lt; Associated error count</span>
 
-    <span class="c1">// === CAN-FD Extended Fields ===</span>
-    <span class="kt">bool</span> <span class="n">is_canfd</span><span class="p">;</span>       <span class="c1">///&lt; CAN-FD frame flag</span>
-    <span class="kt">bool</span> <span class="n">is_brs</span><span class="p">;</span>         <span class="c1">///&lt; Bit Rate Switching flag (CAN-FD)</span>
-    <span class="kt">bool</span> <span class="n">is_esi</span><span class="p">;</span>         <span class="c1">///&lt; Error State Indicator flag (CAN-FD)</span>
-    <span class="kt">uint8_t</span> <span class="n">canfd_dlc</span><span class="p">;</span>   <span class="c1">///&lt; CAN-FD DLC (can be &gt; 8)</span>
+    <span class="c1">// === CAN FD Fields ===</span>
+    <span class="kt">bool</span> <span class="n">is_canfd</span><span class="p">;</span>  <span class="c1">///&lt; FD frame format (FDF)</span>
+    <span class="kt">bool</span> <span class="n">is_brs</span><span class="p">;</span>    <span class="c1">///&lt; Bit Rate Switching (FD only)</span>
+    <span class="kt">bool</span> <span class="n">is_esi</span><span class="p">;</span>    <span class="c1">///&lt; Error State Indicator (FD only)</span>
 
-    <span class="c1">// === Helper Methods ===</span>
-    <span class="kt">uint8_t</span> <span class="n">GetMaxDataLength</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Get max data length for frame type</span>
-    <span class="kt">bool</span> <span class="n">IsValidDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Validate DLC for frame type</span>
-    <span class="kt">uint8_t</span> <span class="n">GetEffectiveDLC</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Get effective DLC value</span>
-    <span class="kt">bool</span> <span class="n">SetDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set DLC for current frame type</span>
-    <span class="kt">void</span> <span class="n">SetStandardFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set standard frame format</span>
-    <span class="kt">void</span> <span class="n">SetExtendedFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set extended frame format</span>
-    <span class="kt">void</span> <span class="n">SetDataFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set data frame (not remote)</span>
-    <span class="kt">void</span> <span class="n">SetRemoteFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set remote frame</span>
-    <span class="kt">void</span> <span class="n">SetSingleShot</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set single shot transmission</span>
-    <span class="kt">void</span> <span class="n">SetSelfReception</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Enable self reception</span>
-    <span class="kt">bool</span> <span class="n">IsValidId</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Validate message ID</span>
+    <span class="c1">// === Length (bytes) ===</span>
+    <span class="kt">uint8_t</span> <span class="n">GetLength</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">SetLength</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>       <span class="c1">///&lt; false: invalid for classic / FD</span>
+    <span class="kt">bool</span> <span class="n">SetData</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">GetMaxDataLength</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; 8 classic, 64 FD</span>
+    <span class="kt">bool</span> <span class="n">IsValidLength</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">GetDlcCode</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>        <span class="c1">///&lt; 4-bit wire code for the length</span>
+    <span class="kt">bool</span> <span class="n">SetDlcCode</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">code</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>     <span class="c1">///&lt; length from a 4-bit code</span>
+    <span class="c1">// Kept for source compatibility (all take / return bytes):</span>
+    <span class="kt">bool</span> <span class="n">SetDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsValidDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">GetEffectiveDLC</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// === Frame kind and flags ===</span>
+    <span class="kt">void</span> <span class="n">SetStandardFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetExtendedFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetDataFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetRemoteFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetSingleShot</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetSelfReception</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">SetFdFrame</span><span class="p">(</span><span class="kt">bool</span> <span class="n">brs</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">SetClassicFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>           <span class="c1">///&lt; false if the length is above 8</span>
+    <span class="kt">uint8_t</span> <span class="n">GetFlags</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>         <span class="c1">///&lt; hf_can_flag::EXT|RTR|FDF|BRS|ESI</span>
+    <span class="kt">bool</span> <span class="n">SetFlags</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">flags</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// === Validation and conversion ===</span>
+    <span class="kt">bool</span> <span class="n">IsValidId</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">hf_can_frame_error_t</span> <span class="n">Validate</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsValid</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Frame</span><span class="p">&gt;</span> <span class="kt">void</span> <span class="n">ToFrame</span><span class="p">(</span><span class="n">Frame</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Frame</span><span class="p">&gt;</span> <span class="k">static</span> <span class="n">hf_can_message_t</span> <span class="n">FromFrame</span><span class="p">(</span><span class="k">const</span> <span class="n">Frame</span><span class="o">&amp;</span> <span class="n">in</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div>
 <h3 id="️-can-configuration-structure">
@@ -2312,6 +2353,186 @@ handling, and works across different CAN controller implementations.</p>
     <span class="kt">float</span> <span class="n">bit_error_rate</span><span class="p">;</span>            <span class="c1">///&lt; Bit error rate (errors/bits)</span>
 <span class="p">};</span>
 </pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-basecan-v2-can-fd-frame-non-blocking-tx-bus-status">
+  
+  
+    <a href="#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status" class="anchor-heading" aria-labelledby="-basecan-v2-can-fd-frame-non-blocking-tx-bus-status"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🆕 <strong>BaseCan v2: CAN FD frame, non-blocking TX, bus status</strong>
+  
+  
+</h2>
+    
+<h3 id="frame-type">
+  
+  
+    <a href="#frame-type" class="anchor-heading" aria-labelledby="frame-type"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Frame type
+  
+  
+</h3>
+    
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">data[64]</code> and <code class="language-plaintext highlighter-rouge">dlc</code> as a byte count. Valid lengths: 0..8 for classic frames;
+0..8, 12, 16, 20, 24, 32, 48 or 64 for FD frames (<code class="language-plaintext highlighter-rouge">HfCanIsValidLength()</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">SetLength()</code> / <code class="language-plaintext highlighter-rouge">SetDLC()</code> / <code class="language-plaintext highlighter-rouge">SetData()</code> reject a length the frame kind cannot carry and
+leave the message unchanged. In v1, <code class="language-plaintext highlighter-rouge">SetDLC(64)</code> was accepted on an FD frame although
+<code class="language-plaintext highlighter-rouge">data</code> had 8 bytes.</li>
+  <li><code class="language-plaintext highlighter-rouge">HfCanDlcToLen(code, fd)</code> and <code class="language-plaintext highlighter-rouge">HfCanLenToDlc(len, fd)</code> convert between byte lengths and
+4-bit DLC codes (<code class="language-plaintext highlighter-rouge">HF_CAN_DLC_INVALID</code> when a length cannot be carried). Use
+<code class="language-plaintext highlighter-rouge">GetDlcCode()</code> / <code class="language-plaintext highlighter-rouge">SetDlcCode()</code> at the controller boundary.</li>
+  <li><code class="language-plaintext highlighter-rouge">GetFlags()</code> / <code class="language-plaintext highlighter-rouge">SetFlags()</code> pack the flags as <code class="language-plaintext highlighter-rouge">hf_can_flag::EXT</code>, <code class="language-plaintext highlighter-rouge">RTR</code>, <code class="language-plaintext highlighter-rouge">FDF</code>, <code class="language-plaintext highlighter-rouge">BRS</code>,
+<code class="language-plaintext highlighter-rouge">ESI</code>. The bit values are those of <code class="language-plaintext highlighter-rouge">vortex::contracts::frame_flag</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Validate()</code> applies the same structural rules as <code class="language-plaintext highlighter-rouge">vortex::contracts::CheckFrame</code> and
+returns an <code class="language-plaintext highlighter-rouge">hf_can_frame_error_t</code>. Drivers call it before reading <code class="language-plaintext highlighter-rouge">data</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">ToFrame()</code> / <code class="language-plaintext highlighter-rouge">FromFrame()</code> convert to and from any struct with <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">len</code>, <code class="language-plaintext highlighter-rouge">flags</code>,
+<code class="language-plaintext highlighter-rouge">data[64]</code> and <code class="language-plaintext highlighter-rouge">ts_us</code> (the layout of <code class="language-plaintext highlighter-rouge">vortex::contracts::CanFrame</code>). A frame round trip
+is lossless. Going the other way, <code class="language-plaintext highlighter-rouge">ts_us</code> keeps the low 32 bits of <code class="language-plaintext highlighter-rouge">timestamp_us</code>, and
+<code class="language-plaintext highlighter-rouge">is_ss</code>, <code class="language-plaintext highlighter-rouge">is_self</code>, <code class="language-plaintext highlighter-rouge">sequence_number</code> and the other metadata are dropped.</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">hf_can_message_t</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="mh">0x181</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">pdo</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">m</span><span class="p">.</span><span class="n">SetData</span><span class="p">(</span><span class="n">pdo</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pdo</span><span class="p">)))</span> <span class="p">{</span> <span class="cm">/* length invalid for this frame kind */</span> <span class="p">}</span>
+
+<span class="n">m</span><span class="p">.</span><span class="n">SetFdFrame</span><span class="p">(</span><span class="cm">/*brs=*/</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">m</span><span class="p">.</span><span class="n">SetLength</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>          <span class="c1">// ok, DLC code 9</span>
+<span class="n">m</span><span class="p">.</span><span class="n">SetLength</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>           <span class="c1">// false: 9 bytes has no FD DLC code</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="new-basecan-calls">
+  
+  
+    <a href="#new-basecan-calls" class="anchor-heading" aria-labelledby="new-basecan-calls"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> New <code class="language-plaintext highlighter-rouge">BaseCan</code> calls
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Call</th>
+      <th style="text-align: left">Meaning</th>
+      <th style="text-align: left">Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TrySendMessage(msg)</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SendMessage(msg, 0)</code>: queue or fail at once (<code class="language-plaintext highlighter-rouge">CAN_ERR_QUEUE_FULL</code>)</td>
+      <td style="text-align: left">non-virtual</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">GetBusStatus(hf_can_bus_status_t&amp;)</code></td>
+      <td style="text-align: left">state, TEC, REC, <code class="language-plaintext highlighter-rouge">rx_overruns</code>, <code class="language-plaintext highlighter-rouge">tx_queue_full</code>, <code class="language-plaintext highlighter-rouge">bus_off_count</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CAN_ERR_UNSUPPORTED_OPERATION</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RequestBusRecovery()</code></td>
+      <td style="text-align: left">start bus-off recovery, return without waiting</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CAN_ERR_UNSUPPORTED_OPERATION</code></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><code class="language-plaintext highlighter-rouge">hf_can_bus_state_t</code> (<code class="language-plaintext highlighter-rouge">STOPPED</code>, <code class="language-plaintext highlighter-rouge">ERROR_ACTIVE</code>, <code class="language-plaintext highlighter-rouge">ERROR_WARNING</code>, <code class="language-plaintext highlighter-rouge">ERROR_PASSIVE</code>,
+<code class="language-plaintext highlighter-rouge">BUS_OFF</code>) and <code class="language-plaintext highlighter-rouge">hf_can_bus_status_t</code> follow <code class="language-plaintext highlighter-rouge">vortex::contracts::BusState</code> / <code class="language-plaintext highlighter-rouge">PortStatus</code>.
+<code class="language-plaintext highlighter-rouge">HfCanStateFromCounters(tec, rec)</code> gives the state the counters imply.</p>
+<h3 id="rx-modes-espcan">
+  
+  
+    <a href="#rx-modes-espcan" class="anchor-heading" aria-labelledby="rx-modes-espcan"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> RX modes (EspCan)
+  
+  
+</h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">ReceiveMessage()</code> now works on ESP32: the TWAI RX interrupt fills a lock-free ring that
+<code class="language-plaintext highlighter-rouge">ReceiveMessage()</code> drains. Receive callbacks still work and still run in ISR context.
+<code class="language-plaintext highlighter-rouge">hf_esp_can_config_t::rx_mode</code> selects callback, ring or both; see
+<a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/#receiving">EspCan</a>.</p>
+<h3 id="migration-from-v1">
+  
+  
+    <a href="#migration-from-v1" class="anchor-heading" aria-labelledby="migration-from-v1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Migration from v1
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">v1</th>
+      <th style="text-align: left">v2</th>
+      <th style="text-align: left">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">uint8_t data[8]</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">uint8_t data[64]</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">sizeof(m.data)</code> is now 64. Code that copies <code class="language-plaintext highlighter-rouge">sizeof(m.data)</code> bytes into an 8-byte buffer must use <code class="language-plaintext highlighter-rouge">m.dlc</code> (or <code class="language-plaintext highlighter-rouge">std::min</code>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dlc</code>: “data length code”</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dlc</code>: length in bytes</td>
+      <td style="text-align: left">No change for classic frames (code and length are equal for 0..8). FD code that stored a DLC code (9..15) in <code class="language-plaintext highlighter-rouge">dlc</code> / <code class="language-plaintext highlighter-rouge">canfd_dlc</code> must store the byte length, or call <code class="language-plaintext highlighter-rouge">SetDlcCode()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">canfd_dlc</code></td>
+      <td style="text-align: left">removed</td>
+      <td style="text-align: left">Use <code class="language-plaintext highlighter-rouge">dlc</code> (bytes) for FD frames too</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SetDLC(len)</code> accepted 0..64 on FD frames</td>
+      <td style="text-align: left">accepts exact FD lengths only, 0..8 on classic</td>
+      <td style="text-align: left">Check the <code class="language-plaintext highlighter-rouge">bool</code> result</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">GetEffectiveDLC()</code> returned <code class="language-plaintext highlighter-rouge">canfd_dlc</code> for FD</td>
+      <td style="text-align: left">returns <code class="language-plaintext highlighter-rouge">dlc</code></td>
+      <td style="text-align: left">none</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">sizeof(hf_can_message_t)</code> about 40 bytes</td>
+      <td style="text-align: left">about 104 bytes</td>
+      <td style="text-align: left">Size queues and stacks that hold messages accordingly</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EspCan::ReceiveMessage()</code> always <code class="language-plaintext highlighter-rouge">CAN_ERR_UNSUPPORTED_OPERATION</code></td>
+      <td style="text-align: left">returns frames</td>
+      <td style="text-align: left">Polling loops start receiving; with a callback registered, set <code class="language-plaintext highlighter-rouge">rx_mode = QUEUE_ALWAYS</code> to get both</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EspCan::SetReceiveCallback()</code> returned <code class="language-plaintext highlighter-rouge">CAN_ERR_NOT_SUPPORTED</code></td>
+      <td style="text-align: left">registers the callback (ISR context)</td>
+      <td style="text-align: left">none</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EspCan::SendMessage()</code> rejected <code class="language-plaintext highlighter-rouge">dlc == 0</code> and slept after each frame</td>
+      <td style="text-align: left">zero-length frames allowed, no sleep</td>
+      <td style="text-align: left">Callers that relied on the 1 ms pacing must pace themselves</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EspCan::SendMessageBatch()</code> slept 2 ms per frame</td>
+      <td style="text-align: left">no sleep</td>
+      <td style="text-align: left">as above</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">hf_esp_can_config_t::rx_queue_depth</code> unused, default 20</td>
+      <td style="text-align: left">RX ring depth, default 32</td>
+      <td style="text-align: left">none</td>
+    </tr>
+  </tbody>
+</table></div>
 <h2 id="-usage-examples">
   
   

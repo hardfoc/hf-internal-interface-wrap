@@ -94,6 +94,8 @@ $(function(){initNavTree('EspCan_8cpp.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">EspCan.cpp File Reference</div></div>
 </div><!--header-->
@@ -103,10 +105,12 @@ $(function(){initNavTree('EspCan_8cpp.html',''); initResizable(); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="EspCan_8h_source.html">EspCan.h</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;climits&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &quot;esp_log.h&quot;</code><br />
 <code>#include &quot;esp_timer.h&quot;</code><br />
 <code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+<code>#include &quot;freertos/semphr.h&quot;</code><br />
 <code>#include &quot;freertos/task.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EspCan.cpp:</div>
@@ -114,6 +118,23 @@ Include dependency graph for EspCan.cpp:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="EspCan_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceanonymous__namespace_02EspCan_8cpp_03" id="r_namespaceanonymous__namespace_02EspCan_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02EspCan_8cpp_03.html">anonymous_namespace{EspCan.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:adaf20bddea8feaf184d696e1179d5d81" id="r_adaf20bddea8feaf184d696e1179d5d81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">TickType_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02EspCan_8cpp_03.html#adaf20bddea8feaf184d696e1179d5d81">anonymous_namespace{EspCan.cpp}::MsToTicksCeil</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:adaf20bddea8feaf184d696e1179d5d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Milliseconds to ticks, rounded up so a non-zero timeout never becomes 0 ticks.  <br /></td></tr>
+<tr class="separator:adaf20bddea8feaf184d696e1179d5d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d3846698cf64b3128366b77883ef2a" id="r_a30d3846698cf64b3128366b77883ef2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02EspCan_8cpp_03.html#a30d3846698cf64b3128366b77883ef2a">anonymous_namespace{EspCan.cpp}::ToTwaiTimeout</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a30d3846698cf64b3128366b77883ef2a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a> timeout to the TWAI driver's int timeout (-1 = forever).  <br /></td></tr>
+<tr class="separator:a30d3846698cf64b3128366b77883ef2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ced6ff9fcf01473d1e3477832094543" id="r_a9ced6ff9fcf01473d1e3477832094543"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#a76d723e6ab745b8613525cfce3546bad">hf_can_bus_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02EspCan_8cpp_03.html#a9ced6ff9fcf01473d1e3477832094543">anonymous_namespace{EspCan.cpp}::MapTwaiState</a> (<a class="el" href="classSoftChipSelectGuard.html">twai_error_state_t</a> state) <a class="el" href="classSoftChipSelectGuard.html">noexcept</a></td></tr>
+<tr class="memdesc:a9ced6ff9fcf01473d1e3477832094543"><td class="mdescLeft">&#160;</td><td class="mdescRight">TWAI driver error state to hf_can_bus_state_t.  <br /></td></tr>
+<tr class="separator:a9ced6ff9fcf01473d1e3477832094543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSoftChipSelectGuard.html">static</a> <a class="el" href="classSoftChipSelectGuard.html">const</a> <a class="el" href="classSoftChipSelectGuard.html">char</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;EspCan&quot;</td></tr>

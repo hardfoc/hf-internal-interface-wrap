@@ -52,6 +52,7 @@ var searchData=
   ['bluetooth_5ferr_5funknown_49',['BLUETOOTH_ERR_UNKNOWN',['../BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf17beb4c86ed2ee5aa1991c55d1e5920',1,'BaseBluetooth.h']]],
   ['bluetooth_5ferr_5funpair_5ffailed_50',['BLUETOOTH_ERR_UNPAIR_FAILED',['../BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca3997ab441cd3349b6653d1472df155f8',1,'BaseBluetooth.h']]],
   ['bluetooth_5fsuccess_51',['BLUETOOTH_SUCCESS',['../BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74',1,'BaseBluetooth.h']]],
-  ['busy_52',['BUSY',['../namespacehf_1_1stm32.html#aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4',1,'hf::stm32']]],
-  ['bxcan_53',['BXCAN',['../StmCan_8h.html#ac5c3cfdfa012fd57fb28fa9cb4d7c2a7af746e1e773f7fe273710538e8a60640f',1,'BXCAN:&#160;StmCan.h'],['../StmTypes_8h.html#a61ed8bb7db7e73841929a940d0a84422af746e1e773f7fe273710538e8a60640f',1,'BXCAN:&#160;StmTypes.h']]]
+  ['bus_5foff_52',['BUS_OFF',['../BaseCan_8h.html#a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0',1,'BaseCan.h']]],
+  ['busy_53',['BUSY',['../namespacehf_1_1stm32.html#aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4',1,'hf::stm32']]],
+  ['bxcan_54',['BXCAN',['../StmCan_8h.html#ac5c3cfdfa012fd57fb28fa9cb4d7c2a7af746e1e773f7fe273710538e8a60640f',1,'BXCAN:&#160;StmCan.h'],['../StmTypes_8h.html#a61ed8bb7db7e73841929a940d0a84422af746e1e773f7fe273710538e8a60640f',1,'BXCAN:&#160;StmTypes.h']]]
 ];

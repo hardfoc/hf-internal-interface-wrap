@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__can__bus__status__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_bus_status_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1afa84b2444e6a8fa7c0897f13853e692c" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bad" kindref="member">hf_can_bus_state_t</ref></type>
+        <definition>hf_can_bus_state_t hf_can_bus_status_t::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>hf_can_bus_status_t::state</qualifiedname>
+        <initializer>{<ref refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a" kindref="member">hf_can_bus_state_t::STOPPED</ref>}</initializer>
+        <briefdescription>
+<para>controller error state </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="588" column="22" bodyfile="inc/base/BaseCan.h" bodystart="588" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1a3bd524fd6ac85b353318568e0ed6caa3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_can_bus_status_t::tec</definition>
+        <argsstring></argsstring>
+        <name>tec</name>
+        <qualifiedname>hf_can_bus_status_t::tec</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>transmit error counter </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="589" column="12" bodyfile="inc/base/BaseCan.h" bodystart="589" bodyend="589"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1aee5aedd109c2965312c1db2d4fdd3e6c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_can_bus_status_t::rec</definition>
+        <argsstring></argsstring>
+        <name>rec</name>
+        <qualifiedname>hf_can_bus_status_t::rec</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>receive error counter </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="590" column="12" bodyfile="inc/base/BaseCan.h" bodystart="590" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1ad8c5e865306f922bebb42f026c97f060" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_bus_status_t::rx_overruns</definition>
+        <argsstring></argsstring>
+        <name>rx_overruns</name>
+        <qualifiedname>hf_can_bus_status_t::rx_overruns</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>frames lost because the RX queue was full </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="591" column="12" bodyfile="inc/base/BaseCan.h" bodystart="591" bodyend="591"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1afc3d972615df743f15b8dae14c044114" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_bus_status_t::tx_queue_full</definition>
+        <argsstring></argsstring>
+        <name>tx_queue_full</name>
+        <qualifiedname>hf_can_bus_status_t::tx_queue_full</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>sends refused because the TX queue was full </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="592" column="12" bodyfile="inc/base/BaseCan.h" bodystart="592" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__bus__status__t_1af4117cef467b4990bf8e75b1d78b7e9f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_bus_status_t::bus_off_count</definition>
+        <argsstring></argsstring>
+        <name>bus_off_count</name>
+        <qualifiedname>hf_can_bus_status_t::bus_off_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>bus-off events since Initialize() </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="593" column="12" bodyfile="inc/base/BaseCan.h" bodystart="593" bodyend="593"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Error counters and queue statistics of one controller (<ref refid="classBaseCan_1ad9c904ed6737b37968733db2a5222b70" kindref="member">BaseCan::GetBusStatus()</ref>). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Same fields as <computeroutput>vortex::contracts::PortStatus</computeroutput>. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="587" column="1" bodyfile="inc/base/BaseCan.h" bodystart="587" bodyend="594"/>
+    <listofallmembers>
+      <member refid="structhf__can__bus__status__t_1af4117cef467b4990bf8e75b1d78b7e9f" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>bus_off_count</name></member>
+      <member refid="structhf__can__bus__status__t_1aee5aedd109c2965312c1db2d4fdd3e6c" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>rec</name></member>
+      <member refid="structhf__can__bus__status__t_1ad8c5e865306f922bebb42f026c97f060" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>rx_overruns</name></member>
+      <member refid="structhf__can__bus__status__t_1afa84b2444e6a8fa7c0897f13853e692c" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>state</name></member>
+      <member refid="structhf__can__bus__status__t_1a3bd524fd6ac85b353318568e0ed6caa3" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>tec</name></member>
+      <member refid="structhf__can__bus__status__t_1afc3d972615df743f15b8dae14c044114" prot="public" virt="non-virtual"><scope>hf_can_bus_status_t</scope><name>tx_queue_full</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

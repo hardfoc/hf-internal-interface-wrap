@@ -116,6 +116,9 @@
     <member refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" kind="function"><name>Reset</name></member>
     <member refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" kind="function"><name>ClearReceiveCallback</name></member>
     <member refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408" kind="function"><name>ClearAcceptanceFilter</name></member>
+    <member refid="classBaseCan_1a238e73afbaf6c65a09671b4577fa5bca" kind="function"><name>TrySendMessage</name></member>
+    <member refid="classBaseCan_1ad9c904ed6737b37968733db2a5222b70" kind="function"><name>GetBusStatus</name></member>
+    <member refid="classBaseCan_1ac941cb1ca3c963883067d41fdfb9fb06" kind="function"><name>RequestBusRecovery</name></member>
     <member refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" kind="function"><name>SetReceiveCallbackFD</name></member>
     <member refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" kind="function"><name>SupportsCanFD</name></member>
     <member refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" kind="function"><name>SetCanFDMode</name></member>
@@ -820,8 +823,9 @@
     <member refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" kind="variable"><name>stats_mutex_</name></member>
     <member refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kind="variable"><name>callback_mutex_</name></member>
     <member refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kind="variable"><name>twai_node_handle_</name></member>
-    <member refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kind="variable"><name>receive_cb_</name></member>
-    <member refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" kind="variable"><name>receive_ud_</name></member>
+    <member refid="classEspCan_1a87dd91b2416e022bdc4624dbb941ce70" kind="variable"><name>receive_cb_</name></member>
+    <member refid="classEspCan_1a86ff12809aafd7e042efee750681401d" kind="variable"><name>receive_ud_</name></member>
+    <member refid="classEspCan_1abb02211aed7fce5ba6958df78b3f1cfb" kind="variable"><name>base_receive_cb_</name></member>
     <member refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" kind="variable"><name>error_cb_</name></member>
     <member refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" kind="variable"><name>error_ud_</name></member>
     <member refid="classEspCan_1a0283765650c36540b4a61fee2360d196" kind="variable"><name>state_cb_</name></member>
@@ -833,6 +837,15 @@
     <member refid="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" kind="variable"><name>advanced_timing_</name></member>
     <member refid="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" kind="variable"><name>current_filter_</name></member>
     <member refid="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" kind="variable"><name>filter_configured_</name></member>
+    <member refid="classEspCan_1a177ccca83efc6d4791d2e1f2cb1af4e2" kind="variable"><name>rx_ring_</name></member>
+    <member refid="classEspCan_1a7fca31ae40e9154949aeaad1199146ea" kind="variable"><name>rx_sem_</name></member>
+    <member refid="classEspCan_1a22c5cf8bda694ec6e25ba350f7f0a34f" kind="variable"><name>rx_mutex_</name></member>
+    <member refid="classEspCan_1a9a8844b0b2742a85f439477b995565b3" kind="variable"><name>tx_slots_</name></member>
+    <member refid="classEspCan_1a0b00bc65dec9c6fc5b83f283edcc6c5b" kind="variable"><name>tx_slot_count_</name></member>
+    <member refid="classEspCan_1a0d668a1e3cce18fe7ce9d22dcb6e8c05" kind="variable"><name>tx_slot_sem_</name></member>
+    <member refid="classEspCan_1ad53c63db9a3cc3d570a8f23c74c09535" kind="variable"><name>tx_queue_full_</name></member>
+    <member refid="classEspCan_1a205bd0c014e0b9383f39919d3829c114" kind="variable"><name>bus_off_count_</name></member>
+    <member refid="classEspCan_1a181372b489fa3421e4618758f5378b53" kind="variable"><name>bus_state_</name></member>
     <member refid="classEspCan_1ad254073ec0b39870dcc3f8d29806ed3b" kind="function"><name>EspCan</name></member>
     <member refid="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" kind="function"><name>~EspCan</name></member>
     <member refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kind="function"><name>Initialize</name></member>
@@ -859,18 +872,23 @@
     <member refid="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" kind="function"><name>ConfigureAdvancedTiming</name></member>
     <member refid="classEspCan_1a2dceac78571417483299cfc7360e4cda" kind="function"><name>ConfigureAdvancedFilter</name></member>
     <member refid="classEspCan_1a5e051944e810526770cc8533ec28e7cf" kind="function"><name>InitiateBusRecovery</name></member>
+    <member refid="classEspCan_1a4ba546b5555f23377490425cc619069f" kind="function"><name>GetBusStatus</name></member>
+    <member refid="classEspCan_1a646f3fdbfc08acfbd5f99cb8f49a1d2d" kind="function"><name>RequestBusRecovery</name></member>
     <member refid="classEspCan_1aae5b5879e2700aad137e516be9edf1b7" kind="function"><name>GetNodeInfo</name></member>
     <member refid="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" kind="function"><name>SendMessageBatch</name></member>
     <member refid="classEspCan_1a105e73dbb299a49c55dd044b4a30587e" kind="function"><name>InternalReceiveCallback</name></member>
     <member refid="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" kind="function"><name>InternalErrorCallback</name></member>
     <member refid="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" kind="function"><name>InternalStateChangeCallback</name></member>
+    <member refid="classEspCan_1a74c273add6a6eeadca86279b3c3ac73c" kind="function"><name>InternalTxDoneCallback</name></member>
     <member refid="classEspCan_1ae27d8b7560c7ce88f8a927dd2df94836" kind="function"><name>ConvertToTwaiFrame</name></member>
     <member refid="classEspCan_1a1b91c8ad9fd014b9eba4417e7abbbb1d" kind="function"><name>ConvertFromTwaiFrame</name></member>
     <member refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kind="function"><name>ConvertEspError</name></member>
     <member refid="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" kind="function"><name>UpdateStatistics</name></member>
-    <member refid="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" kind="function"><name>ProcessReceivedMessage</name></member>
+    <member refid="classEspCan_1ad5a7d054a224f491860d8b9b5a2f3b7f" kind="function"><name>DeliverReceivedFromIsr</name></member>
+    <member refid="classEspCan_1a774a9f92cba5fbdda20846c7b4c55104" kind="function"><name>AllocateQueues</name></member>
+    <member refid="classEspCan_1a9320ace48b798ffd044c2542a15bac20" kind="function"><name>ReleaseQueues</name></member>
+    <member refid="classEspCan_1aa89c1039a3e47c7e89a6c80ac36b9428" kind="function"><name>RefreshBusState</name></member>
     <member refid="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" kind="function"><name>UpdateErrorStatistics</name></member>
-    <member refid="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" kind="function"><name>DispatchReceiveCallbacks</name></member>
     <member refid="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" kind="function"><name>DispatchErrorCallbacks</name></member>
     <member refid="classEspCan_1abead43013dd161753d56006157679fe0" kind="function"><name>DispatchStateChangeCallbacks</name></member>
     <member refid="classEspCan_1afbdb95ac14728f468847fae264b8f536" kind="function"><name>DispatchTxCompleteCallbacks</name></member>
@@ -1801,6 +1819,14 @@
     <member refid="structhf__bluetooth__gatt__service__t_1a6ffaad5257a9a2680f77519874f86bf4" kind="variable"><name>is_primary</name></member>
     <member refid="structhf__bluetooth__gatt__service__t_1a7b598597e462004669e0f93359f0f587" kind="variable"><name>handle</name></member>
   </compound>
+  <compound refid="structhf__can__bus__status__t" kind="struct"><name>hf_can_bus_status_t</name>
+    <member refid="structhf__can__bus__status__t_1afa84b2444e6a8fa7c0897f13853e692c" kind="variable"><name>state</name></member>
+    <member refid="structhf__can__bus__status__t_1a3bd524fd6ac85b353318568e0ed6caa3" kind="variable"><name>tec</name></member>
+    <member refid="structhf__can__bus__status__t_1aee5aedd109c2965312c1db2d4fdd3e6c" kind="variable"><name>rec</name></member>
+    <member refid="structhf__can__bus__status__t_1ad8c5e865306f922bebb42f026c97f060" kind="variable"><name>rx_overruns</name></member>
+    <member refid="structhf__can__bus__status__t_1afc3d972615df743f15b8dae14c044114" kind="variable"><name>tx_queue_full</name></member>
+    <member refid="structhf__can__bus__status__t_1af4117cef467b4990bf8e75b1d78b7e9f" kind="variable"><name>bus_off_count</name></member>
+  </compound>
   <compound refid="structhf__can__config__t" kind="struct"><name>hf_can_config_t</name>
     <member refid="structhf__can__config__t_1ae8305416add671c70e5987b0348f3ac2" kind="variable"><name>tx_pin</name></member>
     <member refid="structhf__can__config__t_1a8aefaeb22194b8ca5b8e78f868f1c311" kind="variable"><name>rx_pin</name></member>
@@ -1831,7 +1857,7 @@
   <compound refid="structhf__can__message__t" kind="struct"><name>hf_can_message_t</name>
     <member refid="structhf__can__message__t_1a0b85c579dd4bb8ad383e91510ef5e1f4" kind="variable"><name>id</name></member>
     <member refid="structhf__can__message__t_1a8280abac48c54cbd49aa4a80aa620a22" kind="variable"><name>dlc</name></member>
-    <member refid="structhf__can__message__t_1a991f9b496db72054277c92e117b58940" kind="variable"><name>data</name></member>
+    <member refid="structhf__can__message__t_1a537aae10d1212a367fcc5b7528e4e6c5" kind="variable"><name>data</name></member>
     <member refid="structhf__can__message__t_1acb38dbcef71c8cc85fe70039fbfb0045" kind="variable"><name>is_extended</name></member>
     <member refid="structhf__can__message__t_1a55b067aab266686216317dd487e222ad" kind="variable"><name>is_rtr</name></member>
     <member refid="structhf__can__message__t_1a97893383bbe4d5889b552cfa0531d1c5" kind="variable"><name>is_ss</name></member>
@@ -1845,19 +1871,32 @@
     <member refid="structhf__can__message__t_1a93b76c7406af7a2c80eae45c97675e6b" kind="variable"><name>is_canfd</name></member>
     <member refid="structhf__can__message__t_1ade2b527e24ebd6171b148a167442ca0d" kind="variable"><name>is_brs</name></member>
     <member refid="structhf__can__message__t_1adeaf9d0f4b0ed108a6260815b37189cb" kind="variable"><name>is_esi</name></member>
-    <member refid="structhf__can__message__t_1ae419b81b2cec03d10f1fc0b61c22833e" kind="variable"><name>canfd_dlc</name></member>
     <member refid="structhf__can__message__t_1a647e0893962b3ffa7b0c15492af5db37" kind="function"><name>hf_can_message_t</name></member>
     <member refid="structhf__can__message__t_1a768ed986f40f0671843a4fba892936cc" kind="function"><name>GetMaxDataLength</name></member>
-    <member refid="structhf__can__message__t_1a4f6b22dbc4246cf76b6f958eed04e385" kind="function"><name>IsValidDLC</name></member>
-    <member refid="structhf__can__message__t_1a07dc96f83a2754fb3132195058880ca4" kind="function"><name>GetEffectiveDLC</name></member>
-    <member refid="structhf__can__message__t_1af328325d29d8cd4fa0a54b2184f13a22" kind="function"><name>SetDLC</name></member>
+    <member refid="structhf__can__message__t_1ad84f9f8302a82e8a07bc56df73a1236a" kind="function"><name>GetLength</name></member>
+    <member refid="structhf__can__message__t_1a7e00f71114e700b3f6d6c9f8fa6a4bc0" kind="function"><name>IsValidLength</name></member>
+    <member refid="structhf__can__message__t_1ad8c9a38d3cb30d8c03364d82ec5b1367" kind="function"><name>SetLength</name></member>
+    <member refid="structhf__can__message__t_1a8d05c381edab40a5f58cf8960308ac6f" kind="function"><name>IsValidDLC</name></member>
+    <member refid="structhf__can__message__t_1a291aaec7e330ef9174b5abb415fb696d" kind="function"><name>GetEffectiveDLC</name></member>
+    <member refid="structhf__can__message__t_1a61734f79136f2dae724a0253f64eb81d" kind="function"><name>SetDLC</name></member>
+    <member refid="structhf__can__message__t_1a725d17a867feef896d4486c7907def70" kind="function"><name>GetDlcCode</name></member>
+    <member refid="structhf__can__message__t_1ab14a57228885a73d627614d8fde4ba65" kind="function"><name>SetDlcCode</name></member>
+    <member refid="structhf__can__message__t_1a138b2af8161a734d399a26f17e47f04c" kind="function"><name>SetData</name></member>
     <member refid="structhf__can__message__t_1a8db2a9d7f4c842360c8aeb82703b467f" kind="function"><name>SetStandardFrame</name></member>
     <member refid="structhf__can__message__t_1acc7892375611b12a9846bc20add934bd" kind="function"><name>SetExtendedFrame</name></member>
     <member refid="structhf__can__message__t_1a940cb35d37db09a774cc87bad9a02f34" kind="function"><name>SetDataFrame</name></member>
     <member refid="structhf__can__message__t_1af05e6e7e32eb639af3dfda8228cc74e0" kind="function"><name>SetRemoteFrame</name></member>
     <member refid="structhf__can__message__t_1a20eab0b26b0d462efc72379e8a202484" kind="function"><name>SetSingleShot</name></member>
     <member refid="structhf__can__message__t_1adeca458e7b925db873ecfb779923db32" kind="function"><name>SetSelfReception</name></member>
-    <member refid="structhf__can__message__t_1a3bf76f6e63352c86d35af72bcf73c91c" kind="function"><name>IsValidId</name></member>
+    <member refid="structhf__can__message__t_1a47abd137b63dd60ceed728a77bf5f3aa" kind="function"><name>SetFdFrame</name></member>
+    <member refid="structhf__can__message__t_1a7012325cfb55a5627f8e959356f077d8" kind="function"><name>SetClassicFrame</name></member>
+    <member refid="structhf__can__message__t_1a215be31c50eb30397dd0cd9602354e14" kind="function"><name>GetFlags</name></member>
+    <member refid="structhf__can__message__t_1afaab36d2d18ef29de0edfba164e2ab5e" kind="function"><name>SetFlags</name></member>
+    <member refid="structhf__can__message__t_1a0e782379de1d74a5a1427a11b3cb12fc" kind="function"><name>IsValidId</name></member>
+    <member refid="structhf__can__message__t_1a5c5b482cf52569abdc58491eb387b3c6" kind="function"><name>Validate</name></member>
+    <member refid="structhf__can__message__t_1aa6f16e4eb8e58143b2bdfcc91ef833c5" kind="function"><name>IsValid</name></member>
+    <member refid="structhf__can__message__t_1a0aaf82da6343b13134ed2e56f39439b0" kind="function"><name>ToFrame</name></member>
+    <member refid="structhf__can__message__t_1a04e66d5dd2530197bc8977aaaa2e0585" kind="function"><name>FromFrame</name></member>
   </compound>
   <compound refid="structhf__can__reception__info__t" kind="struct"><name>hf_can_reception_info_t</name>
     <member refid="structhf__can__reception__info__t_1ae1fbb6e6b8850678fc0d601bf80806c0" kind="variable"><name>timestamp_us</name></member>
@@ -1918,6 +1957,7 @@
     <member refid="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" kind="variable"><name>secondary_sample_point</name></member>
     <member refid="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" kind="variable"><name>tx_queue_depth</name></member>
     <member refid="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" kind="variable"><name>rx_queue_depth</name></member>
+    <member refid="structhf__esp__can__config__t_1ab116a78762cdb2302cefbd0f47535111" kind="variable"><name>rx_mode</name></member>
     <member refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kind="variable"><name>controller_id</name></member>
     <member refid="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" kind="variable"><name>mode</name></member>
     <member refid="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" kind="variable"><name>fail_retry_cnt</name></member>
@@ -2823,6 +2863,34 @@
     <member refid="structHfEspWifiStats_1a74acd38b83fcb08be0fdbf6c416e13e9" kind="variable"><name>noise_floor</name></member>
     <member refid="structHfEspWifiStats_1ab068e52ec8259f4a0b41ed15da8c9b37" kind="variable"><name>channel_utilization</name></member>
   </compound>
+  <compound refid="classHfSpscRing" kind="class"><name>HfSpscRing</name>
+    <member refid="classHfSpscRing_1a9f7d042f068edb38ef2f3292f3eaedab" kind="variable"><name>kMaxCapacity</name></member>
+    <member refid="classHfSpscRing_1a72c9da2d889713b45a10d06a1fc5b8f0" kind="variable"><name>slots_</name></member>
+    <member refid="classHfSpscRing_1a32292fd75f690bb080c00e82887c150b" kind="variable"><name>capacity_</name></member>
+    <member refid="classHfSpscRing_1a525c00ffa310b909d6c30607f3e7f8a9" kind="variable"><name>mask_</name></member>
+    <member refid="classHfSpscRing_1a4d9ac222072ae57c3369bc30b96d0843" kind="variable"><name>head_</name></member>
+    <member refid="classHfSpscRing_1aa4952f8c59ceae8a5768f71b8005e46c" kind="variable"><name>tail_</name></member>
+    <member refid="classHfSpscRing_1ab9e09488f7cb51f98e7a6778343b8d42" kind="variable"><name>overruns_</name></member>
+    <member refid="classHfSpscRing_1a1185c14b70fd552b5db358761346482e" kind="variable"><name>peak_</name></member>
+    <member refid="classHfSpscRing_1ac1c7087a2922232ca3d4a4f2dadb6b92" kind="function"><name>HfSpscRing</name></member>
+    <member refid="classHfSpscRing_1a3c53bc3f2ea0af0209e4fd61c4f6dc6c" kind="function"><name>~HfSpscRing</name></member>
+    <member refid="classHfSpscRing_1a8d28c4c76bcea944d10193521ae5ea4d" kind="function"><name>HfSpscRing</name></member>
+    <member refid="classHfSpscRing_1a54e3094af962b2de439409191f56944c" kind="function"><name>operator=</name></member>
+    <member refid="classHfSpscRing_1ae3790bccb746b562aec6bcd26e9439fe" kind="function"><name>HfSpscRing</name></member>
+    <member refid="classHfSpscRing_1ac0509ba25bddeba007e51fabcb483eb4" kind="function"><name>operator=</name></member>
+    <member refid="classHfSpscRing_1a5fa90d25828fc3327da5d29ff9d6de31" kind="function"><name>Init</name></member>
+    <member refid="classHfSpscRing_1a1104e71f41b19219ec0f4e3fe3c1a5b2" kind="function"><name>Release</name></member>
+    <member refid="classHfSpscRing_1ad859dbda50b260d0c12d3e422f20c1d8" kind="function"><name>IsReady</name></member>
+    <member refid="classHfSpscRing_1ab3d5df4d505d0faecd8484c533403a2a" kind="function"><name>Capacity</name></member>
+    <member refid="classHfSpscRing_1a08ba2dda0fe3bfc8bab60a0e33f2951a" kind="function"><name>TryPush</name></member>
+    <member refid="classHfSpscRing_1a8578deb03cdf41b44a716dc95a5cb452" kind="function"><name>TryPop</name></member>
+    <member refid="classHfSpscRing_1a92ff8e87a8f85881863b3abd03fc592f" kind="function"><name>Clear</name></member>
+    <member refid="classHfSpscRing_1a65e496c88031f63b6c5341f0a6bd8bb1" kind="function"><name>Size</name></member>
+    <member refid="classHfSpscRing_1a05a3ec5cd22957bda3468d57e46657cf" kind="function"><name>Empty</name></member>
+    <member refid="classHfSpscRing_1a7ce9c7b5dfe02a461ae96e5012a16131" kind="function"><name>Overruns</name></member>
+    <member refid="classHfSpscRing_1a5deca08970682a5e25162c1390361e40" kind="function"><name>Peak</name></member>
+    <member refid="classHfSpscRing_1a7468141e2abdd80ebfdee75e78c4ca88" kind="function"><name>ResetCounters</name></member>
+  </compound>
   <compound refid="classHostNvs" kind="class"><name>HostNvs</name>
     <member refid="classHostNvs_1afb926b9f0d12dd8a2974540c96d432c9" kind="variable"><name>name_</name></member>
     <member refid="classHostNvs_1a892b5b9c6a8ff4a9319feab52caaf4c4" kind="variable"><name>blobs_</name></member>
@@ -2851,6 +2919,16 @@
     <member refid="structInterruptStatus_1a9f18143aa438cbe4065bc7c923048887" kind="variable"><name>trigger_type</name></member>
     <member refid="structInterruptStatus_1a64629d99731ed513155bebd9fd11a3c1" kind="variable"><name>interrupt_count</name></member>
     <member refid="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" kind="variable"><name>has_callback</name></member>
+  </compound>
+  <compound refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState" kind="struct"><name>anonymous_namespace{CanComprehensiveTest.cpp}::LoopbackStressState</name>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1a11ef3463b91985413ec4cc9fb76006d1" kind="variable"><name>can</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1aff688ba043c697157ca4f1a611d1b589" kind="variable"><name>producer_done</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1adbf91212d6f0ee96517eb0eed35770f9" kind="variable"><name>consumer_done</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1a55373f04601686c12a7020ba4aa06864" kind="variable"><name>received</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1acfd88a7262b64567c687c1376078ab5d" kind="variable"><name>lost</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1aaddca394beba9c296a1fbfe741a7556e" kind="variable"><name>out_of_order</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1a00249d2c00af6e54c4ecdc899f2a4541" kind="variable"><name>corrupt</name></member>
+    <member refid="structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState_1a715cf58d5859ec5c030b04668f2fb938" kind="variable"><name>expected_seq</name></member>
   </compound>
   <compound refid="structNullMutexBackend" kind="struct"><name>NullMutexBackend</name>
     <member refid="structNullMutexBackend_1a21f429e791d9a7fbe98f960bd6c5f9f5" kind="typedef"><name>RecursiveMutexHandle</name></member>
@@ -3356,6 +3434,11 @@
     <member refid="structEspPwm_1_1TimerState_1affc9adf387692d7829aca3fd9f14e1bc" kind="variable"><name>has_hardware_conflicts</name></member>
     <member refid="structEspPwm_1_1TimerState_1ac48c98b08125c9473a9bd261be11f939" kind="function"><name>TimerState</name></member>
   </compound>
+  <compound refid="structEspCan_1_1TxSlot" kind="struct"><name>EspCan::TxSlot</name>
+    <member refid="structEspCan_1_1TxSlot_1a6b54a4db9398ec05615512b2a197c7c6" kind="variable"><name>frame</name></member>
+    <member refid="structEspCan_1_1TxSlot_1a3c5d7d677753e1e99cc89766a256afa9" kind="variable"><name>buffer</name></member>
+    <member refid="structEspCan_1_1TxSlot_1a7593128f8ddc9b4c618a7d00413ffa32" kind="variable"><name>in_use</name></member>
+  </compound>
   <compound refid="structEspUart_1_1UartState" kind="struct"><name>EspUart::UartState</name>
     <member refid="structEspUart_1_1UartState_1aae872fa89746ec3e62b4caba0a47a4af" kind="variable"><name>configured</name></member>
     <member refid="structEspUart_1_1UartState_1af3e1cad0ad315b431b9528d1133c2d7e" kind="variable"><name>enabled</name></member>
@@ -3381,6 +3464,14 @@
     <member refid="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" kind="variable"><name>required_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" kind="variable"><name>available_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" kind="function"><name>ValidationResult</name></member>
+  </compound>
+  <compound refid="namespaceanonymous__namespace_02CanComprehensiveTest_8cpp_03" kind="namespace"><name>anonymous_namespace{CanComprehensiveTest.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02CanComprehensiveTest_8cpp_03_1a7c7203a734267861c6ee7ed63c4e836f" kind="function"><name>loopback_stress_consumer</name></member>
+  </compound>
+  <compound refid="namespaceanonymous__namespace_02EspCan_8cpp_03" kind="namespace"><name>anonymous_namespace{EspCan.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02EspCan_8cpp_03_1adaf20bddea8feaf184d696e1179d5d81" kind="function"><name>MsToTicksCeil</name></member>
+    <member refid="namespaceanonymous__namespace_02EspCan_8cpp_03_1a30d3846698cf64b3128366b77883ef2a" kind="function"><name>ToTwaiTimeout</name></member>
+    <member refid="namespaceanonymous__namespace_02EspCan_8cpp_03_1a9ced6ff9fcf01473d1e3477832094543" kind="function"><name>MapTwaiState</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03" kind="namespace"><name>anonymous_namespace{EspUsbSerialJtag.cpp}</name>
     <member refid="namespaceanonymous__namespace_02EspUsbSerialJtag_8cpp_03_1ae9f75b1971ab0c326d59cdcc0d786b29" kind="function"><name>MsToTicks</name></member>
@@ -3571,6 +3662,14 @@
     <member refid="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" kind="function"><name>make_unique_nothrow</name></member>
     <member refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kind="function"><name>make_unique_array_nothrow</name></member>
   </compound>
+  <compound refid="namespacehf__can__flag" kind="namespace"><name>hf_can_flag</name>
+    <member refid="namespacehf__can__flag_1a86985b915f0db8adae441c581cdeb92b" kind="variable"><name>EXT</name></member>
+    <member refid="namespacehf__can__flag_1ae93c5789760f6891649a03d629a3f21e" kind="variable"><name>RTR</name></member>
+    <member refid="namespacehf__can__flag_1ac03abe3af81076aa8254c7afd7696ce4" kind="variable"><name>FDF</name></member>
+    <member refid="namespacehf__can__flag_1a08e6648eaefeb336cecfc59795dc71ac" kind="variable"><name>BRS</name></member>
+    <member refid="namespacehf__can__flag_1a484374824aa1680df53a8a6045311e44" kind="variable"><name>ESI</name></member>
+    <member refid="namespacehf__can__flag_1a6602e02b285e196b1acafb3efc6c4725" kind="variable"><name>ALL</name></member>
+  </compound>
   <compound refid="namespacehf__time" kind="namespace"><name>hf_time</name>
     <member refid="namespacehf__time_1ac7fa91057bdbd80cb6bfdad0f650f21d" kind="function"><name>MonotonicMs</name></member>
     <member refid="namespacehf__time_1aac104941aa853c491e65fae6e388b352" kind="function"><name>ElapsedUs</name></member>
@@ -3726,6 +3825,7 @@
     <member refid="CanComprehensiveTest_8cpp_1aa3bc2653a52a6182eb4e5f8b389b7ee4" kind="function"><name>test_can_bus_recovery</name></member>
     <member refid="CanComprehensiveTest_8cpp_1a2fa4240ea7c67ffbb7c6826c68564ac4" kind="function"><name>test_can_batch_transmission</name></member>
     <member refid="CanComprehensiveTest_8cpp_1a5a1cbd830fb13ca11bdba428f616688e" kind="function"><name>test_can_high_throughput</name></member>
+    <member refid="CanComprehensiveTest_8cpp_1a7d9fe89af286214a6c4cf77f71832d9b" kind="function"><name>test_can_loopback_stress_rx_ring</name></member>
     <member refid="CanComprehensiveTest_8cpp_1a720210db5a0b95ad5cd955ea299924fd" kind="function"><name>test_external_physical_loopback</name></member>
     <member refid="CanComprehensiveTest_8cpp_1a52afe048b4516a467a66e0355377dfdf" kind="function"><name>test_loopback_comparison</name></member>
     <member refid="CanComprehensiveTest_8cpp_1af0c16d195a75aadad0869a1b182ced59" kind="function"><name>test_sn65_transceiver_integration</name></member>
@@ -4452,9 +4552,33 @@
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbac6826689e9756b15d3cad7f54cb66d07" kind="enumvalue"><name>CAN_ERR_NOT_SUPPORTED</name></member>
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba5cdbb5419c40397c56ccb9d73280e195" kind="enumvalue"><name>CAN_ERR_TIMEOUT_ALT</name></member>
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbab4eeeb07445d3a8b82156680fb9b1839" kind="enumvalue"><name>CAN_ERR_UNKNOWN</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3" kind="enum"><name>hf_can_frame_error_t</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3ab50339a10e1de285ac99d4c3990b8693" kind="enumvalue"><name>NONE</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3a4414f108eeadc541450994574e02bae5" kind="enumvalue"><name>ID_RANGE</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3a6689b4229759c1ecd190be9bb0ed37a6" kind="enumvalue"><name>CLASSIC_TOO_LONG</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3ab3a73b3d2560da286371d41a1375ce28" kind="enumvalue"><name>FD_TOO_LONG</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3ac60c9fa4b384f03cd9a07d9acabd390f" kind="enumvalue"><name>FD_LENGTH_NOT_EXACT</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3ad6d931494cb96fef2ea6088a960983f2" kind="enumvalue"><name>RTR_ON_FD</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3af83e22978b814002b00c09dd3baaa807" kind="enumvalue"><name>FD_BITS_ON_CLASSIC</name></member>
+    <member refid="BaseCan_8h_1a7a4c2f557ddf51da38e24ca5023ae6c3ade62be2487aa376466e339279f032309" kind="enumvalue"><name>RTR_WITH_DATA</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bad" kind="enum"><name>hf_can_bus_state_t</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bada09d4d696b4e935115b9313e3c412509a" kind="enumvalue"><name>STOPPED</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546bada18887461e090a2790f4f706666c2eb22" kind="enumvalue"><name>ERROR_ACTIVE</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546badaff9ad494c8aa84542a91f14ff985f123" kind="enumvalue"><name>ERROR_WARNING</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546badaa6340aad792a46f1a4e6ef8d4c802b44" kind="enumvalue"><name>ERROR_PASSIVE</name></member>
+    <member refid="BaseCan_8h_1a76d723e6ab745b8613525cfce3546badaea3c14b559f5e4065a5bf09df4a9d9f0" kind="enumvalue"><name>BUS_OFF</name></member>
     <member refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kind="typedef"><name>hf_can_receive_callback_t</name></member>
-    <member refid="BaseCan_8h_1ac243f46599a2b6bfb5fc822017e3e051" kind="typedef"><name>hf_can_fd_receive_callback_t</name></member>
+    <member refid="BaseCan_8h_1ae7668300fc28b21ec4ddc927a538e363" kind="typedef"><name>hf_can_fd_receive_callback_t</name></member>
+    <member refid="BaseCan_8h_1af8e5357f8e844352d83676e5937fac07" kind="variable"><name>HF_CAN_CLASSIC_MAX_LEN</name></member>
+    <member refid="BaseCan_8h_1a1c3dce55d7caecbc0792bf7afb9f48b2" kind="variable"><name>HF_CAN_FD_MAX_LEN</name></member>
+    <member refid="BaseCan_8h_1a77ee7a5105967b1e89acc93b888b5701" kind="variable"><name>HF_CAN_MAX_STD_ID</name></member>
+    <member refid="BaseCan_8h_1a0ed2104aab442fda3a9e98b1d80c33fc" kind="variable"><name>HF_CAN_MAX_EXT_ID</name></member>
+    <member refid="BaseCan_8h_1a57918b2411e671e74e388a14eb388153" kind="variable"><name>HF_CAN_DLC_INVALID</name></member>
     <member refid="BaseCan_8h_1a1d3c90f8b197e4b5e443d83173e29814" kind="function"><name>HfCanErrToString</name></member>
+    <member refid="BaseCan_8h_1a38ebce750254ee889c51bdab20de3928" kind="function"><name>HfCanDlcToLen</name></member>
+    <member refid="BaseCan_8h_1a9dd35ee4cc8e677c9035599558eb9c4e" kind="function"><name>HfCanLenToDlc</name></member>
+    <member refid="BaseCan_8h_1afe76754862fbc249647f81da1c24d6bd" kind="function"><name>HfCanIsValidLength</name></member>
+    <member refid="BaseCan_8h_1a12668d3b9c7342a87ed2179e2964d69c" kind="function"><name>HfCanStateFromCounters</name></member>
   </compound>
   <compound refid="BaseGpio_8h" kind="file"><name>BaseGpio.h</name>
     <member refid="group__gpio_1gacdef61b325fdcc83f9974bc7c3c6d800" kind="define"><name>HF_GPIO_ERR_LIST</name></member>
@@ -4990,10 +5114,13 @@
     <member refid="EspBluetooth_8h_1a8da2e7c2b2afc10dd6d8efb358926bbb" kind="typedef"><name>EspBluetoothImpl</name></member>
   </compound>
   <compound refid="EspCan_8h" kind="file"><name>EspCan.h</name>
-    <member refid="EspCan_8h_1a837c184d4539ef6fd1a61acdb66f7149" kind="typedef"><name>hf_esp_can_receive_callback_t</name></member>
-    <member refid="EspCan_8h_1a076a16ddd28094881c20009e0617cdaa" kind="typedef"><name>hf_esp_can_error_callback_t</name></member>
-    <member refid="EspCan_8h_1a825b77c282f2132954ab50789a51a98b" kind="typedef"><name>hf_esp_can_state_callback_t</name></member>
-    <member refid="EspCan_8h_1aeb3672dcbe405ded46e6f974338ed765" kind="typedef"><name>hf_esp_can_tx_callback_t</name></member>
+    <member refid="EspCan_8h_1a72955efc4c9a41873b241e885c89c775" kind="enum"><name>hf_esp_can_rx_mode_t</name></member>
+    <member refid="EspCan_8h_1a72955efc4c9a41873b241e885c89c775ae1f2d5134ed2543d38a0de9751cf75d9" kind="enumvalue"><name>AUTO</name></member>
+    <member refid="EspCan_8h_1a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250" kind="enumvalue"><name>QUEUE_ALWAYS</name></member>
+    <member refid="EspCan_8h_1a195ce504277e201f3d30d604a471509a" kind="typedef"><name>hf_esp_can_receive_callback_t</name></member>
+    <member refid="EspCan_8h_1a29828d29f6ff23ee2df36672155149ce" kind="typedef"><name>hf_esp_can_error_callback_t</name></member>
+    <member refid="EspCan_8h_1a78cf02012b3791ed9988150617dae647" kind="typedef"><name>hf_esp_can_state_callback_t</name></member>
+    <member refid="EspCan_8h_1a2d56ff422e00524b69e1de98dbf2b821" kind="typedef"><name>hf_esp_can_tx_callback_t</name></member>
   </compound>
   <compound refid="EspGpio_8h" kind="file"><name>EspGpio.h</name>
   </compound>
@@ -5519,6 +5646,8 @@
   <compound refid="AsciiArtGenerator_8h" kind="file"><name>AsciiArtGenerator.h</name>
   </compound>
   <compound refid="DigitalOutputGuard_8h" kind="file"><name>DigitalOutputGuard.h</name>
+  </compound>
+  <compound refid="HfSpscRing_8h" kind="file"><name>HfSpscRing.h</name>
   </compound>
   <compound refid="HfTime_8h" kind="file"><name>HfTime.h</name>
   </compound>

@@ -13,6 +13,7 @@ var group__can =
       [ "Deinitialize", "classBaseCan.html#a9d207d69485c479ab68c5396ce3d814c", null ],
       [ "EnsureDeinitialized", "classBaseCan.html#a03daa6284ad75c2bbd335077141ea9d7", null ],
       [ "EnsureInitialized", "classBaseCan.html#a3c372c570cb93abf33e2de4f05970d36", null ],
+      [ "GetBusStatus", "classBaseCan.html#ad9c904ed6737b37968733db2a5222b70", null ],
       [ "GetDiagnostics", "classBaseCan.html#a0c05b53922dafb9c544f1e1fa6977397", null ],
       [ "GetStatistics", "classBaseCan.html#a938484f6f54bef73a04b5698214df442", null ],
       [ "GetStatus", "classBaseCan.html#ac39ec574726318ccb010c87bcea0ed0d", null ],
@@ -22,6 +23,7 @@ var group__can =
       [ "operator=", "classBaseCan.html#ad9dc7b9f27d9909273f077baaf00df33", null ],
       [ "ReceiveMessage", "classBaseCan.html#a300b5b097246fd7b9575050eb7eb239c", null ],
       [ "ReceiveMessageBatch", "classBaseCan.html#a06981fc040b040418551f79eafea295d", null ],
+      [ "RequestBusRecovery", "classBaseCan.html#ac941cb1ca3c963883067d41fdfb9fb06", null ],
       [ "Reset", "classBaseCan.html#ab51e96a8d84616a1f2fdabd8452c0665", null ],
       [ "ResetDiagnostics", "classBaseCan.html#a6e26f72d55472f7dd825063abaa87ebc", null ],
       [ "ResetStatistics", "classBaseCan.html#ac6924ccef37360dd48ed18f128c8a17e", null ],
@@ -33,6 +35,7 @@ var group__can =
       [ "SetReceiveCallbackFD", "classBaseCan.html#a44753662096232f45e49ad752e8f68e4", null ],
       [ "SetTransmitterDelayCompensation", "classBaseCan.html#acdab43f967e641b0566a7f851ea37114", null ],
       [ "SupportsCanFD", "classBaseCan.html#a5af808724133b48742ebdcd448e93515", null ],
+      [ "TrySendMessage", "classBaseCan.html#a238e73afbaf6c65a09671b4577fa5bca", null ],
       [ "diagnostics_", "classBaseCan.html#a6de6c09dd8b68a3d07ab804967e34782", null ],
       [ "initialized_", "classBaseCan.html#a664e24b04c3fd40328b75b9850fef57f", null ],
       [ "statistics_", "classBaseCan.html#a20b7f5289833676f369d33616fd2b05b", null ]

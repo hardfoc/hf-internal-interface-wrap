@@ -1,9 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseNvs.html" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="5,61,99,93"/>
-<area shape="rect" id="Node000001" href="$classEspNvs.html" title="Production&#45;ready MCU&#45;integrated non&#45;volatile storage implementation." alt="" coords="150,5,233,37"/>
-<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="106,53,152,36,148,39,109,57"/>
-<area shape="rect" id="Node000002" href="$classHostNvs.html" title="Hash&#45;map NVS namespace for host builds and deterministic tests." alt="" coords="147,61,236,93"/>
-<area shape="poly" id="edge11_Node000000_Node000002" title=" " alt="" coords="114,75,149,76,144,78,115,80"/>
-<area shape="rect" id="Node000003" href="$classStmNvs.html" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="149,117,234,149"/>
-<area shape="poly" id="edge12_Node000000_Node000003" title=" " alt="" coords="108,97,153,116,147,117,107,102"/>
+<area shape="rect" id="Node000000" href="$classBaseLogger.html" title="Base logger abstract class." alt="" coords="5,5,124,37"/>
+<area shape="rect" id="Node000001" href="$classStmLogger.html" title="STM32 Logger — production&#45;quality logging over UART/SWO/printf." alt="" coords="172,5,282,37"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="139,19,174,21,169,21,139,24"/>
 </map>

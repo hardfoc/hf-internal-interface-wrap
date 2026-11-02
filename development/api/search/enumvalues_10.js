@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receive_0',['Receive',['../BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655a5639d3df5aea3d9e78027b843ee3cbb2',1,'BasePio.h']]]
+  ['queue_5falways_0',['QUEUE_ALWAYS',['../EspCan_8h.html#a72955efc4c9a41873b241e885c89c775affc332b1571fbcf09560648dd8f26250',1,'EspCan.h']]]
 ];

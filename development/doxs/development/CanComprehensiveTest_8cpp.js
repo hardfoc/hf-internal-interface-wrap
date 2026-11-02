@@ -1,7 +1,9 @@
 var CanComprehensiveTest_8cpp =
 [
+    [ "anonymous_namespace{CanComprehensiveTest.cpp}::LoopbackStressState", "structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState.html", "structanonymous__namespace_02CanComprehensiveTest_8cpp_03_1_1LoopbackStressState" ],
     [ "app_main", "CanComprehensiveTest_8cpp.html#a630544a7f0a2cc40d8a7fefab7e2fe70", null ],
     [ "create_test_message", "CanComprehensiveTest_8cpp.html#a5f5deb8c306bfd4833b6a2629aca64f3", null ],
+    [ "loopback_stress_consumer", "CanComprehensiveTest_8cpp.html#a7c7203a734267861c6ee7ed63c4e836f", null ],
     [ "test_acceptance_filtering", "CanComprehensiveTest_8cpp.html#aa95fe692493d545854a7d1efec334b6e", null ],
     [ "test_advanced_timing", "CanComprehensiveTest_8cpp.html#adc84b01b6f41fd646a7e3ed3445e1f6d", null ],
     [ "test_basic_initialization", "CanComprehensiveTest_8cpp.html#aae05643040204e3ff7a7d8ef0d91e04b", null ],
@@ -13,6 +15,7 @@ var CanComprehensiveTest_8cpp =
     [ "test_can_error_handling", "CanComprehensiveTest_8cpp.html#a416afd491136be930bda5109d92394c1", null ],
     [ "test_can_high_throughput", "CanComprehensiveTest_8cpp.html#a5a1cbd830fb13ca11bdba428f616688e", null ],
     [ "test_can_initialization", "CanComprehensiveTest_8cpp.html#ae735bad5b790362e222ffd4f1f5dcdf6", null ],
+    [ "test_can_loopback_stress_rx_ring", "CanComprehensiveTest_8cpp.html#a7d9fe89af286214a6c4cf77f71832d9b", null ],
     [ "test_can_message_transmission", "CanComprehensiveTest_8cpp.html#a1a5ace41a3da9893da74676f3ca16971", null ],
     [ "test_can_self_test_mode", "CanComprehensiveTest_8cpp.html#aa017f3c49e5203c9c211ff83ae7e4d1a", null ],
     [ "test_can_signal_quality", "CanComprehensiveTest_8cpp.html#a35dd5351b620eefea92884b6e4b2dd26", null ],

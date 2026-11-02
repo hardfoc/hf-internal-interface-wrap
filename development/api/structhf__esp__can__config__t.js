@@ -12,6 +12,7 @@ var structhf__esp__can__config__t =
     [ "intr_priority", "structhf__esp__can__config__t.html#a77ada3296173052baad6719e4bf1c01a", null ],
     [ "mode", "structhf__esp__can__config__t.html#ae61a0e454e12c54a4e5bf233a7c98462", null ],
     [ "no_receive_rtr", "structhf__esp__can__config__t.html#a3f57b97d55b34368fde640a3caf67dcd", null ],
+    [ "rx_mode", "structhf__esp__can__config__t.html#ab116a78762cdb2302cefbd0f47535111", null ],
     [ "rx_pin", "structhf__esp__can__config__t.html#a7187094fce56f62b7e793ade504d3985", null ],
     [ "rx_queue_depth", "structhf__esp__can__config__t.html#a1c21739fbe4c5ec52272e93fefcfeca0", null ],
     [ "sample_point_permill", "structhf__esp__can__config__t.html#a3fc23f7e02de25e15735f902fb8d9612", null ],

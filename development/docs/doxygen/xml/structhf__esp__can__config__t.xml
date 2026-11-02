@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="66" column="16" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="66" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="82" column="16" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a7187094fce56f62b7e793ade504d3985" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="67" column="16" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="67" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="83" column="16" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="70" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="70" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="86" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="71" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="71" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="87" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="72" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="72" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="88" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -86,13 +86,13 @@
         <name>tx_queue_depth</name>
         <qualifiedname>hf_esp_can_config_t::tx_queue_depth</qualifiedname>
         <briefdescription>
-<para>Transmit queue depth. </para>
+<para>Driver TX queue depth (frames waiting for the controller) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="75" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="75" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="91" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -101,13 +101,28 @@
         <name>rx_queue_depth</name>
         <qualifiedname>hf_esp_can_config_t::rx_queue_depth</qualifiedname>
         <briefdescription>
-<para>Receive queue depth (internal) </para>
+<para>RX ring depth for ReceiveMessage() (rounded up to a power of 2) </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="76" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="76" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="92" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__config__t_1ab116a78762cdb2302cefbd0f47535111" prot="public" static="no" mutable="no">
+        <type><ref refid="EspCan_8h_1a72955efc4c9a41873b241e885c89c775" kindref="member">hf_esp_can_rx_mode_t</ref></type>
+        <definition>hf_esp_can_rx_mode_t hf_esp_can_config_t::rx_mode</definition>
+        <argsstring></argsstring>
+        <name>rx_mode</name>
+        <qualifiedname>hf_esp_can_config_t::rx_mode</qualifiedname>
+        <briefdescription>
+<para>Callback and/or RX ring delivery (see hf_esp_can_rx_mode_t) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="93" column="24" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" kindref="member">hf_can_controller_id_t</ref></type>
@@ -122,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="79" column="26" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="79" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="96" column="26" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" kindref="member">hf_can_mode_t</ref></type>
@@ -137,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="80" column="17" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="80" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="97" column="17" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">int8_t</ref></type>
@@ -152,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="81" column="10" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="81" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="98" column="10" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint8_t</ref></type>
@@ -167,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="82" column="11" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="82" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="99" column="11" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a5779506abfcfa1e2befe143b6d80e32c" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -182,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="85" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="85" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="102" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1aa877c45912cb57a8e245ecfec1f484ef" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -197,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="86" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="86" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="103" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a1d3b817788e36549ad3b491e3a5dd81d" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -212,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="87" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="87" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="104" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -227,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="88" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="88" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="105" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1a08fda25ef59f1a53f2ffa53c61650430" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -242,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="89" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="89" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="106" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" prot="public" static="no" mutable="no">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">uint32_t</ref></type>
@@ -257,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="92" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="92" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="109" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="109" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -273,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="94" column="3" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="94" bodyend="100"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="111" column="3" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="111" bodyend="118"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -282,7 +297,7 @@
     <detaileddescription>
 <para>Comprehensive configuration following ESP-IDF <ref refid="classSoftChipSelectGuard_1acbe56b56922f2d3988c3ecf86208aa4a" kindref="member">v5.5</ref> node-based API. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/EspCan.h" line="64" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="64" bodyend="101"/>
+    <location file="inc/mcu/esp32/EspCan.h" line="80" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="80" bodyend="119"/>
     <listofallmembers>
       <member refid="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>baud_rate</name></member>
       <member refid="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>clk_flags</name></member>
@@ -296,6 +311,7 @@
       <member refid="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>intr_priority</name></member>
       <member refid="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>mode</name></member>
       <member refid="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>no_receive_rtr</name></member>
+      <member refid="structhf__esp__can__config__t_1ab116a78762cdb2302cefbd0f47535111" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>rx_mode</name></member>
       <member refid="structhf__esp__can__config__t_1a7187094fce56f62b7e793ade504d3985" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>rx_pin</name></member>
       <member refid="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>rx_queue_depth</name></member>
       <member refid="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" prot="public" virt="non-virtual"><scope>hf_esp_can_config_t</scope><name>sample_point_permill</name></member>

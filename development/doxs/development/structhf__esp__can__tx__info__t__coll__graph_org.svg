@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="structhf__can__message__t.html" target="_top" xlink:title="Platform&#45;agnostic CAN message structure.">
+<g id="a_Node000002"><a xlink:href="structhf__can__message__t.html" target="_top" xlink:title="Platform&#45;agnostic CAN / CAN FD message (BaseCan v2).">
 <polygon fill="white" stroke="#666666" points="137.5,-99.25 6.75,-99.25 6.75,-75.5 137.5,-75.5 137.5,-99.25"/>
 <text xml:space="preserve" text-anchor="middle" x="72.12" y="-81.95" font-family="Arial" font-size="14.00">hf_can_message_t</text>
 </a>

@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="206" bodyend="215"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="67" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="206" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -310,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="69" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="217" bodyend="226"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="69" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="228" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a8da6e2844530c162698ac763878943b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -342,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="353" bodyend="356"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="71" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1add5ea4ac43276a1e45311eeafa565258" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="358" bodyend="399"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="72" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="369" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -431,7 +431,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="401" bodyend="417"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="74" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="412" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6f503620d924a2090cd818475c1006a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -450,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="419" bodyend="424"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="75" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="430" bodyend="435"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="classSoftChipSelectGuard" kindref="compound">bool</ref></type>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="78" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="426" bodyend="428"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="78" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="437" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1abd9cf3a9bcc4a72d0011928d82ad39de" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="StmCan_8h_1ac5c3cfdfa012fd57fb28fa9cb4d7c2a7" kindref="member">StmCanVariant</ref></type>
@@ -504,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="86" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="430" bodyend="435"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="86" column="10" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="441" bodyend="446"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -528,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="230" bodyend="255"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="96" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="241" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1ad03871a10e8ca3cc28d9d65645a1c888" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -550,7 +550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="257" bodyend="285"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="97" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="268" bodyend="296"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1a36ff228e37fae748b5d3774eace802db" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -572,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="289" bodyend="313"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="98" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="300" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="classStmCan_1aaa89cb1b8836328e3d513b4d7f10240f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -594,7 +594,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/stm32/StmCan.h" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="315" bodyend="347"/>
+        <location file="inc/mcu/stm32/StmCan.h" line="99" column="18" bodyfile="src/mcu/stm32/StmCan.cpp" bodystart="327" bodyend="358"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -666,6 +666,7 @@
       <member refid="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" prot="protected" virt="non-virtual"><scope>StmCan</scope><name>diagnostics_</name></member>
       <member refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" virt="non-virtual"><scope>StmCan</scope><name>EnsureDeinitialized</name></member>
       <member refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" virt="non-virtual"><scope>StmCan</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseCan_1ad9c904ed6737b37968733db2a5222b70" prot="public" virt="virtual"><scope>StmCan</scope><name>GetBusStatus</name></member>
       <member refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" prot="public" virt="virtual"><scope>StmCan</scope><name>GetDiagnostics</name></member>
       <member refid="classBaseCan_1a938484f6f54bef73a04b5698214df442" prot="public" virt="virtual"><scope>StmCan</scope><name>GetStatistics</name></member>
       <member refid="classStmCan_1a7edb045a9c9ae440dbd42367a4b992c9" prot="public" virt="virtual"><scope>StmCan</scope><name>GetStatus</name></member>
@@ -683,6 +684,7 @@
       <member refid="classStmCan_1aaa89cb1b8836328e3d513b4d7f10240f" prot="private" virt="non-virtual"><scope>StmCan</scope><name>ReceiveFdCan</name></member>
       <member refid="classStmCan_1ae37b5e26c266f43ca1c4cdf297263bde" prot="public" virt="virtual"><scope>StmCan</scope><name>ReceiveMessage</name></member>
       <member refid="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" virt="virtual"><scope>StmCan</scope><name>ReceiveMessageBatch</name></member>
+      <member refid="classBaseCan_1ac941cb1ca3c963883067d41fdfb9fb06" prot="public" virt="virtual"><scope>StmCan</scope><name>RequestBusRecovery</name></member>
       <member refid="classStmCan_1a6f503620d924a2090cd818475c1006a8" prot="public" virt="virtual"><scope>StmCan</scope><name>Reset</name></member>
       <member refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" virt="virtual"><scope>StmCan</scope><name>ResetDiagnostics</name></member>
       <member refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" prot="public" virt="virtual"><scope>StmCan</scope><name>ResetStatistics</name></member>
@@ -702,6 +704,7 @@
       <member refid="classStmCan_1ad0787d139e1057b64763a26d4f9930fd" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
       <member refid="classStmCan_1a8eec0b0c2374a8ae97080feacd6bf5d0" prot="public" virt="non-virtual"><scope>StmCan</scope><name>StmCan</name></member>
       <member refid="classStmCan_1a6c7d84e038dd0aa4bea3db1dc601c60e" prot="public" virt="virtual"><scope>StmCan</scope><name>SupportsCanFD</name></member>
+      <member refid="classBaseCan_1a238e73afbaf6c65a09671b4577fa5bca" prot="public" virt="non-virtual"><scope>StmCan</scope><name>TrySendMessage</name></member>
       <member refid="classStmCan_1a89524753a579380e3daaebe8a183e69a" prot="private" virt="non-virtual"><scope>StmCan</scope><name>variant_</name></member>
       <member refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" prot="public" virt="virtual"><scope>StmCan</scope><name>~BaseCan</name></member>
       <member refid="classStmCan_1a96ad9e536bfe30d8e01ee9cb2e227445" prot="public" virt="non-virtual"><scope>StmCan</scope><name>~StmCan</name></member>
