@@ -17,12 +17,15 @@ bool check_sensor(BaseI2c& sensor, BaseGpio& led) {
   constexpr hf_u8_t kWhoAmIReg = 0x0F;
   constexpr hf_u8_t kExpectedId = 0x6C;
 
+  if (!sensor.EnsureInitialized() || !led.EnsureInitialized()) {
+    return false; // configures the device and the pin; a no-op the second time
+  }
   hf_u8_t id = 0;
-  if (!sensor.ReadRegister(kWhoAmIReg, id)) {   // write the register address, read one byte
-    return false;                               // no ACK: wiring, address or pull-ups
+  if (!sensor.ReadRegister(kWhoAmIReg, id)) { // write the register address, read one byte
+    return false;                             // no ACK: wiring, address or pull-ups
   }
   const bool ok = (id == kExpectedId);
-  const hf_gpio_err_t err = ok ? led.SetActive() : led.SetInactive();  // polarity-aware
+  const hf_gpio_err_t err = ok ? led.SetActive() : led.SetInactive(); // polarity-aware
   return ok && err == hf_gpio_err_t::GPIO_SUCCESS;
 }
 // --8<-- [end:quickstart]

@@ -61,7 +61,8 @@ add_library(hf_iiw_doc_snippets OBJECT
   "${HF_IIW_ROOT}/tests/docs/quickstart.cpp"
   "${HF_IIW_ROOT}/tests/docs/can.cpp"
   "${HF_IIW_ROOT}/tests/docs/api_tasks.cpp"
-  "${HF_IIW_ROOT}/tests/docs/port_gpio.cpp")
+  "${HF_IIW_ROOT}/tests/docs/port_gpio.cpp"
+  "${HF_IIW_ROOT}/tests/docs/utilities.cpp")
 # SYSTEM: the warnings apply to the snippets; the headers are checked by the
 # MCU builds and clang-tidy (some, such as BasePwm.h, are not -Wconversion clean).
 target_include_directories(hf_iiw_doc_snippets SYSTEM PRIVATE

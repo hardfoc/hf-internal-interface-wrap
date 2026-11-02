@@ -1,6 +1,7 @@
 /**
  * @file can.cpp
- * @brief Documentation snippets for BaseCan v2: frames, non-blocking send, polling receive, bus status.
+ * @brief Documentation snippets for BaseCan v2: frames, non-blocking send, polling receive, bus
+ * status.
  */
 
 #include "BaseCan.h"
@@ -14,13 +15,13 @@ bool build_frames(hf_can_message_t& classic, hf_can_message_t& fd) {
 
   classic.id = 0x181;
   classic.SetStandardFrame();
-  if (!classic.SetData(pdo, sizeof(pdo))) {   // false: length not valid for this frame kind
+  if (!classic.SetData(pdo, sizeof(pdo))) { // false: length not valid for this frame kind
     return false;
   }
 
   fd.id = 0x181;
-  fd.SetFdFrame(/*brs=*/true);                // FDF + bit-rate switch
-  if (!fd.SetData(pdo, sizeof(pdo)) || !fd.SetLength(12)) {  // 12 bytes: DLC code 9
+  fd.SetFdFrame(/*brs=*/true);                              // FDF + bit-rate switch
+  if (!fd.SetData(pdo, sizeof(pdo)) || !fd.SetLength(12)) { // 12 bytes: DLC code 9
     return false;
   }
   // fd.SetLength(9) would return false: 9 bytes has no FD DLC code.
@@ -31,11 +32,11 @@ bool build_frames(hf_can_message_t& classic, hf_can_message_t& fd) {
 // --8<-- [start:send]
 // Queue a frame from a control loop without ever blocking it.
 bool publish(BaseCan& can, const hf_can_message_t& frame) {
-  switch (can.TrySendMessage(frame)) {        // same as SendMessage(frame, 0)
+  switch (can.TrySendMessage(frame)) { // same as SendMessage(frame, 0)
   case hf_can_err_t::CAN_SUCCESS:
     return true;
-  case hf_can_err_t::CAN_ERR_QUEUE_FULL:      // TX queue full: drop or retry next cycle
-  case hf_can_err_t::CAN_ERR_BUS_OFF:         // controller is bus-off: see recover()
+  case hf_can_err_t::CAN_ERR_QUEUE_FULL: // TX queue full: drop or retry next cycle
+  case hf_can_err_t::CAN_ERR_BUS_OFF:    // controller is bus-off: see recover()
   default:
     return false;
   }
@@ -49,7 +50,7 @@ hf_u32_t drain(BaseCan& can, void (*handle)(const hf_can_message_t&)) {
   hf_can_message_t m;
   while (can.ReceiveMessage(m, /*timeout_ms=*/0) == hf_can_err_t::CAN_SUCCESS) {
     if (m.Validate() == hf_can_frame_error_t::NONE) {
-      handle(m);                              // m.GetLength() bytes are valid in m.data
+      handle(m); // m.GetLength() bytes are valid in m.data
       ++n;
     }
   }
@@ -62,13 +63,13 @@ hf_u32_t drain(BaseCan& can, void (*handle)(const hf_can_message_t&)) {
 bool recover(BaseCan& can) {
   hf_can_bus_status_t s;
   if (can.GetBusStatus(s) != hf_can_err_t::CAN_SUCCESS) {
-    return false;                             // CAN_ERR_UNSUPPORTED_OPERATION on older drivers
+    return false; // CAN_ERR_UNSUPPORTED_OPERATION on older drivers
   }
   if (s.rx_overruns > 0U) {
     // Frames were lost: the consumer is too slow or the RX ring is too small.
   }
   if (s.state == hf_can_bus_state_t::BUS_OFF) {
-    return can.RequestBusRecovery() == hf_can_err_t::CAN_SUCCESS;  // returns at once
+    return can.RequestBusRecovery() == hf_can_err_t::CAN_SUCCESS; // returns at once
   }
   return s.state == hf_can_bus_state_t::ERROR_ACTIVE;
 }

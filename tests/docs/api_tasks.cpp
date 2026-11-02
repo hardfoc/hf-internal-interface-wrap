@@ -14,7 +14,8 @@
 #include <cstdio>
 
 // --8<-- [start:init]
-// Construction never touches hardware; the first call (or EnsureInitialized()) does.
+// Construction only stores the configuration. Initialise before the first call: most
+// operations return *_ERR_NOT_INITIALIZED on an object that was never initialised.
 bool bring_up(BaseGpio& pin, BaseSpi& spi) {
   return pin.EnsureInitialized() && spi.EnsureInitialized();
 }
@@ -24,7 +25,7 @@ bool bring_up(BaseGpio& pin, BaseSpi& spi) {
 // Every interface has an error enum and a constexpr *ErrToString().
 void report(hf_spi_err_t err) {
   if (err != hf_spi_err_t::SPI_SUCCESS) {
-    const auto text = HfSpiErrToString(err);   // std::string_view
+    const auto text = HfSpiErrToString(err); // std::string_view
     std::printf("SPI: %.*s\n", static_cast<int>(text.size()), text.data());
   }
 }
@@ -33,7 +34,7 @@ void report(hf_spi_err_t err) {
 // --8<-- [start:spi]
 // One full-duplex transfer: chip select is driven by the device for the whole call.
 hf_spi_err_t read_id(BaseSpi& spi, hf_u8_t (&rx)[4]) {
-  const hf_u8_t tx[4] = {0x9F, 0x00, 0x00, 0x00};   // JEDEC "read ID"
+  const hf_u8_t tx[4] = {0x9F, 0x00, 0x00, 0x00}; // JEDEC "read ID"
   return spi.Transfer(tx, rx, sizeof(tx), /*timeout_ms=*/10);
 }
 // --8<-- [end:spi]
@@ -72,7 +73,7 @@ hf_u16_t echo(BaseUart& uart, hf_u8_t* buf, hf_u16_t size) {
 // Count boots in non-volatile storage.
 hf_u32_t count_boot(BaseNvs& nvs) {
   hf_u32_t boots = 0;
-  (void)nvs.GetU32("boots", boots);           // NVS_ERR_KEY_NOT_FOUND on first boot: keep 0
+  (void)nvs.GetU32("boots", boots); // NVS_ERR_KEY_NOT_FOUND on first boot: keep 0
   ++boots;
   if (nvs.SetU32("boots", boots) == hf_nvs_err_t::NVS_SUCCESS) {
     (void)nvs.Commit();

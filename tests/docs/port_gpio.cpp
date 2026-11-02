@@ -1,6 +1,7 @@
 /**
  * @file port_gpio.cpp
- * @brief Documentation snippet: the smallest complete BaseGpio implementation, for the Porting page.
+ * @brief Documentation snippet: the smallest complete BaseGpio implementation, for the Porting
+ * page.
  *
  * A real port replaces the register variable with the MCU's GPIO calls.
  */
@@ -14,9 +15,9 @@
 // the port only moves the pin.
 class MyMcuGpio : public BaseGpio {
 public:
-  explicit MyMcuGpio(hf_pin_num_t pin,
-                     hf_gpio_direction_t dir = hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
-                     hf_gpio_active_state_t active = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) noexcept
+  explicit MyMcuGpio(
+      hf_pin_num_t pin, hf_gpio_direction_t dir = hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+      hf_gpio_active_state_t active = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH) noexcept
       : BaseGpio(pin, dir, active) {}
 
   bool Initialize() noexcept override {
@@ -28,7 +29,7 @@ public:
     return pin_ >= 0 && pin_ < GetMaxPins();
   }
   hf_u8_t GetMaxPins() const noexcept override {
-    return 32;                                // pins on this MCU
+    return 32; // pins on this MCU
   }
   const char* GetDescription() const noexcept override {
     return "MyMcu GPIO";
@@ -59,11 +60,11 @@ protected:
     return pull_;
   }
   hf_gpio_err_t SetPinLevelImpl(hf_gpio_level_t level) noexcept override {
-    level_ = level;                           // write the output data register here
+    level_ = level; // write the output data register here
     return hf_gpio_err_t::GPIO_SUCCESS;
   }
   hf_gpio_err_t GetPinLevelImpl(hf_gpio_level_t& level) noexcept override {
-    level = level_;                           // read the input data register here
+    level = level_; // read the input data register here
     return hf_gpio_err_t::GPIO_SUCCESS;
   }
 
