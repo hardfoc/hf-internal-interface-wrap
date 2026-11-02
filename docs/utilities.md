@@ -19,7 +19,9 @@ to use it and what it costs.
 Sets a pin to output and active on construction, inactive on destruction, including every early return. Use it
 for an enable line that must drop when a function exits.
 
+```cpp
 --8<-- "tests/docs/utilities.cpp:dog"
+```
 
 Cost: a `SetDirection()` (when `ensure_output_mode` is true), a `SetActive()` and a `SetInactive()`; no
 allocation.
@@ -29,7 +31,9 @@ allocation.
 Runs an assert callable on construction and a deassert callable on destruction; `Release()` deasserts early.
 It only owns the chip-select edges: hold the bus lock for the whole frame yourself.
 
+```cpp
 --8<-- "tests/docs/utilities.cpp:cs"
+```
 
 Cost: the two callables, inlined; no allocation.
 

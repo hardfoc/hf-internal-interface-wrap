@@ -31,14 +31,18 @@ Every function on this page takes the interface, so it runs on any of the platfo
 
 ## Initialise
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:init"
+```
 
 `EnsureInitialized()` returns `true` at once when the object is already initialised, so calling it at the top of
 a function is cheap.
 
 ## Handle errors
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:errors"
+```
 
 Compare against the success code of the interface (`SPI_SUCCESS`, `I2C_SUCCESS`, ...). A few convenience
 methods return `bool` instead (`BaseI2c::ReadRegister()`, the three-argument `BaseSpi::Transfer()`); use the
@@ -68,31 +72,41 @@ See the [Quickstart](quickstart.md) for a complete register read.
 
 ## Transfer over SPI
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:spi"
+```
 
 `Transfer()` is full duplex; pass `nullptr` for `rx` to write only (`Write()`), or for `tx` to read only
 (`Read()`). `TransferChain()` sends several equal-length frames with a gap between them, for daisy-chained parts.
 
 ## Read an analog input
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:adc"
+```
 
 `ReadChannelCount()` returns raw counts; `ReadMultipleChannels()` reads several channels in one call.
 
 ## Set a PWM duty cycle
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:pwm"
+```
 
 Duty is a fraction from 0.0 to 1.0. `SetDutyCycleRaw()` takes timer counts; `StartAll()`, `StopAll()` and
 `UpdateAll()` act on every channel at once.
 
 ## Use a serial port
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:uart"
+```
 
 ## Store settings
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:nvs"
+```
 
 `SetString()` / `GetString()` and `SetBlob()` / `GetBlob()` store text and binary values; `GetMaxKeyLength()`
 and `GetMaxValueSize()` give the platform limits. `Commit()` writes pending changes to storage. The host build has
@@ -100,7 +114,9 @@ and `GetMaxValueSize()` give the platform limits. `Commit()` writes pending chan
 
 ## Run something periodically
 
+```cpp
 --8<-- "tests/docs/api_tasks.cpp:timer"
+```
 
 `GetMinPeriod()`, `GetMaxPeriod()` and `GetResolution()` give the platform limits in microseconds.
 

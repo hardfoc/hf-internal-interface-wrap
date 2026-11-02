@@ -21,7 +21,9 @@ controllers later. `dlc` holds the **length in bytes**, not the 4-bit DLC code.
 | `GetFlags()`, `SetFlags()` | Flags packed as `hf_can_flag::EXT`, `RTR`, `FDF`, `BRS`, `ESI` |
 | `ToFrame(out)`, `FromFrame(in)` | Convert to and from any struct with `id`, `len`, `flags`, `data[64]`, `ts_us` |
 
+```cpp
 --8<-- "tests/docs/can.cpp:frame"
+```
 
 `HfCanDlcToLen(code, fd)` and `HfCanLenToDlc(len, fd)` convert between byte lengths and DLC codes
 (`HF_CAN_DLC_INVALID` when a length cannot be carried).
@@ -32,7 +34,9 @@ controllers later. `dlc` holds the **length in bytes**, not the 4-bit DLC code.
 
 ## Send without blocking
 
+```cpp
 --8<-- "tests/docs/can.cpp:send"
+```
 
 | Call | Blocks | Returns when |
 | --- | --- | --- |
@@ -52,7 +56,9 @@ Two delivery paths, which can be combined:
 - **Callback:** `SetReceiveCallback(fn)` calls `fn` for each frame, in interrupt context on ESP32. Keep it to a
   copy and a notification.
 
+```cpp
 --8<-- "tests/docs/can.cpp:receive"
+```
 
 ### On ESP32: the RX ring
 
@@ -72,7 +78,9 @@ has one consumer.
 
 ## Bus status and recovery
 
+```cpp
 --8<-- "tests/docs/can.cpp:status"
+```
 
 `GetBusStatus()` fills an `hf_can_bus_status_t`:
 

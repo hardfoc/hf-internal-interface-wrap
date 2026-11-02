@@ -41,7 +41,9 @@ The smallest complete implementation, compiled by the host build from
 [`tests/docs/port_gpio.cpp`](../tests/docs/port_gpio.cpp). `BaseGpio` turns `SetActive()` into
 `SetPinLevelImpl(HIGH)` or `LOW` depending on the polarity, and validates the object before calling the port.
 
+```cpp
 --8<-- "tests/docs/port_gpio.cpp:port"
+```
 
 ## Rules for an implementation
 

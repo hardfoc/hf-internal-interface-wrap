@@ -18,7 +18,9 @@ The component needs ESP-IDF v5.5 or later (the TWAI node API that `EspCan` uses)
 The function below takes the interfaces, not ESP32 classes, so it builds unchanged for STM32 or a host test.
 It is compiled by the host build from [`tests/docs/quickstart.cpp`](../tests/docs/quickstart.cpp).
 
+```cpp
 --8<-- "tests/docs/quickstart.cpp:quickstart"
+```
 
 ## 3. Create the ESP32 objects
 
