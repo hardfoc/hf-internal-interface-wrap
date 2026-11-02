@@ -41,12 +41,15 @@ extern "C" {
 // ESP-IDF v5.5 TWAI node-based API
 #include "esp_twai.h"
 #include "esp_twai_onchip.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 
 #ifdef __cplusplus
 }
 #endif
 
 #include "BaseCan.h"
+#include "HfSpscRing.h"
 #include "PlatformMutex.h"
 #include "utils/EspTypes_CAN.h"
 
@@ -56,6 +59,19 @@ extern "C" {
 //==============================================================================
 // ESP32 TWAI NODE CONFIGURATION (ESP-IDF v5.5)
 //==============================================================================
+
+/**
+ * @brief Where EspCan delivers received frames.
+ * @details Received frames are taken from the controller in the TWAI RX
+ *          interrupt. Receive callbacks run in that ISR context.
+ */
+enum class hf_esp_can_rx_mode_t : uint8_t {
+  /// A registered receive callback gets each frame; with no callback the frame
+  /// goes into the RX ring for ReceiveMessage(). Default.
+  AUTO = 0,
+  /// Every frame goes into the RX ring; a registered callback is also called.
+  QUEUE_ALWAYS = 1,
+};
 
 /**
  * @brief ESP32 TWAI node configuration structure for ESP-IDF v5.5.
@@ -72,8 +88,9 @@ struct hf_esp_can_config_t {
   uint32_t secondary_sample_point; ///< Secondary sample point for enhanced timing
 
   // Queue configuration
-  uint32_t tx_queue_depth; ///< Transmit queue depth
-  uint32_t rx_queue_depth; ///< Receive queue depth (internal)
+  uint32_t tx_queue_depth;      ///< Driver TX queue depth (frames waiting for the controller)
+  uint32_t rx_queue_depth;      ///< RX ring depth for ReceiveMessage() (rounded up to a power of 2)
+  hf_esp_can_rx_mode_t rx_mode; ///< Callback and/or RX ring delivery (see hf_esp_can_rx_mode_t)
 
   // Node behavior configuration
   hf_can_controller_id_t controller_id; ///< Controller ID (0 for ESP32)
@@ -93,7 +110,8 @@ struct hf_esp_can_config_t {
 
   hf_esp_can_config_t() noexcept
       : tx_pin(4), rx_pin(5), baud_rate(500000), sample_point_permill(750),
-        secondary_sample_point(0), tx_queue_depth(10), rx_queue_depth(20),
+        secondary_sample_point(0), tx_queue_depth(10), rx_queue_depth(32),
+        rx_mode(hf_esp_can_rx_mode_t::AUTO),
         controller_id(hf_can_controller_id_t::HF_CAN_CONTROLLER_0),
         mode(hf_can_mode_t::HF_CAN_MODE_NORMAL), fail_retry_cnt(-1), intr_priority(1),
         enable_self_test(false), enable_loopback(false), enable_listen_only(false),
@@ -170,14 +188,12 @@ struct hf_esp_can_tx_info_t {
 /**
  * @brief User callback function types with user data support
  */
-using hf_esp_can_receive_callback_t =
-    void (*)(const hf_can_message_t& message, void* user_data);
-using hf_esp_can_error_callback_t =
-    void (*)(const hf_esp_can_error_info_t& error_info, void* user_data);
-using hf_esp_can_state_callback_t =
-    void (*)(const hf_esp_can_state_info_t& state_info, void* user_data);
-using hf_esp_can_tx_callback_t =
-    void (*)(const hf_esp_can_tx_info_t& tx_info, void* user_data);
+using hf_esp_can_receive_callback_t = void (*)(const hf_can_message_t& message, void* user_data);
+using hf_esp_can_error_callback_t = void (*)(const hf_esp_can_error_info_t& error_info,
+                                             void* user_data);
+using hf_esp_can_state_callback_t = void (*)(const hf_esp_can_state_info_t& state_info,
+                                             void* user_data);
+using hf_esp_can_tx_callback_t = void (*)(const hf_esp_can_tx_info_t& tx_info, void* user_data);
 
 /**
  * @class EspCan
@@ -239,33 +255,40 @@ public:
   hf_can_err_t Deinitialize() noexcept override;
 
   /**
-   * @brief Send a CAN message.
-   * @param message CAN message to send
-   * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
-   * @return hf_can_err_t error code
+   * @brief Queue a CAN message for transmission.
+   * @param message CAN message to send (classic only on TWAI: is_canfd must be false)
+   * @param timeout_ms How long to wait for TX queue space. 0 = queue or fail at
+   *        once (CAN_ERR_QUEUE_FULL). UINT32_MAX waits forever.
+   * @return CAN_SUCCESS once the frame is queued (it is copied; the caller's
+   *         message may be reused at once), CAN_ERR_QUEUE_FULL, CAN_ERR_BUS_OFF,
+   *         CAN_ERR_MESSAGE_INVALID_DLC / _INVALID_ID / CAN_ERR_UNSUPPORTED_OPERATION
+   *         (FD frame) or a converted driver error.
+   * @note Never sleeps after a successful send. Not callable from an ISR.
    */
   hf_can_err_t SendMessage(const hf_can_message_t& message,
                            uint32_t timeout_ms = 1000) noexcept override;
 
   /**
-   * @brief Receive a CAN message (legacy polling interface).
-   * @param message Reference to store received message
-   * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
-   * @return hf_can_err_t error code
-   * @note Callback-based reception is preferred for ESP-IDF v5.5+
+   * @brief Take the oldest frame from the RX ring.
+   * @param message Filled with the frame (timestamp_us is the RX ISR time)
+   * @param timeout_ms 0 = return at once; UINT32_MAX waits forever
+   * @return CAN_SUCCESS, CAN_ERR_QUEUE_EMPTY (timeout 0, nothing queued) or
+   *         CAN_ERR_MESSAGE_TIMEOUT.
+   * @note Frames reach the ring when no receive callback is registered, or
+   *       always with hf_esp_can_rx_mode_t::QUEUE_ALWAYS. Several tasks may call
+   *       this; they are serialised.
    */
   hf_can_err_t ReceiveMessage(hf_can_message_t& message, uint32_t timeout_ms = 0) noexcept override;
 
   /**
-   * @brief Set callback for received messages (legacy support removed - use
-   * RegisterReceiveCallback).
-   * @param callback Callback function to handle received messages
-   * @return hf_can_err_t error code
+   * @brief Set the BaseCan receive callback.
+   * @param callback Called for every received frame, in ISR context (copy and return)
+   * @return CAN_SUCCESS, or CAN_ERR_INVALID_PARAMETER for nullptr
    */
   hf_can_err_t SetReceiveCallback(hf_can_receive_callback_t callback) noexcept override;
 
   /**
-   * @brief Clear the receive callback (legacy support removed - use UnregisterCallback).
+   * @brief Clear the BaseCan receive callback.
    */
   void ClearReceiveCallback() noexcept override;
 
@@ -273,7 +296,7 @@ public:
   // SINGLE-CALLBACK PER EVENT MANAGEMENT
   //==============================================//
 
-  // Receive
+  // Receive (runs in ISR context: copy the frame, no blocking, no logging)
   hf_can_err_t SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb,
                                     void* user_data = nullptr) noexcept;
   void ClearReceiveCallbackEx() noexcept;
@@ -364,10 +387,23 @@ public:
   hf_can_err_t ConfigureAdvancedFilter(const hf_esp_can_filter_config_t& filter_config) noexcept;
 
   /**
-   * @brief Initiate bus recovery from bus-off state.
+   * @brief Initiate bus recovery from bus-off state (same as RequestBusRecovery()).
    * @return hf_can_err_t error code
    */
   hf_can_err_t InitiateBusRecovery() noexcept;
+
+  /**
+   * @brief Error state, TEC/REC, RX overruns, TX-queue-full and bus-off counters.
+   * @param status Filled on success
+   * @return CAN_SUCCESS or CAN_ERR_NOT_INITIALIZED
+   */
+  hf_can_err_t GetBusStatus(hf_can_bus_status_t& status) noexcept override;
+
+  /**
+   * @brief Start bus-off recovery; returns without waiting (see BaseCan).
+   * @return CAN_SUCCESS (also when not bus-off) or a converted driver error
+   */
+  hf_can_err_t RequestBusRecovery() noexcept override;
 
   /**
    * @brief Get detailed node information including error states.
@@ -424,6 +460,13 @@ private:
                                           const twai_state_change_event_data_t* event_data,
                                           void* user_ctx) noexcept;
 
+  /**
+   * @brief TX-done event (ISR): returns the frame's TX slot to the pool.
+   */
+  static bool InternalTxDoneCallback(twai_node_handle_t handle,
+                                     const twai_tx_done_event_data_t* event_data,
+                                     void* user_ctx) noexcept;
+
   //==============================================//
   // INTERNAL HELPER METHODS
   //==============================================//
@@ -434,8 +477,8 @@ private:
    * @param twai_frame Destination TWAI frame
    * @return hf_can_err_t error code
    */
-  hf_can_err_t ConvertToTwaiFrame(const hf_can_message_t& hf_message,
-                                  twai_frame_t& twai_frame) noexcept;
+  static hf_can_err_t ConvertToTwaiFrame(const hf_can_message_t& hf_message,
+                                         twai_frame_t& twai_frame) noexcept;
 
   /**
    * @brief Convert ESP-IDF v5.5 TWAI frame to HF CAN message.
@@ -443,8 +486,8 @@ private:
    * @param hf_message Destination HF message
    * @return hf_can_err_t error code
    */
-  hf_can_err_t ConvertFromTwaiFrame(const twai_frame_t& twai_frame,
-                                    hf_can_message_t& hf_message) noexcept;
+  static hf_can_err_t ConvertFromTwaiFrame(const twai_frame_t& twai_frame,
+                                           hf_can_message_t& hf_message) noexcept;
 
   /**
    * @brief Convert ESP-IDF error to HF error code.
@@ -461,10 +504,20 @@ private:
   void UpdateStatistics(hf_can_operation_type_t operation_type, bool success) noexcept;
 
   /**
-   * @brief Process received message through callback system.
-   * @param frame Received TWAI frame
+   * @brief Deliver a received frame to the callbacks and/or the RX ring (ISR context).
+   * @param message Received frame
+   * @return true if a task waiting in ReceiveMessage() was woken
    */
-  void ProcessReceivedMessage(const twai_frame_t& frame) noexcept;
+  bool DeliverReceivedFromIsr(const hf_can_message_t& message) noexcept;
+
+  /** @brief Allocate the RX ring, TX slot pool and semaphores. */
+  hf_can_err_t AllocateQueues() noexcept;
+
+  /** @brief Free what AllocateQueues() allocated. */
+  void ReleaseQueues() noexcept;
+
+  /** @brief Read the controller error state into bus_state_ (task context). */
+  void RefreshBusState() noexcept;
 
   /**
    * @brief Update error statistics from error event.
@@ -475,12 +528,6 @@ private:
   //==============================================//
   // CALLBACK DISPATCH HELPERS
   //==============================================//
-
-  /**
-   * @brief Dispatch message to all registered receive callbacks.
-   * @param frame Received TWAI frame
-   */
-  void DispatchReceiveCallbacks(const twai_frame_t& frame) noexcept;
 
   /**
    * @brief Dispatch error event to all registered error callbacks.
@@ -521,9 +568,11 @@ private:
   // ESP-IDF v5.5 TWAI node handle
   twai_node_handle_t twai_node_handle_; ///< Native TWAI node handle
 
-  // Single callbacks + user data per event type
-  hf_esp_can_receive_callback_t receive_cb_{nullptr};
-  void* receive_ud_ = nullptr;
+  // Single callbacks + user data per event type. The receive callbacks are read
+  // from the RX ISR, so they are atomics (user data is stored before the callback).
+  std::atomic<hf_esp_can_receive_callback_t> receive_cb_{nullptr};
+  std::atomic<void*> receive_ud_{nullptr};
+  std::atomic<hf_can_receive_callback_t> base_receive_cb_{nullptr};
 
   hf_esp_can_error_callback_t error_cb_{nullptr};
   void* error_ud_ = nullptr;
@@ -542,6 +591,28 @@ private:
   hf_esp_can_timing_config_t advanced_timing_; ///< Advanced timing configuration
   hf_esp_can_filter_config_t current_filter_;  ///< Current filter configuration
   bool filter_configured_;                     ///< Filter configuration state
+
+  // RX path: ISR -> lock-free ring -> ReceiveMessage()
+  HfSpscRing<hf_can_message_t> rx_ring_; ///< RX frames (producer: RX ISR)
+  SemaphoreHandle_t rx_sem_{nullptr};    ///< Given by the RX ISR after a push
+  mutable PlatformMutex rx_mutex_;       ///< Serialises ReceiveMessage() callers
+
+  // TX path: each queued frame lives in a slot until the TX-done ISR frees it.
+  // The TWAI driver queues a pointer to the frame, not a copy, so the frame and
+  // its buffer must stay valid until transmission completes.
+  struct TxSlot {
+    twai_frame_t frame;                     ///< frame handed to twai_node_transmit()
+    uint8_t buffer[HF_CAN_CLASSIC_MAX_LEN]; ///< payload storage for that frame
+    std::atomic<bool> in_use;               ///< slot owned by a queued frame
+  };
+  std::unique_ptr<TxSlot[]> tx_slots_;     ///< slot pool (tx_queue_depth + 1)
+  uint32_t tx_slot_count_{0};              ///< number of slots
+  SemaphoreHandle_t tx_slot_sem_{nullptr}; ///< counts free slots
+
+  // Error-state counters (written from ISRs)
+  std::atomic<uint32_t> tx_queue_full_{0}; ///< sends refused for lack of a slot
+  std::atomic<uint32_t> bus_off_count_{0}; ///< bus-off events
+  std::atomic<uint8_t> bus_state_{0};      ///< last hf_can_bus_state_t from the ISR
 };
 
 //==============================================//

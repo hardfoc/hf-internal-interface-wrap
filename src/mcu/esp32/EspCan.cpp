@@ -29,6 +29,7 @@
 
 // C++ standard library headers (must be outside extern "C")
 #include <algorithm>
+#include <climits>
 #include <cstring>
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
@@ -40,6 +41,7 @@ extern "C" {
 #include "esp_log.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
 #include "freertos/task.h"
 
 #ifdef __cplusplus
@@ -47,6 +49,43 @@ extern "C" {
 #endif
 
 static const char* TAG = "EspCan";
+
+namespace {
+
+/** @brief Milliseconds to ticks, rounded up so a non-zero timeout never becomes 0 ticks. */
+TickType_t MsToTicksCeil(hf_u32_t timeout_ms) noexcept {
+  if (timeout_ms == UINT32_MAX) {
+    return portMAX_DELAY;
+  }
+  const uint64_t ticks = (static_cast<uint64_t>(timeout_ms) * configTICK_RATE_HZ + 999U) / 1000U;
+  return ticks >= portMAX_DELAY ? (portMAX_DELAY - 1U) : static_cast<TickType_t>(ticks);
+}
+
+/** @brief BaseCan timeout to the TWAI driver's int timeout (-1 = forever). */
+int ToTwaiTimeout(hf_u32_t timeout_ms) noexcept {
+  if (timeout_ms == UINT32_MAX) {
+    return -1;
+  }
+  return timeout_ms > static_cast<hf_u32_t>(INT_MAX) ? INT_MAX : static_cast<int>(timeout_ms);
+}
+
+/** @brief TWAI driver error state to hf_can_bus_state_t. */
+hf_can_bus_state_t MapTwaiState(twai_error_state_t state) noexcept {
+  switch (state) {
+  case TWAI_ERROR_ACTIVE:
+    return hf_can_bus_state_t::ERROR_ACTIVE;
+  case TWAI_ERROR_WARNING:
+    return hf_can_bus_state_t::ERROR_WARNING;
+  case TWAI_ERROR_PASSIVE:
+    return hf_can_bus_state_t::ERROR_PASSIVE;
+  case TWAI_ERROR_BUS_OFF:
+    return hf_can_bus_state_t::BUS_OFF;
+  default:
+    return hf_can_bus_state_t::STOPPED;
+  }
+}
+
+} // namespace
 
 //==============================================================================
 // CONSTRUCTOR AND DESTRUCTOR - ESP-IDF v5.5 Compatible
@@ -94,6 +133,13 @@ hf_can_err_t EspCan::Initialize() noexcept {
 
   ESP_LOGD(TAG, "Initializing TWAI node %u", static_cast<unsigned>(config_.controller_id));
 
+  // RX ring, TX slot pool and semaphores exist before the first interrupt can fire
+  hf_can_err_t queue_result = AllocateQueues();
+  if (queue_result != hf_can_err_t::CAN_SUCCESS) {
+    ESP_LOGE(TAG, "Failed to allocate RX/TX queues");
+    return queue_result;
+  }
+
   // Create TWAI node configuration using ESP-IDF v5.5 API
   twai_onchip_node_config_t node_config = {
       .io_cfg =
@@ -127,12 +173,13 @@ hf_can_err_t EspCan::Initialize() noexcept {
   esp_err_t esp_err = twai_new_node_onchip(&node_config, &twai_node_handle_);
   if (esp_err != ESP_OK) {
     ESP_LOGE(TAG, "Failed to create TWAI node: %s", esp_err_to_name(esp_err));
+    ReleaseQueues();
     return ConvertEspError(esp_err);
   }
 
-  // Register event callbacks for comprehensive event handling
+  // Register event callbacks. on_tx_done returns each frame's TX slot to the pool.
   twai_event_callbacks_t callbacks = {
-      .on_tx_done = nullptr,
+      .on_tx_done = InternalTxDoneCallback,
       .on_rx_done = InternalReceiveCallback,
       .on_state_change = InternalStateChangeCallback,
       .on_error = InternalErrorCallback,
@@ -143,8 +190,13 @@ hf_can_err_t EspCan::Initialize() noexcept {
     ESP_LOGE(TAG, "Failed to register event callbacks: %s", esp_err_to_name(esp_err));
     twai_node_delete(twai_node_handle_);
     twai_node_handle_ = nullptr;
+    ReleaseQueues();
     return ConvertEspError(esp_err);
   }
+
+  tx_queue_full_.store(0);
+  bus_off_count_.store(0);
+  bus_state_.store(static_cast<uint8_t>(hf_can_bus_state_t::ERROR_ACTIVE));
 
   // Enable the TWAI node
   esp_err = twai_node_enable(twai_node_handle_);
@@ -152,6 +204,8 @@ hf_can_err_t EspCan::Initialize() noexcept {
     ESP_LOGE(TAG, "Failed to enable TWAI node: %s", esp_err_to_name(esp_err));
     twai_node_delete(twai_node_handle_);
     twai_node_handle_ = nullptr;
+    ReleaseQueues();
+    bus_state_.store(static_cast<uint8_t>(hf_can_bus_state_t::STOPPED));
     return ConvertEspError(esp_err);
   }
 
@@ -159,9 +213,11 @@ hf_can_err_t EspCan::Initialize() noexcept {
   diagnostics_ = hf_can_diagnostics_t{};
 
   is_enabled_.store(true);
+  RefreshBusState();
   initialized_ = true; // Update base class initialization state
-  ESP_LOGI(TAG, "TWAI node %u initialized successfully",
-           static_cast<unsigned>(config_.controller_id));
+  ESP_LOGI(TAG, "TWAI node %u initialized (rx ring %u, tx slots %u)",
+           static_cast<unsigned>(config_.controller_id), static_cast<unsigned>(rx_ring_.Capacity()),
+           static_cast<unsigned>(tx_slot_count_));
   return hf_can_err_t::CAN_SUCCESS;
 }
 
@@ -181,6 +237,7 @@ hf_can_err_t EspCan::Deinitialize() noexcept {
   ClearErrorCallback();
   ClearStateChangeCallback();
   ClearTxCompleteCallback();
+  base_receive_cb_.store(nullptr);
 
   // Disable and delete TWAI node
   if (twai_node_handle_ != nullptr) {
@@ -196,6 +253,10 @@ hf_can_err_t EspCan::Deinitialize() noexcept {
     twai_node_handle_ = nullptr;
   }
 
+  // The node (and its interrupt) is gone, so no ISR can touch the queues now
+  ReleaseQueues();
+  bus_state_.store(static_cast<uint8_t>(hf_can_bus_state_t::STOPPED));
+
   initialized_ = false; // Update base class initialization state
   filter_configured_ = false;
   ESP_LOGI(TAG, "TWAI node %u deinitialized successfully",
@@ -208,99 +269,132 @@ hf_can_err_t EspCan::Deinitialize() noexcept {
 //==============================================//
 
 hf_can_err_t EspCan::SendMessage(const hf_can_message_t& message, hf_u32_t timeout_ms) noexcept {
-  if (!initialized_) {
+  if (!initialized_ || tx_slot_sem_ == nullptr) {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
-  static constexpr size_t frame_buffer_size = 8;
 
-  // Validate message parameters early to catch corruption
-  if (message.dlc > frame_buffer_size) {
-    ESP_LOGE(TAG, "Invalid DLC: %d (max: %zu)", message.dlc, frame_buffer_size);
+  // TWAI on this target is classic CAN only
+  if (message.is_canfd) {
+    UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
+    return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  }
+  switch (message.Validate()) {
+  case hf_can_frame_error_t::NONE:
+    break;
+  case hf_can_frame_error_t::ID_RANGE:
+    UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
+    return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_ID;
+  default:
+    UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
     return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
   }
 
-  if (message.dlc == 0) {
-    ESP_LOGE(TAG, "Invalid DLC: 0 (must be 1-8)");
-    return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
-  }
-
-  // Log message details for debugging
-  ESP_LOGD(TAG, "Sending message: ID=0x%X, DLC=%d, Extended=%s, RTR=%s", message.id, message.dlc,
-           message.is_extended ? "yes" : "no", message.is_rtr ? "yes" : "no");
-
-  // Convert to ESP-IDF v5.5 TWAI frame
-  twai_frame_t frame;
-  uint8_t frame_buffer[frame_buffer_size] = {0}; // Initialize buffer to zero
-  frame.buffer = frame_buffer;
-  frame.buffer_len = message.dlc;
-
-  // Initialize frame header to zero before conversion
-  std::memset(&frame.header, 0, sizeof(frame.header));
-
-  hf_can_err_t convert_result = ConvertToTwaiFrame(message, frame);
-  if (convert_result != hf_can_err_t::CAN_SUCCESS) {
+  if (bus_state_.load() == static_cast<uint8_t>(hf_can_bus_state_t::BUS_OFF)) {
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
-    return convert_result;
+    return hf_can_err_t::CAN_ERR_BUS_OFF;
   }
 
-  // Validate frame after conversion to catch corruption
-  if (frame.header.dlc > 8 || frame.buffer == nullptr) {
-    ESP_LOGE(TAG, "Frame corruption detected! DLC=%d, buffer=%p", frame.header.dlc, frame.buffer);
+  // Wait (or not, for timeout 0) for a free TX slot. The driver keeps a pointer
+  // to the frame until transmission completes, so the frame must live in a slot.
+  if (xSemaphoreTake(tx_slot_sem_, MsToTicksCeil(timeout_ms)) != pdTRUE) {
+    tx_queue_full_.fetch_add(1);
+    statistics_.tx_queue_overflows.fetch_add(1);
     UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
-    return hf_can_err_t::CAN_ERR_MESSAGE_INVALID;
+    return hf_can_err_t::CAN_ERR_QUEUE_FULL;
   }
 
-  ESP_LOGD(TAG, "Frame ready: DLC=%d, buffer=%p, buffer_len=%zu", frame.header.dlc, frame.buffer,
-           frame.buffer_len);
+  TxSlot* slot = nullptr;
+  for (uint32_t i = 0; i < tx_slot_count_; ++i) {
+    bool expected = false;
+    if (tx_slots_[i].in_use.compare_exchange_strong(expected, true)) {
+      slot = &tx_slots_[i];
+      break;
+    }
+  }
+  if (slot == nullptr) {
+    // Cannot happen while the semaphore count matches the free slots
+    xSemaphoreGive(tx_slot_sem_);
+    UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, false);
+    return hf_can_err_t::CAN_ERR_RESOURCE_BUSY;
+  }
 
-  // Send using ESP-IDF v5.5 TWAI node API
-  esp_err_t esp_err = twai_node_transmit(twai_node_handle_, &frame, timeout_ms);
+  std::memset(&slot->frame, 0, sizeof(slot->frame));
+  slot->frame.buffer = slot->buffer;
+  (void)ConvertToTwaiFrame(message, slot->frame); // validated above
 
-  bool success = (esp_err == ESP_OK);
+  // Every in-flight frame owns a slot and there are tx_queue_depth + 1 slots,
+  // so the driver queue normally has room; the timeout only covers a race on
+  // dual-core targets.
+  esp_err_t esp_err =
+      twai_node_transmit(twai_node_handle_, &slot->frame, ToTwaiTimeout(timeout_ms));
+  const bool success = (esp_err == ESP_OK);
+  if (!success) {
+    slot->in_use.store(false);
+    xSemaphoreGive(tx_slot_sem_);
+  }
   UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_SEND, success);
-
-  // CRITICAL: Add delay to prevent ESP-IDF driver overload during rapid transmission
-  // This prevents the frame corruption issue in high-throughput scenarios
   if (success) {
-    vTaskDelay(pdMS_TO_TICKS(1)); // 1ms delay to prevent driver overload
+    statistics_.bytes_transmitted.fetch_add(message.is_rtr ? 0U : message.dlc);
   }
 
-  // Dispatch TX complete callback to user callbacks
-  hf_esp_can_tx_info_t tx_info;
-  tx_info.message = message;
-  tx_info.success = success;
-  tx_info.timestamp_us = esp_timer_get_time();
-  DispatchTxCompleteCallbacks(tx_info);
+  // TX callback: the frame was accepted by (or refused by) the driver queue
+  if (tx_cb_ != nullptr) {
+    hf_esp_can_tx_info_t tx_info;
+    tx_info.message = message;
+    tx_info.success = success;
+    tx_info.timestamp_us = esp_timer_get_time();
+    DispatchTxCompleteCallbacks(tx_info);
+  }
 
   if (!success) {
+    if (esp_err == ESP_ERR_TIMEOUT) {
+      tx_queue_full_.fetch_add(1);
+      return hf_can_err_t::CAN_ERR_QUEUE_FULL;
+    }
+    if (esp_err == ESP_ERR_INVALID_STATE) {
+      return hf_can_err_t::CAN_ERR_BUS_OFF;
+    }
     return ConvertEspError(esp_err);
   }
-
   return hf_can_err_t::CAN_SUCCESS;
 }
 
 hf_can_err_t EspCan::ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_ms) noexcept {
-  if (!initialized_) {
+  if (!initialized_ || rx_sem_ == nullptr) {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  // Note: With ESP-IDF v5.5 node API, message reception is handled via callbacks
-  // This method is provided for legacy compatibility but may not be the preferred approach
-  ESP_LOGW(TAG,
-           "Polling receive not recommended with ESP-IDF v5.5 node API - use callbacks instead");
+  PlatformMutexLockGuard lock(rx_mutex_);
 
-  UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, false);
-  return hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION;
+  TickType_t ticks_left = MsToTicksCeil(timeout_ms);
+  TimeOut_t timeout_state;
+  vTaskSetTimeOutState(&timeout_state);
+
+  for (;;) {
+    if (rx_ring_.TryPop(message)) {
+      return hf_can_err_t::CAN_SUCCESS;
+    }
+    if (timeout_ms == 0U) {
+      return hf_can_err_t::CAN_ERR_QUEUE_EMPTY;
+    }
+    if (xTaskCheckForTimeOut(&timeout_state, &ticks_left) != pdFALSE) {
+      return hf_can_err_t::CAN_ERR_MESSAGE_TIMEOUT;
+    }
+    // A stale give (frame already taken) only costs one more loop
+    (void)xSemaphoreTake(rx_sem_, ticks_left);
+  }
 }
 
 hf_can_err_t EspCan::SetReceiveCallback(hf_can_receive_callback_t callback) noexcept {
-  ESP_LOGW(TAG, "SetReceiveCallback (BaseCan) is deprecated - use SetReceiveCallbackEx instead");
-  return hf_can_err_t::CAN_ERR_NOT_SUPPORTED;
+  if (callback == nullptr) {
+    return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
+  }
+  base_receive_cb_.store(callback);
+  return hf_can_err_t::CAN_SUCCESS;
 }
 
 void EspCan::ClearReceiveCallback() noexcept {
-  ESP_LOGW(TAG,
-           "ClearReceiveCallback (BaseCan) is deprecated - use ClearReceiveCallbackEx instead");
+  base_receive_cb_.store(nullptr);
 }
 
 //==============================================================================
@@ -312,14 +406,16 @@ hf_can_err_t EspCan::SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb,
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   PlatformMutexLockGuard lock(callback_mutex_);
-  receive_cb_ = cb;
-  receive_ud_ = user_data;
+  // The RX ISR reads the callback first, so publish the user data before it
+  receive_cb_.store(nullptr);
+  receive_ud_.store(user_data);
+  receive_cb_.store(cb);
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearReceiveCallbackEx() noexcept {
   PlatformMutexLockGuard lock(callback_mutex_);
-  receive_cb_ = nullptr;
-  receive_ud_ = nullptr;
+  receive_cb_.store(nullptr);
+  receive_ud_.store(nullptr);
 }
 
 hf_can_err_t EspCan::SetErrorCallback(hf_esp_can_error_callback_t cb, void* user_data) noexcept {
@@ -381,8 +477,8 @@ hf_can_err_t EspCan::GetStatus(hf_can_status_t& status) noexcept {
   // Convert to CAN bus status - match BaseCan.h structure
   status.tx_error_count = node_status.tx_error_count;
   status.rx_error_count = node_status.rx_error_count;
-  status.tx_failed_count = 0; // Not directly available in v5.5 API
-  status.rx_missed_count = 0; // Not directly available in v5.5 API
+  status.tx_failed_count = statistics_.send_failures.load();
+  status.rx_missed_count = rx_ring_.Overruns();
 
   // Set state flags based on TWAI state
   switch (node_status.state) {
@@ -425,26 +521,8 @@ hf_can_err_t EspCan::Reset() noexcept {
 
   ESP_LOGI(TAG, "Resetting TWAI node %u", static_cast<unsigned>(config_.controller_id));
 
-  // Reset statistics (atomic operations - no mutex needed)
-  // Reset all atomic counters to zero
-  statistics_.messages_sent.store(0);
-  statistics_.messages_received.store(0);
-  statistics_.bytes_transmitted.store(0);
-  statistics_.bytes_received.store(0);
-  statistics_.send_failures.store(0);
-  statistics_.receive_failures.store(0);
-  statistics_.bus_error_count.store(0);
-  statistics_.arbitration_lost_count.store(0);
-  statistics_.tx_failed_count.store(0);
-  statistics_.bus_off_events.store(0);
-  statistics_.error_warning_events.store(0);
-  statistics_.uptime_seconds.store(0);
-  statistics_.last_activity_timestamp.store(0);
-  statistics_.last_error.store(hf_can_err_t::CAN_SUCCESS);
-  statistics_.tx_queue_peak.store(0);
-  statistics_.rx_queue_peak.store(0);
-  statistics_.tx_queue_overflows.store(0);
-  statistics_.rx_queue_overflows.store(0);
+  // Reset statistics and the RX/TX/bus-off counters
+  (void)ResetStatistics();
   diagnostics_ = hf_can_diagnostics_t{};
 
   // Check if node is in bus-off state before attempting recovery
@@ -540,6 +618,9 @@ hf_can_err_t EspCan::ResetStatistics() noexcept {
   statistics_.rx_queue_peak.store(0);
   statistics_.tx_queue_overflows.store(0);
   statistics_.rx_queue_overflows.store(0);
+  rx_ring_.ResetCounters();
+  tx_queue_full_.store(0);
+  bus_off_count_.store(0);
   return hf_can_err_t::CAN_SUCCESS;
 }
 
@@ -611,6 +692,7 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(
       return ConvertEspError(enable_err);
     }
     is_enabled_.store(true);
+    RefreshBusState();
   }
 
   if (esp_err != ESP_OK) {
@@ -669,6 +751,7 @@ hf_can_err_t EspCan::ConfigureAdvancedFilter(
       return ConvertEspError(enable_err);
     }
     is_enabled_.store(true);
+    RefreshBusState();
   }
 
   if (esp_err != ESP_OK) {
@@ -705,7 +788,7 @@ hf_can_err_t EspCan::InitiateBusRecovery() noexcept {
   }
 
   if (node_status.state != TWAI_ERROR_BUS_OFF) {
-    ESP_LOGW(TAG, "Node is not in bus-off state (current: %d), recovery not needed",
+    ESP_LOGD(TAG, "Node is not in bus-off state (current: %d), recovery not needed",
              node_status.state);
     return hf_can_err_t::CAN_SUCCESS; // Not an error, just not needed
   }
@@ -722,6 +805,31 @@ hf_can_err_t EspCan::InitiateBusRecovery() noexcept {
   ESP_LOGI(TAG, "Bus recovery initiated successfully for TWAI node %u",
            static_cast<unsigned>(config_.controller_id));
   return hf_can_err_t::CAN_SUCCESS;
+}
+
+hf_can_err_t EspCan::GetBusStatus(hf_can_bus_status_t& status) noexcept {
+  if (!initialized_) {
+    return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
+  }
+
+  twai_node_status_t node_status{};
+  esp_err_t esp_err = twai_node_get_info(twai_node_handle_, &node_status, nullptr);
+  if (esp_err != ESP_OK) {
+    return ConvertEspError(esp_err);
+  }
+
+  // The driver reports a disabled node as bus-off; report it as stopped
+  status.state = is_enabled_.load() ? MapTwaiState(node_status.state) : hf_can_bus_state_t::STOPPED;
+  status.tec = node_status.tx_error_count;
+  status.rec = node_status.rx_error_count;
+  status.rx_overruns = rx_ring_.Overruns();
+  status.tx_queue_full = tx_queue_full_.load();
+  status.bus_off_count = bus_off_count_.load();
+  return hf_can_err_t::CAN_SUCCESS;
+}
+
+hf_can_err_t EspCan::RequestBusRecovery() noexcept {
+  return InitiateBusRecovery();
 }
 
 hf_can_err_t EspCan::GetNodeInfo(twai_node_record_t& node_info) noexcept {
@@ -749,8 +857,6 @@ uint32_t EspCan::SendMessageBatch(const hf_can_message_t* messages, uint32_t cou
   for (uint32_t i = 0; i < count; ++i) {
     if (SendMessage(messages[i], timeout_ms) == hf_can_err_t::CAN_SUCCESS) {
       sent_count++;
-      // Small delay between messages (reduced since SendMessage now has its own delay)
-      vTaskDelay(pdMS_TO_TICKS(2));
     } else {
       break; // Stop on first failure to maintain order
     }
@@ -762,82 +868,112 @@ uint32_t EspCan::SendMessageBatch(const hf_can_message_t* messages, uint32_t cou
 //==============================================//
 // INTERNAL EVENT CALLBACKS (ESP-IDF v5.5)
 //==============================================//
+// All of these run in the TWAI interrupt. No logging, no blocking, no
+// allocation: only atomics, the lock-free RX ring and FromISR primitives.
 
 bool EspCan::InternalReceiveCallback(twai_node_handle_t handle,
                                      const twai_rx_done_event_data_t* event_data,
                                      void* user_ctx) noexcept {
+  (void)event_data;
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can) {
     return false;
   }
 
-  // ESP-IDF v5.5: RX callback is just a notification that a message was received
-  // The actual message retrieval should be done via polling or queue
-  // For now, we'll use a simple approach: try to receive the message
+  // The driver signals one frame per call; it must be read here, in the callback
+  uint8_t recv_buffer[HF_CAN_CLASSIC_MAX_LEN] = {};
+  twai_frame_t rx_frame = {};
+  rx_frame.buffer = recv_buffer;
+  rx_frame.buffer_len = sizeof(recv_buffer);
 
-  // Try to receive message from the RX queue
-  uint8_t recv_buffer[8];
-  twai_frame_t rx_frame = {
-      .header = {},
-      .buffer = recv_buffer,
-      .buffer_len = sizeof(recv_buffer),
-  };
-
-  // Use non-blocking receive from ISR
-  esp_err_t recv_result = twai_node_receive_from_isr(handle, &rx_frame);
-  if (recv_result == ESP_OK) {
-    // Message successfully received - process it
-    esp_can->ProcessReceivedMessage(rx_frame);
-    esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, true);
-  } else if (recv_result == ESP_ERR_NOT_FOUND) {
-    // No message available - this can happen if callback was triggered but message was already
-    // processed This is normal behavior, don't count as failure
-  } else {
-    // Actual error occurred
+  if (twai_node_receive_from_isr(handle, &rx_frame) != ESP_OK) {
     esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, false);
+    return false;
   }
 
-  return false; // Don't yield to higher priority task
+  hf_can_message_t message;
+  (void)ConvertFromTwaiFrame(rx_frame, message);
+  message.timestamp_us = static_cast<hf_u64_t>(esp_timer_get_time());
+  message.controller_id = static_cast<hf_u8_t>(esp_can->config_.controller_id);
+
+  esp_can->UpdateStatistics(hf_can_operation_type_t::HF_CAN_OP_RECEIVE, true);
+  esp_can->statistics_.bytes_received.fetch_add(message.is_rtr ? 0U : message.dlc);
+
+  return esp_can->DeliverReceivedFromIsr(message);
+}
+
+bool EspCan::InternalTxDoneCallback(twai_node_handle_t handle,
+                                    const twai_tx_done_event_data_t* event_data,
+                                    void* user_ctx) noexcept {
+  (void)handle;
+  EspCan* esp_can = static_cast<EspCan*>(user_ctx);
+  if (!esp_can || !event_data || !esp_can->tx_slots_) {
+    return false;
+  }
+
+  if (!event_data->is_tx_success) {
+    esp_can->statistics_.tx_failed_count.fetch_add(1);
+  }
+
+  // Find the slot that owns this frame and return it to the pool
+  const auto* done = event_data->done_tx_frame;
+  for (uint32_t i = 0; i < esp_can->tx_slot_count_; ++i) {
+    TxSlot& slot = esp_can->tx_slots_[i];
+    if (&slot.frame == done) {
+      slot.in_use.store(false);
+      BaseType_t woken = pdFALSE;
+      xSemaphoreGiveFromISR(esp_can->tx_slot_sem_, &woken);
+      return woken == pdTRUE;
+    }
+  }
+  return false;
 }
 
 bool EspCan::InternalErrorCallback(twai_node_handle_t handle,
                                    const twai_error_event_data_t* event_data,
                                    void* user_ctx) noexcept {
+  (void)handle;
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can || !event_data) {
     return false;
   }
 
-  // Update error statistics using atomic operations (ISR-safe)
+  if (event_data->err_flags.arb_lost) {
+    esp_can->statistics_.arbitration_lost_count.fetch_add(1);
+  }
   esp_can->UpdateErrorStatistics(event_data->err_flags.val);
-
-  // Note: No logging in ISR context - ESP_LOGW uses mutex locks which are not ISR-safe
-
   return false;
 }
 
 bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
                                          const twai_state_change_event_data_t* event_data,
                                          void* user_ctx) noexcept {
+  (void)handle;
   EspCan* esp_can = static_cast<EspCan*>(user_ctx);
   if (!esp_can || !event_data) {
     return false;
   }
 
-  // Note: No logging in ISR context - ESP_LOGI uses mutex locks which are not ISR-safe
+  const hf_can_bus_state_t new_state = MapTwaiState(event_data->new_sta);
+  esp_can->bus_state_.store(static_cast<uint8_t>(new_state));
 
-  // Handle bus recovery completion
-  if (esp_can->is_recovering_.load()) {
-    esp_can->is_recovering_.store(false);
-    // Note: No logging in ISR context
+  if (event_data->new_sta == TWAI_ERROR_BUS_OFF && event_data->old_sta != TWAI_ERROR_BUS_OFF) {
+    esp_can->bus_off_count_.fetch_add(1);
+    esp_can->statistics_.bus_off_events.fetch_add(1);
+  }
+  if (event_data->new_sta == TWAI_ERROR_WARNING) {
+    esp_can->statistics_.error_warning_events.fetch_add(1);
   }
 
-  // Create state change info and dispatch to user callbacks
-  hf_esp_can_state_info_t state_info;
-  state_info.previous_state = 0; // Would need actual previous state from ESP-IDF
-  state_info.current_state = 1;  // Would need actual current state from ESP-IDF
-  state_info.timestamp_us = esp_timer_get_time();
+  // Bus recovery finished
+  if (esp_can->is_recovering_.load() && event_data->new_sta == TWAI_ERROR_ACTIVE) {
+    esp_can->is_recovering_.store(false);
+  }
 
+  hf_esp_can_state_info_t state_info;
+  state_info.previous_state = static_cast<uint32_t>(event_data->old_sta);
+  state_info.current_state = static_cast<uint32_t>(event_data->new_sta);
+  state_info.timestamp_us = esp_timer_get_time();
   esp_can->DispatchStateChangeCallbacks(state_info);
 
   return false;
@@ -849,49 +985,44 @@ bool EspCan::InternalStateChangeCallback(twai_node_handle_t handle,
 
 hf_can_err_t EspCan::ConvertToTwaiFrame(const hf_can_message_t& hf_message,
                                         twai_frame_t& twai_frame) noexcept {
-  // Validate message
-  if (hf_message.dlc > 8) {
+  if (hf_message.dlc > HF_CAN_CLASSIC_MAX_LEN || hf_message.is_canfd) {
     return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
   }
-
-  // Validate buffer is provided
   if (!twai_frame.buffer) {
-    return hf_can_err_t::CAN_ERR_MESSAGE_INVALID_DLC;
+    return hf_can_err_t::CAN_ERR_NULL_POINTER;
   }
 
-  // Set header fields directly (frame.header already cleared in SendMessage)
   twai_frame.header.id = hf_message.id;
   twai_frame.header.ide = hf_message.is_extended;
   twai_frame.header.rtr = hf_message.is_rtr;
-  twai_frame.header.dlc = hf_message.dlc;
+  twai_frame.header.dlc = hf_message.dlc; // classic: DLC code == byte length
 
-  // Copy data if not a remote frame
-  if (!hf_message.is_rtr && hf_message.dlc > 0 && twai_frame.buffer) {
-    std::memcpy(twai_frame.buffer, hf_message.data, hf_message.dlc);
+  // A remote frame carries a DLC but no payload
+  if (hf_message.is_rtr) {
+    twai_frame.buffer_len = 0;
+  } else {
+    twai_frame.buffer_len = hf_message.dlc;
+    if (hf_message.dlc > 0) {
+      std::memcpy(twai_frame.buffer, hf_message.data, hf_message.dlc);
+    }
   }
-
   return hf_can_err_t::CAN_SUCCESS;
 }
 
 hf_can_err_t EspCan::ConvertFromTwaiFrame(const twai_frame_t& twai_frame,
                                           hf_can_message_t& hf_message) noexcept {
-  // Clear message
   hf_message = hf_can_message_t{};
 
-  // Copy header fields
   hf_message.id = twai_frame.header.id;
   hf_message.is_extended = twai_frame.header.ide;
   hf_message.is_rtr = twai_frame.header.rtr;
-  hf_message.dlc = twai_frame.header.dlc;
+  // Classic only: codes 9..15 mean 8 bytes (dlc_non_comp records it)
+  (void)hf_message.SetDlcCode(static_cast<hf_u8_t>(twai_frame.header.dlc & 0x0FU));
 
-  // Set timestamp
-  hf_message.timestamp_us = esp_timer_get_time();
-
-  // Copy data if not a remote frame
-  if (!hf_message.is_rtr && hf_message.dlc > 0) {
-    std::memcpy(hf_message.data, twai_frame.buffer, hf_message.dlc);
+  if (!hf_message.is_rtr && hf_message.dlc > 0 && twai_frame.buffer) {
+    const size_t n = std::min<size_t>(hf_message.dlc, twai_frame.buffer_len);
+    std::memcpy(hf_message.data, twai_frame.buffer, n);
   }
-
   return hf_can_err_t::CAN_SUCCESS;
 }
 
@@ -944,22 +1075,90 @@ void EspCan::UpdateStatistics(hf_can_operation_type_t operation_type, bool succe
 // ENHANCED CALLBACK DISPATCH METHODS
 //==============================================================================
 
-void EspCan::ProcessReceivedMessage(const twai_frame_t& frame) noexcept {
-  // Dispatch to callback system
-  DispatchReceiveCallbacks(frame);
+bool EspCan::DeliverReceivedFromIsr(const hf_can_message_t& message) noexcept {
+  bool delivered_to_callback = false;
+
+  hf_esp_can_receive_callback_t cb = receive_cb_.load();
+  if (cb != nullptr) {
+    cb(message, receive_ud_.load());
+    delivered_to_callback = true;
+  }
+  hf_can_receive_callback_t base_cb = base_receive_cb_.load();
+  if (base_cb != nullptr) {
+    base_cb(message);
+    delivered_to_callback = true;
+  }
+
+  const bool queue =
+      (config_.rx_mode == hf_esp_can_rx_mode_t::QUEUE_ALWAYS) || !delivered_to_callback;
+  if (!queue) {
+    return false;
+  }
+
+  if (!rx_ring_.TryPush(message)) {
+    // Ring full: the frame is dropped and counted (rx_ring_.Overruns())
+    statistics_.rx_queue_overflows.fetch_add(1);
+    return false;
+  }
+  const uint32_t fill = rx_ring_.Size();
+  if (fill > statistics_.rx_queue_peak.load()) {
+    statistics_.rx_queue_peak.store(fill);
+  }
+
+  BaseType_t woken = pdFALSE;
+  if (rx_sem_ != nullptr) {
+    xSemaphoreGiveFromISR(rx_sem_, &woken);
+  }
+  return woken == pdTRUE;
 }
 
-void EspCan::DispatchReceiveCallbacks(const twai_frame_t& frame) noexcept {
-  // Convert to HF message format
-  hf_can_message_t hf_message;
-  if (ConvertFromTwaiFrame(frame, hf_message) != hf_can_err_t::CAN_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to convert TWAI frame to HF message");
-    return;
+void EspCan::RefreshBusState() noexcept {
+  twai_node_status_t node_status{};
+  if (twai_node_handle_ != nullptr &&
+      twai_node_get_info(twai_node_handle_, &node_status, nullptr) == ESP_OK) {
+    bus_state_.store(static_cast<uint8_t>(MapTwaiState(node_status.state)));
+  }
+}
+
+hf_can_err_t EspCan::AllocateQueues() noexcept {
+  ReleaseQueues();
+
+  const uint32_t rx_depth = config_.rx_queue_depth == 0U ? 1U : config_.rx_queue_depth;
+  if (!rx_ring_.Init(rx_depth)) {
+    return hf_can_err_t::CAN_ERR_OUT_OF_MEMORY;
+  }
+  rx_sem_ = xSemaphoreCreateBinary();
+
+  // One slot per driver queue entry plus the frame in the controller
+  tx_slot_count_ = (config_.tx_queue_depth == 0U ? 1U : config_.tx_queue_depth) + 1U;
+  tx_slots_.reset(new (std::nothrow) TxSlot[tx_slot_count_]);
+  if (tx_slots_) {
+    for (uint32_t i = 0; i < tx_slot_count_; ++i) {
+      std::memset(&tx_slots_[i].frame, 0, sizeof(tx_slots_[i].frame));
+      tx_slots_[i].in_use.store(false);
+    }
+    tx_slot_sem_ = xSemaphoreCreateCounting(tx_slot_count_, tx_slot_count_);
   }
 
-  if (receive_cb_) {
-    receive_cb_(hf_message, receive_ud_);
+  if (rx_sem_ == nullptr || !tx_slots_ || tx_slot_sem_ == nullptr) {
+    ReleaseQueues();
+    return hf_can_err_t::CAN_ERR_OUT_OF_MEMORY;
   }
+  return hf_can_err_t::CAN_SUCCESS;
+}
+
+void EspCan::ReleaseQueues() noexcept {
+  if (rx_sem_ != nullptr) {
+    vSemaphoreDelete(rx_sem_);
+    rx_sem_ = nullptr;
+  }
+  if (tx_slot_sem_ != nullptr) {
+    vSemaphoreDelete(tx_slot_sem_);
+    tx_slot_sem_ = nullptr;
+  }
+  tx_slots_.reset();
+  tx_slot_count_ = 0;
+  rx_ring_.Release();
 }
 
 void EspCan::DispatchErrorCallbacks(const hf_esp_can_error_info_t& error_info) noexcept {
