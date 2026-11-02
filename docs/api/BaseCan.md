@@ -16,6 +16,7 @@ permalink: /docs/api/BaseCan/
 - [📋 **Error Codes**](#-error-codes)
 - [🔧 **Core API**](#-core-api)
 - [📊 **Data Structures**](#-data-structures)
+- [🆕 **BaseCan v2**](#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status)
 - [📊 **Usage Examples**](#-usage-examples)
 - [🧪 **Best Practices**](#-best-practices)
 
@@ -30,7 +31,8 @@ handling, and works across different CAN controller implementations.
 
 ### ✨ **Key Features**
 
-- 🚌 **CAN 2.0A/2.0B Support** - Classic CAN protocols (CAN-FD support varies by hardware)
+- 🚌 **CAN 2.0A/2.0B Support** - Classic CAN; the message type is FD-sized (64-byte payload),
+  FD transmission depends on the controller
 - 📨 **Message Filtering** - Hardware-based acceptance filtering
 - 🔄 **Error Recovery** - Automatic bus recovery and error handling
 - 📊 **Statistics & Diagnostics** - Comprehensive monitoring and reporting
@@ -534,45 +536,66 @@ virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noe
 
 ### 📨 **CAN Message Structure**
 
+`hf_can_message_t` is FD-sized (BaseCan v2). `dlc` holds the payload length **in bytes**,
+not a DLC code; see [BaseCan v2](#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status).
+
 ```cpp
 struct hf_can_message_t {
     // === Core CAN Message Fields ===
-    uint32_t id;     ///< Message ID (11 or 29-bit)
-    uint8_t dlc;     ///< Data length code (0-8 for classic CAN)
-    uint8_t data[8]; ///< Message data (max 8 bytes for classic CAN)
+    uint32_t id;       ///< Message ID (11 or 29-bit)
+    uint8_t dlc;       ///< Payload length in BYTES: 0..8 classic, 0..64 FD
+    uint8_t data[64];  ///< Payload (FD-sized)
 
     // === Standard CAN Flags ===
     bool is_extended;  ///< Extended ID flag (29-bit vs 11-bit)
     bool is_rtr;       ///< Remote transmission request flag
     bool is_ss;        ///< Single shot flag (no retransmission)
     bool is_self;      ///< Self reception request flag
-    bool dlc_non_comp; ///< DLC is non-compliant (> 8 for classic CAN)
+    bool dlc_non_comp; ///< Received classic DLC code was 9..15 (length is 8)
 
     // === Metadata and Diagnostics ===
-    uint64_t timestamp_us;    ///< Precise timestamp in microseconds
+    uint64_t timestamp_us;    ///< RX timestamp in microseconds (driver clock)
     uint32_t sequence_number; ///< Message sequence number
     uint8_t controller_id;    ///< Originating controller ID
     uint8_t retry_count;      ///< Number of transmission retries
     uint8_t error_count;      ///< Associated error count
 
-    // === CAN-FD Extended Fields ===
-    bool is_canfd;       ///< CAN-FD frame flag
-    bool is_brs;         ///< Bit Rate Switching flag (CAN-FD)
-    bool is_esi;         ///< Error State Indicator flag (CAN-FD)
-    uint8_t canfd_dlc;   ///< CAN-FD DLC (can be > 8)
+    // === CAN FD Fields ===
+    bool is_canfd;  ///< FD frame format (FDF)
+    bool is_brs;    ///< Bit Rate Switching (FD only)
+    bool is_esi;    ///< Error State Indicator (FD only)
 
-    // === Helper Methods ===
-    uint8_t GetMaxDataLength() const noexcept;  ///< Get max data length for frame type
-    bool IsValidDLC(uint8_t dlc) const noexcept;  ///< Validate DLC for frame type
-    uint8_t GetEffectiveDLC() const noexcept;  ///< Get effective DLC value
-    bool SetDLC(uint8_t dlc) noexcept;  ///< Set DLC for current frame type
-    void SetStandardFrame() noexcept;  ///< Set standard frame format
-    void SetExtendedFrame() noexcept;  ///< Set extended frame format
-    void SetDataFrame() noexcept;  ///< Set data frame (not remote)
-    void SetRemoteFrame() noexcept;  ///< Set remote frame
-    void SetSingleShot() noexcept;  ///< Set single shot transmission
-    void SetSelfReception() noexcept;  ///< Enable self reception
-    bool IsValidId() const noexcept;  ///< Validate message ID
+    // === Length (bytes) ===
+    uint8_t GetLength() const noexcept;
+    bool SetLength(uint8_t len) noexcept;       ///< false: invalid for classic / FD
+    bool SetData(const uint8_t* src, uint8_t len) noexcept;
+    uint8_t GetMaxDataLength() const noexcept;  ///< 8 classic, 64 FD
+    bool IsValidLength(uint8_t len) const noexcept;
+    uint8_t GetDlcCode() const noexcept;        ///< 4-bit wire code for the length
+    bool SetDlcCode(uint8_t code) noexcept;     ///< length from a 4-bit code
+    // Kept for source compatibility (all take / return bytes):
+    bool SetDLC(uint8_t len) noexcept;
+    bool IsValidDLC(uint8_t len) const noexcept;
+    uint8_t GetEffectiveDLC() const noexcept;
+
+    // === Frame kind and flags ===
+    void SetStandardFrame() noexcept;
+    void SetExtendedFrame() noexcept;
+    void SetDataFrame() noexcept;
+    void SetRemoteFrame() noexcept;
+    void SetSingleShot() noexcept;
+    void SetSelfReception() noexcept;
+    void SetFdFrame(bool brs = false) noexcept;
+    bool SetClassicFrame() noexcept;           ///< false if the length is above 8
+    uint8_t GetFlags() const noexcept;         ///< hf_can_flag::EXT|RTR|FDF|BRS|ESI
+    bool SetFlags(uint8_t flags) noexcept;
+
+    // === Validation and conversion ===
+    bool IsValidId() const noexcept;
+    hf_can_frame_error_t Validate() const noexcept;
+    bool IsValid() const noexcept;
+    template <typename Frame> void ToFrame(Frame& out) const noexcept;
+    template <typename Frame> static hf_can_message_t FromFrame(const Frame& in) noexcept;
 };
 ```
 
@@ -667,6 +690,73 @@ struct hf_can_diagnostics_t {
 ```
 
 ---
+
+## 🆕 **BaseCan v2: CAN FD frame, non-blocking TX, bus status**
+
+### Frame type
+
+- `data[64]` and `dlc` as a byte count. Valid lengths: 0..8 for classic frames;
+  0..8, 12, 16, 20, 24, 32, 48 or 64 for FD frames (`HfCanIsValidLength()`).
+- `SetLength()` / `SetDLC()` / `SetData()` reject a length the frame kind cannot carry and
+  leave the message unchanged. In v1, `SetDLC(64)` was accepted on an FD frame although
+  `data` had 8 bytes.
+- `HfCanDlcToLen(code, fd)` and `HfCanLenToDlc(len, fd)` convert between byte lengths and
+  4-bit DLC codes (`HF_CAN_DLC_INVALID` when a length cannot be carried). Use
+  `GetDlcCode()` / `SetDlcCode()` at the controller boundary.
+- `GetFlags()` / `SetFlags()` pack the flags as `hf_can_flag::EXT`, `RTR`, `FDF`, `BRS`,
+  `ESI`. The bit values are those of `vortex::contracts::frame_flag`.
+- `Validate()` applies the same structural rules as `vortex::contracts::CheckFrame` and
+  returns an `hf_can_frame_error_t`. Drivers call it before reading `data`.
+- `ToFrame()` / `FromFrame()` convert to and from any struct with `id`, `len`, `flags`,
+  `data[64]` and `ts_us` (the layout of `vortex::contracts::CanFrame`). A frame round trip
+  is lossless. Going the other way, `ts_us` keeps the low 32 bits of `timestamp_us`, and
+  `is_ss`, `is_self`, `sequence_number` and the other metadata are dropped.
+
+```cpp
+hf_can_message_t m;
+m.id = 0x181;
+const uint8_t pdo[6] = {1, 2, 3, 4, 5, 6};
+if (!m.SetData(pdo, sizeof(pdo))) { /* length invalid for this frame kind */ }
+
+m.SetFdFrame(/*brs=*/true);
+m.SetLength(12);          // ok, DLC code 9
+m.SetLength(9);           // false: 9 bytes has no FD DLC code
+```
+
+### New `BaseCan` calls
+
+| Call | Meaning | Default |
+|:--|:--|:--|
+| `TrySendMessage(msg)` | `SendMessage(msg, 0)`: queue or fail at once (`CAN_ERR_QUEUE_FULL`) | non-virtual |
+| `GetBusStatus(hf_can_bus_status_t&)` | state, TEC, REC, `rx_overruns`, `tx_queue_full`, `bus_off_count` | `CAN_ERR_UNSUPPORTED_OPERATION` |
+| `RequestBusRecovery()` | start bus-off recovery, return without waiting | `CAN_ERR_UNSUPPORTED_OPERATION` |
+
+`hf_can_bus_state_t` (`STOPPED`, `ERROR_ACTIVE`, `ERROR_WARNING`, `ERROR_PASSIVE`,
+`BUS_OFF`) and `hf_can_bus_status_t` follow `vortex::contracts::BusState` / `PortStatus`.
+`HfCanStateFromCounters(tec, rec)` gives the state the counters imply.
+
+### RX modes (EspCan)
+
+`ReceiveMessage()` now works on ESP32: the TWAI RX interrupt fills a lock-free ring that
+`ReceiveMessage()` drains. Receive callbacks still work and still run in ISR context.
+`hf_esp_can_config_t::rx_mode` selects callback, ring or both; see
+[EspCan](../esp_api/EspCan.md#receiving).
+
+### Migration from v1
+
+| v1 | v2 | Action |
+|:--|:--|:--|
+| `uint8_t data[8]` | `uint8_t data[64]` | `sizeof(m.data)` is now 64. Code that copies `sizeof(m.data)` bytes into an 8-byte buffer must use `m.dlc` (or `std::min`) |
+| `dlc`: "data length code" | `dlc`: length in bytes | No change for classic frames (code and length are equal for 0..8). FD code that stored a DLC code (9..15) in `dlc` / `canfd_dlc` must store the byte length, or call `SetDlcCode()` |
+| `canfd_dlc` | removed | Use `dlc` (bytes) for FD frames too |
+| `SetDLC(len)` accepted 0..64 on FD frames | accepts exact FD lengths only, 0..8 on classic | Check the `bool` result |
+| `GetEffectiveDLC()` returned `canfd_dlc` for FD | returns `dlc` | none |
+| `sizeof(hf_can_message_t)` about 40 bytes | about 104 bytes | Size queues and stacks that hold messages accordingly |
+| `EspCan::ReceiveMessage()` always `CAN_ERR_UNSUPPORTED_OPERATION` | returns frames | Polling loops start receiving; with a callback registered, set `rx_mode = QUEUE_ALWAYS` to get both |
+| `EspCan::SetReceiveCallback()` returned `CAN_ERR_NOT_SUPPORTED` | registers the callback (ISR context) | none |
+| `EspCan::SendMessage()` rejected `dlc == 0` and slept after each frame | zero-length frames allowed, no sleep | Callers that relied on the 1 ms pacing must pace themselves |
+| `EspCan::SendMessageBatch()` slept 2 ms per frame | no sleep | as above |
+| `hf_esp_can_config_t::rx_queue_depth` unused, default 20 | RX ring depth, default 32 | none |
 
 ## 📊 **Usage Examples**
 

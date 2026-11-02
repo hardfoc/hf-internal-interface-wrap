@@ -1,190 +1,172 @@
 ---
 layout: default
 title: "🚌 EspCan"
-description: "ESP32-C6 CAN implementation with TWAI controller for automotive communication"
+description: "ESP32 CAN (TWAI) implementation: ISR-fed RX ring, non-blocking TX, error counters"
 nav_order: 7
 parent: "🔧 ESP32 Implementations"
 permalink: /docs/esp_api/EspCan/
 ---
 
 # EspCan API Reference
+
 ## Overview
 
-`EspCan` is the ESP32-C6 implementation of the `BaseCan` interface,
-providing comprehensive CAN (Controller Area Network) functionality specifically optimized for
-ESP32-C6 microcontrollers running ESP-IDF v5.5+.
-It offers both basic and advanced CAN features with hardware-specific optimizations.
-
-## Features
-
-- **ESP32-C6 TWAI Controller** - Full support for ESP32-C6 TWAI (Two-Wire Automotive Interface) capabilities
-- **CAN 2.0A/2.0B Support** - Standard and extended frame formats (no CAN-FD support)
-- **High-Speed Operation** - Up to 1 Mbps CAN bus speeds
-- **DMA Integration** - High-performance DMA transfers
-- **Filter Support** - Hardware message filtering
-- **Error Detection** - Comprehensive error detection and reporting
-- **Power Management** - Deep sleep compatibility
-- **Performance Optimized** - Direct register access for critical operations
-
-## Header File
+`EspCan` implements [`BaseCan`](../api/BaseCan.md) on the ESP32 TWAI controller with the
+ESP-IDF v5.5 node API (`esp_twai.h`, `esp_twai_onchip.h`). One `EspCan` object drives one
+TWAI node. On the ESP32-C6 there are two TWAI controllers; both are classic CAN only
+(CAN 2.0A/2.0B, no CAN FD).
 
 ```cpp
-#include "inc/mcu/esp32/EspCan.h"
+#include "mcu/esp32/EspCan.h"
 ```
 
-## Class Definition
+## Configuration
 
 ```cpp
-class EspCan : public BaseCan {
-public:
-    // Constructor with full configuration
-    explicit EspCan(
-        hf_can_port_t port = hf_can_port_t::HF_CAN_PORT_0,
-        hf_pin_num_t tx_pin = GPIO_NUM_5,
-        hf_pin_num_t rx_pin = GPIO_NUM_4,
-        hf_can_speed_t speed = hf_can_speed_t::HF_CAN_SPEED_500K,
-        hf_can_mode_t mode = hf_can_mode_t::HF_CAN_MODE_NORMAL
-    ) noexcept;
-
-    // Destructor
-    ~EspCan() override;
-
-    // BaseCan implementation
-    bool Initialize() noexcept override;
-    bool Deinitialize() noexcept override;
-    bool IsInitialized() const noexcept override;
-    const char* GetDescription() const noexcept override;
-
-    // CAN operations
-    hf_can_err_t SendMessage(const hf_can_message_t& message) noexcept override;
-    hf_can_err_t ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_ms = 0) noexcept override;
-    hf_can_err_t GetMessageCount(hf_size_t* count) const noexcept override;
-
-    // Advanced features
-    hf_can_err_t SetSpeed(hf_can_speed_t speed) noexcept override;
-    hf_can_err_t GetSpeed(hf_can_speed_t* speed) const noexcept override;
-    hf_can_err_t SetFilter(const hf_can_filter_t& filter) noexcept override;
-    hf_can_err_t ClearFilters() noexcept override;
-    hf_can_err_t GetErrorCounters(hf_can_error_counters_t& counters) noexcept override;
-};
+hf_esp_can_config_t cfg{};          // defaults: GPIO4/5, 500 kbit/s, 75 % sample point
+cfg.tx_pin = 14;
+cfg.rx_pin = 15;
+cfg.baud_rate = 1000000;
+cfg.tx_queue_depth = 16;            // driver TX queue (frames waiting for the controller)
+cfg.rx_queue_depth = 64;            // RX ring for ReceiveMessage(), rounded up to a power of 2
+cfg.rx_mode = hf_esp_can_rx_mode_t::AUTO;
+EspCan can(cfg);                    // lazy: nothing touches the hardware yet
+can.Initialize();
 ```
 
-## Usage Examples
+| Field | Default | Meaning |
+|:--|:--|:--|
+| `tx_queue_depth` | 10 | Driver TX queue depth. EspCan keeps `tx_queue_depth + 1` TX slots |
+| `rx_queue_depth` | 32 | RX ring capacity (power of 2, at most 65536) |
+| `rx_mode` | `AUTO` | See [Receiving](#receiving) |
+| `enable_self_test` | false | Transmit without an ACK from another node |
+| `enable_loopback` | false | Receive the node's own frames (internal loopback) |
+| `fail_retry_cnt` | -1 | -1 retries forever, 0 is single shot |
 
-### Basic CAN Communication
+## Receiving
+
+Frames are read from the controller in the TWAI RX interrupt. From there they go to a
+receive callback, to a lock-free single-producer ring buffer, or to both:
+
+| `rx_mode` | Callback registered | Callback not registered |
+|:--|:--|:--|
+| `AUTO` (default) | callback only | RX ring |
+| `QUEUE_ALWAYS` | callback **and** RX ring | RX ring |
+
+### Polling (RX ring)
 
 ```cpp
-#include "inc/mcu/esp32/EspCan.h"
-
-// Create CAN instance
-EspCan can(HF_CAN_PORT_0, GPIO_NUM_5, GPIO_NUM_4, HF_CAN_SPEED_500K);
-
-// Initialize
-if (!can.Initialize()) {
-    printf("Failed to initialize CAN\n");
-    return;
+hf_can_message_t m;
+switch (can.ReceiveMessage(m, 10)) {     // wait up to 10 ms
+case hf_can_err_t::CAN_SUCCESS:          // m.timestamp_us = RX interrupt time (µs)
+  Handle(m);
+  break;
+case hf_can_err_t::CAN_ERR_MESSAGE_TIMEOUT:  // nothing within 10 ms
+  break;
+default:
+  break;
 }
-
-// Send a message
-hf_can_message_t message;
-message.id = 0x123;
-message.flags = HF_CAN_FLAG_STANDARD;
-message.data_length = 8;
-message.data[0] = 0x01;
-message.data[1] = 0x02;
-// ... fill remaining data
-
-hf_can_err_t err = can.SendMessage(message);
-if (err != HF_CAN_ERR_OK) {
-    printf("CAN send failed: %d\n", err);
-}
-
-// Receive a message
-hf_can_message_t received_message;
-err = can.ReceiveMessage(received_message, 1000); // 1 second timeout
-if (err == HF_CAN_ERR_OK) {
-    printf("Received message ID: 0x%X, Data: ", received_message.id);
-    for (int i = 0; i < received_message.data_length; i++) {
-        printf("%02X ", received_message.data[i]);
-    }
-    printf("\n");
-}
+can.ReceiveMessage(m, 0);                // never blocks: CAN_ERR_QUEUE_EMPTY when empty
 ```
 
-### Message Filtering
+- The waiting task is woken by the RX interrupt (a FreeRTOS semaphore), so a frame is handed
+  over at once, not at the next tick. Timeouts are rounded up to whole ticks.
+- Several tasks may call `ReceiveMessage()`; they are serialised by a mutex.
+- When the ring is full, the new frame is dropped and counted (`rx_overruns` in
+  `GetBusStatus()`, `rx_queue_overflows` in the statistics). Frames already queued are kept.
+
+### Callbacks
 
 ```cpp
-// Set up a filter to only receive messages with specific ID
-hf_can_filter_t filter;
-filter.id = 0x123;
-filter.mask = 0x7FF; // Standard 11-bit ID mask
-filter.flags = HF_CAN_FLAG_STANDARD;
-
-hf_can_err_t err = can.SetFilter(filter);
-if (err != HF_CAN_ERR_OK) {
-    printf("Failed to set filter: %d\n", err);
+void OnFrame(const hf_can_message_t& m, void* ctx) {   // ISR context
+  auto* q = static_cast<MyQueue*>(ctx);
+  q->PushFromIsr(m);                                    // copy and return
 }
+can.SetReceiveCallbackEx(OnFrame, &queue);
+// or the BaseCan form: can.SetReceiveCallback(+[](const hf_can_message_t& m) { ... });
 ```
 
-### Error Monitoring
+Receive callbacks run **in the TWAI interrupt**: no blocking calls, no logging, no
+allocation. The error and state-change callbacks run there too.
+
+## Transmitting
 
 ```cpp
-// Get error counters
-hf_can_error_counters_t counters;
-hf_can_err_t err = can.GetErrorCounters(counters);
+hf_can_message_t m;
+m.id = 0x181;
+const uint8_t pdo[4] = {0x01, 0x02, 0x03, 0x04};
+m.SetData(pdo, sizeof(pdo));
 
-if (err == HF_CAN_ERR_OK) {
-    printf("Error counters:\n");
-    printf("  TX Error Count: %u\n", counters.tx_error_count);
-    printf("  RX Error Count: %u\n", counters.rx_error_count);
-    printf("  Bus Off Count: %u\n", counters.bus_off_count);
+hf_can_err_t r = can.TrySendMessage(m);   // == SendMessage(m, 0): queue or fail at once
+if (r == hf_can_err_t::CAN_ERR_QUEUE_FULL) {
+  // retry later, e.g. from a TX-done path; nothing was queued
+}
+r = can.SendMessage(m, 5);                // wait up to 5 ms for TX queue space
+```
+
+- `SendMessage()` copies the frame into an internal TX slot and returns once the driver has
+  queued it. The slot is released by the TX-done interrupt. The TWAI driver keeps a
+  *pointer* to the queued frame until it is on the bus, so the frame cannot live on the
+  caller's stack; the slots make this safe.
+- There is no delay after a send. Earlier versions slept 1 ms after every frame
+  (`vTaskDelay(pdMS_TO_TICKS(1))`, which is 0 ticks at 100 Hz) to hide the stack-frame problem
+  above.
+- `timeout_ms = 0` never blocks. `UINT32_MAX` waits forever.
+- Return codes: `CAN_SUCCESS`, `CAN_ERR_QUEUE_FULL`, `CAN_ERR_BUS_OFF`,
+  `CAN_ERR_MESSAGE_INVALID_DLC` (length invalid for the frame kind),
+  `CAN_ERR_MESSAGE_INVALID_ID`, `CAN_ERR_UNSUPPORTED_OPERATION` (FD frame on TWAI).
+- Zero-length data frames (for example CANopen SYNC) are accepted.
+
+## Error state, counters and bus-off
+
+```cpp
+hf_can_bus_status_t st;
+if (can.GetBusStatus(st) == hf_can_err_t::CAN_SUCCESS) {
+  // st.state: STOPPED, ERROR_ACTIVE, ERROR_WARNING, ERROR_PASSIVE or BUS_OFF
+  // st.tec / st.rec: controller error counters
+  // st.rx_overruns: frames dropped because the RX ring was full
+  // st.tx_queue_full: sends refused for lack of TX queue space
+  // st.bus_off_count: bus-off events since Initialize() (or ResetStatistics())
+}
+if (st.state == hf_can_bus_state_t::BUS_OFF) {
+  can.RequestBusRecovery();   // starts recovery and returns; poll GetBusStatus()
 }
 ```
 
-## ESP32-C6 Specific Features
+While the node is bus-off, `SendMessage()` returns `CAN_ERR_BUS_OFF`. Frames that were queued
+before bus-off stay queued and are sent after recovery. Recovery needs 128 occurrences of
+11 recessive bits on the bus; `GetBusStatus()` reports `ERROR_ACTIVE` once it is done.
+`InitiateBusRecovery()` is the older name of `RequestBusRecovery()`.
 
-### TWAI Controller
+`GetStatus()` also fills `rx_missed_count` (RX ring overruns) and `tx_failed_count`.
 
-The ESP32-C6 uses the TWAI (Two-Wire Automotive Interface) controller,
-which is fully compatible with CAN 2.0A and CAN 2.0B standards.
-**Note: CAN-FD is not supported by the ESP32-C6 TWAI controller.**
+## Filters and timing
 
-### Hardware Filtering
+- `SetAcceptanceFilter(id, mask, extended)` and `ConfigureAdvancedFilter()` set the single
+  mask filter (or the dual 16-bit split). The node is stopped and restarted around the change.
+- `ConfigureAdvancedTiming()` sets BRP / segments directly.
 
-Up to 32 hardware filters for efficient message filtering without CPU overhead.
+## Threading summary
 
-### DMA Support
+| Call | Context |
+|:--|:--|
+| `SendMessage`, `TrySendMessage` | any task (not an ISR) |
+| `ReceiveMessage` | any task; callers are serialised |
+| receive / error / state callbacks | TWAI ISR |
+| `Initialize`, `Deinitialize`, filter and timing changes | one task, while nothing else uses the object |
 
-High-performance DMA transfers for large message buffers.
+## Hardware test
 
-## Error Handling
-
-The `EspCan` class provides comprehensive error handling with specific error codes:
-
-- `HF_CAN_ERR_OK` - Operation successful
-- `HF_CAN_ERR_INVALID_ARG` - Invalid parameter
-- `HF_CAN_ERR_NOT_INITIALIZED` - CAN not initialized
-- `HF_CAN_ERR_TIMEOUT` - Operation timeout
-- `HF_CAN_ERR_BUS_OFF` - CAN controller in bus-off state
-- `HF_CAN_ERR_TX_FULL` - Transmit buffer full
-- `HF_CAN_ERR_RX_EMPTY` - Receive buffer empty
-- `HF_CAN_ERR_FILTER_FULL` - No more filters available
-
-## Performance Considerations
-
-- **Bus Speed**: Choose appropriate speed for your application (125k, 250k, 500k, 1M bps)
-- **Termination**: Ensure proper 120Ω termination resistors on CAN bus
-- **Cable Length**: Consider signal integrity for longer cables
-- **Filter Usage**: Use hardware filters to reduce CPU load
+The `can_test` example (`examples/esp32/main/CanComprehensiveTest.cpp`) includes
+`loopback_stress_rx_ring`: 20000 frames at 1 Mbit/s in self-test + internal loopback, sent
+with `TrySendMessage()` (falling back to a short blocking send on `CAN_ERR_QUEUE_FULL`) and
+received through the RX ring by a separate task. It fails on any lost, reordered or corrupt
+frame, on any RX overrun, or below 5000 frames/s. No transceiver is needed.
 
 ## Related Documentation
 
-- [BaseCan API Reference](../api/BaseCan.md) - Base class interface
-- [HardwareTypes Reference](../api/HardwareTypes.md) - Platform-agnostic type definitions
+- [BaseCan API Reference](../api/BaseCan.md), including the BaseCan v2 migration notes
+- [HardwareTypes Reference](../api/HardwareTypes.md)
 <!-- markdownlint-disable-next-line MD013 -->
-- [ESP-IDF TWAI Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/twai.html) - ESP-IDF docs
-- [CAN Comprehensive Tests](../../examples/esp32/docs/README_CAN_TEST.md) - Complete CAN validation suite
-
----
-
-
+- [ESP-IDF TWAI Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/twai.html)
+- [CAN Comprehensive Tests](../../examples/esp32/docs/README_CAN_TEST.md)
