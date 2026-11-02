@@ -1,13 +1,4 @@
----
-layout: default
-title: "🔧 HardFOC Internal Interface Layer"
-description: "Multi-MCU Peripheral Interface - Universal hardware abstraction layer enabling seamless MCU portability through unified peripheral APIs"
-nav_order: 1
-permalink: /
-has_children: true
----
-
-# 🔧 HardFOC Internal Interface Layer: 
+# HardFOC Internal Interface Layer:
 
 **Multi-MCU Peripherals Interface**
 
@@ -16,29 +7,29 @@ has_children: true
 [![CI](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/hardfoc/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://hardfoc.github.io/hf-internal-interface-wrap/)
 
-## 🎯 Universal Hardware Interface for Multi-MCU Development
+## Universal Hardware Interface for Multi-MCU Development
 
 *A professional hardware abstraction layer enabling seamless MCU portability through unified
 peripheral APIs - designed for the HardFOC board ecosystem*
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
-- [🔌 **Peripheral Interfaces**](#-peripheral-interfaces)
-- [🖥️ **MCU Support**](#-mcu-support)
-- [🚀 **Quick Start**](#-quick-start)
-- [📖 **API Documentation**](#-api-documentation)
-- [🔧 **Building**](#-building)
-- [📊 **Examples**](#-examples)
-- [🤝 **Contributing**](#-contributing)
-- [📄 **License**](#-license)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#architecture)
+- [🔌 **Peripheral Interfaces**](#peripheral-interfaces)
+- [🖥️ **MCU Support**](#mcu-support)
+- [🚀 **Quick Start**](#quick-start)
+- [📖 **API Documentation**](#api-documentation)
+- [🔧 **Building**](#building)
+- [📊 **Examples**](#examples)
+- [🤝 **Contributing**](#contributing)
+- [📄 **License**](#license)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 > **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)** - 
 > Interactive guides, examples, and step-by-step tutorials
@@ -49,7 +40,7 @@ Originally designed for the **HardFOC board** which needs to support multiple MC
 this abstraction layer allows developers to write hardware-agnostic code while maintaining optimal
 performance.
 
-### 🏆 **Core Benefits**
+### **Core Benefits**
 
 - **🔄 MCU Portability** - Write once, run on multiple MCU platforms
 - **🎯 Unified APIs** - Consistent interface across all peripheral types
@@ -58,7 +49,7 @@ performance.
 - **📈 Extensible** - Easy to add new MCUs and peripheral drivers
 - **🔌 Complete Coverage** - 14+ peripheral interfaces for comprehensive hardware control
 
-### 🎨 **Design Philosophy**
+### **Design Philosophy**
 
 ```cpp
 // Write hardware-agnostic code
@@ -71,7 +62,7 @@ led->SetHigh();
 
 ---
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 ### **Two-Layer Design**
 
@@ -149,7 +140,7 @@ public:
 
 ---
 
-## 🔌 **Peripheral Interfaces**
+## **Peripheral Interfaces**
 
 > **📖 [📚🌐 Live Complete Documentation](https://hardfoc.github.io/hf-internal-interface-wrap/)** - 
 > Interactive guides, examples, and step-by-step tutorials
@@ -210,11 +201,11 @@ public:
 
 ---
 
-## 🖥️ **MCU Support**
+## **MCU Support**
 
 ### **Currently Supported**
 
-#### **ESP32 Family** ✅
+#### **ESP32 Family**
 - **ESP32** - Original dual-core WiFi/BT
 - **ESP32-C6** - RISC-V with WiFi 6 + Zigbee
 - **ESP32-S3** - Dual-core with AI acceleration
@@ -224,12 +215,12 @@ public:
 
 ### **Planned Support**
 
-#### **STM32 Family** 🚧
+#### **STM32 Family**
 - **STM32F4** - High-performance ARM Cortex-M4
 - **STM32H7** - Dual-core ARM Cortex-M7
 - **STM32G4** - Motor control optimized
 
-#### **Nordic nRF** 🚧
+#### **Nordic nRF**
 - **nRF52840** - Bluetooth 5.0 + Thread/Zigbee
 - **nRF5340** - Dual-core Bluetooth 5.2
 
@@ -259,7 +250,7 @@ public:
 
 ---
 
-## 🚀 **Quick Start**
+## **Quick Start**
 
 ### **1. Clone Repository**
 ```bash
@@ -310,7 +301,7 @@ void setup() {
 
 ---
 
-## 📖 **API Documentation**
+## **API Documentation**
 
 ### **Generated Documentation**
 - **[API Reference](docs/api/)** - Complete base api interface documentation
@@ -599,7 +590,7 @@ public:
 
 ---
 
-## 🔧 **Building**
+## **Building**
 
 ### **Build System Features**
 - **Multi-MCU Support** - Single build system for all platforms
@@ -634,7 +625,7 @@ applications:
 
 ---
 
-## 📊 **Examples**
+## **Examples**
 
 ### **Available Test Applications**
 
@@ -806,7 +797,7 @@ public:
 
 ---
 
-## 🤝 **Contributing**
+## **Contributing**
 
 ### **Development Workflow**
 1. **Fork** the repository
@@ -830,7 +821,7 @@ public:
 
 ---
 
-## 📄 **License**
+## **License**
 
 This project is licensed under the **GNU General Public License v3.0**.
 
@@ -838,7 +829,7 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-## 🔗 **Quick Links**
+## **Quick Links**
 
 ### **Documentation**
 - 📚 [API Reference](docs/api/) - Complete interface documentation

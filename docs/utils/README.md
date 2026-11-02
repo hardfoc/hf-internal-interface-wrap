@@ -1,14 +1,4 @@
----
-layout: default
-title: "🛠️ Utilities"
-description: "Advanced utility classes and helper components that enhance the HardFOC Interface Wrapper ecosystem"
-nav_order: 0
-parent: "📚 Documentation"
-permalink: /docs/utils/
-has_children: true
----
-
-# 🛠️ HardFOC Interface Wrapper - Utilities
+# HardFOC Interface Wrapper - Utilities
 
 ![HardFOC Utils](https://img.shields.io/badge/HardFOC-Utilities-green?style=for-the-badge&logo=tools)
 
@@ -18,26 +8,26 @@ has_children: true
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
-- [📋 **Utility Classes**](#-utility-classes)
-- [🔗 **Integration**](#-integration)
-- [📊 **Getting Started**](#-getting-started)
-- [🧪 **Examples**](#-examples)
-- [🔗 **Navigation**](#-navigation)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#architecture)
+- [📋 **Utility Classes**](#utility-classes)
+- [🔗 **Integration**](#integration)
+- [📊 **Getting Started**](#getting-started)
+- [🧪 **Examples**](#examples)
+- [🔗 **Navigation**](#navigation)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The **HardFOC Interface Wrapper Utilities** provide advanced utility classes and helper components
 that enhance the core hardware abstraction layer.
 These utilities implement common design patterns, provide safety mechanisms,
 and offer convenient abstractions for complex hardware operations.
 
-### ✨ **Key Benefits**
+### **Key Benefits**
 
 - 🛡️ **Safety First** - RAII patterns and automatic resource management
 - ⚡ **Performance Optimized** - Minimal overhead with maximum efficiency
@@ -46,7 +36,7 @@ and offer convenient abstractions for complex hardware operations.
 - 🧵 **Thread Safe** - Designed for multi-threaded embedded applications
 - 🔄 **Platform Agnostic** - Works across all supported hardware platforms
 
-### 🎯 **Target Use Cases**
+### **Target Use Cases**
 
 - **Resource Management** - Automatic cleanup and state management
 - **Safety Critical Systems** - Guaranteed resource cleanup and error handling
@@ -56,7 +46,7 @@ and offer convenient abstractions for complex hardware operations.
 
 ---
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 ### **Design Philosophy**
 
@@ -92,7 +82,7 @@ The HardFOC Utilities follow a **utility-first design pattern**:
 
 ---
 
-## 📋 **Utility Classes**
+## **Utility Classes**
 
 The HardFOC Interface Wrapper provides utility classes for common patterns and safety mechanisms:
 
@@ -108,19 +98,19 @@ The HardFOC Interface Wrapper provides utility classes for common patterns and s
 
 ### **Utility Categories**
 
-#### **🛡️ Resource Management**
+#### ** Resource Management**
 - **RAII Patterns** - Automatic resource acquisition and cleanup
 - **Guard Classes** - Scope-based resource protection
 - **Smart Pointers** - Automatic memory management
 - **State Management** - Automatic state transitions and cleanup
 
-#### **🔧 Safety Utilities**
+#### ** Safety Utilities**
 - **Exception Safety** - Guaranteed cleanup in error scenarios
 - **Thread Safety** - Multi-threaded access protection
 - **Resource Protection** - Automatic resource state management
 - **Error Recovery** - Graceful error handling and recovery
 
-#### **⚡ Performance Utilities**
+#### ** Performance Utilities**
 - **Zero-Copy Operations** - Efficient data handling
 - **Move Semantics** - Efficient resource transfer
 - **Optimized Algorithms** - High-performance utility functions
@@ -128,7 +118,7 @@ The HardFOC Interface Wrapper provides utility classes for common patterns and s
 
 ---
 
-## 🔗 **Integration**
+## **Integration**
 
 ### **With Core Interface**
 
@@ -187,7 +177,7 @@ public:
 
 ---
 
-## 📊 **Getting Started**
+## **Getting Started**
 
 ### **1. Include Utility Headers**
 
@@ -247,7 +237,7 @@ if (!guard.IsValid()) {
 
 ---
 
-## 🧪 **Examples**
+## **Examples**
 
 ### **Safe GPIO Control**
 
@@ -361,7 +351,7 @@ void setup_led_tasks() {
 
 ---
 
-## 🔗 **Navigation**
+## **Navigation**
 
 ### **Documentation Structure**
 
@@ -394,7 +384,7 @@ void setup_led_tasks() {
 
 ---
 
-## 🚀 **Future Utilities**
+## **Future Utilities**
 
 The HardFOC Utilities ecosystem is designed to grow with common patterns:
 

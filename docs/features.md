@@ -1,37 +1,29 @@
----
-layout: default
-title: "🚀 Features"
-description: "Comprehensive feature overview of the HardFOC Internal Interface Layer"
-nav_order: 2
-permalink: /features/
----
-
-# 🚀 Features
+# Features
 
 The HardFOC Internal Interface Layer provides a comprehensive set of features designed for 
 professional embedded development. This page showcases the key capabilities organized by category.
 
-## 🔌 Core Peripherals
+## Core Peripherals
 
 {% include feature_list.html features=site.data.features.core_peripherals columns=2 %}
 
-## 📡 Communication Buses
+## Communication Buses
 
 {% include feature_list.html features=site.data.features.communication_buses columns=2 %}
 
-## 📶 Wireless Connectivity
+## Wireless Connectivity
 
 {% include feature_list.html features=site.data.features.wireless_connectivity columns=2 %}
 
-## ⚙️ System Services
+## System Services
 
 {% include feature_list.html features=site.data.features.system_services columns=2 %}
 
-## 🛠️ Development Features
+## Development Features
 
 {% include feature_list.html features=site.data.features.development_features columns=2 %}
 
-## 📊 Feature Comparison
+## Feature Comparison
 
 | Feature Category | Interfaces | Key Benefits |
 |------------------|------------|--------------|
@@ -41,14 +33,14 @@ professional embedded development. This page showcases the key capabilities orga
 | **System** | NVS, Logging, Temperature | Essential services for robust applications |
 | **Development** | Multi-MCU, Testing, Docs | Professional development experience |
 
-## 🎯 Getting Started
+## Getting Started
 
 Ready to explore these features? Check out our:
 
 - [📚 API Documentation](api/README.md) - Complete reference for all interfaces
-- [🚀 Quick Start Guide](../README.md#-quick-start) - Get up and running in minutes
+- [🚀 Quick Start Guide](../README.md#quick-start) - Get up and running in minutes
 - [💡 Examples](../examples/esp32/README.md) - Real-world usage patterns
-- [🔧 Building Guide](../README.md#-building) - Compile and deploy your projects
+- [🔧 Building Guide](../README.md#building) - Compile and deploy your projects
 
 {% include alert.html type="info" title="Need Help?" 
 content="Our comprehensive documentation includes step-by-step tutorials, API references, and 

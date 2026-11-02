@@ -1,21 +1,12 @@
----
-layout: default
-title: "🔗 BaseI2c"
-description: "Inter-Integrated Circuit base class for I2C bus communication"
-nav_order: 4
-parent: "📋 API Reference"
-permalink: /docs/api/BaseI2c/
----
-
-# 🚌 BaseI2c API Reference
-## 🌟 Overview
+# BaseI2c API Reference
+## Overview
 
 `BaseI2c` is the abstract base class for I2C (Inter-Integrated Circuit) device communication in the
 HardFOC system.
 It provides a unified interface for communicating with sensors, displays, memory devices,
 and other I2C peripherals with comprehensive error handling and device management.
 
-## ✨ Features
+## Features
 
 - **🎯 Device-Centric Design** - Each instance represents a single I2C device with pre-configured address
 - **🚀 Multi-Speed Support** - Standard (100kHz), Fast (400kHz), and Fast+ (1MHz) modes
@@ -26,15 +17,15 @@ and other I2C peripherals with comprehensive error handling and device managemen
 - **📊 Performance Monitoring** - Comprehensive statistics and bus health diagnostics
 - **🔧 Lazy Initialization** - Resources allocated only when needed
 
-## 📁 Header File
+## Header File
 
 ```cpp
 #include "inc/base/BaseI2c.h"
 ```
 
-## 🎯 Type Definitions
+## Type Definitions
 
-### 🚨 Error Codes
+### Error Codes
 
 ```cpp
 enum class hf_i2c_err_t : hf_u8_t {
@@ -72,7 +63,7 @@ enum class hf_i2c_err_t : hf_u8_t {
 };
 ```
 
-### 📊 Statistics Structure
+### Statistics Structure
 
 ```cpp
 struct hf_i2c_statistics_t {
@@ -89,7 +80,7 @@ struct hf_i2c_statistics_t {
 };
 ```
 
-### 🩺 Diagnostics Structure
+### Diagnostics Structure
 
 ```cpp
 struct hf_i2c_diagnostics_t {
@@ -108,7 +99,7 @@ struct hf_i2c_diagnostics_t {
 };
 ```
 
-## 🏗️ Class Interface
+## Class Interface
 
 ```cpp
 class BaseI2c {
@@ -158,9 +149,9 @@ public:
 };
 ```
 
-## 🎯 Core Methods
+## Core Methods
 
-### 🔧 Initialization
+### Initialization
 
 ```cpp
 bool EnsureInitialized() noexcept;
@@ -169,7 +160,7 @@ bool EnsureInitialized() noexcept;
 **Returns:** `true` if successful, `false` on failure  
 **Usage:** Call before any I2C operations
 
-### 📡 Basic Communication
+### Basic Communication
 
 ```cpp
 hf_i2c_err_t Write(const hf_u8_t* data, hf_u16_t length, 
@@ -184,7 +175,7 @@ hf_i2c_err_t WriteRead(const hf_u8_t* write_data, hf_u16_t write_length,
 **Parameters:** Data buffers, lengths, and optional timeout  
 **Returns:** Error code indicating success or failure
 
-### 📋 Register Operations
+### Register Operations
 
 ```cpp
 hf_i2c_err_t WriteRegister(hf_u8_t register_address, hf_u8_t value,
@@ -196,7 +187,7 @@ hf_i2c_err_t ReadRegister(hf_u8_t register_address, hf_u8_t& value,
 **Parameters:** Register address, data value, optional timeout  
 **Returns:** Error code indicating success or failure
 
-### 🔍 Device Management
+### Device Management
 
 ```cpp
 bool IsDevicePresent(hf_timeout_ms_t timeout_ms = HF_TIMEOUT_DEFAULT_MS) noexcept;
@@ -206,9 +197,9 @@ hf_frequency_hz_t GetClockSpeed() const noexcept;
 **Purpose:** 🔍 Device detection and configuration query  
 **Returns:** Device presence, address, or clock speed information
 
-## 💡 Usage Examples
+## Usage Examples
 
-### 🌡️ Temperature Sensor (LM75A)
+### Temperature Sensor (LM75A)
 
 ```cpp
 #include "inc/mcu/esp32/EspI2c.h"
@@ -272,7 +263,7 @@ public:
 };
 ```
 
-### 📟 OLED Display (SSD1306)
+### OLED Display (SSD1306)
 
 ```cpp
 class SSD1306Display {
@@ -371,7 +362,7 @@ public:
 };
 ```
 
-### 💾 EEPROM Memory (24C256)
+### EEPROM Memory (24C256)
 
 ```cpp
 class EEPROM24C256 {
@@ -512,7 +503,7 @@ public:
 };
 ```
 
-### 🔍 I2C Bus Scanner
+### I2C Bus Scanner
 
 ```cpp
 class I2CBusScanner {
@@ -579,9 +570,9 @@ private:
 };
 ```
 
-## 📊 Performance and Diagnostics
+## Performance and Diagnostics
 
-### 📈 Statistics Monitoring
+### Statistics Monitoring
 
 ```cpp
 void monitor_i2c_performance(BaseI2c& device) {
@@ -625,9 +616,9 @@ void monitor_i2c_health(BaseI2c& device) {
 }
 ```
 
-## 🛡️ Error Handling Best Practices
+## Error Handling Best Practices
 
-### 🎯 Robust Communication
+### Robust Communication
 
 ```cpp
 hf_i2c_err_t safe_i2c_read_with_retry(BaseI2c& device, hf_u8_t reg, hf_u8_t& value) {
@@ -672,9 +663,9 @@ hf_i2c_err_t safe_i2c_read_with_retry(BaseI2c& device, hf_u8_t reg, hf_u8_t& val
 }
 ```
 
-## 🏎️ Performance Considerations
+## Performance Considerations
 
-### ⚡ Optimization Tips
+### Optimization Tips
 
 - **🚀 Clock Speed** - Use highest speed supported by all devices (100kHz, 400kHz, 1MHz)
 - **📏 Transaction Size** - Larger transactions are more efficient than many small ones
@@ -682,7 +673,7 @@ hf_i2c_err_t safe_i2c_read_with_retry(BaseI2c& device, hf_u8_t reg, hf_u8_t& val
 - **🔄 Retries** - Implement retry logic for transient errors
 - **📊 Monitoring** - Use statistics to identify performance bottlenecks
 
-### 📊 Typical Performance Ranges
+### Typical Performance Ranges
 
 | **Clock Speed** | **Throughput** | **Use Cases** |
 
@@ -694,12 +685,12 @@ hf_i2c_err_t safe_i2c_read_with_retry(BaseI2c& device, hf_u8_t reg, hf_u8_t& val
 
 | **1MHz (Fast+)** | ~100KB/s | High-speed data acquisition |
 
-## 🧵 Thread Safety
+## Thread Safety
 
 The `BaseI2c` class is **not thread-safe**.
 For concurrent access from multiple tasks, use appropriate synchronization mechanisms.
 
-## 🔗 Related Documentation
+## Related Documentation
 
 - **[EspI2c API Reference](../esp_api/EspI2c.md)** - ESP32-C6 I2C implementation
 - **[BaseGpio API Reference](BaseGpio.md)** - GPIO interface for I2C pins

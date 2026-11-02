@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 SPI Test"
-description: "SPI Test Suite - Serial peripheral interface and DMA testing"
-nav_order: 6
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/spi_test/
----
-
 # ESP32-C6 SPI Comprehensive Test Suite Documentation
 
 ## Overview

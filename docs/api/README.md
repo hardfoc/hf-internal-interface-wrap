@@ -1,14 +1,4 @@
----
-layout: default
-title: "📋 API Reference"
-description: "Complete API reference for the HardFOC Interface Wrapper base classes and abstract interfaces"
-nav_order: 0
-parent: "📚 Documentation"
-permalink: /docs/api/
-has_children: true
----
-
-# 🚀 HardFOC Interface Wrapper API Reference
+# HardFOC Interface Wrapper API Reference
 
 ![HardFOC Interface](https://img.shields.io/badge/HardFOC-Interface%20Wrapper-blue?style=for-the-badge&logo=hardware)
 
@@ -18,20 +8,20 @@ has_children: true
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
-- [📋 **Base Classes**](#-base-classes)
-- [🔧 **ESP32 Implementations**](#-esp32-implementations)
-- [🎯 **Type System**](#-type-system)
-- [📊 **Getting Started**](#-getting-started)
-- [🧪 **Examples**](#-examples)
-- [🧪 **Testing**](#-testing)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#architecture)
+- [📋 **Base Classes**](#base-classes)
+- [🔧 **ESP32 Implementations**](#esp32-implementations)
+- [🎯 **Type System**](#type-system)
+- [📊 **Getting Started**](#getting-started)
+- [🧪 **Examples**](#examples)
+- [🧪 **Testing**](#testing)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The **HardFOC Interface Wrapper** provides a unified,
 platform-agnostic abstraction layer for embedded hardware peripherals.
@@ -39,7 +29,7 @@ It enables developers to write portable,
 maintainable code that works across different microcontrollers and hardware platforms without
 modification.
 
-### ✨ **Key Benefits**
+### **Key Benefits**
 
 - 🔄 **Platform Portability** - Write once, run anywhere
 - 🛡️ **Type Safety** - Strongly typed interfaces with error handling
@@ -48,7 +38,7 @@ modification.
 - 📊 **Observable** - Built-in statistics, diagnostics, and monitoring
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### 🎯 **Target Applications**
+### **Target Applications**
 
 - **Motor Control Systems** - FOC, BLDC, stepper motor control
 - **Sensor Networks** - Multi-sensor data acquisition and processing
@@ -59,7 +49,7 @@ modification.
 
 ---
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 ### **Design Philosophy**
 
@@ -93,7 +83,7 @@ The HardFOC Interface follows a **layered abstraction pattern**:
 
 ---
 
-## 📋 **Base Classes**
+## **Base Classes**
 
 The HardFOC Interface provides abstract base classes for all major hardware peripherals:
 
@@ -136,7 +126,7 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 
 ---
 
-## 🔧 **ESP32 Implementations**
+## **ESP32 Implementations**
 
 ESP32-C6 specific implementations with optimized features:
 
@@ -171,7 +161,7 @@ ESP32-C6 specific implementations with optimized features:
 
 ---
 
-## 🎯 **Type System**
+## **Type System**
 
 Platform-agnostic type definitions for consistent APIs:
 
@@ -199,7 +189,7 @@ using hf_time_t = hf_u32_t;
 
 ---
 
-## 📊 **Getting Started**
+## **Getting Started**
 
 ### **1. Include the Headers**
 
@@ -251,7 +241,7 @@ if (result != hf_adc_err_t::ADC_SUCCESS) {
 
 ---
 
-## 🧪 **Examples**
+## **Examples**
 
 ### **Motor Control System**
 
@@ -338,7 +328,7 @@ public:
 
 ---
 
-## 🧪 **Testing**
+## **Testing**
 
 Comprehensive test suites for validating hardware interface implementations:
 
@@ -354,7 +344,7 @@ Comprehensive test suites for validating hardware interface implementations:
 
 ---
 
-## 🔗 **Navigation**
+## **Navigation**
 
 ### **Documentation Structure**
 

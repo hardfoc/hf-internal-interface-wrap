@@ -1,14 +1,4 @@
----
-layout: default
-title: "🔧 ESP32 Implementations"
-description: "ESP32-C6 specific implementations with ESP-IDF v5.5+ features and hardware optimizations"
-nav_order: 0
-parent: "📚 Documentation"
-permalink: /docs/esp_api/
-has_children: true
----
-
-# 🔧 ESP32-C6 Implementations
+# ESP32-C6 Implementations
 
 ![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Implementations-green?style=for-the-badge&logo=espressif)
 ![HardFOC](https://img.shields.io/badge/HardFOC-ESP32%20Support-blue?style=for-the-badge&logo=hardware)
@@ -19,25 +9,25 @@ has_children: true
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
-- [🔧 **Implementation Status**](#-implementation-status)
-- [📋 **Core Implementations**](#-core-implementations)
-- [⚡ **ESP32-C6 Features**](#-esp32-c6-features)
-- [📊 **Performance Benchmarks**](#-performance-benchmarks)
-- [🔍 **Troubleshooting**](#-troubleshooting)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#architecture)
+- [🔧 **Implementation Status**](#implementation-status)
+- [📋 **Core Implementations**](#core-implementations)
+- [⚡ **ESP32-C6 Features**](#esp32-c6-features)
+- [📊 **Performance Benchmarks**](#performance-benchmarks)
+- [🔍 **Troubleshooting**](#troubleshooting)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The ESP32-C6 implementations provide hardware-optimized versions of the HardFOC interface wrapper,
 leveraging the features of ESP32-C6 and ESP-IDF v5.5+.
 These implementations offer performance, power efficiency, and feature support.
 
-### ✨ **Key Benefits**
+### **Key Benefits**
 
 - ⚡ **Hardware Acceleration** - Leverages ESP32-C6 specific peripherals
 - 🔋 **Power Optimization** - Power management and sleep modes
@@ -47,7 +37,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 ### **ESP32-C6 Implementation Stack**
 
@@ -82,9 +72,9 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## 🔧 **Implementation Status**
+## **Implementation Status**
 
-### **Complete Implementations** ✅
+### **Complete Implementations**
 
 | **Implementation** | **Base Class** | **ESP32-C6 Features** | **Documentation** | **Status** |
 
@@ -119,7 +109,7 @@ These implementations offer performance, power efficiency, and feature support.
 <!-- markdownlint-disable-next-line MD013 -->
 | **[EspLogger](EspLogger.md)** | BaseLogger | Multi-output, network, file logging | ✅ Complete | ✅ Ready |
 
-### **In Progress** 🚧
+### **In Progress**
 
 | **Implementation** | **Base Class** | **Current Status** | **Target Features** |
 
@@ -133,9 +123,9 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## 📋 **Core Implementations**
+## **Core Implementations**
 
-### **🔌 EspGpio - Digital I/O Control**
+### ** EspGpio - Digital I/O Control**
 
 **Key Features:**
 - Dynamic pin direction configuration
@@ -150,7 +140,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspGpio.md)**
 
-### **🔄 EspSpi - Serial Peripheral Interface**
+### ** EspSpi - Serial Peripheral Interface**
 
 **Key Features:**
 - Full-duplex communication
@@ -165,7 +155,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspSpi.md)**
 
-### **⚡ EspPio - Programmable I/O**
+### ** EspPio - Programmable I/O**
 
 **Key Features:**
 - Custom protocol implementation
@@ -180,7 +170,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspPio.md)**
 
-### **📡 EspBluetooth - Wireless Communication**
+### ** EspBluetooth - Wireless Communication**
 
 **Key Features:**
 - Bluetooth Low Energy (BLE)
@@ -195,7 +185,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspBluetooth.md)**
 
-### **📊 EspAdc - Analog-to-Digital Conversion**
+### ** EspAdc - Analog-to-Digital Conversion**
 
 **Key Features:**
 - One-shot and continuous sampling modes
@@ -210,7 +200,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspAdc.md)**
 
-### **🎛️ EspPwm - Pulse Width Modulation**
+### ** EspPwm - Pulse Width Modulation**
 
 **Key Features:**
 - LEDC controller with up to 8 channels
@@ -225,7 +215,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspPwm.md)**
 
-### **🔗 EspI2c - Inter-Integrated Circuit**
+### ** EspI2c - Inter-Integrated Circuit**
 
 **Key Features:**
 - Bus-device architecture with ESP-IDF v5.5+
@@ -240,7 +230,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspI2c.md)**
 
-### **📡 EspUart - Universal Asynchronous Receiver-Transmitter**
+### ** EspUart - Universal Asynchronous Receiver-Transmitter**
 
 **Key Features:**
 - Hardware flow control (RTS/CTS)
@@ -255,7 +245,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspUart.md)**
 
-### **💾 EspNvs - Non-Volatile Storage**
+### ** EspNvs - Non-Volatile Storage**
 
 **Key Features:**
 - HMAC-based encryption support
@@ -270,7 +260,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspNvs.md)**
 
-### **⏱️ EspPeriodicTimer - High-Precision Timing**
+### ** EspPeriodicTimer - High-Precision Timing**
 
 **Key Features:**
 - Microsecond-level precision timing
@@ -285,7 +275,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspPeriodicTimer.md)**
 
-### **🌡️ EspTemperature - Internal Temperature Sensor**
+### ** EspTemperature - Internal Temperature Sensor**
 
 **Key Features:**
 - Internal temperature sensor support
@@ -300,7 +290,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 **[📖 Full Documentation](EspTemperature.md)**
 
-### **📝 EspLogger - Advanced Logging System**
+### ** EspLogger - Advanced Logging System**
 
 **Key Features:**
 - ESP-IDF Log V1 and V2 integration
@@ -317,7 +307,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## ⚡ **ESP32-C6 Features**
+## **ESP32-C6 Features**
 
 ### **Hardware Capabilities**
 
@@ -355,7 +345,7 @@ These implementations offer performance, power efficiency, and feature support.
 - **PWM Frequency**: Up to 40 MHz
 - **Interrupt Latency**: < 1 μs
 
-## 📊 **Performance Benchmarks**
+## **Performance Benchmarks**
 
 ### **GPIO Performance**
 
@@ -395,7 +385,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## 🔍 **Troubleshooting**
+## **Troubleshooting**
 
 ### **Common Issues**
 
@@ -423,7 +413,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-## 🔗 **Navigation**
+## **Navigation**
 
 ### **Documentation Structure**
 

@@ -1,34 +1,25 @@
----
-layout: default
-title: "💾 BaseNvs"
-description: "Non-Volatile Storage base class for configuration and data persistence"
-nav_order: 10
-parent: "📋 API Reference"
-permalink: /docs/api/BaseNvs/
----
-
-# 💾 BaseNvs API Reference
+# BaseNvs API Reference
 **🎯 Unified Non-Volatile Storage abstraction for all persistent data operations**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseNvs` class provides a comprehensive non-volatile storage abstraction that serves as the
 unified interface for all persistent data operations in the HardFOC system.
 It supports key-value storage, multiple data types, namespaces,
 and works across different storage implementations.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 💾 **Key-Value Storage** - Simple and efficient key-value pairs
 - 📝 **Multiple Data Types** - uint32_t, strings, binary blobs
@@ -39,7 +30,7 @@ and works across different storage implementations.
 - 📊 **Statistics & Diagnostics** - Built-in monitoring and health reporting
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | Hardware Type | Capacity | Features | Use Cases |
 
@@ -49,7 +40,7 @@ and works across different storage implementations.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -83,11 +74,11 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
 The NVS system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -95,7 +86,7 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | `NVS_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -113,7 +104,7 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | `NVS_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🔑 **Storage Error Codes**
+### **Storage Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -135,7 +126,7 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | `NVS_ERR_CORRUPTED` | 14 | 💥 Data corrupted | Re-initialize storage |
 
-### 🔐 **Encryption Error Codes**
+### **Encryption Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -153,7 +144,7 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 | `NVS_ERR_WRONG_ENCRYPTION_SCHEME` | 20 | 🔐 Wrong encryption scheme | Use correct encryption |
 
-### 🔧 **System Error Codes**
+### **System Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -173,9 +164,9 @@ The NVS system uses comprehensive error codes for robust error handling:
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -226,7 +217,7 @@ bool EnsureInitialized();
 bool EnsureDeinitialized();
 ```
 
-### 🔢 **Integer Storage Methods**
+### **Integer Storage Methods**
 
 ```cpp
 /**
@@ -266,7 +257,7 @@ virtual hf_nvs_err_t SetU32(const char *key, uint32_t value) noexcept = 0;
 virtual hf_nvs_err_t GetU32(const char *key, uint32_t &value) noexcept = 0;
 ```
 
-### 📝 **String Storage Methods**
+### **String Storage Methods**
 
 ```cpp
 /**
@@ -307,7 +298,7 @@ virtual hf_nvs_err_t GetString(const char *key, char *buffer, size_t buffer_size
                              size_t *actual_size = nullptr) noexcept = 0;
 ```
 
-### 📦 **Binary Blob Storage Methods**
+### **Binary Blob Storage Methods**
 
 ```cpp
 /**
@@ -354,7 +345,7 @@ virtual hf_nvs_err_t GetBlob(const char *key, void *buffer, size_t buffer_size,
                            size_t *actual_size = nullptr) noexcept = 0;
 ```
 
-### 🗑️ **Data Management Methods**
+### **Data Management Methods**
 
 ```cpp
 /**
@@ -404,7 +395,7 @@ virtual hf_nvs_err_t EraseAll() noexcept = 0;
 virtual hf_nvs_err_t GetSize(const char *key, size_t &size) noexcept = 0;
 ```
 
-### 📊 **Information Methods**
+### **Information Methods**
 
 ```cpp
 /**
@@ -424,7 +415,7 @@ virtual size_t GetMaxKeyLength() const noexcept = 0;
 virtual size_t GetMaxValueSize() const noexcept = 0;
 ```
 
-### 📈 **Statistics and Diagnostics**
+### **Statistics and Diagnostics**
 
 ```cpp
 /**
@@ -464,9 +455,9 @@ virtual hf_nvs_err_t GetDiagnostics(hf_nvs_diagnostics_t &diagnostics) const noe
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 📈 **NVS Statistics Structure**
+### **NVS Statistics Structure**
 
 ```cpp
 struct hf_nvs_statistics_t {
@@ -485,7 +476,7 @@ struct hf_nvs_statistics_t {
 };
 ```
 
-### 🔍 **NVS Diagnostics Structure**
+### **NVS Diagnostics Structure**
 
 ```cpp
 struct hf_nvs_diagnostics_t {
@@ -498,9 +489,9 @@ struct hf_nvs_diagnostics_t {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 🔧 **Configuration Storage**
+### **Configuration Storage**
 
 ```cpp
 #include "mcu/esp32/EspNvs.h"
@@ -607,7 +598,7 @@ struct DeviceConfig {
 };
 ```
 
-### 📊 **Calibration Data Storage**
+### **Calibration Data Storage**
 
 ```cpp
 #include "mcu/esp32/EspNvs.h"
@@ -703,7 +694,7 @@ struct AdcCalibration {
 };
 ```
 
-### 📝 **Log Storage**
+### **Log Storage**
 
 ```cpp
 #include "mcu/esp32/EspNvs.h"
@@ -797,7 +788,7 @@ public:
 };
 ```
 
-### 🔐 **Encrypted Storage (ESP32)**
+### **Encrypted Storage (ESP32)**
 
 ```cpp
 #include "mcu/esp32/EspNvs.h"
@@ -877,9 +868,9 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -934,7 +925,7 @@ if (nvs.GetStatistics(stats) == hf_nvs_err_t::NVS_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore initialization
@@ -957,7 +948,7 @@ nvs.SetString("password", "secret");  // Use encrypted storage
 // Check available space before large writes
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use appropriate data types
@@ -991,7 +982,7 @@ if (stats.bytes_written > max_storage_bytes) {
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [⚙️ **EspNvs**](../esp_api/EspNvs.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types

@@ -1,18 +1,9 @@
----
-layout: default
-title: "📖 Doxygen Extensions"
-nav_order: 4
-description: "Advanced Doxygen documentation with automatic dark mode, interactive features, and modern styling"
-has_children: true
-has_toc: true
----
-
-# 📖 Doxygen Extensions
+# Doxygen Extensions
 
 This section contains advanced Doxygen documentation features and extensions for the 
 HardFOC Interface Wrapper project.
 
-## 🌟 Features
+## Features
 
 Our Doxygen documentation includes several modern enhancements:
 
@@ -23,7 +14,7 @@ Our Doxygen documentation includes several modern enhancements:
 - **📑 Tabs** - Organize content in tabbed interfaces
 - **📱 Responsive Design** - Works perfectly on desktop and mobile devices
 
-## 🚀 Quick Start
+## Quick Start
 
 The Doxygen documentation is automatically generated from the source code and includes:
 
@@ -31,12 +22,12 @@ The Doxygen documentation is automatically generated from the source code and in
 2. **Code Examples** - Comprehensive test examples showing proper usage
 3. **Interactive Features** - Modern UI with dark mode and copy functionality
 
-## 📁 Structure
+## Structure
 
 - **[Configuration](../_config/doxygen-extensions/)** - Doxygen configuration and setup files
 - **[Submodule](../_config/doxygen-extensions/doxygen-awesome-css/)** - Doxygen-awesome-css theme files
 
-## 🔧 Technical Details
+## Technical Details
 
 The documentation system uses:
 
@@ -45,7 +36,7 @@ The documentation system uses:
 - **Custom Extensions** - JavaScript enhancements for better user experience
 - **Automatic Detection** - System preference detection for theme switching
 
-## 📖 Usage
+## Usage
 
 To generate the documentation locally:
 
@@ -55,14 +46,14 @@ doxygen Doxyfile
 
 The generated documentation will be available in the `docs/doxygen/` directory.
 
-## 🎨 Customization
+## Customization
 
 The documentation theme and features can be customized by modifying:
 
 - `Doxyfile` - Main Doxygen configuration
 - `_config/doxygen-extensions/doxygen-awesome-css/` - Theme CSS and JavaScript files
 
-## 🔗 Related Documentation
+## Related Documentation
 
 - [API Reference](api/) - Base class documentation
 - [ESP32 Implementations](esp_api/) - ESP32-specific implementations

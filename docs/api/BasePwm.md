@@ -1,21 +1,12 @@
----
-layout: default
-title: "🎛️ BasePwm"
-description: "Pulse Width Modulation base class for motor control and servo operations"
-nav_order: 3
-parent: "📋 API Reference"
-permalink: /docs/api/BasePwm/
----
-
-# 🎛️ BasePwm API Reference
-## 🌟 Overview
+# BasePwm API Reference
+## Overview
 
 `BasePwm` is the abstract base class for all PWM (Pulse Width Modulation) implementations in the
 HardFOC system.
 It provides a unified interface for motor control, LED dimming, servo control,
 and other PWM applications with comprehensive multi-channel support.
 
-## ✨ Features
+## Features
 
 - **🔢 Multi-Channel Support** - Control multiple PWM channels simultaneously
 - **⚡ Variable Frequency** - Configurable frequency per channel with wide range support
@@ -26,15 +17,15 @@ and other PWM applications with comprehensive multi-channel support.
 - **🔧 Lazy Initialization** - Resources allocated only when needed
 - **🏎️ Real-Time Optimized** - Designed for time-critical motor control applications
 
-## 📁 Header File
+## Header File
 
 ```cpp
 #include "inc/base/BasePwm.h"
 ```
 
-## 🎯 Type Definitions
+## Type Definitions
 
-### 🚨 Error Codes
+### Error Codes
 
 ```cpp
 enum class hf_pwm_err_t : hf_u32_t {
@@ -66,7 +57,7 @@ enum class hf_pwm_err_t : hf_u32_t {
 };
 ```
 
-### 📊 Statistics Structure
+### Statistics Structure
 
 ```cpp
 struct hf_pwm_statistics_t {
@@ -79,7 +70,7 @@ struct hf_pwm_statistics_t {
 };
 ```
 
-## 🏗️ Class Interface
+## Class Interface
 
 ```cpp
 class BasePwm {
@@ -117,9 +108,9 @@ virtual float GetDutyCycle(hf_channel_id_t channel_id) const noexcept = 0;
 };
 ```
 
-## 🎯 Core Methods
+## Core Methods
 
-### 🔧 Initialization
+### Initialization
 
 ```cpp
 bool EnsureInitialized() noexcept;
@@ -128,7 +119,7 @@ bool EnsureInitialized() noexcept;
 **Returns:** `true` if successful, `false` on failure  
 **Usage:** Call before any PWM operations
 
-### 📡 Channel Control
+### Channel Control
 
 ```cpp
 hf_pwm_err_t EnableChannel(hf_channel_id_t channel_id) noexcept;
@@ -139,7 +130,7 @@ bool IsChannelEnabled(hf_channel_id_t channel_id) const noexcept;
 **Parameters:** Channel ID (0-based indexing)  
 **Returns:** Error code or boolean status
 
-### 🎛️ Duty Cycle Control
+### Duty Cycle Control
 
 ```cpp
 hf_pwm_err_t SetDutyCycle(hf_channel_id_t channel_id, float duty_percent) noexcept;
@@ -150,7 +141,7 @@ hf_pwm_err_t GetDutyCycle(hf_channel_id_t channel_id, float& duty_percent) const
 - `channel_id` - Target PWM channel
 - `duty_percent` - Duty cycle percentage (0.0 = 0%, 100.0 = 100%)
 
-### 📻 Frequency Control
+### Frequency Control
 
 ```cpp
 hf_pwm_err_t SetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t frequency) noexcept;
@@ -161,7 +152,7 @@ hf_pwm_err_t GetFrequency(hf_channel_id_t channel_id, hf_frequency_hz_t& frequen
 - `channel_id` - Target PWM channel  
 - `frequency` - Frequency in Hz
 
-### 🌟 Fade Operations
+### Fade Operations
 
 ```cpp
 hf_pwm_err_t StartFade(hf_channel_id_t channel_id, float target_duty_percent, 
@@ -174,9 +165,9 @@ bool IsFading(hf_channel_id_t channel_id) const noexcept;
 - `target_duty_percent` - Target duty cycle (0.0 - 100.0)
 - `fade_time_ms` - Fade duration in milliseconds
 
-## 💡 Usage Examples
+## Usage Examples
 
-### 🎯 Basic Motor Speed Control
+### Basic Motor Speed Control
 
 ```cpp
 #include "inc/mcu/esp32/EspPwm.h"
@@ -232,7 +223,7 @@ void motor_control_demo() {
 }
 ```
 
-### 💡 LED Dimming with Fade Effects
+### LED Dimming with Fade Effects
 
 ```cpp
 #include "inc/mcu/esp32/EspPwm.h"
@@ -308,7 +299,7 @@ public:
 };
 ```
 
-### 🎵 Multi-Channel RGB LED Control
+### Multi-Channel RGB LED Control
 
 ```cpp
 class RGBController {
@@ -421,7 +412,7 @@ public:
 };
 ```
 
-### 🤖 Servo Motor Control
+### Servo Motor Control
 
 ```cpp
 class ServoController {
@@ -518,9 +509,9 @@ public:
 };
 ```
 
-## 📊 Performance and Diagnostics
+## Performance and Diagnostics
 
-### 📈 Statistics Monitoring
+### Statistics Monitoring
 
 ```cpp
 void monitor_pwm_performance(BasePwm& pwm) {
@@ -539,9 +530,9 @@ void monitor_pwm_performance(BasePwm& pwm) {
 }
 ```
 
-## 🛡️ Error Handling Best Practices
+## Error Handling Best Practices
 
-### 🎯 Comprehensive Error Checking
+### Comprehensive Error Checking
 
 ```cpp
 hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float duty) {
@@ -577,9 +568,9 @@ hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float du
 }
 ```
 
-## 🏎️ Performance Considerations
+## Performance Considerations
 
-### ⚡ Optimization Tips
+### Optimization Tips
 
 - **🔢 Channel Limits** - Check `GetMaxChannels()` before allocating channels
 - **📻 Frequency Ranges** - Respect hardware frequency limitations
@@ -587,7 +578,7 @@ hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float du
 - **🌟 Fade Performance** - Hardware-based fading is faster than software loops
 - **💾 Memory Usage** - Use lazy initialization to save memory
 
-### 📊 Typical Performance Ranges
+### Typical Performance Ranges
 
 | **Hardware** | **Channels** | **Frequency Range** | **Resolution** |
 
@@ -599,13 +590,13 @@ hf_pwm_err_t safe_set_duty_cycle(BasePwm& pwm, hf_channel_id_t channel, float du
 
 | **Motor Controllers** | 2-6 | 1kHz - 100kHz | 10-16 bits |
 
-## 🧵 Thread Safety
+## Thread Safety
 
 The `BasePwm` class is **not thread-safe**.
 For concurrent access,
 use appropriate synchronization or consider thread-safe wrapper implementations.
 
-## 🔗 Related Documentation
+## Related Documentation
 
 - **[EspPwm API Reference](../esp_api/EspPwm.md)** - ESP32-C6 PWM implementation
 - **[BaseGpio API Reference](BaseGpio.md)** - GPIO interface for PWM output pins

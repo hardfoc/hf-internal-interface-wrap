@@ -1,36 +1,27 @@
----
-layout: default
-title: "🔄 EspSpi"
-description: "ESP32-C6 SPI implementation with full-duplex communication and DMA support"
-nav_order: 5
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspSpi/
----
-
-# 🔌 EspSpi API Reference
+# EspSpi API Reference
 **🔄 ESP32-C6 SPI implementation with ESP-IDF v5.5+ features**
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-architecture)
-- [🔧 **Core Classes**](#-core-classes)
-- [📋 **Configuration**](#-configuration)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
-- [🔍 **Troubleshooting**](#-troubleshooting)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#architecture)
+- [🔧 **Core Classes**](#core-classes)
+- [📋 **Configuration**](#configuration)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
+- [🔍 **Troubleshooting**](#troubleshooting)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `EspSpi` library provides a comprehensive SPI implementation for ESP32-C6 using ESP-IDF v5.5+.
 It implements the `BaseSpi` interface and provides advanced features including DMA acceleration,
 IOMUX optimization, multi-device management, and comprehensive error handling.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 🔄 **ESP-IDF v5.5+ Integration** - Full compliance with latest ESP-IDF SPI Master driver
 - ⚡ **High-Speed Transfer** - Up to 80 MHz with proper DMA configuration
@@ -41,7 +32,7 @@ IOMUX optimization, multi-device management, and comprehensive error handling.
 - 🔌 **Multi-Device Support** - Single bus with multiple device management
 - 📈 **Advanced Timing Control** - Configurable CS setup/hold times and input delay compensation
 
-### 🔌 **Hardware Support**
+### **Hardware Support**
 
 | Feature | ESP32-C6 Support | Description |
 
@@ -59,7 +50,7 @@ IOMUX optimization, multi-device management, and comprehensive error handling.
 
 ---
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 The EspSpi library follows a two-tier architecture:
 
@@ -112,7 +103,7 @@ The EspSpi library follows a two-tier architecture:
 
 ---
 
-## 🔧 **Core Classes**
+## **Core Classes**
 
 ### **EspSpiBus**
 
@@ -156,7 +147,7 @@ hf_spi_err_t Receive(uint8_t* data, size_t length,
 
 ---
 
-## 📋 **Configuration**
+## **Configuration**
 
 ### **Bus Configuration (`hf_spi_bus_config_t`)**
 
@@ -218,7 +209,7 @@ typedef struct {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
 ### **Basic Setup and Usage**
 
@@ -321,7 +312,7 @@ fast_device_config.clock_source = hf_spi_clock_source_t::PLL_F80M_CLK;
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
 ### **Performance Optimization**
 
@@ -350,7 +341,7 @@ fast_device_config.clock_source = hf_spi_clock_source_t::PLL_F80M_CLK;
 
 ---
 
-## 🔍 **Troubleshooting**
+## **Troubleshooting**
 
 ### **Common Issues**
 
@@ -391,7 +382,7 @@ ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 
 ---
 
-## 🔗 **Navigation**
+## **Navigation**
 
 ### **Documentation Structure**
 

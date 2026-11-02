@@ -1,14 +1,4 @@
----
-layout: default
-title: "🚀 ESP32 Examples"
-description: "Comprehensive examples with advanced build system for HardFOC ESP32 development"
-nav_order: 4
-parent: "🔧 HardFOC Internal Interface Layer"
-permalink: /examples/esp32/
-has_children: true
----
-
-# 🚀 ESP32 Examples - HardFOC Internal Interface Wrapper
+# ESP32 Examples - HardFOC Internal Interface Wrapper
 
 ![ESP32 Examples](https://img.shields.io/badge/ESP32-Examples-blue?style=for-the-badge&logo=espressif)
 ![Build System](https://img.shields.io/badge/Build-System-green?style=for-the-badge&logo=github)
@@ -21,29 +11,29 @@ ESP-IDF management, structured build system, and CI/CD integration*
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Build System Architecture**](#-build-system-architecture)
-- [🚀 **ESP-IDF Management**](#-esp-idf-management)
-- [📁 **Project Structure**](#-project-structure)
-- [🔧 **Quick Start**](#-quick-start)
-- [📖 **Detailed Usage**](#-detailed-usage)
-- [⚙️ **Configuration**](#-configuration)
-- [📦 **Build Artifacts**](#-build-artifacts)
-- [🔄 **CI/CD Integration**](#-cicd-integration)
-- [🔍 **Troubleshooting**](#-troubleshooting)
-- [📋 **Examples List**](#-examples-list)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Build System Architecture**](#build-system-architecture)
+- [🚀 **ESP-IDF Management**](#esp-idf-management)
+- [📁 **Project Structure**](#project-structure)
+- [🔧 **Quick Start**](#quick-start)
+- [📖 **Detailed Usage**](#detailed-usage)
+- [⚙️ **Configuration**](#configuration)
+- [📦 **Build Artifacts**](#build-artifacts)
+- [🔄 **CI/CD Integration**](#cicd-integration)
+- [🔍 **Troubleshooting**](#troubleshooting)
+- [📋 **Examples List**](#examples-list)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The ESP32 examples directory provides comprehensive demonstrations of all HardFOC interface
 capabilities, featuring a sophisticated build system that automatically manages ESP-IDF versions,
 generates build matrices, and produces structured, parseable build outputs.
 
-### 🏆 **Key Features**
+### **Key Features**
 
 - **🔧 Automated ESP-IDF Management** - Auto-detection, installation, and environment setup
 - **📊 Dynamic Build Matrix Generation** - CI/CD matrix generation from configuration
@@ -56,7 +46,7 @@ generates build matrices, and produces structured, parseable build outputs.
 
 ---
 
-## 🏗️ **Build System Architecture**
+## **Build System Architecture**
 
 ### **System Components**
 
@@ -116,7 +106,7 @@ setup_common.sh → build_app.sh → Dynamic Build Directories → Structured Na
 
 ---
 
-## 🛡️ **Enhanced Validation System**
+## **Enhanced Validation System**
 
 The build system now includes comprehensive validation to prevent invalid build combinations and
 provide clear guidance to users.
@@ -182,7 +172,7 @@ provide clear guidance to users.
 
 ---
 
-## 🚀 **ESP-IDF Management**
+## **ESP-IDF Management**
 
 ### **Automatic ESP-IDF Setup**
 
@@ -231,7 +221,7 @@ export IDF_TARGET="esp32c6"
 
 ---
 
-## 📁 **Project Structure**
+## **Project Structure**
 
 ```text
 examples/esp32/
@@ -323,7 +313,7 @@ Main build script with automatic ESP-IDF management:
 
 ---
 
-## 🔧 **Quick Start**
+## **Quick Start**
 
 ### **1. Initial Setup**
 
@@ -369,7 +359,7 @@ CLEAN=1 ./scripts/build_app.sh wifi_test Release
 
 ---
 
-## 📖 **Detailed Usage**
+## **Detailed Usage**
 
 ### **Build Script Options**
 
@@ -437,7 +427,7 @@ source scripts/setup_ci.sh
 
 ---
 
-## ⚙️ **Configuration**
+## **Configuration**
 
 ### **Application Configuration**
 
@@ -520,7 +510,7 @@ build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
 
 ---
 
-## 📦 **Build Artifacts**
+## **Build Artifacts**
 
 ### **Generated Files**
 
@@ -569,7 +559,7 @@ build-app-{app_name}-type-{build_type}-target-{target}-idf-{idf_version}/
 
 ---
 
-## 🔄 **CI/CD Integration**
+## **CI/CD Integration**
 
 ### **GitHub Actions Workflow**
 
@@ -666,7 +656,7 @@ The CI implements intelligent caching:
 
 ---
 
-## 🔍 **Troubleshooting**
+## **Troubleshooting**
 
 ### **Common Issues and Solutions**
 
@@ -742,7 +732,7 @@ cat build-*/.ninja_log
 
 ---
 
-## 📋 **Examples List**
+## **Examples List**
 
 ### **Available Applications**
 
@@ -829,7 +819,7 @@ Each application includes comprehensive test documentation:
 
 ---
 
-## 🤝 **Contributing**
+## **Contributing**
 
 ### **Adding New Applications**
 
@@ -873,14 +863,14 @@ Each application includes comprehensive test documentation:
 
 ---
 
-## 📄 **License**
+## **License**
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](../../LICENSE) file for
 details.
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [Main Project README](../../README.md) - Project overview and architecture
 - [API Documentation](../../docs/) - Interface API documentation

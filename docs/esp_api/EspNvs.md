@@ -1,12 +1,3 @@
----
-layout: default
-title: "💾 EspNvs"
-description: "ESP32-C6 NVS implementation with encryption and wear leveling support"
-nav_order: 10
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspNvs/
----
-
 # EspNvs API Reference
 ## Overview
 

@@ -1,13 +1,4 @@
----
-layout: default
-title: "📊 EspAdc"
-description: "ESP32-C6 ADC implementation with 12-bit resolution and hardware calibration"
-nav_order: 2
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspAdc/
----
-
-# 📊 EspAdc API Reference
+# EspAdc API Reference
 ## Overview
 
 `EspAdc` provides ESP32 ADC (Analog-to-Digital Converter) functionality with comprehensive support

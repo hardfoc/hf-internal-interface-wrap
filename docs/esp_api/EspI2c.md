@@ -1,12 +1,3 @@
----
-layout: default
-title: "🔗 EspI2c"
-description: "ESP32-C6 I2C implementation with bus-device architecture and multi-master support"
-nav_order: 4
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspI2c/
----
-
 # EspI2c API Reference
 ## Overview
 

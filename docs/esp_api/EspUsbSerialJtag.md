@@ -1,13 +1,4 @@
----
-layout: default
-title: "🔌 EspUsbSerialJtag"
-description: "ESP32-family wrapper for the built-in USB Serial/JTAG controller (CDC-ACM virtual COM port over native USB)"
-nav_order: 15
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspUsbSerialJtag/
----
-
-# 🔌 EspUsbSerialJtag API Reference
+# EspUsbSerialJtag API Reference
 
 ## Overview
 

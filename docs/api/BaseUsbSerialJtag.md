@@ -1,30 +1,21 @@
----
-layout: default
-title: "🔌 BaseUsbSerialJtag"
-description: "Built-in USB Serial/JTAG controller — host-side virtual COM port for console-style serial transports"
-nav_order: 15
-parent: "📋 API Reference"
-permalink: /docs/api/BaseUsbSerialJtag/
----
-
-# 🔌 BaseUsbSerialJtag API Reference
+# BaseUsbSerialJtag API Reference
 **🔌 Built-in USB Serial/JTAG controller abstraction (CDC-ACM virtual COM port over native USB)**
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 Overview](#-overview)
-- [🆚 BaseUsbSerialJtag vs. BaseUart](#-baseusbserialjtag-vs-baseuart)
-- [🏗️ Class Hierarchy](#-class-hierarchy)
-- [⚙️ Configuration](#-configuration)
-- [🔧 Core API](#-core-api)
-- [📋 Error Codes](#-error-codes)
-- [📊 Usage Examples](#-usage-examples)
-- [🧪 Best Practices](#-best-practices)
-- [🔗 See Also](#-see-also)
+- [🎯 Overview](#overview)
+- [🆚 BaseUsbSerialJtag vs. BaseUart](#baseusbserialjtag-vs-baseuart)
+- [🏗️ Class Hierarchy](#class-hierarchy)
+- [⚙️ Configuration](#configuration)
+- [🔧 Core API](#core-api)
+- [📋 Error Codes](#error-codes)
+- [📊 Usage Examples](#usage-examples)
+- [🧪 Best Practices](#best-practices)
+- [🔗 See Also](#see-also)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 `BaseUsbSerialJtag` is a peer abstraction to [`BaseUart`](BaseUart.md) for the
 **built-in USB Serial/JTAG controller** found on several Espressif chips
@@ -48,7 +39,7 @@ simple line-protocols) can hold a `BaseUsbSerialJtag*` interchangeably with a
 
 ---
 
-## 🆚 **BaseUsbSerialJtag vs. BaseUart**
+## **BaseUsbSerialJtag vs. BaseUart**
 
 | Concern                | `BaseUart`                                      | `BaseUsbSerialJtag`                                       |
 |------------------------|-------------------------------------------------|-----------------------------------------------------------|
@@ -67,7 +58,7 @@ code needs to set baud, pin, parity, or flow control, you want
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -105,7 +96,7 @@ Reusing the `BaseUart` contract would have meant returning
 
 ---
 
-## ⚙️ **Configuration**
+## **Configuration**
 
 ### `hf_usb_serial_jtag_config_t`
 
@@ -128,7 +119,7 @@ set and the data pins are fixed.
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
 ### Lifecycle
 
@@ -160,9 +151,9 @@ set and the data pins are fixed.
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-All operations return [`hf_uart_err_t`](BaseUart.md#-error-codes), the same
+All operations return [`hf_uart_err_t`](BaseUart.md#error-codes), the same
 enum used by `BaseUart`. The ones you'll see in practice:
 
 | Code                          | When                                                                 |
@@ -177,7 +168,7 @@ enum used by `BaseUart`. The ones you'll see in practice:
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
 ### Minimal write/read loop
 
@@ -238,7 +229,7 @@ serial.WriteLine("host is here");
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
 - **Use lazy lifecycle.** Always go through `EnsureInitialized()` rather than
   calling `Initialize()` directly — multiple subsystems may share the
@@ -262,7 +253,7 @@ serial.WriteLine("host is here");
 
 ---
 
-## 🔗 **See Also**
+## **See Also**
 
 - [`BaseUart`](BaseUart.md) — peer abstraction for classic UART controllers.
 - [`EspUsbSerialJtag`](../esp_api/EspUsbSerialJtag.md) — concrete ESP32-family

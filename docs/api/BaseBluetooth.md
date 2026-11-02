@@ -1,29 +1,20 @@
----
-layout: default
-title: "📲 BaseBluetooth"
-description: "Bluetooth base class for Classic and BLE wireless communication"
-nav_order: 9
-parent: "📋 API Reference"
-permalink: /docs/api/BaseBluetooth/
----
+# BaseBluetooth API Reference
 
-# 📲 BaseBluetooth API Reference
+## Unified Bluetooth abstraction for Classic and BLE wireless communication
+## **Table of Contents**
 
-## 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication
-## 📚 **Table of Contents**
-
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📲 **Bluetooth Modes**](#-bluetooth-modes)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📲 **Bluetooth Modes**](#bluetooth-modes)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseBluetooth` class provides a comprehensive Bluetooth abstraction
 that serves as the unified interface for all Bluetooth operations in the
@@ -31,7 +22,7 @@ HardFOC system. It supports both Bluetooth Classic and Bluetooth Low Energy
 (BLE), device discovery, pairing, connection management, and data transfer
 across different hardware implementations.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 📲 **Dual Mode Support** - Both Bluetooth Classic and BLE in a single interface
 - 🔍 **Device Discovery** - Scan for and discover nearby Bluetooth devices
@@ -43,7 +34,7 @@ across different hardware implementations.
 - 🏎️ **Performance Optimized** - Minimal overhead for real-time applications
 - 🔌 **Platform Agnostic** - Works across different MCU platforms
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | Classic BT | BLE | Max Connections | Range | Power |
 
@@ -57,7 +48,7 @@ across different hardware implementations.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -102,9 +93,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### 🚨 **Bluetooth Error Enumeration**
+### **Bluetooth Error Enumeration**
 
 ```cpp
 enum class hf_bt_err_t : hf_u32_t {
@@ -164,7 +155,7 @@ enum class hf_bt_err_t : hf_u32_t {
 };
 ```
 
-### 📊 **Error Code Categories**
+### **Error Code Categories**
 
 | Category | Range | Description |
 
@@ -190,9 +181,9 @@ enum class hf_bt_err_t : hf_u32_t {
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🎯 **Essential Methods**
+### **Essential Methods**
 
 #### **Initialization & Configuration**
 ```cpp
@@ -300,9 +291,9 @@ virtual hf_bt_err_t ReceiveData(hf_u32_t connection_id,
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 📲 **Bluetooth Mode Types**
+### **Bluetooth Mode Types**
 
 ```cpp
 enum class hf_bt_mode_t : hf_u8_t {
@@ -313,7 +304,7 @@ enum class hf_bt_mode_t : hf_u8_t {
 };
 ```
 
-### 📱 **Device Information**
+### **Device Information**
 
 ```cpp
 struct hf_bt_device_t {
@@ -328,7 +319,7 @@ struct hf_bt_device_t {
 };
 ```
 
-### 🔐 **Security Configuration**
+### **Security Configuration**
 
 ```cpp
 struct hf_bt_security_config_t {
@@ -341,7 +332,7 @@ struct hf_bt_security_config_t {
 };
 ```
 
-### 📈 **Bluetooth Statistics**
+### **Bluetooth Statistics**
 
 ```cpp
 struct hf_bt_statistics_t {
@@ -360,9 +351,9 @@ struct hf_bt_statistics_t {
 
 ---
 
-## 📲 **Bluetooth Modes**
+## **Bluetooth Modes**
 
-### 📻 **Classic Bluetooth**
+### **Classic Bluetooth**
 
 Classic Bluetooth is ideal for:
 - **Audio streaming** (A2DP profile)
@@ -381,7 +372,7 @@ hf_bt_classic_config_t classic_config = {
 bluetooth.SetClassicConfig(classic_config);
 ```
 
-### 📡 **Bluetooth Low Energy (BLE)**
+### **Bluetooth Low Energy (BLE)**
 
 BLE is optimal for:
 - **Sensor data collection** (low power, periodic data)
@@ -401,7 +392,7 @@ hf_ble_config_t ble_config = {
 bluetooth.SetBleConfig(ble_config);
 ```
 
-### 🔄 **Dual Mode**
+### **Dual Mode**
 
 Dual mode enables both Classic and BLE simultaneously:
 
@@ -412,9 +403,9 @@ bluetooth.SetMode(hf_bt_mode_t::BT_MODE_DUAL);
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 📱 **Basic BLE Sensor**
+### **Basic BLE Sensor**
 
 ```cpp
 #include "inc/base/BaseBluetooth.h"
@@ -475,7 +466,7 @@ public:
 };
 ```
 
-### 🔗 **Classic Bluetooth Serial Bridge**
+### **Classic Bluetooth Serial Bridge**
 
 ```cpp
 #include "inc/base/BaseBluetooth.h"
@@ -584,7 +575,7 @@ private:
 };
 ```
 
-### 🔍 **Device Scanner & Manager**
+### **Device Scanner & Manager**
 
 ```cpp
 #include "inc/mcu/esp32/EspBluetooth.h"
@@ -695,9 +686,9 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Practices**
+### **Recommended Practices**
 
 1. **🎯 Choose Appropriate Mode**
    ```cpp
@@ -747,7 +738,7 @@ private:
    }
    ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 1. **🚫 Not Checking Connection Status**
    ```cpp
@@ -783,7 +774,7 @@ private:
    }
    ```
 
-### 🎯 **Performance Tips**
+### **Performance Tips**
 
 1. **⚡ Optimize BLE Connection Parameters**
    ```cpp

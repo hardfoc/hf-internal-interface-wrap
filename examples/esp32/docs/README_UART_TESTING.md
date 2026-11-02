@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 UART Test"
-description: "UART Test Suite - Serial communication and flow control testing"
-nav_order: 5
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/uart_test/
----
-
 # ESP32-C6 UART Comprehensive Test Suite Documentation
 
 ## Overview

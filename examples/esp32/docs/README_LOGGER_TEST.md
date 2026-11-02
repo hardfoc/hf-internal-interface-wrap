@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 Logger Test"
-description: "Logger Test Suite - Logging system and debug output testing"
-nav_order: 12
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/logger_test/
----
-
 # ESP32-C6 Logger Comprehensive Test Suite
 
 ## Overview
@@ -335,7 +326,7 @@ idf.py build -DEXAMPLE_TYPE=logger_test -DBUILD_TYPE=Debug -DCONFIG_LOG_LEVEL=5
 
 ## Enable verbose ESP-IDF logging
 idf.py menuconfig
-## Component config → Log output → Default log verbosity → Verbose
+## Component config Log output Default log verbosity Verbose
 ```text
 
 ## Integration Examples

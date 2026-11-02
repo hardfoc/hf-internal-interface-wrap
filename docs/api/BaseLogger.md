@@ -1,39 +1,30 @@
----
-layout: default
-title: "📝 BaseLogger"
-description: "Logging system base class for multi-level logging and diagnostics"
-nav_order: 11
-parent: "📋 API Reference"
-permalink: /docs/api/BaseLogger/
----
-
-# 📝 BaseLogger API Reference
+# BaseLogger API Reference
 
 **🎯 Unified logging abstraction for comprehensive system monitoring and debugging**
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📝 **Log Levels**](#-log-levels)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📝 **Log Levels**](#log-levels)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseLogger` class provides a comprehensive logging abstraction that serves as the unified
 interface for all logging operations in the HardFOC system.
 It supports multiple log levels, configurable output destinations, thread-safe operations,
 performance monitoring, and works across different hardware implementations with minimal overhead.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 📝 **Multi-Level Logging** - ERROR, WARN, INFO, DEBUG, VERBOSE levels
 - 🔒 **Thread-Safe Operations** - Concurrent logging from multiple tasks
@@ -45,7 +36,7 @@ performance monitoring, and works across different hardware implementations with
 - 🏎️ **Memory Efficient** - Optimized memory usage with circular buffers
 - 🔌 **Platform Agnostic** - Works across different MCU platforms
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | UART | File | Memory | Network | Performance |
 
@@ -59,7 +50,7 @@ performance monitoring, and works across different hardware implementations with
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -110,9 +101,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### 🚨 **Logger Error Enumeration**
+### **Logger Error Enumeration**
 
 ```cpp
 enum class hf_logger_err_t : hf_u32_t {
@@ -163,7 +154,7 @@ enum class hf_logger_err_t : hf_u32_t {
 };
 ```
 
-### 📊 **Error Code Categories**
+### **Error Code Categories**
 
 | Category | Range | Description |
 
@@ -187,9 +178,9 @@ enum class hf_logger_err_t : hf_u32_t {
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🎯 **Essential Methods**
+### **Essential Methods**
 
 #### **Initialization & Configuration**
 ```cpp
@@ -298,9 +289,9 @@ virtual hf_logger_err_t FlushBuffers() = 0;
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 📝 **Log Level Types**
+### **Log Level Types**
 
 ```cpp
 enum class hf_log_level_t : hf_u8_t {
@@ -313,7 +304,7 @@ enum class hf_log_level_t : hf_u8_t {
 };
 ```
 
-### 📤 **Output Types**
+### **Output Types**
 
 ```cpp
 enum class hf_log_output_type_t : hf_u8_t {
@@ -325,7 +316,7 @@ enum class hf_log_output_type_t : hf_u8_t {
 };
 ```
 
-### 📋 **Log Message Structure**
+### **Log Message Structure**
 
 ```cpp
 struct hf_log_message_t {
@@ -339,7 +330,7 @@ struct hf_log_message_t {
 };
 ```
 
-### 📤 **Output Handler Interface**
+### **Output Handler Interface**
 
 ```cpp
 struct hf_log_output_t {
@@ -363,7 +354,7 @@ struct hf_log_output_t {
 };
 ```
 
-### 📈 **Logger Statistics**
+### **Logger Statistics**
 
 ```cpp
 struct hf_logger_statistics_t {
@@ -382,37 +373,37 @@ struct hf_logger_statistics_t {
 
 ---
 
-## 📝 **Log Levels**
+## **Log Levels**
 
-### 🚨 **ERROR Level**
+### **ERROR Level**
 Critical errors that require immediate attention:
 ```cpp
 logger.LogError("MOTOR", "Motor controller fault detected: %s", fault_description);
 logger.LogError("COMM", "CAN bus communication timeout after %d ms", timeout_ms);
 ```
 
-### ⚠️ **WARN Level**
+### **WARN Level**
 Warning conditions that should be monitored:
 ```cpp
 logger.LogWarn("TEMP", "Temperature high: %.1f°C (limit: %.1f°C)", temp, limit);
 logger.LogWarn("MEMORY", "Low memory warning: %d bytes remaining", free_bytes);
 ```
 
-### ℹ️ **INFO Level**
+### ℹ **INFO Level**
 General informational messages:
 ```cpp
 logger.LogInfo("SYSTEM", "Motor controller initialized successfully");
 logger.LogInfo("NETWORK", "Connected to WiFi: %s (IP: %s)", ssid, ip_address);
 ```
 
-### 🔧 **DEBUG Level**
+### **DEBUG Level**
 Debug information for troubleshooting:
 ```cpp
 logger.LogDebug("ADC", "Reading channel %d: raw=%u, voltage=%.3fV", channel, raw, voltage);
 logger.LogDebug("GPIO", "Pin %d state changed: %s", pin, state ? "HIGH" : "LOW");
 ```
 
-### 📊 **VERBOSE Level**
+### **VERBOSE Level**
 Detailed trace information:
 ```cpp
 logger.LogVerbose("I2C", "Transaction: addr=0x%02X, write=%d bytes, read=%d bytes", 
@@ -423,9 +414,9 @@ logger.LogVerbose("TIMER", "Callback executed: task=%s, duration=%lu us",
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 🔧 **Basic System Logger**
+### **Basic System Logger**
 
 ```cpp
 #include "inc/mcu/esp32/EspLogger.h"
@@ -539,7 +530,7 @@ private:
 };
 ```
 
-### 📊 **Performance Monitoring Logger**
+### **Performance Monitoring Logger**
 
 ```cpp
 #include "inc/mcu/esp32/EspLogger.h"
@@ -657,7 +648,7 @@ public:
     PerformanceLogger::FunctionTimer *timer(logger, **FUNCTION**)
 ```
 
-### 📤 **Multi-Output Logger System**
+### **Multi-Output Logger System**
 
 ```cpp
 #include "inc/mcu/esp32/EspLogger.h"
@@ -840,9 +831,9 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Practices**
+### **Recommended Practices**
 
 1. **🎯 Use Appropriate Log Levels**
    ```cpp
@@ -914,7 +905,7 @@ private:
    };
    ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 1. **🚫 Logging in ISRs or Critical Sections**
    ```cpp
@@ -966,7 +957,7 @@ private:
    }
    ```
 
-### 🎯 **Performance Tips**
+### **Performance Tips**
 
 1. **⚡ Use Appropriate Buffer Sizes**
    ```cpp

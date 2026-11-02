@@ -1,26 +1,17 @@
----
-layout: default
-title: "🔌 BaseGpio"
-description: "Unified GPIO base class for all digital GPIO implementations in the HardFOC system"
-nav_order: 1
-parent: "📋 API Reference"
-permalink: /docs/api/BaseGpio/
----
-
-# 🔌 BaseGpio API Reference
+# BaseGpio API Reference
 
 **🎯 Unified GPIO base class for all digital GPIO implementations in the HardFOC system**
 
 ---
 
-## 🌟 Overview
+## Overview
 
 `BaseGpio` is the unified GPIO base class for all digital GPIO implementations in the HardFOC
 system.
 It provides a comprehensive digital GPIO abstraction that serves as the foundation for all GPIO
 hardware implementations.
 
-## ✨ Features
+## Features
 
 - **🔄 Dynamic Mode Switching** - Runtime switching between input and output modes
 - **⚡ Active State Polarity** - Configurable active-high/active-low polarity
@@ -308,7 +299,7 @@ The following concrete implementations are available:
 
 - [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-C6 implementation
 <<<<<<< Current (Your changes)
-## - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions 
+## - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
 - [HardwareTypes Reference](HardwareTypes.md) - Platform-agnostic type definitions
 
 ---

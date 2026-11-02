@@ -1,0 +1,42 @@
+---
+# Site navigation (mkdocs-awesome-nav): the tabs and sidebar, in this order.
+nav:
+  - "Documentation": README.md
+  - "API Reference": api/README.md
+  - "BaseGpio": api/BaseGpio.md
+  - "BaseAdc": api/BaseAdc.md
+  - "BasePwm": api/BasePwm.md
+  - "BaseI2c": api/BaseI2c.md
+  - "BaseSpi": api/BaseSpi.md
+  - "BaseUart": api/BaseUart.md
+  - "BaseCan": api/BaseCan.md
+  - "BaseWifi": api/BaseWifi.md
+  - "BaseBluetooth": api/BaseBluetooth.md
+  - "BaseNvs": api/BaseNvs.md
+  - "BaseLogger": api/BaseLogger.md
+  - "BasePeriodicTimer": api/BasePeriodicTimer.md
+  - "BasePio": api/BasePio.md
+  - "BaseTemperature": api/BaseTemperature.md
+  - "BaseUsbSerialJtag": api/BaseUsbSerialJtag.md
+  - "HardwareTypes": api/HardwareTypes.md
+  - "ESP32 Implementations": esp_api/README.md
+  - "EspGpio": esp_api/EspGpio.md
+  - "EspAdc": esp_api/EspAdc.md
+  - "EspPwm": esp_api/EspPwm.md
+  - "EspI2c": esp_api/EspI2c.md
+  - "EspSpi": esp_api/EspSpi.md
+  - "EspUart": esp_api/EspUart.md
+  - "EspCan": esp_api/EspCan.md
+  - "EspWifi": esp_api/EspWifi.md
+  - "EspBluetooth": esp_api/EspBluetooth.md
+  - "EspNvs": esp_api/EspNvs.md
+  - "EspLogger": esp_api/EspLogger.md
+  - "EspPeriodicTimer": esp_api/EspPeriodicTimer.md
+  - "EspPio": esp_api/EspPio.md
+  - "EspTemperature": esp_api/EspTemperature.md
+  - "EspUsbSerialJtag": esp_api/EspUsbSerialJtag.md
+  - "Utilities": utils/README.md
+  - "DigitalOutputGuard": utils/DigitalOutputGuard.md
+  - "AsciiArtGenerator": utils/AsciiArtGenerator.md
+  - "Features": features.md
+  - "Doxygen Extensions": doxygen-extensions.md

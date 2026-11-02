@@ -1,33 +1,24 @@
----
-layout: default
-title: "🔄 BaseSpi"
-description: "Serial Peripheral Interface base class for high-speed SPI communication"
-nav_order: 5
-parent: "📋 API Reference"
-permalink: /docs/api/BaseSpi/
----
-
-# 🔌 BaseSpi API Reference
+# BaseSpi API Reference
 **🔄 Unified SPI abstraction for high-speed serial communication**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseSpi` class provides a comprehensive SPI abstraction that serves as the unified interface
 for all Serial Peripheral Interface operations in the HardFOC system.
 It supports multi-device communication, configurable modes, and high-speed data transfer.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 🔄 **Multi-Device Support** - Simultaneous communication with multiple SPI devices
 - ⚡ **High-Speed Transfer** - Configurable clock frequencies up to 80 MHz
@@ -38,7 +29,7 @@ It supports multi-device communication, configurable modes, and high-speed data 
 - 🔌 **Platform Agnostic** - Works with various SPI hardware implementations
 - 📈 **Real-time Control** - Low-latency communication for time-critical applications
 
-### 🔌 **Supported Applications**
+### **Supported Applications**
 
 | Application | Speed | Description |
 
@@ -56,7 +47,7 @@ It supports multi-device communication, configurable modes, and high-speed data 
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -83,9 +74,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -93,7 +84,7 @@ classDiagram
 
 | `SPI_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -111,7 +102,7 @@ classDiagram
 
 | `SPI_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🔧 **Device Error Codes**
+### **Device Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -127,7 +118,7 @@ classDiagram
 
 | `SPI_ERR_DEVICE_NOT_RESPONDING` | 11 | 🔇 Device not responding | Check device power |
 
-### ⚡ **Transfer Error Codes**
+### **Transfer Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -141,7 +132,7 @@ classDiagram
 
 | `SPI_ERR_TRANSFER_ABORTED` | 15 | ⏹️ Transfer aborted | Check abort conditions |
 
-### 🎛️ **Configuration Error Codes**
+### **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -157,7 +148,7 @@ classDiagram
 
 | `SPI_ERR_PIN_CONFLICT` | 20 | 🔌 Pin already in use | Use different pins |
 
-### 🌐 **Hardware Error Codes**
+### **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -173,9 +164,9 @@ classDiagram
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -219,7 +210,7 @@ virtual hf_spi_err_t Deinitialize() noexcept = 0;
 bool EnsureInitialized() noexcept;
 ```
 
-### ⚙️ **Device Configuration**
+### **Device Configuration**
 
 ```cpp
 /**
@@ -245,7 +236,7 @@ virtual hf_spi_err_t ConfigureDevice(uint8_t device_id,
                                    const hf_spi_device_config_t &config) noexcept = 0;
 ```
 
-### 🔄 **Data Transfer Methods**
+### **Data Transfer Methods**
 
 ```cpp
 /**
@@ -303,7 +294,7 @@ virtual hf_spi_err_t Receive(uint8_t device_id, uint8_t *data,
                            size_t length) noexcept = 0;
 ```
 
-### 📊 **Status and Capabilities**
+### **Status and Capabilities**
 
 ```cpp
 /**
@@ -329,9 +320,9 @@ virtual hf_spi_err_t GetCapabilities(hf_spi_capabilities_t &capabilities) const 
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### ⚙️ **Device Configuration**
+### **Device Configuration**
 
 ```cpp
 struct hf_spi_device_config_t {
@@ -346,7 +337,7 @@ struct hf_spi_device_config_t {
 };
 ```
 
-### 📊 **Device Status**
+### **Device Status**
 
 ```cpp
 struct hf_spi_device_status_t {
@@ -361,7 +352,7 @@ struct hf_spi_device_status_t {
 };
 ```
 
-### 📋 **SPI Capabilities**
+### **SPI Capabilities**
 
 ```cpp
 struct hf_spi_capabilities_t {
@@ -376,7 +367,7 @@ struct hf_spi_capabilities_t {
 };
 ```
 
-### 📈 **SPI Statistics**
+### **SPI Statistics**
 
 ```cpp
 struct hf_spi_statistics_t {
@@ -395,9 +386,9 @@ struct hf_spi_statistics_t {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 📡 **Sensor Communication**
+### **Sensor Communication**
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
@@ -493,7 +484,7 @@ public:
 };
 ```
 
-### 🖥️ **Display Control**
+### **Display Control**
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
@@ -622,7 +613,7 @@ public:
 };
 ```
 
-### 💾 **Memory Access**
+### **Memory Access**
 
 ```cpp
 #include "mcu/esp32/EspSpi.h"
@@ -760,9 +751,9 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -805,7 +796,7 @@ if (spi.GetDeviceStatus(device_id, status) == hf_spi_err_t::SPI_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore initialization
@@ -827,7 +818,7 @@ spi.ConfigureDevice(99, config);  // Invalid device
 // Some devices require manual CS control
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use appropriate frequency for your application
@@ -854,7 +845,7 @@ spi.ConfigureDevice(99, config);  // Invalid device
 
 ---
 
-## 🔗 **Navigation**
+## **Navigation**
 
 ### **Documentation Structure**
 

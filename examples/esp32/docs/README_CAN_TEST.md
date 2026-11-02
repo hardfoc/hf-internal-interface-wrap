@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 CAN Test"
-description: "CAN Test Suite - Controller area network and SN65 transceiver testing"
-nav_order: 8
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/can_test/
----
-
 # CAN Comprehensive Test Documentation
 
 ## Overview

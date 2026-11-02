@@ -1,14 +1,4 @@
----
-layout: default
-title: "📚 Documentation"
-description: "Complete documentation for the HardFOC Interface Wrapper - API reference, implementations, and utilities"
-nav_order: 2
-parent: "🔧 HardFOC Internal Interface Layer"
-permalink: /docs/
-has_children: true
----
-
-# 🚀 HardFOC Internal Interface Wrapper
+# HardFOC Internal Interface Wrapper
 
 ![Multi-MCU Interface](https://img.shields.io/badge/Multi--MCU-Interface%20Wrapper-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
@@ -16,29 +6,29 @@ has_children: true
 ![STM32](https://img.shields.io/badge/STM32-Coming%20Soon-orange?style=for-the-badge&logo=stmicroelectronics)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-## 🎯 Multi-MCU Hardware Abstraction Layer
+## Multi-MCU Hardware Abstraction Layer
 
 *Universal interface wrapper supporting multiple MCU platforms - ESP32 first implementation*
 
 ---
 
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Architecture**](#-multi-mcu-architecture)
-- [🔧 **Type System**](#-type-system)
-- [✨ **Key Features**](#-key-features)
-- [🔌 **Supported Hardware**](#-supported-hardware)
-- [🏛️ **Design Principles**](#-design-principles)
-- [📋 **API Reference**](#-api-reference)
-- [🚀 **Quick Start**](#-quick-start)
-- [📊 **Examples**](#-examples)
-- [🤝 **Contributing**](#-contributing)
-- [📄 **License**](#-license)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Architecture**](#multi-mcu-architecture)
+- [🔧 **Type System**](#type-system)
+- [✨ **Key Features**](#key-features)
+- [🔌 **Supported Hardware**](#supported-hardware)
+- [🏛️ **Design Principles**](#design-principles)
+- [📋 **API Reference**](#api-reference)
+- [🚀 **Quick Start**](#quick-start)
+- [📊 **Examples**](#examples)
+- [🤝 **Contributing**](#contributing)
+- [📄 **License**](#license)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The **HardFOC Internal Interface Wrapper** is a multi-MCU hardware abstraction layer designed to
 provide unified APIs across different microcontroller platforms.
@@ -46,7 +36,7 @@ Currently supporting the **ESP32 family** (ESP32, ESP32-S2, ESP32-S3, ESP32-C3, 
 ESP32-H2) as the first implementation,
 with **STM32** and additional MCUs planned for future releases.
 
-### 🎯 **Multi-MCU Architecture Goals**
+### **Multi-MCU Architecture Goals**
 
 - **🔄 MCU Portability** - Write once, run on multiple MCU platforms
 - **🎯 Unified APIs** - Consistent interface across all peripheral types
@@ -57,7 +47,7 @@ with **STM32** and additional MCUs planned for future releases.
 
 ---
 
-## 🏗️ **Multi-MCU Architecture**
+## **Multi-MCU Architecture**
 
 The wrapper follows a multi-layered architecture supporting multiple MCU platforms:
 
@@ -149,7 +139,7 @@ The wrapper follows a multi-layered architecture supporting multiple MCU platfor
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 🔄 **Interface Inheritance Pattern**
+### **Interface Inheritance Pattern**
 
 All interfaces follow a consistent inheritance pattern across MCU platforms:
 
@@ -190,12 +180,12 @@ All interfaces follow a consistent inheritance pattern across MCU platforms:
 
 ---
 
-## 🔧 **Type System**
+## **Type System**
 
 The wrapper uses a comprehensive type system designed for maximum portability and consistency across
 multiple MCU platforms:
 
-### 🎯 **Core Types for Multi-MCU Applications**
+### **Core Types for Multi-MCU Applications**
 
 ```cpp
 // Platform-agnostic integer types for all MCU platforms
@@ -209,7 +199,7 @@ using hf_i32_t = int32_t;   // 32-bit signed
 using hf_i64_t = int64_t;   // 64-bit signed
 ```
 
-### 🏭 **Hardware Abstraction Types**
+### **Hardware Abstraction Types**
 
 ```cpp
 // Hardware abstraction types for all MCU platforms
@@ -230,28 +220,28 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ---
 
-## ✨ **Key Features**
+## **Key Features**
 
-### 🔌 **Comprehensive Multi-MCU Hardware Support**
+### **Comprehensive Multi-MCU Hardware Support**
 - **14 Complete Base Interfaces** - From GPIO to wireless communication across all MCU platforms
 <!-- markdownlint-disable-next-line MD013 -->
 - **ESP32 Family Implementation** - Full support for all ESP32 variants (ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2)
 - **STM32 Implementation** - Planned support for STM32 peripherals (future)
 - **External Hardware Integration** - I2C/SPI device support for expansion boards
 
-### ⚡ **Performance & Reliability**
+### **Performance & Reliability**
 - **Real-Time Optimized** - Designed for critical timing requirements
 - **Lazy Initialization** - Resources allocated only when needed
 - **Thread-Safe Options** - Optional concurrent access support
 - **Comprehensive Error Handling** - Detailed error reporting for reliability
 
-### 🌐 **Modern Connectivity**
+### **Modern Connectivity**
 - **WiFi Station/AP Modes** - Complete networking for IoT integration
 - **Bluetooth Classic & BLE** - Mobile and IoT connectivity
 - **Cloud Integration Ready** - Built-in features for cloud connectivity
 - **Remote Monitoring** - Advanced logging and diagnostics
 
-### 📊 **Professional Features**
+### **Professional Features**
 - **Rich Diagnostics** - Performance monitoring and system health
 - **Configuration Management** - Non-volatile settings storage
 - **Advanced Logging** - Multi-level, multi-output logging
@@ -259,9 +249,9 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ---
 
-## 🔌 **Supported Hardware**
+## **Supported Hardware**
 
-### 📊 **Multi-MCU Platform Support Matrix**
+### **Multi-MCU Platform Support Matrix**
 
 <!-- markdownlint-disable MD013 -->
 
@@ -278,9 +268,9 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ---
 
-## 🏛️ **Design Principles**
+## **Design Principles**
 
-### 🎯 **Multi-MCU Design Goals**
+### **Multi-MCU Design Goals**
 
 1. **🔌 Consistency** - Uniform APIs across all MCU platforms and peripheral interfaces
 2. **⚡ Performance** - Optimized for real-time requirements across all MCU platforms
@@ -289,7 +279,7 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 5. **🔧 Simplicity** - Easy-to-use APIs for rapid development
 6. **🌐 Modern** - Built-in IoT connectivity for next-generation applications
 
-### 🏗️ **Architectural Patterns**
+### **Architectural Patterns**
 
 - **Abstract Base Classes** - Define consistent interfaces for all peripheral types
 - **Platform Implementations** - Hardware-specific optimizations for each MCU platform
@@ -300,9 +290,9 @@ using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 
 ---
 
-## 📋 **API Reference**
+## **API Reference**
 
-### 📚 **Documentation Structure**
+### **Documentation Structure**
 
 Our comprehensive documentation is organized into logical sections for easy navigation:
 
@@ -318,7 +308,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | **[🧪 Test Suites](../examples/esp32/docs/README.md)** | Test documentation and examples | Test suites and examples |
 
-### 🏛️ **Core Interfaces (MCU-Agnostic)**
+### **Core Interfaces (MCU-Agnostic)**
 
 | **Interface** | **Key Features** | **Use Cases** | **Status** |
 
@@ -332,7 +322,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | [**`BasePio`**](api/BasePio.md) | Custom protocols, precise timing, encoding | Encoder reading, custom protocols | ✅ Complete |
 
-### 📡 **Communication Interfaces (MCU-Agnostic)**
+### **Communication Interfaces (MCU-Agnostic)**
 
 | **Interface** | **Key Features** | **Use Cases** | **Status** |
 
@@ -348,7 +338,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | [**`BaseCan`**](api/BaseCan.md) | Standard/Extended frames, filtering, error handling | Industrial networking, multi-device coordination | ✅ Complete |
 
-### 🌐 **Wireless Interfaces (MCU-Agnostic)**
+### **Wireless Interfaces (MCU-Agnostic)**
 
 | **Interface** | **Key Features** | **Use Cases** | **Status** |
 
@@ -358,7 +348,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | [**`BaseBluetooth`**](api/BaseBluetooth.md) | Classic & BLE, pairing, service discovery | Mobile apps, wireless configuration | ✅ Complete |
 
-### 🛠️ **System Interfaces (MCU-Agnostic)**
+### **System Interfaces (MCU-Agnostic)**
 
 | **Interface** | **Key Features** | **Use Cases** | **Status** |
 
@@ -372,7 +362,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | [**`BaseLogger`**](api/BaseLogger.md) | Multi-level logging, thread-safe, network output | System diagnostics, performance monitoring | ✅ Complete |
 
-### 🔧 **MCU-Specific Implementations**
+### **MCU-Specific Implementations**
 
 | **MCU Platform** | **Implementation** | **Base Class** | **MCU-Specific Features** | **Documentation** | **Status** |
 
@@ -436,7 +426,7 @@ Our comprehensive documentation is organized into logical sections for easy navi
 
 | **STM32** | **`StmLogger`** | BaseLogger | STM32-specific logger features | 🔄 Planned | 🔄 Planned |
 
-### 📋 **ESP32 Family Support Details**
+### **ESP32 Family Support Details**
 
 The ESP32 implementations support multiple ESP32 variants with conditional compilation:
 
@@ -456,7 +446,7 @@ The ESP32 implementations support multiple ESP32 variants with conditional compi
 
 | **ESP32-H2** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-### 🎯 **Type System Reference**
+### **Type System Reference**
 
 | **Documentation** | **Description** | **Status** |
 
@@ -466,9 +456,9 @@ The ESP32 implementations support multiple ESP32 variants with conditional compi
 
 ---
 
-## 🚀 **Quick Start**
+## **Quick Start**
 
-### 📋 **Prerequisites for Multi-MCU Development**
+### **Prerequisites for Multi-MCU Development**
 
 - **ESP-IDF v5.0+** for ESP32 family development (current)
 - **STM32CubeIDE** for STM32 development (planned)
@@ -476,7 +466,7 @@ The ESP32 implementations support multiple ESP32 variants with conditional compi
 - **CMake 3.16+** for project management
 - **Target MCU Development Board** (ESP32 family, STM32, etc.)
 
-### ⚙️ **Installation for Multi-MCU Projects**
+### **Installation for Multi-MCU Projects**
 
 ```bash
 ## Clone the multi-MCU wrapper repository
@@ -494,7 +484,7 @@ idf_component_register(
 ## Add to your CMakeLists.txt or project configuration
 ```
 
-### 🎯 **Basic Multi-MCU GPIO Example**
+### **Basic Multi-MCU GPIO Example**
 
 ```cpp
 // ESP32 Family Implementation (Current)
@@ -530,7 +520,7 @@ void app_main() {
 // ... same API, different implementation
 ```
 
-### 📊 **Basic Multi-MCU ADC Example**
+### **Basic Multi-MCU ADC Example**
 
 ```cpp
 // ESP32 Family Implementation (Current)
@@ -568,27 +558,27 @@ void read_sensors() {
 
 ---
 
-## 📊 **Examples**
+## **Examples**
 
-### 🎯 **Basic Interface Examples (Multi-MCU)**
+### **Basic Interface Examples (Multi-MCU)**
 - **GPIO Control** - LED and button control across MCU platforms
 - **ADC Monitoring** - Sensor data acquisition for all MCUs
 - **PWM Generation** - Motor speed control for all MCUs
 - **Temperature Sensing** - Thermal monitoring across platforms
 
-### 🌐 **Wireless Examples (Multi-MCU)**
+### **Wireless Examples (Multi-MCU)**
 - **WiFi Station** - Internet connectivity for IoT applications
 - **WiFi Access Point** - Local network creation for all MCUs
 - **Bluetooth BLE** - Mobile app integration across platforms
 - **Bluetooth Classic** - Serial communication for all MCUs
 
-### 🚀 **Advanced Integration Examples (Multi-MCU)**
+### **Advanced Integration Examples (Multi-MCU)**
 - **Complete Motor Controller** - Full-featured motor control with TMC-style controllers
 - **IoT Gateway** - WiFi bridge with monitoring across MCUs
 - **Multi-Sensor Logger** - Data collection system for all platforms
 - **Secure Communication** - Encrypted data transfer across MCUs
 
-### 🧪 **Production-Ready Examples (Multi-MCU)**
+### **Production-Ready Examples (Multi-MCU)**
 - **Industrial Control System** - Complete industrial solution
 - **Automotive Interface** - CAN bus integration across platforms
 - **Remote Monitoring** - Cloud-connected system for all MCUs
@@ -596,7 +586,7 @@ void read_sensors() {
 
 ---
 
-### ⚙️ **Multi-MCU Project Configuration**
+### **Multi-MCU Project Configuration**
 
 Configure specific features for your target MCU platform:
 
@@ -608,12 +598,12 @@ Configure specific features for your target MCU platform:
 
 ---
 
-## 🤝 **Contributing**
+## **Contributing**
 
 We welcome contributions to improve multi-MCU support!
 Please refer to the HardFOC community for contribution guidelines.
 
-### 🎯 **Areas for Multi-MCU Development**
+### **Areas for Multi-MCU Development**
 - **New MCU Support** - Additional MCU platform implementations (STM32, etc.)
 - **Performance Optimization** - Real-time improvements for all MCU platforms
 - **Example Applications** - More use case demonstrations across MCUs
@@ -622,7 +612,7 @@ Please refer to the HardFOC community for contribution guidelines.
 
 ---
 
-## 📄 **License**
+## **License**
 
 This project is licensed under the **GNU General Public License v3.0** - see the
 [LICENSE](../LICENSE) file for details.
@@ -632,7 +622,7 @@ benefit the entire community.
 
 ---
 
-## 🚀 Multi-MCU Interface Wrapper
+## Multi-MCU Interface Wrapper
 
 *Universal hardware abstraction layer supporting multiple MCU platforms*
 
@@ -640,8 +630,8 @@ benefit the entire community.
 
 **🔗 Quick Links**
 
-[🚀 Quick Start](#-quick-start) | [📋 API Reference](#-api-reference) | [📊 Examples](#-examples) | [🤝
-Contributing](#-contributing)
+[🚀 Quick Start](#quick-start) | [📋 API Reference](#api-reference) | [📊 Examples](#examples) | [🤝
+Contributing](#contributing)
 
 **📚 Documentation Navigation**
 

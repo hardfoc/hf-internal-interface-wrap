@@ -1,12 +1,3 @@
----
-layout: default
-title: "📲 EspBluetooth"
-description: "ESP32-C6 Bluetooth implementation with NimBLE stack for Classic and BLE support"
-nav_order: 9
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspBluetooth/
----
-
 # ESP32C6 NimBLE Bluetooth Implementation
 ## Overview
 
@@ -322,27 +313,27 @@ I (15615) BT_Test: [SUCCESS] Correct callback signatures
 
 For comprehensive Bluetooth testing, you'll need:
 
-#### 🔍 **BLE Device Environment**
+#### **BLE Device Environment**
 - **BLE Devices Nearby**: The test successfully discovered 49 BLE devices in a typical environment
 - **Range Testing**: Test signal strength at different distances (RSSI values from -64 to -97 dBm observed)
 - **Device Variety**: Test with different BLE device types (phones, tablets, IoT devices, etc.)
 
-#### 📱 **BLE Scanner Tools**
+#### **BLE Scanner Tools**
 - **Smartphone BLE Scanner**: Use apps like "BLE Scanner" or "nRF Connect" to verify ESP32-C6 discoverability
 - **Computer BLE Tools**: Use tools like `bluetoothctl` on Linux or BLE utilities on Windows/macOS
 - **Professional Tools**: Use dedicated BLE analyzers for detailed protocol analysis
 
-#### 🔗 **BLE Peripheral Testing**
+#### **BLE Peripheral Testing**
 - **Connect Another BLE Device**: Test connection functionality with smartphones, tablets, or ESP32 devices
 - **GATT Services**: Test GATT service discovery and characteristic access
 - **Data Transfer**: Test bidirectional data communication
 
-#### ⚡ **Power and Performance Testing**
+#### **Power and Performance Testing**
 - **Battery Life**: Monitor power consumption during extended scanning/connection operations
 - **Range Testing**: Test maximum communication distance under various conditions
 - **Interference Testing**: Test performance in environments with multiple BLE devices
 
-#### 🛠️ **Development Tools**
+#### **Development Tools**
 - **ESP-IDF Monitor**: Use `idf.py monitor` for real-time debugging and log analysis
 - **Logic Analyzer**: Use for detailed signal analysis and timing verification
 - **Oscilloscope**: Use for power consumption analysis and signal quality verification
@@ -491,7 +482,7 @@ and highly efficient** Bluetooth Low Energy solution specifically optimized for 
 The implementation has been **comprehensively tested with 100% success rate** and is ready for
 deployment.
 
-### ✅ **Verified Production Status**
+### **Verified Production Status**
 
 **Test Results**: 5/5 tests passed (100% success rate)  
 **Real-world Performance**: Successfully discovers 49+ BLE devices  
@@ -499,7 +490,7 @@ deployment.
 **Thread Safety**: Zero race conditions detected in extensive testing  
 **Error Handling**: Robust error recovery and comprehensive logging  
 
-### 🎯 **Key Benefits - All Verified**
+### **Key Benefits - All Verified**
 
 - ✅ **Optimized for ESP32C6** with NimBLE stack - **Tested and verified**
 - ✅ **Lower memory footprint** compared to Bluedroid - **Measured: ~48KB RAM**
@@ -510,7 +501,7 @@ deployment.
 - ✅ **Real-world device discovery** - **49+ devices discovered in testing**
 - ✅ **Production-ready performance** - **Sub-second initialization, efficient scanning**
 
-### 🚀 **Ready for Production Use**
+### **Ready for Production Use**
 
 This implementation has been **thoroughly tested and validated** and serves as a **solid,
 production-ready foundation** for ESP32C6 BLE applications.

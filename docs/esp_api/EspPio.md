@@ -1,12 +1,3 @@
----
-layout: default
-title: "🎛️ EspPio"
-description: "ESP32-C6 PIO implementation with RMT peripheral for custom protocols and precise timing"
-nav_order: 13
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspPio/
----
-
 # EspPio Class API Reference
 
 ## Overview

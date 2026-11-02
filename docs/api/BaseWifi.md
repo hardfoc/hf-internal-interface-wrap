@@ -1,21 +1,12 @@
----
-layout: default
-title: "📶 BaseWifi"
-description: "WiFi base class for wireless network connectivity and IoT integration"
-nav_order: 8
-parent: "📋 API Reference"
-permalink: /docs/api/BaseWifi/
----
-
-# 📶 BaseWifi API Reference
-## 🌟 Overview
+# BaseWifi API Reference
+## Overview
 
 `BaseWifi` is the abstract base class for all WiFi implementations in the HardFOC system.
 It provides a unified interface for wireless networking operations including station mode (client),
 access point mode (hotspot), network scanning, security configuration,
 and comprehensive connection management.
 
-## ✨ Features
+## Features
 
 - **📡 Station Mode** - Connect to existing WiFi networks as a client
 - **🔥 Access Point Mode** - Create WiFi hotspots for device configuration
@@ -26,15 +17,15 @@ and comprehensive connection management.
 - **🔧 Power Management** - Energy-efficient WiFi operation modes
 - **📈 Signal Monitoring** - Real-time RSSI and connection quality tracking
 
-## 📁 Header File
+## Header File
 
 ```cpp
 #include "inc/base/BaseWifi.h"
 ```
 
-## 🎯 Type Definitions
+## Type Definitions
 
-### 🚨 Error Codes
+### Error Codes
 
 ```cpp
 enum class hf_wifi_err_t : hf_u8_t {
@@ -66,7 +57,7 @@ enum class hf_wifi_err_t : hf_u8_t {
 };
 ```
 
-### 🌐 WiFi Modes
+### WiFi Modes
 
 ```cpp
 enum class hf_wifi_mode_t : hf_u8_t {
@@ -77,7 +68,7 @@ enum class hf_wifi_mode_t : hf_u8_t {
 };
 ```
 
-### 🔒 Security Types
+### Security Types
 
 ```cpp
 enum class hf_wifi_security_t : hf_u8_t {
@@ -92,7 +83,7 @@ enum class hf_wifi_security_t : hf_u8_t {
 };
 ```
 
-### 📊 Event Types
+### Event Types
 
 ```cpp
 enum class hf_wifi_event_t : hf_u8_t {
@@ -110,7 +101,7 @@ enum class hf_wifi_event_t : hf_u8_t {
 };
 ```
 
-### ⚙️ Configuration Structures
+### Configuration Structures
 
 ```cpp
 struct hf_wifi_station_config_t {
@@ -149,7 +140,7 @@ struct hf_wifi_scan_result_t {
 };
 ```
 
-## 🏗️ Class Interface
+## Class Interface
 
 ```cpp
 class BaseWifi {
@@ -196,9 +187,9 @@ public:
 };
 ```
 
-## 🎯 Core Methods
+## Core Methods
 
-### 🔧 Initialization
+### Initialization
 
 ```cpp
 hf_wifi_err_t Initialize(hf_wifi_mode_t mode);
@@ -207,7 +198,7 @@ hf_wifi_err_t Initialize(hf_wifi_mode_t mode);
 **Parameters:** WiFi operating mode (STA, AP, or APSTA)  
 **Returns:** Error code indicating success or failure
 
-### 📱 Station Mode Operations
+### Station Mode Operations
 
 ```cpp
 hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config);
@@ -219,7 +210,7 @@ bool IsStationConnected() const;
 **Parameters:** Network credentials, timeout values  
 **Returns:** Connection status and error codes
 
-### 🔥 Access Point Operations
+### Access Point Operations
 
 ```cpp
 hf_wifi_err_t ConfigureAP(const hf_wifi_ap_config_t& config);
@@ -231,7 +222,7 @@ bool IsAPStarted() const;
 **Parameters:** AP configuration (SSID, password, security)  
 **Returns:** AP status and error codes
 
-### 🔍 Network Scanning
+### Network Scanning
 
 ```cpp
 hf_wifi_err_t StartScan(const hf_wifi_scan_config_t& config = {});
@@ -242,9 +233,9 @@ bool IsScanInProgress() const;
 **Parameters:** Scan configuration and result buffers  
 **Returns:** Available networks with signal strength and security info
 
-## 💡 Usage Examples
+## Usage Examples
 
-### 📱 WiFi Station (Client) Mode
+### WiFi Station (Client) Mode
 
 ```cpp
 #include "inc/mcu/esp32/EspWifi.h"
@@ -421,7 +412,7 @@ void wifi_client_demo() {
 }
 ```
 
-### 🔥 WiFi Access Point (Hotspot) Mode
+### WiFi Access Point (Hotspot) Mode
 
 ```cpp
 class WiFiHotspot {
@@ -600,7 +591,7 @@ void wifi_hotspot_demo() {
 }
 ```
 
-### 🔍 WiFi Network Scanner
+### WiFi Network Scanner
 
 ```cpp
 class WiFiScanner {
@@ -799,9 +790,9 @@ void wifi_scanner_demo() {
 }
 ```
 
-## 🏎️ Performance Considerations
+## Performance Considerations
 
-### ⚡ Optimization Tips
+### Optimization Tips
 
 - **📶 Signal Strength** - Maintain RSSI above -70dBm for reliable operation
 - **📻 Channel Selection** - Use channels 1, 6, or 11 for 2.4GHz to avoid interference
@@ -809,7 +800,7 @@ void wifi_scanner_demo() {
 - **🔄 Reconnection Logic** - Implement automatic reconnection for critical applications
 - **📊 Connection Monitoring** - Monitor signal quality and implement roaming logic
 
-### 📊 Typical Performance Ranges
+### Typical Performance Ranges
 
 | **WiFi Standard** | **Max Speed** | **Range** | **Power Consumption** |
 
@@ -821,9 +812,9 @@ void wifi_scanner_demo() {
 
 | **802.11n** | 300 Mbps | ~250m outdoor | Medium-High |
 
-## 🛡️ Security Best Practices
+## Security Best Practices
 
-### 🔒 Secure WiFi Implementation
+### Secure WiFi Implementation
 
 ```cpp
 // ✅ Use strong security protocols
@@ -844,12 +835,12 @@ wifi.SetEventCallback([](hf_wifi_event_t event, void* data) {
 });
 ```
 
-## 🧵 Thread Safety
+## Thread Safety
 
 The `BaseWifi` class is **not inherently thread-safe**.
 For concurrent access from multiple tasks, use appropriate synchronization mechanisms.
 
-## 🔗 Related Documentation
+## Related Documentation
 
 - **[EspWifi API Reference](../esp_api/EspWifi.md)** - ESP32-C6 WiFi implementation
 - **[BaseLogger API Reference](BaseLogger.md)** - Logging WiFi events and diagnostics

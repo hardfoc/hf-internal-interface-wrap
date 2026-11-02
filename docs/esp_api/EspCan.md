@@ -1,12 +1,3 @@
----
-layout: default
-title: "🚌 EspCan"
-description: "ESP32 CAN (TWAI) implementation: ISR-fed RX ring, non-blocking TX, error counters"
-nav_order: 7
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspCan/
----
-
 # EspCan API Reference
 
 ## Overview

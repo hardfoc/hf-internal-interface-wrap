@@ -1,33 +1,24 @@
----
-layout: default
-title: "📡 BaseUart"
-description: "Universal Asynchronous Receiver-Transmitter base class for serial communication"
-nav_order: 6
-parent: "📋 API Reference"
-permalink: /docs/api/BaseUart/
----
-
-# 📡 BaseUart API Reference
+# BaseUart API Reference
 **📡 Unified UART abstraction for serial communication**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseUart` class provides a comprehensive UART abstraction that serves as the unified interface
 for all Universal Asynchronous Receiver-Transmitter operations in the HardFOC system.
 It supports configurable baud rates, data formats, and flow control.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 📡 **Configurable Baud Rates** - Support for standard and custom baud rates
 - 🔧 **Flexible Data Formats** - Configurable data bits, stop bits, and parity
@@ -38,7 +29,7 @@ It supports configurable baud rates, data formats, and flow control.
 - 🔌 **Platform Agnostic** - Works with various UART hardware implementations
 - 📈 **Real-time Control** - Low-latency communication for time-critical applications
 
-### 📡 **Supported Applications**
+### **Supported Applications**
 
 | Application | Baud Rate | Description |
 
@@ -56,7 +47,7 @@ It supports configurable baud rates, data formats, and flow control.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -83,9 +74,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -93,7 +84,7 @@ classDiagram
 
 | `UART_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -111,7 +102,7 @@ classDiagram
 
 | `UART_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 📡 **Communication Error Codes**
+### **Communication Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -129,7 +120,7 @@ classDiagram
 
 | `UART_ERR_PARITY_ERROR` | 12 | 🔍 Parity error | Check parity settings |
 
-### ⚙️ **Configuration Error Codes**
+### **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -145,7 +136,7 @@ classDiagram
 
 | `UART_ERR_RESOURCE_BUSY` | 17 | 🔄 Resource busy | Wait for resource availability |
 
-### 🌐 **Hardware Error Codes**
+### **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -161,9 +152,9 @@ classDiagram
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -207,7 +198,7 @@ virtual hf_uart_err_t Deinitialize() noexcept = 0;
 bool EnsureInitialized() noexcept;
 ```
 
-### ⚙️ **Configuration Methods**
+### **Configuration Methods**
 
 ```cpp
 /**
@@ -242,7 +233,7 @@ virtual hf_uart_err_t Configure(const hf_uart_config_t &config) noexcept = 0;
 virtual hf_uart_err_t GetConfiguration(hf_uart_config_t &config) const noexcept = 0;
 ```
 
-### 📤 **Transmission Methods**
+### **Transmission Methods**
 
 ```cpp
 /**
@@ -285,7 +276,7 @@ virtual hf_uart_err_t Transmit(const uint8_t *data, size_t length,
 virtual size_t GetTransmitSpace() const noexcept = 0;
 ```
 
-### 📥 **Reception Methods**
+### **Reception Methods**
 
 ```cpp
 /**
@@ -335,7 +326,7 @@ virtual size_t GetReceiveSpace() const noexcept = 0;
 virtual hf_uart_err_t FlushReceive() noexcept = 0;
 ```
 
-### 📊 **Status and Capabilities**
+### **Status and Capabilities**
 
 ```cpp
 /**
@@ -359,9 +350,9 @@ virtual hf_uart_err_t GetCapabilities(hf_uart_capabilities_t &capabilities) cons
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### ⚙️ **UART Configuration**
+### **UART Configuration**
 
 ```cpp
 struct hf_uart_config_t {
@@ -381,7 +372,7 @@ struct hf_uart_config_t {
 };
 ```
 
-### 📊 **UART Status**
+### **UART Status**
 
 ```cpp
 struct hf_uart_status_t {
@@ -397,7 +388,7 @@ struct hf_uart_status_t {
 };
 ```
 
-### 📋 **UART Capabilities**
+### **UART Capabilities**
 
 ```cpp
 struct hf_uart_capabilities_t {
@@ -414,7 +405,7 @@ struct hf_uart_capabilities_t {
 };
 ```
 
-### 📈 **UART Statistics**
+### **UART Statistics**
 
 ```cpp
 struct hf_uart_statistics_t {
@@ -437,9 +428,9 @@ struct hf_uart_statistics_t {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 📡 **Basic Serial Communication**
+### **Basic Serial Communication**
 
 ```cpp
 #include "mcu/esp32/EspUart.h"
@@ -533,7 +524,7 @@ public:
 };
 ```
 
-### 🗺️ **GPS Communication**
+### **GPS Communication**
 
 ```cpp
 #include "mcu/esp32/EspUart.h"
@@ -654,7 +645,7 @@ public:
 };
 ```
 
-### 🔵 **Bluetooth Communication**
+### **Bluetooth Communication**
 
 ```cpp
 #include "mcu/esp32/EspUart.h"
@@ -755,7 +746,7 @@ public:
 };
 ```
 
-### 🏭 **Modbus RTU Communication**
+### **Modbus RTU Communication**
 
 ```cpp
 #include "mcu/esp32/EspUart.h"
@@ -909,9 +900,9 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -955,7 +946,7 @@ if (uart.GetStatistics(stats) == hf_uart_err_t::UART_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore initialization
@@ -977,7 +968,7 @@ uart.Transmit(data, length);  // May fail silently
 // Check capabilities before using specific formats
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use DMA for large transfers
@@ -1003,7 +994,7 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [⚙️ **EspUart**](../esp_api/EspUart.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types

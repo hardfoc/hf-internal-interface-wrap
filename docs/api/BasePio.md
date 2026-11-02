@@ -1,34 +1,25 @@
----
-layout: default
-title: "🎛️ BasePio"
-description: "Programmable I/O base class for custom protocols and precise timing"
-nav_order: 13
-parent: "📋 API Reference"
-permalink: /docs/api/BasePio/
----
-
-# 🎛️ BasePio API Reference
+# BasePio API Reference
 **⚡ Precise digital signal I/O for timing-critical operations**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BasePio` class provides a comprehensive abstraction for Programmable IO operations,
 enabling precise timing control for digital signal generation and reception.
 It's designed for timing-critical applications like WS2812 LED driving, IR communication,
 stepper motor control, and custom protocols.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - ⚡ **Precise Timing** - Nanosecond resolution timing control
 - 📊 **Buffered Operations** - Efficient symbol transmission and reception
@@ -39,7 +30,7 @@ stepper motor control, and custom protocols.
 - 🏎️ **Performance Optimized** - Hardware-accelerated when available
 - 🔌 **Platform Agnostic** - Works with various hardware backends
 
-### 🎛️ **Supported Applications**
+### **Supported Applications**
 
 | Application | Description | Timing Requirements |
 
@@ -57,7 +48,7 @@ stepper motor control, and custom protocols.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -88,9 +79,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -98,7 +89,7 @@ classDiagram
 
 | `PIO_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -116,7 +107,7 @@ classDiagram
 
 | `PIO_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🔧 **Channel Error Codes**
+### **Channel Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -130,7 +121,7 @@ classDiagram
 
 | `PIO_ERR_INSUFFICIENT_CHANNELS` | 10 | 📊 Insufficient channels | Reduce channel count |
 
-### ⏱️ **Timing Error Codes**
+### **Timing Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -146,7 +137,7 @@ classDiagram
 
 | `PIO_ERR_DURATION_TOO_SHORT` | 15 | ⚡ Duration too short | Increase duration |
 
-### 📊 **Buffer Error Codes**
+### **Buffer Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -160,7 +151,7 @@ classDiagram
 
 | `PIO_ERR_BUFFER_TOO_LARGE` | 19 | 📐 Buffer too large | Reduce buffer size |
 
-### 🌐 **Hardware Error Codes**
+### **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -174,7 +165,7 @@ classDiagram
 
 | `PIO_ERR_DEVICE_NOT_RESPONDING` | 23 | 🔇 Device not responding | Check device power |
 
-### ⚙️ **Configuration Error Codes**
+### **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -188,7 +179,7 @@ classDiagram
 
 | `PIO_ERR_RESOURCE_BUSY` | 27 | 🔄 Resource busy | Wait for resource availability |
 
-### 🔧 **System Error Codes**
+### **System Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -202,9 +193,9 @@ classDiagram
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -248,7 +239,7 @@ virtual hf_pio_err_t Deinitialize() noexcept = 0;
 bool EnsureInitialized() noexcept;
 ```
 
-### ⚙️ **Channel Configuration**
+### **Channel Configuration**
 
 ```cpp
 /**
@@ -274,7 +265,7 @@ virtual hf_pio_err_t ConfigureChannel(uint8_t channel_id,
                                     const hf_pio_channel_config_t &config) noexcept = 0;
 ```
 
-### 📤 **Transmission Methods**
+### **Transmission Methods**
 
 ```cpp
 /**
@@ -302,7 +293,7 @@ virtual hf_pio_err_t Transmit(uint8_t channel_id, const hf_pio_symbol_t *symbols
                             size_t symbol_count, bool wait_completion = false) noexcept = 0;
 ```
 
-### 📥 **Reception Methods**
+### **Reception Methods**
 
 ```cpp
 /**
@@ -334,7 +325,7 @@ virtual hf_pio_err_t StartReceive(uint8_t channel_id, hf_pio_symbol_t *buffer,
 virtual hf_pio_err_t StopReceive(uint8_t channel_id, size_t &symbols_received) noexcept = 0;
 ```
 
-### 📊 **Status and Capabilities**
+### **Status and Capabilities**
 
 ```cpp
 /**
@@ -367,7 +358,7 @@ virtual hf_pio_err_t GetChannelStatus(uint8_t channel_id,
 virtual hf_pio_err_t GetCapabilities(hf_pio_capabilities_t &capabilities) const noexcept = 0;
 ```
 
-### 🔄 **Callback Management**
+### **Callback Management**
 
 ```cpp
 /**
@@ -410,9 +401,9 @@ virtual void ClearCallbacks() noexcept = 0;
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### ⚙️ **Channel Configuration**
+### **Channel Configuration**
 
 ```cpp
 struct hf_pio_channel_config_t {
@@ -426,7 +417,7 @@ struct hf_pio_channel_config_t {
 };
 ```
 
-### 📈 **PIO Symbol**
+### **PIO Symbol**
 
 ```cpp
 struct hf_pio_symbol_t {
@@ -435,7 +426,7 @@ struct hf_pio_symbol_t {
 };
 ```
 
-### 📊 **Channel Status**
+### **Channel Status**
 
 ```cpp
 struct hf_pio_channel_status_t {
@@ -450,7 +441,7 @@ struct hf_pio_channel_status_t {
 };
 ```
 
-### 📋 **PIO Capabilities**
+### **PIO Capabilities**
 
 ```cpp
 struct hf_pio_capabilities_t {
@@ -465,7 +456,7 @@ struct hf_pio_capabilities_t {
 };
 ```
 
-### 📈 **PIO Statistics**
+### **PIO Statistics**
 
 ```cpp
 struct hf_pio_statistics_t {
@@ -487,9 +478,9 @@ struct hf_pio_statistics_t {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 🎨 **WS2812 LED Control**
+### **WS2812 LED Control**
 
 ```cpp
 #include "mcu/esp32/EspPio.h"
@@ -554,7 +545,7 @@ public:
 };
 ```
 
-### 📡 **IR Signal Transmission**
+### **IR Signal Transmission**
 
 ```cpp
 #include "mcu/esp32/EspPio.h"
@@ -653,7 +644,7 @@ public:
 };
 ```
 
-### 🔄 **Stepper Motor Control**
+### **Stepper Motor Control**
 
 ```cpp
 #include "mcu/esp32/EspPio.h"
@@ -708,7 +699,7 @@ public:
 };
 ```
 
-### 📡 **IR Signal Reception**
+### **IR Signal Reception**
 
 ```cpp
 #include "mcu/esp32/EspPio.h"
@@ -792,9 +783,9 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -851,7 +842,7 @@ if (pio.GetChannelStatus(channel_id, status) == hf_pio_err_t::PIO_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore timing requirements
@@ -875,7 +866,7 @@ pio.StartReceive(0, buffer, 64);
 // Missing: pio.StopReceive(0, count);
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use appropriate buffer sizes
@@ -901,7 +892,7 @@ hf_pio_symbol_t optimized[] = {
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [⚙️ **EspPio**](../esp_api/EspPio.md) - ESP32-C6 implementation
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types

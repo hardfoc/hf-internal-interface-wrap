@@ -1,34 +1,25 @@
----
-layout: default
-title: "⏰ BasePeriodicTimer"
-description: "High-precision timing base class for periodic operations and callbacks"
-nav_order: 12
-parent: "📋 API Reference"
-permalink: /docs/api/BasePeriodicTimer/
----
-
-# ⏰ BasePeriodicTimer API Reference
+# BasePeriodicTimer API Reference
 **🎯 Unified periodic timer abstraction for all high-precision timing operations**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BasePeriodicTimer` class provides a comprehensive periodic timer abstraction that serves as the
 unified interface for all high-precision timing operations in the HardFOC system.
 It supports microsecond resolution, callback-based notifications,
 and works across different timer implementations.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - ⏰ **Microsecond Resolution** - High-precision timing down to microseconds
 - 📞 **Callback Support** - Event-driven timer notifications
@@ -39,7 +30,7 @@ and works across different timer implementations.
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 - ⚡ **Low Overhead** - Optimized for real-time applications
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | Hardware Type | Resolution | Max Period | Features | Use Cases |
 
@@ -50,7 +41,7 @@ and works across different timer implementations.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -81,11 +72,11 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
 The timer system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -93,7 +84,7 @@ The timer system uses comprehensive error codes for robust error handling:
 
 | `TIMER_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -111,7 +102,7 @@ The timer system uses comprehensive error codes for robust error handling:
 
 | `TIMER_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### ⏰ **Timer-Specific Error Codes**
+### **Timer-Specific Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -131,9 +122,9 @@ The timer system uses comprehensive error codes for robust error handling:
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -176,7 +167,7 @@ bool IsInitialized() const noexcept;
 bool IsRunning() const noexcept;
 ```
 
-### ⏰ **Timer Control Methods**
+### **Timer Control Methods**
 
 ```cpp
 /**
@@ -238,7 +229,7 @@ virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
 virtual hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept = 0;
 ```
 
-### 📞 **Callback Management**
+### **Callback Management**
 
 ```cpp
 /**
@@ -276,7 +267,7 @@ void *GetUserData() const noexcept;
 bool HasValidCallback() const noexcept;
 ```
 
-### 📊 **Information Methods**
+### **Information Methods**
 
 ```cpp
 /**
@@ -312,7 +303,7 @@ virtual uint64_t GetMaxPeriod() const noexcept = 0;
 virtual uint64_t GetResolution() const noexcept = 0;
 ```
 
-### 📈 **Statistics and Diagnostics**
+### **Statistics and Diagnostics**
 
 ```cpp
 /**
@@ -380,15 +371,15 @@ virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 📞 **Timer Callback Type**
+### **Timer Callback Type**
 
 ```cpp
 using hf_timer_callback_t = std::function<void(void *user_data)>;
 ```
 
-### 📈 **Timer Statistics Structure**
+### **Timer Statistics Structure**
 
 ```cpp
 struct hf_timer_statistics_t {
@@ -403,7 +394,7 @@ struct hf_timer_statistics_t {
 };
 ```
 
-### 🔍 **Timer Diagnostics Structure**
+### **Timer Diagnostics Structure**
 
 ```cpp
 struct hf_timer_diagnostics_t {
@@ -418,7 +409,7 @@ struct hf_timer_diagnostics_t {
 };
 ```
 
-### 📊 **Timer Stats Structure**
+### **Timer Stats Structure**
 
 ```cpp
 struct hf_timer_stats_t {
@@ -433,9 +424,9 @@ struct hf_timer_stats_t {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### ⏰ **Basic Periodic Timer**
+### **Basic Periodic Timer**
 
 ```cpp
 #include "mcu/esp32/EspPeriodicTimer.h"
@@ -491,7 +482,7 @@ void print_timer_info() {
 }
 ```
 
-### 🔄 **Control Loop Timer**
+### **Control Loop Timer**
 
 ```cpp
 #include "mcu/esp32/EspPeriodicTimer.h"
@@ -612,7 +603,7 @@ void control_loop_example() {
 }
 ```
 
-### 📊 **High-Frequency Sampling Timer**
+### **High-Frequency Sampling Timer**
 
 ```cpp
 #include "mcu/esp32/EspPeriodicTimer.h"
@@ -745,7 +736,7 @@ void sampling_example() {
 }
 ```
 
-### 🔄 **Dynamic Period Timer**
+### **Dynamic Period Timer**
 
 ```cpp
 #include "mcu/esp32/EspPeriodicTimer.h"
@@ -877,9 +868,9 @@ void adaptive_timer_example() {
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -926,7 +917,7 @@ if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore initialization
@@ -951,7 +942,7 @@ timer.Start(period);  // No callback set
 // Always stop timer when done
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use appropriate period for application
@@ -978,7 +969,7 @@ timer.Start(period);  // No callback set
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [⚙️ **EspPeriodicTimer**](../esp_api/EspPeriodicTimer.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types

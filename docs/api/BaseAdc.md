@@ -1,24 +1,15 @@
----
-layout: default
-title: "📊 BaseAdc"
-description: "Analog-to-Digital Conversion base class for multi-channel ADC operations"
-nav_order: 2
-parent: "📋 API Reference"
-permalink: /docs/api/BaseAdc/
----
-
-# 📊 BaseAdc API Reference
+# BaseAdc API Reference
 
 **🎯 Analog-to-Digital Conversion base class for multi-channel ADC operations**
 
-## 🌟 Overview
+## Overview
 
 `BaseAdc` is the abstract base class for all ADC (Analog-to-Digital
 Converter) implementations in the HardFOC system. It provides a unified
 interface for analog sensor reading with support for multi-channel
 operation, averaging, and comprehensive error handling.
 
-## ✨ Features
+## Features
 
 - **🔢 Multi-Channel Support** - Read from multiple analog channels
 - **⚡ Voltage and Raw Count Readings** - Get calibrated voltage or raw ADC counts

@@ -1,35 +1,26 @@
----
-layout: default
-title: "🚌 BaseCan"
-description: "Controller Area Network base class for automotive and industrial communication"
-nav_order: 7
-parent: "📋 API Reference"
-permalink: /docs/api/BaseCan/
----
-
-# 🚌 BaseCan API Reference
+# BaseCan API Reference
 **🎯 Unified CAN bus abstraction for all Controller Area Network operations**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [🆕 **BaseCan v2**](#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [🆕 **BaseCan v2**](#basecan-v2-can-fd-frame-non-blocking-tx-bus-status)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseCan` class provides a comprehensive CAN bus abstraction that serves as the
 unified interface for all Controller Area Network operations in the HardFOC system.
 It supports both classic CAN and CAN-FD protocols, message filtering, error
 handling, and works across different CAN controller implementations.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 🚌 **CAN 2.0A/2.0B Support** - Classic CAN; the message type is FD-sized (64-byte payload),
   FD transmission depends on the controller
@@ -41,7 +32,7 @@ handling, and works across different CAN controller implementations.
 - 🔌 **Platform Agnostic** - Works with internal and external CAN controllers
 - 🧵 **Thread Safe** - Designed for multi-threaded applications
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | Hardware Type | Protocol | Speed | Features |
 
@@ -51,7 +42,7 @@ handling, and works across different CAN controller implementations.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -79,11 +70,11 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
 The CAN system uses comprehensive error codes for robust error handling:
 
-### ✅ **Success Codes**
+### **Success Codes**
 
 | Code | Value | Description |
 
@@ -91,7 +82,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_SUCCESS` | 0 | ✅ Operation completed successfully |
 
-### ❌ **General Error Codes**
+### **General Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -109,7 +100,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
-### 🚌 **Bus Error Codes**
+### **Bus Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -127,7 +118,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_BUS_ARBITRATION_LOST` | 12 | 🔄 Bus arbitration lost | Normal in multi-node systems |
 
-### 📨 **Message Error Codes**
+### **Message Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -149,7 +140,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_QUEUE_EMPTY` | 20 | 📭 Queue empty | Check message reception |
 
-### 📤 **Transmission Error Codes**
+### **Transmission Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -163,7 +154,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_TX_ERROR_WARNING` | 24 | ⚠️ Transmit error warning | Monitor error counters |
 
-### 📥 **Reception Error Codes**
+### **Reception Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -177,7 +168,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_RX_FIFO_FULL` | 28 | 📦 Receive FIFO full | Process messages faster |
 
-### 🌐 **Hardware Error Codes**
+### **Hardware Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -195,7 +186,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_TRANSCEIVER_ERROR` | 34 | 🔌 Transceiver error | Check transceiver connections |
 
-### ⚙️ **Configuration Error Codes**
+### **Configuration Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -213,7 +204,7 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 | `CAN_ERR_FILTER_FULL` | 40 | 📦 Filter table full | Reduce number of filters |
 
-### 🔧 **Protocol Error Codes**
+### **Protocol Error Codes**
 
 | Code | Value | Description | Resolution |
 
@@ -231,9 +222,9 @@ The CAN system uses comprehensive error codes for robust error handling:
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🏗️ **Initialization Methods**
+### **Initialization Methods**
 
 ```cpp
 /**
@@ -284,7 +275,7 @@ bool EnsureInitialized() noexcept;
 bool EnsureDeinitialized() noexcept;
 ```
 
-### 📨 **Message Transmission**
+### **Message Transmission**
 
 ```cpp
 /**
@@ -332,7 +323,7 @@ virtual uint32_t SendMessageBatch(const hf_can_message_t *messages, uint32_t cou
                                 uint32_t timeout_ms = 1000) noexcept;
 ```
 
-### 📥 **Message Reception**
+### **Message Reception**
 
 ```cpp
 /**
@@ -377,7 +368,7 @@ virtual uint32_t ReceiveMessageBatch(hf_can_message_t *messages, uint32_t max_co
                                    uint32_t timeout_ms = 100) noexcept;
 ```
 
-### 🔍 **Message Filtering**
+### **Message Filtering**
 
 ```cpp
 /**
@@ -410,7 +401,7 @@ virtual hf_can_err_t SetAcceptanceFilter(uint32_t id, uint32_t mask, bool extend
 virtual hf_can_err_t ClearAcceptanceFilter() noexcept;
 ```
 
-### 📞 **Callback Management**
+### **Callback Management**
 
 ```cpp
 /**
@@ -449,7 +440,7 @@ virtual void ClearReceiveCallback() noexcept;
 virtual hf_can_err_t SetReceiveCallbackFD(hf_can_fd_receive_callback_t callback) noexcept;
 ```
 
-### 🎛️ **Configuration and Status**
+### **Configuration and Status**
 
 ```cpp
 /**
@@ -492,7 +483,7 @@ virtual bool SetCanFDMode(bool enable, uint32_t data_baudrate = 2000000,
 virtual hf_can_err_t GetStatus(hf_can_status_t &status) const noexcept = 0;
 ```
 
-### 📈 **Statistics and Diagnostics**
+### **Statistics and Diagnostics**
 
 ```cpp
 /**
@@ -532,12 +523,12 @@ virtual hf_can_err_t GetDiagnostics(hf_can_diagnostics_t &diagnostics) const noe
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 📨 **CAN Message Structure**
+### **CAN Message Structure**
 
 `hf_can_message_t` is FD-sized (BaseCan v2). `dlc` holds the payload length **in bytes**,
-not a DLC code; see [BaseCan v2](#-basecan-v2-can-fd-frame-non-blocking-tx-bus-status).
+not a DLC code; see [BaseCan v2](#basecan-v2-can-fd-frame-non-blocking-tx-bus-status).
 
 ```cpp
 struct hf_can_message_t {
@@ -599,7 +590,7 @@ struct hf_can_message_t {
 };
 ```
 
-### ⚙️ **CAN Configuration Structure**
+### **CAN Configuration Structure**
 
 ```cpp
 struct hf_can_config_t {
@@ -613,7 +604,7 @@ struct hf_can_config_t {
 };
 ```
 
-### 📊 **CAN Status Structure**
+### **CAN Status Structure**
 
 ```cpp
 struct hf_can_status_t {
@@ -642,7 +633,7 @@ struct hf_can_status_t {
 };
 ```
 
-### 📈 **CAN Statistics Structure**
+### **CAN Statistics Structure**
 
 ```cpp
 struct hf_can_statistics_t {
@@ -674,7 +665,7 @@ struct hf_can_statistics_t {
 };
 ```
 
-### 🔍 **CAN Diagnostics Structure**
+### **CAN Diagnostics Structure**
 
 ```cpp
 struct hf_can_diagnostics_t {
@@ -691,7 +682,7 @@ struct hf_can_diagnostics_t {
 
 ---
 
-## 🆕 **BaseCan v2: CAN FD frame, non-blocking TX, bus status**
+## **BaseCan v2: CAN FD frame, non-blocking TX, bus status**
 
 ### Frame type
 
@@ -758,9 +749,9 @@ m.SetLength(9);           // false: 9 bytes has no FD DLC code
 | `EspCan::SendMessageBatch()` slept 2 ms per frame | no sleep | as above |
 | `hf_esp_can_config_t::rx_queue_depth` unused, default 20 | RX ring depth, default 32 | none |
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 📨 **Basic Message Transmission**
+### **Basic Message Transmission**
 
 ```cpp
 #include "mcu/esp32/EspCan.h"
@@ -811,7 +802,7 @@ void send_status_message() {
 }
 ```
 
-### 📥 **Message Reception**
+### **Message Reception**
 
 ```cpp
 #include "mcu/esp32/EspCan.h"
@@ -865,7 +856,7 @@ void process_status_message(const hf_can_message_t &msg) {
 }
 ```
 
-### 🔍 **Message Filtering**
+### **Message Filtering**
 
 ```cpp
 #include "mcu/esp32/EspCan.h"
@@ -900,7 +891,7 @@ void receive_filtered_messages() {
 }
 ```
 
-### 📞 **Asynchronous Reception with Callbacks**
+### **Asynchronous Reception with Callbacks**
 
 ```cpp
 #include "mcu/esp32/EspCan.h"
@@ -942,7 +933,7 @@ void main_loop() {
 }
 ```
 
-### 🚌 **Motor Control System**
+### **Motor Control System**
 
 ```cpp
 #include "mcu/esp32/EspCan.h"
@@ -1012,9 +1003,9 @@ private:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Patterns**
+### **Recommended Patterns**
 
 ```cpp
 // ✅ Always check initialization
@@ -1054,7 +1045,7 @@ if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
 }
 ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 ```cpp
 // ❌ Don't ignore initialization
@@ -1076,7 +1067,7 @@ can.SendMessage(msg);  // Error handling missing
 // Bus-off requires controller restart
 ```
 
-### 🎯 **Performance Optimization**
+### **Performance Optimization**
 
 ```cpp
 // 🚀 Use batch operations for multiple messages
@@ -1106,7 +1097,7 @@ if (stats.tx_queue_overflows > 0) {
 
 ---
 
-## 🔗 **Related Documentation**
+## **Related Documentation**
 
 - [⚙️ **EspCan**](../esp_api/EspCan.md) - ESP32-C6 implementation
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types

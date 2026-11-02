@@ -1,13 +1,4 @@
----
-layout: default
-title: "🌡️ EspTemperature"
-description: "ESP32-C6 Temperature implementation with internal sensor and threshold monitoring"
-nav_order: 14
-parent: "🔧 ESP32 Implementations"
-permalink: /docs/esp_api/EspTemperature/
----
-
-# 🌡️ EspTemperature API Reference
+# EspTemperature API Reference
 ## Overview
 
 `EspTemperature` provides ESP32-C6 internal temperature sensor functionality with comprehensive

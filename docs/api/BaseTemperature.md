@@ -1,35 +1,26 @@
----
-layout: default
-title: "🌡️ BaseTemperature"
-description: "Temperature sensing base class for thermal monitoring and protection"
-nav_order: 14
-parent: "📋 API Reference"
-permalink: /docs/api/BaseTemperature/
----
-
-# 🌡️ BaseTemperature API Reference
+# BaseTemperature API Reference
 **🎯 Unified temperature sensing abstraction for all thermal monitoring operations**
-## 📚 **Table of Contents**
+## **Table of Contents**
 
-- [🎯 **Overview**](#-overview)
-- [🏗️ **Class Hierarchy**](#-class-hierarchy)
-- [📋 **Error Codes**](#-error-codes)
-- [🔧 **Core API**](#-core-api)
-- [📊 **Data Structures**](#-data-structures)
-- [🌡️ **Temperature Units**](#-temperature-units)
-- [📊 **Usage Examples**](#-usage-examples)
-- [🧪 **Best Practices**](#-best-practices)
+- [🎯 **Overview**](#overview)
+- [🏗️ **Class Hierarchy**](#class-hierarchy)
+- [📋 **Error Codes**](#error-codes)
+- [🔧 **Core API**](#core-api)
+- [📊 **Data Structures**](#data-structures)
+- [🌡️ **Temperature Units**](#temperature-units)
+- [📊 **Usage Examples**](#usage-examples)
+- [🧪 **Best Practices**](#best-practices)
 
 ---
 
-## 🎯 **Overview**
+## **Overview**
 
 The `BaseTemperature` class provides a comprehensive temperature sensing abstraction that serves as
 the unified interface for all thermal monitoring operations in the HardFOC system.
 It supports multiple sensor types, calibration, alert thresholds,
 and temperature unit conversions across different hardware implementations.
 
-### ✨ **Key Features**
+### **Key Features**
 
 - 🌡️ **Multi-Sensor Support** - Support for various temperature sensor types
 - 🎯 **Hardware Abstraction** - Works with internal and external temperature sensors
@@ -40,7 +31,7 @@ and temperature unit conversions across different hardware implementations.
 - 🏎️ **Performance Optimized** - Minimal overhead for real-time applications
 - 🔌 **Platform Agnostic** - Works across different MCU platforms
 
-### 📊 **Supported Hardware**
+### **Supported Hardware**
 
 | Implementation | Sensor Type | Range | Resolution | Accuracy |
 
@@ -56,7 +47,7 @@ and temperature unit conversions across different hardware implementations.
 
 ---
 
-## 🏗️ **Class Hierarchy**
+## **Class Hierarchy**
 
 ```mermaid
 classDiagram
@@ -102,9 +93,9 @@ classDiagram
 
 ---
 
-## 📋 **Error Codes**
+## **Error Codes**
 
-### 🚨 **Temperature Error Enumeration**
+### **Temperature Error Enumeration**
 
 ```cpp
 enum class hf_temp_err_t : hf_u32_t {
@@ -153,7 +144,7 @@ enum class hf_temp_err_t : hf_u32_t {
 };
 ```
 
-### 📊 **Error Code Categories**
+### **Error Code Categories**
 
 | Category | Range | Description |
 
@@ -177,9 +168,9 @@ enum class hf_temp_err_t : hf_u32_t {
 
 ---
 
-## 🔧 **Core API**
+## **Core API**
 
-### 🎯 **Essential Methods**
+### **Essential Methods**
 
 #### **Initialization**
 ```cpp
@@ -257,9 +248,9 @@ virtual hf_temp_err_t StopContinuousReading() = 0;
 
 ---
 
-## 📊 **Data Structures**
+## **Data Structures**
 
-### 🌡️ **Temperature Alert Types**
+### **Temperature Alert Types**
 
 ```cpp
 enum class hf_temp_alert_type_t : hf_u8_t {
@@ -270,7 +261,7 @@ enum class hf_temp_alert_type_t : hf_u8_t {
 };
 ```
 
-### 📊 **Sensor Information**
+### **Sensor Information**
 
 ```cpp
 struct hf_temp_sensor_info_t {
@@ -286,7 +277,7 @@ struct hf_temp_sensor_info_t {
 };
 ```
 
-### 📈 **Temperature Statistics**
+### **Temperature Statistics**
 
 ```cpp
 struct hf_temp_statistics_t {
@@ -303,9 +294,9 @@ struct hf_temp_statistics_t {
 
 ---
 
-## 🌡️ **Temperature Units**
+## **Temperature Units**
 
-### 🔄 **Unit Conversion Functions**
+### **Unit Conversion Functions**
 
 ```cpp
 /**
@@ -338,9 +329,9 @@ static inline float FahrenheitToCelsius(float fahrenheit) {
 
 ---
 
-## 📊 **Usage Examples**
+## **Usage Examples**
 
-### 🔥 **Basic Temperature Reading**
+### **Basic Temperature Reading**
 
 ```cpp
 #include "inc/mcu/esp32/EspTemperature.h"
@@ -373,7 +364,7 @@ public:
 };
 ```
 
-### 🚨 **Temperature Alert System**
+### **Temperature Alert System**
 
 ```cpp
 #include "inc/external/Ds18b20Temperature.h"
@@ -445,7 +436,7 @@ private:
 };
 ```
 
-### 📊 **Multi-Sensor Temperature Monitoring**
+### **Multi-Sensor Temperature Monitoring**
 
 ```cpp
 #include "inc/external/Lm35Temperature.h"
@@ -536,9 +527,9 @@ public:
 
 ---
 
-## 🧪 **Best Practices**
+## **Best Practices**
 
-### ✅ **Recommended Practices**
+### **Recommended Practices**
 
 1. **🎯 Initialize Early**
    ```cpp
@@ -579,7 +570,7 @@ public:
    }
    ```
 
-### ❌ **Common Pitfalls**
+### **Common Pitfalls**
 
 1. **🚫 Not Checking Return Values**
    ```cpp
@@ -619,7 +610,7 @@ public:
    }
    ```
 
-### 🎯 **Performance Tips**
+### **Performance Tips**
 
 1. **⚡ Use Continuous Reading for High-Frequency Monitoring**
    ```cpp

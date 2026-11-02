@@ -1,12 +1,3 @@
----
-layout: default
-title: "🧪 WiFi Test"
-description: "WiFi Test Suite - Wireless networking and connectivity testing"
-nav_order: 9
-parent: "🧪 Test Documentation"
-permalink: /examples/esp32/docs/wifi_test/
----
-
 # WiFi Comprehensive Test Suite
 
 ## Overview
