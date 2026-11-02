@@ -1,5 +1,0 @@
-<map id="inc/mcu/esp32/EspPwm.h" name="inc/mcu/esp32/EspPwm.h">
-<area shape="rect" id="Node000001" title="ESP32 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="15,5,246,36"/>
-<area shape="rect" id="Node000002" href="$_esp_pwm_8cpp.html" title="Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system." alt="" coords="5,84,256,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,50,133,84,128,84,128,50"/>
-</map>

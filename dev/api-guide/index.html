@@ -105,6 +105,47 @@
   <meta property="og:description" content="MCU-agnostic C++ peripheral interfaces (GPIO, ADC, PWM, I2C, SPI, UART, CAN, NVS, timers, Wi-Fi, Bluetooth, logging) and their ESP32 and STM32 implementations.">
   <meta property="og:url" content="https://hardfoc.github.io/hf-internal-interface-wrap/latest/api-guide/">
   <meta name="twitter:card" content="summary">
+  <script>
+(function () {
+  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
+  var SRC = "https://unpkg.com/mermaid@11/dist/mermaid.min.js", config = {}, real, loading, waiting = [];
+  var stub = {
+    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
+    render: function (id, text) {
+      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-hf-mermaid])");
+      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
+      if (el) el.setAttribute("data-hf-mermaid", "");
+      return near(el).then(load).then(function (m) { return m.render(id, text); });
+    }
+  };
+  function load() {
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = SRC;
+      s.onload = function () {
+        real = window.mermaid;
+        window.mermaid = stub;
+        real.initialize(config);
+        resolve(real);
+      };
+      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
+      document.head.appendChild(s);
+    }));
+  }
+  function near(el) {
+    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); resolve(); }
+      }, { rootMargin: "100% 0px" });
+      io.observe(el);
+      waiting.push(function () { io.disconnect(); resolve(); });
+    });
+  }
+  window.addEventListener("beforeprint", function () { waiting.splice(0).forEach(function (go) { go(); }); });
+  window.mermaid = stub;
+})();
+</script>
 
   </head>
   
@@ -470,15 +511,19 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
+  
+  
+  
+    <a href="../quickstart/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -492,78 +537,12 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Get started
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../integration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Integration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -589,15 +568,19 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
+  
+  
+  
+    <a href="../architecture/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -611,50 +594,12 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Concepts
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -696,6 +641,8 @@
         
       
     
+    
+      
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
@@ -1141,16 +1088,19 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
         
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../diagrams/" class="md-nav__link ">
-              
+  
+  
+  
+    <a href="../api-reference/" class="md-nav__link">
+      
   
   
   <span class="md-ellipsis">
@@ -1164,86 +1114,12 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Reference
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../api-reference/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API reference
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Testing and CI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1434,7 +1310,7 @@
 
 <h1 id="api-guide">API guide<a class="headerlink" href="#api-guide" title="Permanent link">&para;</a></h1>
 <p>The interfaces by task: what to call, in what order, and what to do with the result. Every block is compiled by
-the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/tests/docs/api_tasks.cpp"><code>tests/docs/</code></a>.</p>
+the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/tests/docs/api_tasks.cpp"><code>tests/docs/</code></a>.</p>
 <h2 id="the-shape-of-the-api">The shape of the API<a class="headerlink" href="#the-shape-of-the-api" title="Permanent link">&para;</a></h2>
 <p>Fifteen interfaces, each a header in <code>inc/base/</code>, and the classes that implement them:</p>
 <!-- generated: implementations -->
@@ -1450,107 +1326,107 @@ the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wr
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseAdc.h"><code>BaseAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseAdc.h"><code>BaseAdc</code></a></td>
 <td>Analog inputs: counts and volts, averaging, multi-channel reads</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspAdc.h"><code>EspAdc</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmAdc.h"><code>StmAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspAdc.h"><code>EspAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmAdc.h"><code>StmAdc</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a></td>
 <td>Bluetooth / BLE: scan and connect</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspBluetooth.h"><code>EspBluetooth</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspBluetooth.h"><code>EspBluetooth</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseCan.h"><code>BaseCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseCan.h"><code>BaseCan</code></a></td>
 <td>CAN bus: classic and FD-sized frames, filters, bus status</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspCan.h"><code>EspCan</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmCan.h"><code>StmCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspCan.h"><code>EspCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmCan.h"><code>StmCan</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseGpio.h"><code>BaseGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseGpio.h"><code>BaseGpio</code></a></td>
 <td>Digital pins: direction, polarity, pulls, interrupts</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspGpio.h"><code>EspGpio</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmGpio.h"><code>StmGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspGpio.h"><code>EspGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmGpio.h"><code>StmGpio</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseI2c.h"><code>BaseI2c</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseI2c.h"><code>BaseI2c</code></a></td>
 <td>One device on an I2C bus: write, read, write-then-read</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspI2c.h"><code>EspI2cDevice</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmI2c.h"><code>StmI2cDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspI2c.h"><code>EspI2cDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmI2c.h"><code>StmI2cDevice</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseLogger.h"><code>BaseLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseLogger.h"><code>BaseLogger</code></a></td>
 <td>Tagged, levelled log output</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspLogger.h"><code>EspLogger</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmLogger.h"><code>StmLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspLogger.h"><code>EspLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmLogger.h"><code>StmLogger</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseNvs.h"><code>BaseNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseNvs.h"><code>BaseNvs</code></a></td>
 <td>Key-value non-volatile storage: integers, strings, blobs</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspNvs.h"><code>EspNvs</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmNvs.h"><code>StmNvs</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/host/HostNvs.h"><code>HostNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspNvs.h"><code>EspNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmNvs.h"><code>StmNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/host/HostNvs.h"><code>HostNvs</code></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a></td>
 <td>Periodic callback at a microsecond period</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspPeriodicTimer.h"><code>EspPeriodicTimer</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmPeriodicTimer.h"><code>StmPeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspPeriodicTimer.h"><code>EspPeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmPeriodicTimer.h"><code>StmPeriodicTimer</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BasePio.h"><code>BasePio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePio.h"><code>BasePio</code></a></td>
 <td>Programmable pulse I/O: symbol trains (WS2812, IR)</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspPio.h"><code>EspPio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspPio.h"><code>EspPio</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BasePwm.h"><code>BasePwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePwm.h"><code>BasePwm</code></a></td>
 <td>PWM channels: frequency, duty, phase</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspPwm.h"><code>EspPwm</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmPwm.h"><code>StmPwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspPwm.h"><code>EspPwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmPwm.h"><code>StmPwm</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseSpi.h"><code>BaseSpi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseSpi.h"><code>BaseSpi</code></a></td>
 <td>One device on an SPI bus: full-duplex transfers</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspSpi.h"><code>EspSpiDevice</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmSpi.h"><code>StmSpiDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspSpi.h"><code>EspSpiDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmSpi.h"><code>StmSpiDevice</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a></td>
 <td>On-chip or external temperature sensor</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspTemperature.h"><code>EspTemperature</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmTemperature.h"><code>StmTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspTemperature.h"><code>EspTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmTemperature.h"><code>StmTemperature</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseUart.h"><code>BaseUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseUart.h"><code>BaseUart</code></a></td>
 <td>Serial port: write, read, flush, printf</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspUart.h"><code>EspUart</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/stm32/StmUart.h"><code>StmUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspUart.h"><code>EspUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/stm32/StmUart.h"><code>StmUart</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a></td>
 <td>USB Serial/JTAG console</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspUsbSerialJtag.h"><code>EspUsbSerialJtag</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspUsbSerialJtag.h"><code>EspUsbSerialJtag</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/base/BaseWifi.h"><code>BaseWifi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseWifi.h"><code>BaseWifi</code></a></td>
 <td>Wi-Fi station and access point</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/68da78e95325e515795c58ad7e4ce716e36df1f1/inc/mcu/esp32/EspWifi.h"><code>EspWifi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/mcu/esp32/EspWifi.h"><code>EspWifi</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -1805,7 +1681,7 @@ and <code>GetMaxValueSize()</code> give the platform limits. <code>Commit()</cod
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.tracking", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.top", "navigation.footer", "navigation.tracking", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.action.edit", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
