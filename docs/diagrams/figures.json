@@ -7,8 +7,8 @@
     "width": 1200,
     "source": "docs/diagrams/figures/interface-layers.py",
     "sources": [
-      "inc/base/*.h:Base classes",
-      "inc/mcu/*/*.h:implementations"
+      "inc/base:Base classes",
+      "inc/mcu:implementations"
     ]
   }
 }
