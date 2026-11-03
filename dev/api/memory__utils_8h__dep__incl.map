@@ -1,7 +1,0 @@
-<map id="inc/utils/memory_utils.h" name="inc/utils/memory_utils.h">
-<area shape="rect" id="Node000001" title="Memory management utilities for exception&#45;free design." alt="" coords="147,5,357,36"/>
-<area shape="rect" id="Node000002" href="$_esp_i2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="5,84,240,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,45,148,86,146,81,215,41"/>
-<area shape="rect" id="Node000003" href="$_esp_spi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32 with ESP&#45;IDF v5.5+ features." alt="" coords="263,84,499,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,41,358,81,356,86,287,45"/>
-</map>

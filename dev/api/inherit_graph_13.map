@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$class_base_nvs.html" title="Abstract base class for non&#45;volatile storage operations." alt="" coords="5,60,100,91"/>
-<area shape="rect" id="Node000001" href="$class_esp_nvs.html" title="Production&#45;ready MCU&#45;integrated non&#45;volatile storage implementation." alt="" coords="151,5,235,36"/>
-<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="105,52,152,34,154,39,107,57"/>
-<area shape="rect" id="Node000002" href="$class_host_nvs.html" title="Hash&#45;map NVS namespace for host builds and deterministic tests." alt="" coords="148,60,239,91"/>
-<area shape="poly" id="edge11_Node000000_Node000002" title=" " alt="" coords="114,73,148,73,148,78,114,78"/>
-<area shape="rect" id="Node000003" href="$class_stm_nvs.html" title="STM32 NVS — flash&#45;backed key&#45;value store with wear leveling." alt="" coords="150,115,237,145"/>
-<area shape="poly" id="edge12_Node000000_Node000003" title=" " alt="" coords="107,93,154,112,152,117,105,98"/>
-</map>

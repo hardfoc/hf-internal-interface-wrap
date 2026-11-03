@@ -1310,7 +1310,7 @@
 
 <h1 id="api-guide">API guide<a class="headerlink" href="#api-guide" title="Permanent link">&para;</a></h1>
 <p>The interfaces by task: what to call, in what order, and what to do with the result. Every block is compiled by
-the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/tests/docs/api_tasks.cpp"><code>tests/docs/</code></a>.</p>
+the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/tests/docs/api_tasks.cpp"><code>tests/docs/</code></a>.</p>
 <h2 id="the-shape-of-the-api">The shape of the API<a class="headerlink" href="#the-shape-of-the-api" title="Permanent link">&para;</a></h2>
 <p>Fifteen interfaces, each a header in <code>inc/base/</code>, and the classes that implement them:</p>
 <!-- generated: implementations -->
@@ -1326,107 +1326,107 @@ the host build from <a href="https://github.com/hardfoc/hf-internal-interface-wr
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseAdc.h"><code>BaseAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseAdc.h"><code>BaseAdc</code></a></td>
 <td>Analog inputs: counts and volts, averaging, multi-channel reads</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspAdc.h"><code>EspAdc</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmAdc.h"><code>StmAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspAdc.h"><code>EspAdc</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmAdc.h"><code>StmAdc</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a></td>
 <td>Bluetooth / BLE: scan and connect</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspBluetooth.h"><code>EspBluetooth</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspBluetooth.h"><code>EspBluetooth</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseCan.h"><code>BaseCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseCan.h"><code>BaseCan</code></a></td>
 <td>CAN bus: classic and FD-sized frames, filters, bus status</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspCan.h"><code>EspCan</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmCan.h"><code>StmCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspCan.h"><code>EspCan</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmCan.h"><code>StmCan</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseGpio.h"><code>BaseGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseGpio.h"><code>BaseGpio</code></a></td>
 <td>Digital pins: direction, polarity, pulls, interrupts</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspGpio.h"><code>EspGpio</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmGpio.h"><code>StmGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspGpio.h"><code>EspGpio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmGpio.h"><code>StmGpio</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseI2c.h"><code>BaseI2c</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseI2c.h"><code>BaseI2c</code></a></td>
 <td>One device on an I2C bus: write, read, write-then-read</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspI2c.h"><code>EspI2cDevice</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmI2c.h"><code>StmI2cDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspI2c.h"><code>EspI2cDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmI2c.h"><code>StmI2cDevice</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseLogger.h"><code>BaseLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseLogger.h"><code>BaseLogger</code></a></td>
 <td>Tagged, levelled log output</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspLogger.h"><code>EspLogger</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmLogger.h"><code>StmLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspLogger.h"><code>EspLogger</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmLogger.h"><code>StmLogger</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseNvs.h"><code>BaseNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseNvs.h"><code>BaseNvs</code></a></td>
 <td>Key-value non-volatile storage: integers, strings, blobs</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspNvs.h"><code>EspNvs</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmNvs.h"><code>StmNvs</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/host/HostNvs.h"><code>HostNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspNvs.h"><code>EspNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmNvs.h"><code>StmNvs</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/host/HostNvs.h"><code>HostNvs</code></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a></td>
 <td>Periodic callback at a microsecond period</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspPeriodicTimer.h"><code>EspPeriodicTimer</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmPeriodicTimer.h"><code>StmPeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspPeriodicTimer.h"><code>EspPeriodicTimer</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmPeriodicTimer.h"><code>StmPeriodicTimer</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePio.h"><code>BasePio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BasePio.h"><code>BasePio</code></a></td>
 <td>Programmable pulse I/O: symbol trains (WS2812, IR)</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspPio.h"><code>EspPio</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspPio.h"><code>EspPio</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePwm.h"><code>BasePwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BasePwm.h"><code>BasePwm</code></a></td>
 <td>PWM channels: frequency, duty, phase</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspPwm.h"><code>EspPwm</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmPwm.h"><code>StmPwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspPwm.h"><code>EspPwm</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmPwm.h"><code>StmPwm</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseSpi.h"><code>BaseSpi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseSpi.h"><code>BaseSpi</code></a></td>
 <td>One device on an SPI bus: full-duplex transfers</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspSpi.h"><code>EspSpiDevice</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmSpi.h"><code>StmSpiDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspSpi.h"><code>EspSpiDevice</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmSpi.h"><code>StmSpiDevice</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a></td>
 <td>On-chip or external temperature sensor</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspTemperature.h"><code>EspTemperature</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmTemperature.h"><code>StmTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspTemperature.h"><code>EspTemperature</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmTemperature.h"><code>StmTemperature</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseUart.h"><code>BaseUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseUart.h"><code>BaseUart</code></a></td>
 <td>Serial port: write, read, flush, printf</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspUart.h"><code>EspUart</code></a></td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/stm32/StmUart.h"><code>StmUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspUart.h"><code>EspUart</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmUart.h"><code>StmUart</code></a></td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a></td>
 <td>USB Serial/JTAG console</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspUsbSerialJtag.h"><code>EspUsbSerialJtag</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspUsbSerialJtag.h"><code>EspUsbSerialJtag</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseWifi.h"><code>BaseWifi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseWifi.h"><code>BaseWifi</code></a></td>
 <td>Wi-Fi station and access point</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/mcu/esp32/EspWifi.h"><code>EspWifi</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspWifi.h"><code>EspWifi</code></a></td>
 <td>-</td>
 <td>-</td>
 </tr>
