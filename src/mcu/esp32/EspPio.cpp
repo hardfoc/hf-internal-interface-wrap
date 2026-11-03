@@ -245,14 +245,14 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
     return hf_pio_err_t::PIO_ERR_HARDWARE_FAULT;
   }
   if (wait_completion) {
-    // Wait for transmission to complete using ESP-IDF API
-    TickType_t wait_ticks = portMAX_DELAY;
+    // Wait for transmission to complete using ESP-IDF API.
+    // rmt_tx_wait_all_done() takes milliseconds (-1 waits forever), not ticks.
+    int wait_ms = -1;
     if (channel.config.timeout_us > 0) {
       // Round up to next millisecond
-      uint32_t timeout_ms = (channel.config.timeout_us + 999) / 1000;
-      wait_ticks = pdMS_TO_TICKS(timeout_ms);
+      wait_ms = static_cast<int>((channel.config.timeout_us + 999) / 1000);
     }
-    ret = rmt_tx_wait_all_done(channel.tx_channel, wait_ticks);
+    ret = rmt_tx_wait_all_done(channel.tx_channel, wait_ms);
     if (ret != ESP_OK) {
       ESP_LOGE(TAG, "Transmission timeout on channel %d", channel_id);
       channel.busy = false;
@@ -1044,11 +1044,11 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
 
   // Wait for completion if requested
   if (wait_completion) {
+    // rmt_tx_wait_all_done() takes milliseconds (-1 waits forever), not ticks.
     hf_u32_t timeout_ms = channel.config.timeout_us / 1000;
-    if (timeout_ms == 0)
-      timeout_ms = portMAX_DELAY;
+    const int wait_ms = (timeout_ms == 0) ? -1 : static_cast<int>(timeout_ms);
 
-    result = rmt_tx_wait_all_done(channel.tx_channel, pdMS_TO_TICKS(timeout_ms));
+    result = rmt_tx_wait_all_done(channel.tx_channel, wait_ms);
     if (result != ESP_OK) {
       ESP_LOGW(TAG, "Wait for transmission completion timed out on channel %d: %s", channel_id,
                esp_err_to_name(result));
