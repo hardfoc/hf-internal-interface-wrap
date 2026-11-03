@@ -1194,63 +1194,63 @@ SPI, I2C, UART, then CAN, ADC, PWM and a timer), not all fifteen.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseAdc.h"><code>BaseAdc</code></a> (7)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseAdc.h"><code>BaseAdc</code></a> (7)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>GetMaxChannels()</code>, <code>IsChannelAvailable()</code>, <code>ReadChannelV()</code>, <code>ReadChannelCount()</code>, <code>ReadChannel()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a> (45)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseBluetooth.h"><code>BaseBluetooth</code></a> (45)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>IsInitialized()</code>, <code>Enable()</code>, <code>Disable()</code>, <code>IsEnabled()</code>, <code>SetMode()</code>, <code>GetMode()</code>, <code>GetLocalAddress()</code>, <code>SetDeviceName()</code>, <code>GetDeviceName()</code>, <code>ConfigureClassic()</code>, <code>SetDiscoverable()</code>, <code>IsDiscoverable()</code>, <code>ConfigureBle()</code>, <code>StartAdvertising()</code>, <code>StopAdvertising()</code>, <code>IsAdvertising()</code>, <code>StartScan()</code>, <code>StopScan()</code>, <code>IsScanning()</code>, <code>GetDiscoveredDevices()</code>, <code>ClearDiscoveredDevices()</code>, <code>Connect()</code>, <code>Disconnect()</code>, <code>IsConnected()</code>, <code>GetConnectedDevices()</code>, <code>Pair()</code>, <code>Unpair()</code>, <code>IsPaired()</code>, <code>GetPairedDevices()</code>, <code>SendData()</code>, <code>GetAvailableData()</code>, <code>ReadData()</code>, <code>DiscoverServices()</code>, <code>DiscoverCharacteristics()</code>, <code>ReadCharacteristic()</code>, <code>WriteCharacteristic()</code>, <code>SubscribeCharacteristic()</code>, <code>GetState()</code>, <code>GetRssi()</code>, <code>RegisterEventCallback()</code>, <code>UnregisterEventCallback()</code>, <code>RegisterDataCallback()</code>, <code>UnregisterDataCallback()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseCan.h"><code>BaseCan</code></a> (8)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseCan.h"><code>BaseCan</code></a> (8)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>SendMessage()</code>, <code>ReceiveMessage()</code>, <code>SetReceiveCallback()</code>, <code>SetAcceptanceFilter()</code>, <code>GetStatus()</code>, <code>Reset()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseGpio.h"><code>BaseGpio</code></a> (12)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseGpio.h"><code>BaseGpio</code></a> (12)</td>
 <td><code>SetDirectionImpl()</code>, <code>GetDirectionImpl()</code>, <code>SetOutputModeImpl()</code>, <code>GetOutputModeImpl()</code>, <code>SetPullModeImpl()</code>, <code>GetPullModeImpl()</code>, <code>SetPinLevelImpl()</code>, <code>GetPinLevelImpl()</code>, <code>IsPinAvailable()</code>, <code>GetMaxPins()</code>, <code>GetDescription()</code>, <code>Initialize()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseI2c.h"><code>BaseI2c</code></a> (6)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseI2c.h"><code>BaseI2c</code></a> (6)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>Write()</code>, <code>Read()</code>, <code>WriteRead()</code>, <code>GetDeviceAddress()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseLogger.h"><code>BaseLogger</code></a> (26)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseLogger.h"><code>BaseLogger</code></a> (26)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>IsInitialized()</code>, <code>EnsureInitialized()</code>, <code>SetLogLevel()</code>, <code>GetLogLevel()</code>, <code>Error()</code>, <code>Warn()</code>, <code>Info()</code>, <code>Debug()</code>, <code>Verbose()</code>, <code>Log()</code>, <code>LogV()</code>, <code>LogWithLocation()</code>, <code>Flush()</code>, <code>IsLevelEnabled()</code>, <code>GetStatistics()</code>, <code>GetDiagnostics()</code>, <code>ResetStatistics()</code>, <code>ResetDiagnostics()</code>, <code>IsHealthy()</code>, <code>GetLastError()</code>, <code>GetLastErrorMessage()</code>, <code>PrintStatistics()</code>, <code>PrintDiagnostics()</code>, <code>PrintStatus()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseNvs.h"><code>BaseNvs</code></a> (15)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseNvs.h"><code>BaseNvs</code></a> (15)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>SetU32()</code>, <code>GetU32()</code>, <code>SetString()</code>, <code>GetString()</code>, <code>SetBlob()</code>, <code>GetBlob()</code>, <code>EraseKey()</code>, <code>Commit()</code>, <code>KeyExists()</code>, <code>GetSize()</code>, <code>GetDescription()</code>, <code>GetMaxKeyLength()</code>, <code>GetMaxValueSize()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a> (12)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePeriodicTimer.h"><code>BasePeriodicTimer</code></a> (12)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>Start()</code>, <code>Stop()</code>, <code>SetPeriod()</code>, <code>GetPeriod()</code>, <code>GetStats()</code>, <code>ResetStats()</code>, <code>GetDescription()</code>, <code>GetMaxPeriod()</code>, <code>GetMinPeriod()</code>, <code>GetResolution()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePio.h"><code>BasePio</code></a> (14)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePio.h"><code>BasePio</code></a> (14)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>ConfigureChannel()</code>, <code>Transmit()</code>, <code>StartReceive()</code>, <code>StopReceive()</code>, <code>IsChannelBusy()</code>, <code>GetChannelStatus()</code>, <code>GetCapabilities()</code>, <code>SetTransmitCallback()</code>, <code>SetReceiveCallback()</code>, <code>SetErrorCallback()</code>, <code>ClearChannelCallbacks()</code>, <code>ClearCallbacks()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BasePwm.h"><code>BasePwm</code></a> (15)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BasePwm.h"><code>BasePwm</code></a> (15)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>EnableChannel()</code>, <code>DisableChannel()</code>, <code>IsChannelEnabled()</code>, <code>SetDutyCycle()</code>, <code>SetDutyCycleRaw()</code>, <code>SetFrequency()</code>, <code>SetPhaseShift()</code>, <code>StartAll()</code>, <code>StopAll()</code>, <code>UpdateAll()</code>, <code>SetComplementaryOutput()</code>, <code>GetDutyCycle()</code>, <code>GetFrequency()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseSpi.h"><code>BaseSpi</code></a> (4)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseSpi.h"><code>BaseSpi</code></a> (4)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>Transfer()</code>, <code>GetDeviceConfig()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a> (5)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseTemperature.h"><code>BaseTemperature</code></a> (5)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>ReadTemperatureCelsiusImpl()</code>, <code>GetSensorInfo()</code>, <code>GetCapabilities()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseUart.h"><code>BaseUart</code></a> (8)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseUart.h"><code>BaseUart</code></a> (8)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>Write()</code>, <code>Read()</code>, <code>BytesAvailable()</code>, <code>FlushTx()</code>, <code>FlushRx()</code>, <code>Printf()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a> (6)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseUsbSerialJtag.h"><code>BaseUsbSerialJtag</code></a> (6)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>Write()</code>, <code>Read()</code>, <code>FlushTx()</code>, <code>IsHostConnected()</code></td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/base/BaseWifi.h"><code>BaseWifi</code></a> (30)</td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/base/BaseWifi.h"><code>BaseWifi</code></a> (30)</td>
 <td><code>Initialize()</code>, <code>Deinitialize()</code>, <code>IsInitialized()</code>, <code>SetMode()</code>, <code>GetMode()</code>, <code>ConfigureStation()</code>, <code>Connect()</code>, <code>Disconnect()</code>, <code>IsConnected()</code>, <code>GetRssi()</code>, <code>GetIpInfo()</code>, <code>ConfigureAccessPoint()</code>, <code>StartAccessPoint()</code>, <code>StopAccessPoint()</code>, <code>IsAccessPointActive()</code>, <code>GetConnectedStationCount()</code>, <code>StartScan()</code>, <code>GetScanResults()</code>, <code>IsScanning()</code>, <code>GetState()</code>, <code>GetConnectedSsid()</code>, <code>GetConnectedBssid()</code>, <code>SetPowerSave()</code>, <code>GetPowerSave()</code>, <code>RegisterEventCallback()</code>, <code>UnregisterEventCallback()</code>, <code>GetMacAddress()</code>, <code>SetMacAddress()</code>, <code>GetChannel()</code>, <code>SetChannel()</code></td>
 </tr>
 </tbody>
@@ -1262,7 +1262,7 @@ handling, statistics, batch helpers, and "not supported" returns for optional fe
 do better (for example, a hardware <code>TransferChain()</code> for SPI, or <code>GetBusStatus()</code> for CAN).</p>
 <h2 id="a-complete-gpio-port">A complete GPIO port<a class="headerlink" href="#a-complete-gpio-port" title="Permanent link">&para;</a></h2>
 <p>The smallest complete implementation, compiled by the host build from
-<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/tests/docs/port_gpio.cpp"><code>tests/docs/port_gpio.cpp</code></a>. <code>BaseGpio</code> turns <code>SetActive()</code> into
+<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/tests/docs/port_gpio.cpp"><code>tests/docs/port_gpio.cpp</code></a>. <code>BaseGpio</code> turns <code>SetActive()</code> into
 <code>SetPinLevelImpl(HIGH)</code> or <code>LOW</code> depending on the polarity, and validates the object before calling the port.</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"BaseGpio.h"</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1371,13 +1371,13 @@ do better (for example, a hardware <code>TransferChain()</code> for SPI, or <cod
 </table>
 <h2 id="wire-it-into-the-build">Wire it into the build<a class="headerlink" href="#wire-it-into-the-build" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Add <code>HF_TARGET_MCU_&lt;NAME&gt;</code> and its family block to <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/utils/McuSelect.h"><code>inc/utils/McuSelect.h</code></a>.</li>
+<li>Add <code>HF_TARGET_MCU_&lt;NAME&gt;</code> and its family block to <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/utils/McuSelect.h"><code>inc/utils/McuSelect.h</code></a>.</li>
 <li>Add a monotonic time source <code>inc/mcu/&lt;platform&gt;/&lt;X&gt;Time.h</code> and its <code>#elif</code> in
-   <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/inc/utils/HfTime.h"><code>inc/utils/HfTime.h</code></a>.</li>
+   <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/inc/utils/HfTime.h"><code>inc/utils/HfTime.h</code></a>.</li>
 <li>Add a <code>PlatformMutexBackend.h</code> for the platform's RTOS where the stack is assembled (hf-core does this for
    FreeRTOS).</li>
 <li>Build the sources with the platform's toolchain; the ESP-IDF component in the root
-   <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/CMakeLists.txt"><code>CMakeLists.txt</code></a> is the model.</li>
+   <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/CMakeLists.txt"><code>CMakeLists.txt</code></a> is the model.</li>
 </ol>
 <h2 id="check-a-port">Check a port<a class="headerlink" href="#check-a-port" title="Permanent link">&para;</a></h2>
 <table>
@@ -1406,7 +1406,7 @@ do better (for example, a hardware <code>TransferChain()</code> for SPI, or <cod
 </tr>
 <tr>
 <td>On hardware</td>
-<td>Port the matching ESP32 test application from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/examples/esp32/app_config.yml"><code>examples/esp32/main</code></a></td>
+<td>Port the matching ESP32 test application from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/examples/esp32/app_config.yml"><code>examples/esp32/main</code></a></td>
 </tr>
 </tbody>
 </table>

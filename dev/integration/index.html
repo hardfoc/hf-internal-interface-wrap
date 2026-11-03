@@ -1024,7 +1024,7 @@ macros.</p>
 carries it as <code>internal/hf-internal-interface-wrap</code>, and <a href="https://github.com/hardfoc/hf-core">hf-core</a> brings in
 hf-core-drivers.</p>
 <h2 id="esp-idf-component">ESP-IDF component<a class="headerlink" href="#esp-idf-component" title="Permanent link">&para;</a></h2>
-<p>The root <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/CMakeLists.txt"><code>CMakeLists.txt</code></a> registers an ESP-IDF component with every source in
+<p>The root <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/CMakeLists.txt"><code>CMakeLists.txt</code></a> registers an ESP-IDF component with every source in
 <code>src/mcu/esp32/</code> and <code>src/utils/</code>. Point the project at the folder:</p>
 <div class="language-cmake highlight"><span class="filename">CMakeLists.txt (project)</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.16</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">set</span><span class="p">(</span><span class="s">EXTRA_COMPONENT_DIRS</span><span class="w"> </span><span class="s">components/hf-internal-interface-wrap</span><span class="p">)</span>
@@ -1063,7 +1063,7 @@ the folder name).</p>
 <code>#include "mcu/esp32/EspGpio.h"</code>.</p>
 <h2 id="other-build-systems">Other build systems<a class="headerlink" href="#other-build-systems" title="Permanent link">&para;</a></h2>
 <p>Code that only uses the interfaces needs nothing but the headers: add <code>inc</code>, <code>inc/base</code> and <code>inc/utils</code> to the
-include path. That is how the host tests build (<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/tests/host/CMakeLists.txt"><code>tests/host/CMakeLists.txt</code></a>).
+include path. That is how the host tests build (<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/tests/host/CMakeLists.txt"><code>tests/host/CMakeLists.txt</code></a>).
 A platform's sources are added by that platform's build; this repository has no CMake target for the STM32
 sources.</p>
 <h2 id="mcu-selection">MCU selection<a class="headerlink" href="#mcu-selection" title="Permanent link">&para;</a></h2>

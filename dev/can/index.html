@@ -1234,7 +1234,7 @@
 
 <h1 id="can">CAN<a class="headerlink" href="#can" title="Permanent link">&para;</a></h1>
 <p><code>BaseCan</code> v2: one frame type for classic CAN and CAN FD, a send that never blocks, a receive path that works by
-polling, and the controller's error counters. Compiled examples from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/61241fa3e6c6b51f8409ef4ec85290209b96c727/tests/docs/can.cpp"><code>tests/docs/can.cpp</code></a>.</p>
+polling, and the controller's error counters. Compiled examples from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/cc58ebac17f7d9658414365d603449329c3adeda/tests/docs/can.cpp"><code>tests/docs/can.cpp</code></a>.</p>
 <h2 id="the-frame">The frame<a class="headerlink" href="#the-frame" title="Permanent link">&para;</a></h2>
 <p><code>hf_can_message_t</code> carries up to 64 data bytes, so the same type serves classic CAN today and CAN FD
 controllers later. <code>dlc</code> holds the <strong>length in bytes</strong>, not the 4-bit DLC code.</p>
