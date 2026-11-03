@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_base_adc.html" title="Base class for ADCs." alt="" coords="5,5,100,36"/>
+<area shape="rect" id="Node000001" href="$class_stm_adc.html" title="STM32 ADC wrapper — wraps STM32 HAL ADC with full channel management." alt="" coords="148,5,235,36"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="114,18,148,18,148,23,114,23"/>
+</map>
