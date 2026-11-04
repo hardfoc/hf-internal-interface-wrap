@@ -1,0 +1,5 @@
+<map id="inc/mcu/esp32/EspTemperature.h" name="inc/mcu/esp32/EspTemperature.h">
+<area shape="rect" id="Node000001" title="ESP32 internal temperature sensor implementation for the HardFOC system." alt="" coords="15,5,307,36"/>
+<area shape="rect" id="Node000002" href="$_esp_temperature_8cpp.html" title="ESP32 internal temperature sensor implementation for the HardFOC system." alt="" coords="5,84,317,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,50,164,84,159,84,159,50"/>
+</map>

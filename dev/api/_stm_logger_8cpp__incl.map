@@ -1,0 +1,36 @@
+<map id="src/mcu/stm32/StmLogger.cpp" name="src/mcu/stm32/StmLogger.cpp">
+<area shape="rect" id="Node000001" title="STM32 Logger implementation — UART/SWO/printf output." alt="" coords="603,5,871,36"/>
+<area shape="rect" id="Node000002" href="$_stm_logger_8h.html" title="STM32 Logger — UART/SWO/ITM&#45;based logging with full BaseLogger interface." alt="" coords="553,84,679,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="716,39,652,79,649,74,713,34"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="703,84,772,115"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="740,36,740,70,735,70,735,36"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="796,84,871,115"/>
+<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="757,34,806,73,803,77,754,38"/>
+<area shape="rect" id="Node000003" href="$_base_logger_8h.html" title="Unified logging base class for all logging implementations." alt="" coords="549,163,683,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="619,115,619,149,613,149,613,115"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="906,241,987,272"/>
+<area shape="poly" id="edge17_Node000002_Node000008" title=" " alt="" coords="648,113,906,233,903,238,645,117"/>
+<area shape="rect" id="Node000012" href="$_stm_types_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="123,163,242,193"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="553,114,256,166,255,161,553,109"/>
+<area shape="rect" id="Node000004" href="$_hardware_types_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="160,241,323,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="550,196,325,241,324,236,548,190"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="484,320,559,351"/>
+<area shape="poly" id="edge9_Node000003_Node000005" title=" " alt="" coords="641,191,662,207,681,227,692,250,691,262,686,273,663,298,634,314,603,326,573,332,571,327,601,320,632,310,660,293,682,271,686,261,686,251,677,230,659,211,638,196"/>
+<area shape="rect" id="Node000007" href="$_status_8h.html" title="hf::Status and hf::Result&lt;T&gt;: the one error model of every layer above the drivers." alt="" coords="747,241,882,272"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="654,191,766,234,764,239,652,196"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="684,191,893,238,892,244,683,196"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="347,241,445,272"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="576,196,451,239,449,234,574,191"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="469,241,536,272"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="596,196,537,236,534,231,593,191"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="560,241,672,272"/>
+<area shape="poly" id="edge12_Node000003_Node000011" title=" " alt="" coords="619,194,619,228,613,228,613,194"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="294,270,471,318,470,323,293,275"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="209,320,273,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="244,272,244,306,239,306,239,272"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="761,275,573,323,571,318,760,269"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="196,192,224,229,220,232,192,195"/>
+<area shape="poly" id="edge15_Node000012_Node000005" title=" " alt="" coords="172,195,159,212,148,232,143,252,150,270,171,286,203,299,290,317,387,327,470,331,470,336,386,332,289,322,202,304,168,291,146,274,138,253,143,230,154,209,167,192"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="5,241,85,272"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="158,196,85,237,82,232,156,191"/>
+</map>

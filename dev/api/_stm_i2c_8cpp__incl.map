@@ -1,0 +1,34 @@
+<map id="src/mcu/stm32/StmI2c.cpp" name="src/mcu/stm32/StmI2c.cpp">
+<area shape="rect" id="Node000001" title="STM32 I2C wrapper implementation — full STM32 HAL integration." alt="" coords="466,5,703,36"/>
+<area shape="rect" id="Node000002" href="$_stm_i2c_8h.html" title="STM32 I2C Bus+Device wrapper — wraps STM32 HAL I2C via CubeMX handle." alt="" coords="537,84,632,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="587,36,587,70,582,70,582,36"/>
+<area shape="rect" id="Node000003" href="$_base_i2c_8h.html" title="Abstract base class for I2C device implementations in the HardFOC system." alt="" coords="372,163,475,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="556,117,467,159,464,154,554,112"/>
+<area shape="rect" id="Node000009" href="$_platform_mutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="42,163,197,193"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="537,111,211,164,210,159,537,106"/>
+<area shape="rect" id="Node000011" href="$_stm_types_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="525,163,644,193"/>
+<area shape="poly" id="edge13_Node000002_Node000011" title=" " alt="" coords="587,115,587,149,582,149,582,115"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="668,163,739,193"/>
+<area shape="poly" id="edge17_Node000002_Node000013" title=" " alt="" coords="608,113,671,153,668,157,606,117"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="763,163,852,193"/>
+<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="627,112,754,156,753,161,625,117"/>
+<area shape="rect" id="Node000004" href="$_hardware_types_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="503,241,666,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="454,191,544,233,541,238,452,196"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="293,320,367,351"/>
+<area shape="poly" id="edge8_Node000003_Node000005" title=" " alt="" coords="404,196,379,216,358,243,344,275,336,307,331,306,338,273,353,240,376,213,400,192"/>
+<area shape="rect" id="Node000007" href="$_status_8h.html" title="hf::Status and hf::Result&lt;T&gt;: the one error model of every layer above the drivers." alt="" coords="157,241,292,272"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="387,196,275,239,273,234,385,191"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="367,241,479,272"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="426,194,426,228,421,228,421,194"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="538,275,381,322,380,316,537,270"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="553,320,617,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="587,272,587,306,582,306,582,272"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="246,270,301,310,298,314,243,274"/>
+<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="122,193,127,232,135,252,147,270,176,294,210,310,246,321,280,327,279,333,245,326,208,315,173,298,143,274,130,255,122,233,117,194"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,241,81,272"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="107,196,69,233,65,229,103,192"/>
+<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="587,194,587,228,582,228,582,194"/>
+<area shape="poly" id="edge15_Node000011_Node000005" title=" " alt="" coords="619,191,647,207,673,226,687,249,687,261,680,274,659,290,629,302,549,320,460,331,382,335,381,330,459,325,548,315,627,297,657,285,676,270,681,260,682,250,669,230,644,211,616,196"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="741,241,821,272"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="622,191,733,234,731,239,620,196"/>
+</map>

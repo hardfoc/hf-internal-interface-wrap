@@ -1,0 +1,27 @@
+<map id="src/mcu/stm32/StmPeriodicTimer.cpp" name="src/mcu/stm32/StmPeriodicTimer.cpp">
+<area shape="rect" id="Node000001" title="STM32 Periodic Timer implementation — HAL TIM base with ISR dispatch." alt="" coords="358,5,602,56"/>
+<area shape="rect" id="Node000002" href="$_stm_periodic_timer_8h.html" title="STM32 Periodic Timer — wraps TIM_HandleTypeDef for periodic callbacks." alt="" coords="313,104,495,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="460,58,428,95,424,92,456,55"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="519,104,593,135"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="504,55,536,92,532,95,500,58"/>
+<area shape="rect" id="Node000003" href="$_base_periodic_timer_8h.html" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="220,183,409,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,137,344,175,340,171,385,133"/>
+<area shape="rect" id="Node000009" href="$_stm_types_8h.html" title="STM32 platform&#45;specific type definitions for hardware abstraction." alt="" coords="463,183,582,213"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="428,133,490,173,487,177,425,137"/>
+<area shape="rect" id="Node000004" href="$_hardware_types_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="352,261,515,292"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="338,211,401,251,398,256,336,216"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="291,340,365,371"/>
+<area shape="poly" id="edge8_Node000003_Node000005" title=" " alt="" coords="319,213,328,326,323,326,313,214"/>
+<area shape="rect" id="Node000007" href="$_status_8h.html" title="hf::Status and hf::Result&lt;T&gt;: the one error model of every layer above the drivers." alt="" coords="142,261,277,292"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="296,216,242,255,238,251,293,211"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,261,117,292"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="268,216,122,260,121,255,267,211"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,294,360,334,357,330,412,290"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="401,340,465,371"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="436,292,436,326,431,326,431,292"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="233,290,295,330,293,334,230,295"/>
+<area shape="poly" id="edge11_Node000009_Node000004" title=" " alt="" coords="508,216,462,254,459,250,504,212"/>
+<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="531,213,539,251,538,273,529,294,509,305,471,318,380,344,378,339,470,313,507,300,525,290,532,272,534,252,526,214"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="589,261,669,292"/>
+<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="544,211,600,251,597,255,541,216"/>
+</map>

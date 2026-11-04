@@ -1,0 +1,23 @@
+<map id="inc/base/BaseUsbSerialJtag.h" name="inc/base/BaseUsbSerialJtag.h">
+<area shape="rect" id="Node000001" title="Abstract base class for USB Serial/JTAG controller &quot;console&#45;style&quot; serial transports in the HardFOC s..." alt="" coords="494,5,757,36"/>
+<area shape="rect" id="Node000002" href="$_base_uart_8h.html" title="Abstract base class for UART driver implementations in the HardFOC system." alt="" coords="339,84,451,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="583,39,451,82,449,77,582,34"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="356,241,431,272"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="633,36,642,67,648,109,646,154,639,175,627,195,615,206,598,215,550,231,445,252,444,246,549,226,595,210,612,201,623,192,634,173,640,153,643,109,637,68,628,37"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="539,163,613,193"/>
+<area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="623,37,587,150,582,149,618,35"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="689,84,770,115"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="646,34,701,74,697,78,643,38"/>
+<area shape="rect" id="Node000003" href="$_hardware_types_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,163,168,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="339,117,157,162,156,157,338,112"/>
+<area shape="poly" id="edge7_Node000002_Node000004" title=" " alt="" coords="389,116,378,138,369,163,367,178,369,193,382,228,377,230,364,194,362,178,364,162,373,136,384,114"/>
+<area shape="rect" id="Node000006" href="$_status_8h.html" title="hf::Status and hf::Result&lt;T&gt;: the one error model of every layer above the drivers." alt="" coords="379,163,514,193"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="407,113,431,150,427,153,402,116"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="429,112,531,155,529,160,427,117"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="192,163,304,193"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="369,117,288,159,286,154,366,112"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="144,191,343,240,342,245,143,196"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="55,241,119,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="89,194,89,228,84,228,84,194"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="439,195,413,231,409,228,434,192"/>
+</map>

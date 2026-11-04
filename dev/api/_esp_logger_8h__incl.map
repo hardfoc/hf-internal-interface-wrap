@@ -1,0 +1,37 @@
+<map id="inc/mcu/esp32/EspLogger.h" name="inc/mcu/esp32/EspLogger.h">
+<area shape="rect" id="Node000001" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="943,5,1188,36"/>
+<area shape="rect" id="Node000002" href="$_base_logger_8h.html" title="Unified logging base class for all logging implementations." alt="" coords="445,84,579,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="964,39,592,90,592,84,963,33"/>
+<area shape="rect" id="Node000011" href="$_platform_mutex_8h.html" title="Cross&#45;platform mutex and synchronization primitives with pluggable backend." alt="" coords="761,84,953,115"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="1028,39,910,82,908,77,1026,34"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="938,163,1014,193"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="1054,38,1018,85,988,150,983,148,1014,83,1050,35"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="1028,84,1103,115"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="1068,36,1068,70,1063,70,1063,36"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="1127,84,1185,115"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="1084,34,1130,73,1127,77,1081,38"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1210,84,1299,115"/>
+<area shape="poly" id="edge18_Node000001_Node000015" title=" " alt="" coords="1101,34,1208,76,1206,81,1100,39"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1323,84,1394,115"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="1125,33,1311,81,1309,86,1124,39"/>
+<area shape="rect" id="Node000003" href="$_hardware_types_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,163,168,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="446,115,179,163,178,158,445,110"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="676,241,751,272"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="551,112,594,133,638,161,672,194,699,228,694,231,668,198,634,165,591,137,548,117"/>
+<area shape="rect" id="Node000006" href="$_status_8h.html" title="hf::Status and hf::Result&lt;T&gt;: the one error model of every layer above the drivers." alt="" coords="699,163,834,193"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="560,112,708,156,706,161,559,117"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="193,163,274,193"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="461,117,289,164,287,159,460,112"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="299,163,397,193"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="483,117,392,159,390,154,480,112"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="421,163,488,193"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="503,117,476,153,471,150,499,113"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="512,163,624,193"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="525,113,552,150,547,153,520,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,189,180,191,452,224,662,247,662,253,451,229,180,196,168,194"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="55,241,119,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="89,194,89,228,84,228,84,194"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="759,195,733,231,729,228,754,192"/>
+<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="862,115,863,153,859,175,849,195,831,214,810,228,765,247,763,242,807,224,828,210,844,192,854,173,858,152,857,115"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="881,113,943,153,941,157,878,117"/>
+</map>
