@@ -18,6 +18,7 @@ ctest --test-dir build/host --output-on-failure
 | --- | --- |
 | [`tests/host/test_can_frame.cpp`](../tests/host/test_can_frame.cpp) | `hf_can_message_t` (BaseCan v2): lengths, DLC codes, flags, validation, conversion to the transport-neutral frame layout |
 | [`tests/host/test_spsc_ring.cpp`](../tests/host/test_spsc_ring.cpp) | `HfSpscRing`: capacity rounding, full and empty, overruns, counter wrap, a producer and a consumer thread |
+| [`tests/host/test_status.cpp`](../tests/host/test_status.cpp) | `hf::Status`, `hf::Result` and the `hf::ToStatus()` of every `hf_*_err_t`; `to_status_fresh` checks the generated mappings are current |
 | [`tests/host/HostTest.h`](../tests/host/HostTest.h) | The minimal test framework |
 
 `-DHF_HOST_SANITIZE=address` adds AddressSanitizer and UBSan; `-DHF_HOST_SANITIZE=thread` adds

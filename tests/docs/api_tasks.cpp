@@ -11,6 +11,7 @@
 #include "BaseSpi.h"
 #include "BaseUart.h"
 
+#include <cstdint>
 #include <cstdio>
 
 // --8<-- [start:init]
@@ -30,6 +31,14 @@ void report(hf_spi_err_t err) {
   }
 }
 // --8<-- [end:errors]
+
+// --8<-- [start:status]
+// The layers above speak hf::Status; the interface code stays in detail.
+hf::Result<void> write_frame(BaseSpi& spi, const hf_u8_t* frame, hf_u16_t len) {
+  const hf_spi_err_t err = spi.Write(frame, len, 0);
+  return {hf::ToStatus(err), static_cast<std::uint16_t>(err)};  // a timeout -> Status::Timeout
+}
+// --8<-- [end:status]
 
 // --8<-- [start:spi]
 // One full-duplex transfer: chip select is driven by the device for the whole call.

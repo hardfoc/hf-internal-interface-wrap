@@ -4,8 +4,8 @@
 #   cmake --build build/host
 #   ctest --test-dir build/host --output-on-failure
 #
-# Covers the MCU-independent parts: the BaseCan v2 frame type and the
-# lock-free RX ring used by EspCan. HF_HOST_SANITIZE=address|thread adds
+# Covers the MCU-independent parts: the BaseCan v2 frame type, the
+# lock-free RX ring used by EspCan, and hf::Status / hf::ToStatus(). HF_HOST_SANITIZE=address|thread adds
 # sanitizers (the ring's two-thread test is meant for ThreadSanitizer).
 cmake_minimum_required(VERSION 3.16)
 project(hf_iiw_host_tests LANGUAGES CXX)
@@ -39,15 +39,26 @@ endfunction()
 
 hf_iiw_host_test(test_can_frame)
 hf_iiw_host_test(test_spsc_ring)
+hf_iiw_host_test(test_status)
+# test_status includes every Base*.h with -Wswitch on, so a code missing from a generated ToStatus()
+# fails here. Three warnings that older Base* code does not meet yet are left out for this test only.
+target_compile_options(test_status PRIVATE -Wno-unused-parameter -Wno-sign-conversion -Wno-conversion)
+
+# inc/base/Base*.h carry a generated hf::ToStatus() each (tools/gen_to_status.py).
+find_package(Python3 COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND)
+  add_test(NAME to_status_fresh
+           COMMAND ${Python3_EXECUTABLE} "${HF_IIW_ROOT}/tools/gen_to_status.py" --check)
+endif()
 
 if(HF_HOST_SANITIZE STREQUAL "address")
-  foreach(t hf_iiw_host_test_main test_can_frame test_spsc_ring)
+  foreach(t hf_iiw_host_test_main test_can_frame test_spsc_ring test_status)
     target_compile_options(${t} PRIVATE -fsanitize=address,undefined -fno-omit-frame-pointer
                                         -fno-sanitize-recover=all)
     target_link_options(${t} PRIVATE -fsanitize=address,undefined)
   endforeach()
 elseif(HF_HOST_SANITIZE STREQUAL "thread")
-  foreach(t hf_iiw_host_test_main test_can_frame test_spsc_ring)
+  foreach(t hf_iiw_host_test_main test_can_frame test_spsc_ring test_status)
     target_compile_options(${t} PRIVATE -fsanitize=thread -fno-omit-frame-pointer)
     target_link_options(${t} PRIVATE -fsanitize=thread)
   endforeach()

@@ -55,12 +55,21 @@
                        using ::hf_time::rp2040::InitMonotonic; }
 
 #elif defined(HF_TARGET_MCU_NONE)
-   // Software-only / unit-test build: monotonic clock is a stub. Tests
-   // that need a controllable clock should inject their own.
+   // Software-only / unit-test build. With HF_TIME_NONE_EXTERNAL_CLOCK the
+   // integrator supplies the counter (a host test's fake clock), so code that
+   // waits on MonotonicUs() advances; without it the clock is a constant 0.
+#  if defined(HF_TIME_NONE_EXTERNAL_CLOCK)
+   extern "C" std::uint64_t hf_time_none_clock_us(void);
+   namespace hf_time {
+       inline std::uint64_t MonotonicUs() noexcept { return hf_time_none_clock_us(); }
+       inline void          InitMonotonic() noexcept {}
+   }
+#  else
    namespace hf_time {
        inline std::uint64_t MonotonicUs() noexcept { return 0; }
        inline void          InitMonotonic() noexcept {}
    }
+#  endif
 
 #else
 #  error "HfTime: no implementation for this target — set HF_TARGET_MCU_* (see McuSelect.h)"
