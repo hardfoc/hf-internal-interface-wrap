@@ -1020,15 +1020,19 @@ hardware.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/tests/host/test_can_frame.cpp"><code>tests/host/test_can_frame.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/tests/host/test_can_frame.cpp"><code>tests/host/test_can_frame.cpp</code></a></td>
 <td><code>hf_can_message_t</code> (BaseCan v2): lengths, DLC codes, flags, validation, conversion to the transport-neutral frame layout</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/tests/host/test_spsc_ring.cpp"><code>tests/host/test_spsc_ring.cpp</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/tests/host/test_spsc_ring.cpp"><code>tests/host/test_spsc_ring.cpp</code></a></td>
 <td><code>HfSpscRing</code>: capacity rounding, full and empty, overruns, counter wrap, a producer and a consumer thread</td>
 </tr>
 <tr>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/tests/host/HostTest.h"><code>tests/host/HostTest.h</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/tests/host/test_status.cpp"><code>tests/host/test_status.cpp</code></a></td>
+<td><code>hf::Status</code>, <code>hf::Result</code> and the <code>hf::ToStatus()</code> of every <code>hf_*_err_t</code>; <code>to_status_fresh</code> checks the generated mappings are current</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/tests/host/HostTest.h"><code>tests/host/HostTest.h</code></a></td>
 <td>The minimal test framework</td>
 </tr>
 </tbody>
@@ -1036,7 +1040,7 @@ hardware.</p>
 <p><code>-DHF_HOST_SANITIZE=address</code> adds AddressSanitizer and UBSan; <code>-DHF_HOST_SANITIZE=thread</code> adds
 ThreadSanitizer, which the ring's two-thread test is written for.</p>
 <h2 id="documentation-snippets">Documentation snippets<a class="headerlink" href="#documentation-snippets" title="Permanent link">&para;</a></h2>
-<p>Every multi-line C++ block on this site is included from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/tests/docs/quickstart.cpp"><code>tests/docs/</code></a>, which the
+<p>Every multi-line C++ block on this site is included from <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/tests/docs/quickstart.cpp"><code>tests/docs/</code></a>, which the
 host build compiles (target <code>hf_iiw_doc_snippets</code>) with the same warnings. A change to an interface that breaks a
 page breaks the build first. The README's example is a copy of the Quickstart snippet that
 <code>hardfoc-docs gen --check</code> keeps in step.</p>

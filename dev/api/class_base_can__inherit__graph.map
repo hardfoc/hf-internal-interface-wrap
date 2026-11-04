@@ -1,7 +1,0 @@
-<map id="BaseCan" name="BaseCan">
-<area shape="rect" id="Node000001" title="Abstract base class defining the unified CAN bus API." alt="" coords="57,5,153,36"/>
-<area shape="rect" id="Node000002" href="$class_esp_can.html" title="ESP32 CAN (TWAI) implementation using ESP&#45;IDF v5.5+ node&#45;based API." alt="" coords="5,84,92,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,49,61,85,57,82,84,46"/>
-<area shape="rect" id="Node000003" href="$class_stm_can.html" title="STM32 CAN implementation." alt="" coords="117,84,205,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,46,152,82,148,85,121,49"/>
-</map>

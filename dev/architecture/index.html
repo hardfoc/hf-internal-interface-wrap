@@ -1063,7 +1063,7 @@ rules every interface follows.</p>
 <details class="hf-figure-desc">
 <summary>Figure description and sources</summary>
 <p>From top to bottom. Drivers, handlers and board HALs hold references to the abstract Base* classes (listed from inc/base/). Each platform folder under inc/mcu/ implements them with that platform's SDK: ESP32 classes over ESP-IDF, STM32 classes over STM32Cube HAL handles, and host classes for tests. The application picks one platform at build time; nothing above the interface line changes.</p>
-<p>Drawn from: <a href="https://github.com/hardfoc/hf-internal-interface-wrap/tree/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base"><code>inc/base</code></a> <code>Base classes</code>; <a href="https://github.com/hardfoc/hf-internal-interface-wrap/tree/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu"><code>inc/mcu</code></a> <code>implementations</code>; figure module <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/docs/diagrams/figures/interface-layers.py"><code>docs/diagrams/figures/interface-layers.py</code></a>.</p>
+<p>Drawn from: <a href="https://github.com/hardfoc/hf-internal-interface-wrap/tree/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/base"><code>inc/base</code></a> <code>Base classes</code>; <a href="https://github.com/hardfoc/hf-internal-interface-wrap/tree/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/mcu"><code>inc/mcu</code></a> <code>implementations</code>; figure module <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/docs/diagrams/figures/interface-layers.py"><code>docs/diagrams/figures/interface-layers.py</code></a>.</p>
 </details>
 <h2 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
 <table>
@@ -1077,27 +1077,27 @@ rules every interface follows.</p>
 <tbody>
 <tr>
 <td>Interfaces</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/base/BaseGpio.h"><code>inc/base/</code></a>: <code>BaseGpio</code>, <code>BaseI2c</code>, <code>BaseCan</code>, ... and <code>HardwareTypes.h</code></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/base/BaseGpio.h"><code>inc/base/</code></a>: <code>BaseGpio</code>, <code>BaseI2c</code>, <code>BaseCan</code>, ... and <code>HardwareTypes.h</code></td>
 <td>C++ standard headers only</td>
 </tr>
 <tr>
 <td>ESP32 implementations</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/esp32/EspGpio.h"><code>inc/mcu/esp32/</code></a>, <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/src/mcu/esp32/EspGpio.cpp"><code>src/mcu/esp32/</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/mcu/esp32/EspGpio.h"><code>inc/mcu/esp32/</code></a>, <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/src/mcu/esp32/EspGpio.cpp"><code>src/mcu/esp32/</code></a></td>
 <td>ESP-IDF v5.5 drivers, FreeRTOS</td>
 </tr>
 <tr>
 <td>STM32 implementations</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/stm32/StmGpio.h"><code>inc/mcu/stm32/</code></a>, <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/src/mcu/stm32/StmGpio.cpp"><code>src/mcu/stm32/</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/mcu/stm32/StmGpio.h"><code>inc/mcu/stm32/</code></a>, <a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/src/mcu/stm32/StmGpio.cpp"><code>src/mcu/stm32/</code></a></td>
 <td>STM32Cube HAL handles</td>
 </tr>
 <tr>
 <td>Host implementations</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/mcu/host/HostNvs.h"><code>inc/mcu/host/</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/mcu/host/HostNvs.h"><code>inc/mcu/host/</code></a></td>
 <td>C++ standard library</td>
 </tr>
 <tr>
 <td>Utilities</td>
-<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/utils/McuSelect.h"><code>inc/utils/</code></a></td>
+<td><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/utils/McuSelect.h"><code>inc/utils/</code></a></td>
 <td>Interfaces and <code>PlatformMutex</code></td>
 </tr>
 </tbody>
@@ -1187,7 +1187,7 @@ from the base class default rather than failing to link. No interface throws; ev
 them through <code>GetStatistics()</code> / <code>GetDiagnostics()</code>, reset with <code>ResetStatistics()</code> / <code>ResetDiagnostics()</code>. They
 are for monitoring; control decisions use the return codes.</p>
 <h2 id="threads">Threads<a class="headerlink" href="#threads" title="Permanent link">&para;</a></h2>
-<p>Platform classes guard their state with <code>PlatformMutex</code> (<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/utils/PlatformMutex.h"><code>inc/utils/PlatformMutex.h</code></a>).
+<p>Platform classes guard their state with <code>PlatformMutex</code> (<a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/utils/PlatformMutex.h"><code>inc/utils/PlatformMutex.h</code></a>).
 The mutex delegates to a backend chosen at compile time:</p>
 <table>
 <thead>
@@ -1214,7 +1214,7 @@ The mutex delegates to a backend chosen at compile time:</p>
 serialise the calls yourself. Callbacks registered with CAN, GPIO interrupts and timers run in interrupt or timer
 context; keep them short and hand work to a task (for CAN, through the RX ring; see <a href="../can/">CAN</a>).</p>
 <h2 id="mcu-selection">MCU selection<a class="headerlink" href="#mcu-selection" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/5b86aa79630f85a42781ffc30e55fc75aeb80259/inc/utils/McuSelect.h"><code>inc/utils/McuSelect.h</code></a> turns one target macro into a family and capability macros.
+<p><a href="https://github.com/hardfoc/hf-internal-interface-wrap/blob/d928660fc9d9ffdeaf9aa7243eef76edee036218/inc/utils/McuSelect.h"><code>inc/utils/McuSelect.h</code></a> turns one target macro into a family and capability macros.
 Under ESP-IDF it is set from <code>CONFIG_IDF_TARGET_*</code>; elsewhere define exactly one <code>HF_TARGET_MCU_*</code> (CMake <code>-D</code>
 wins over the file). Selecting none or two is a compile error. The list is in <a href="../integration/#mcu-selection">Integration</a>.</p>
 <h2 id="design-choices">Design choices<a class="headerlink" href="#design-choices" title="Permanent link">&para;</a></h2>

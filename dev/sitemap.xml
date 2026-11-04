@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/api-guide/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/api-reference/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/architecture/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/can/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/esp32/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/examples/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/integration/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/porting/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/quickstart/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/stm32/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/testing/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/utilities/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
     <url>
          <loc>https://hardfoc.github.io/hf-internal-interface-wrap/latest/diagrams/</loc>
-         <lastmod>2026-11-03</lastmod>
+         <lastmod>2026-11-04</lastmod>
     </url>
 </urlset>
